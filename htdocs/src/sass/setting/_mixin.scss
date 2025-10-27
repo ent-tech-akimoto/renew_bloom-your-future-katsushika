@@ -1,21 +1,36 @@
 @charset "utf-8";
+
+// ---------------- Sass組み込みモジュール ----------------
+@use "sass:meta";
+@use "sass:map";
+@use "sass:list";
+
+// ---------------- 自作モジュール ----------------
 @use 'setting/setting' as *;
 
+// ---------------- 関数 ----------------
+
+// px → vw 変換
 @function get_vw($size, $viewport: $vp-sp) {
-  @return calc($size / $viewport) * 100vw;
+  @return calc($size / $viewport * 100vw);
 }
 
+// 最小値対応
 @function get_min($size, $viewport: $vp-pc) {
-  @return min(#{get_vw($size, $viewport), $size * 1px});
+  @return min(#{get_vw($size, $viewport)}, #{$size * 1px});
 }
 
+// 最大値対応
 @function get_max($size, $viewport: $vp-pc) {
-  @return max(#{get_vw($size, $viewport), $size * 1px});
+  @return max(#{get_vw($size, $viewport)}, #{$size * 1px});
 }
 
+// px → vh 変換
 @function get_vh($size, $viewport: $vp-sp) {
-  @return calc($size / $viewport) * 100vh;
+  @return calc($size / $viewport * 100vh);
 }
+
+// ---------------- ミックスイン ----------------
 
 // flexのcenter
 @mixin center() {
@@ -53,16 +68,94 @@
   }
 }
 
+// ---------------- generator ----------------
+
+@mixin mq($args...) {
+  $media-type: 'only screen';
+  $media-type-key: 'media-type';
+  $args: meta.keywords($args);
+
+  @if map.has-key($args, $media-type-key) {
+    $media-type: map.get($args, $media-type-key);
+    $args: map.remove($args, $media-type-key);
+  }
+
+  $expr: '';
+
+  @each $key, $value in $args {
+    @if $value {
+      $expr: "#{$expr} and (#{$key}: #{$value})";
+    }
+  }
+
+  @media #{$media-type} #{$expr} {
+    @content;
+  }
+}
+
+// screen
+@mixin screen($min, $max, $orientation: false) {
+  @include mq($min-width: $min, $max-width: $max, $orientation: $orientation) {
+    @content;
+  }
+}
+
 // max widthのメディアクエリ
 @mixin max-screen($max: $bp_sp) {
-  @media only screen and (max-width: $max) {
+  @include mq($max-width: $max) {
     @content;
   }
 }
 
 // min widthのメディアクエリ
-@mixin min-screen($min: $bp_sp) {
-  @media only screen and (min-width: $min) {
+@mixin min-screen($min: $bp_pc) {
+  @include mq($min-width: $min) {
     @content;
+  }
+}
+
+// コンテンツの最大幅用
+@mixin pc-fluid-size($property, $values, $viewport: $vp_pc) {
+  $is-list: meta.type-of($values) == 'list';
+
+  @media (min-width: $bp_pc) {
+    @if $is-list {
+      $vw-values: ();
+
+      @each $v in $values {
+        $vw-values: list.append($vw-values, get_vw($v, $viewport), 'space');
+      }
+
+      #{$property}: #{$vw-values};
+    }
+    @else {
+      #{$property}: #{get_vw($values, $viewport)};
+    }
+  }
+
+  @media (min-width: 1100px) {
+    @if $is-list {
+      $px-values: ();
+
+      @each $v in $values {
+        $px-values: list.append($px-values, $v + px, 'space');
+      }
+
+      #{$property}: #{$px-values};
+    }
+    @else {
+      #{$property}: #{$values}px;
+    }
+  }
+}
+
+// 背景サイズ用
+@mixin pc-fluid-bg-size($width, $height, $viewport: $vp_pc) {
+  @media (min-width: $bp_pc) {
+    background-size: #{get_vw($width, $viewport)} #{if($height == auto, auto, get_vw($height, $viewport))};
+  }
+
+  @media (min-width: 1100px) {
+    background-size: #{$width}px #{if($height == auto, auto, $height + px)};
   }
 }

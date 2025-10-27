@@ -2,4 +2,9 @@
 @use './setting/mixin' as *;
 
 .template {
+    background: url('../data/webp/top/bg.png.webp') repeat-x center 0;
+    @include pc-fluid-bg-size(1600, auto);
+    @include pc-fluid-size(width, (1000));
+    @include pc-fluid-size(height, (285));
+    @include pc-fluid-size(margin, (0, 0, 0, -40));
 }
