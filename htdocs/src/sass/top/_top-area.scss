@@ -1,0 +1,37 @@
+@use '../setting/setting' as *;
+@use '../setting/mixin' as *;
+
+.top-area{
+  
+  &__ttl{
+    font-size: get_vw(20);
+    color: $c_white;
+    font-weight: 500;
+    text-align: center;
+    position: relative;
+    @include after{
+      background-color: $c_white;
+      width: get_vw(25);
+      height: get_vw(2);
+      border-radius: get_vw(20);
+      position: absolute;
+      bottom: get_vw(-20);
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+
+  &__txt{
+    width: get_vw(310);
+    margin-top: get_vw(80);
+    margin-inline: auto;
+    font-size: get_vw(18);
+    color: $c_white;
+    line-height: calc(28/18);
+    font-weight: 500;
+  }
+
+  &__img{
+    margin-top: get_vw(22);
+  }
+}

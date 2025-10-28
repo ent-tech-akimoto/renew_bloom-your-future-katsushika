@@ -1,0 +1,130 @@
+@use '../setting/setting' as *;
+@use '../setting/mixin' as *;
+
+.top-event{
+  width: get_vw(370);
+  margin-top: get_vw(36);
+  margin-inline: auto;
+  background-color: $c_white;
+  border-radius: get_vw(20);
+  padding: get_vw(76) get_vw(30);
+  &__ttl{
+    font-size: get_vw(20);
+    color: $common_h2;
+    text-align: center;
+    position: relative;
+    @include after{
+      background-color: $common_h2;
+      width: get_vw(25);
+      height: get_vw(2);
+      border-radius: get_vw(20);
+      position: absolute;
+      bottom: get_vw(-20);
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+  &__wrapper{
+    margin-top: get_vw(65);
+  }
+  &__box{
+    width: get_vw(310);
+    margin-inline: auto;
+    padding-bottom: get_vw(39);
+    background-color: $c_ivory;
+    border-radius: get_vw(155) get_vw(155) get_vw(20) get_vw(20);
+    &:not(:first-child){
+      margin-top: get_vw(20);
+    }
+  }
+  &__img{
+    width: get_vw(310);
+    border: solid $c_ivory get_vw(10);
+    border-radius: 50%;
+  }
+  &__content{
+    padding: get_vw(0) get_vw(24);
+    &> h3{
+      position: relative;
+      width: get_vw(260);
+      height: get_vw(100);
+      margin-top: get_vw(-50);
+      margin-inline: auto;
+      // padding: get_vw(6) get_vw(12) get_vw(12);
+      background-color: $c_pink;
+      font-size: get_vw(24);
+      color: #fff;
+      line-height: calc(36/24);
+      text-align: center;
+      border: solid get_vw(2) $c_ivory;
+      border-radius: get_vw(20);
+      @include center;
+    }
+    &> p{
+      width: get_vw(260);
+      margin-top: get_vw(20);
+      margin-inline: auto;
+      font-size: get_vw(14);
+      line-height: calc(24/14);
+      color: #343434;
+    }
+    &> span{
+      display: block;
+      margin-top: get_vw(22);
+      padding-left: get_vw(28);
+      font-size: get_vw(18);
+      position: relative;
+      &.main{
+        color: $c_green;
+        @include before{
+          background-image: url('../img/top/event_green.png');
+          background-size: 100%;
+          width: get_vw(18);
+          height: get_vw(27);
+          position: absolute;
+          top: 50%;
+          left: get_vw(0);
+          transform: translateY(-50%);
+        }
+      }
+      &.monchi{
+        color: $c_pink;
+        @include before{
+          background-image: url('../img/top/event_pink.png');
+          background-size: 100%;
+          width: get_vw(18);
+          height: get_vw(27);
+          position: absolute;
+          top: 50%;
+          left: get_vw(0);
+          transform: translateY(-50%);
+        }
+      }
+      &.kochi{
+        color: $c_blue;
+        @include before{
+          background-image: url('../img/top/event_blue.png');
+          background-size: 100%;
+          width: get_vw(18);
+          height: get_vw(27);
+          position: absolute;
+          top: 50%;
+          left: get_vw(0);
+          transform: translateY(-50%);
+        }
+      }
+    }
+  }
+
+  &__btn{
+    display: block;
+    margin-top: get_vw(38);
+    margin-inline: auto;
+    padding: get_vw(14);
+    width: get_vw(260);
+    height: get_vw(50);
+    background-color: $c_white;
+    border-radius: get_vw(60);
+    @include center;
+  }
+}

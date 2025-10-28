@@ -10,7 +10,7 @@ $bp_pc: 768px;
 
 // photoshopのカンバスサイズ
 $vp_pc: 1440;
-$vp_sp: 750;
+$vp_sp: 390;
 
 // transition
 $transition: all 300ms;
@@ -27,7 +27,7 @@ $c_white: #fff;
 $c_ivory: #F4F1E6;
 $c_black: #606060;
 $c_lightgray: #F2F2F2;
-$c_bray: #B2B2B2;
+$c_gray: #B2B2B2;
 $c_red: #EA5550;
 $c_orange: #F5A400;
 $c_pink: #F09192;
@@ -36,9 +36,17 @@ $c_purple: #8867AA;
 $c_green: #8FC31F;
 
 // selection
-$selection_color: $c_white;
+$selection_color: #F2F2F2;
 $selection_bg: $c_black;
 
 // common
 $common_font: $c_black;
-$common_bg: $c_ivory;
+$common_bg: $c_white;
+$common_h2: $c_black;
+
+// tag
+$news_txt:  $c_black;
+$news_news: #FCCCCA;
+$news_event: #F7E0AF;
+$news_recruit: #E5F1CA;
+$news_purple: rgba(136, 103, 170, 0.2);

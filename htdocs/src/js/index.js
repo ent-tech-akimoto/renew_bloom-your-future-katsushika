@@ -1,24 +1,7 @@
 import './device.js';
-import $ from 'jquery';
-import Swiper from 'swiper';
 
-const swiper = new Swiper('.swiper', {
-  // Optional parameters
-  loop: true,
-
-  // If we need pagination
-  pagination: {
-    el: '.swiper-pagination',
-  },
-
-  // Navigation arrows
-  navigation: {
-    nextEl: '.swiper-button-next',
-    prevEl: '.swiper-button-prev',
-  },
-
-  // And if we need scrollbar
-  scrollbar: {
-    el: '.swiper-scrollbar',
-  },
-});
+//top
+// const bannerSwiper = require('./top/banner_swiper.js');
+// const instaSwiper = require('./top/insta_swiper.js');
+// const topicSwiper = require('./top/topic_swiper.js');
+const swiper = require('./top/swiper.js');

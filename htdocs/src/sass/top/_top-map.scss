@@ -1,0 +1,101 @@
+@use '../setting/setting' as *;
+@use '../setting/mixin' as *;
+
+.top-map{
+  width: get_vw(370);
+  margin-top: get_vw(28);
+  margin-inline: auto;
+  background-color: #E7F0F9;
+  border-radius: get_vw(20);
+  padding: get_vw(60) get_vw(14);
+  overflow: hidden;
+  &__content{
+
+  }
+  &__content-map{
+    
+  }
+  &__content-map-img{
+    position: relative;
+  }
+  &__content-detail{
+    margin-top: get_vw(54);
+  }
+  &__detail{
+  width: get_vw(340);
+  margin-inline: auto;
+  background-color: $c_white;
+  border-radius: get_vw(20);
+  padding: get_vw(30) get_vw(15);
+  overflow: hidden;
+  border: solid get_vw(2) $common_font;
+  &:not(:first-child){
+    margin-top: get_vw(20);
+  }
+    &.main{
+      border-color: $c_green;
+    }
+    &.tora{
+      border-color: $c_red;
+    }
+    &.kochi{
+      border-color: $c_blue;
+    }
+    &.wing{
+      border-color: $c_orange;
+    }
+    &.mochi{
+      border-color: $c_pink;
+    }
+    &.iris{
+      border-color: $c_purple;
+    }
+
+  }
+  &__detail-ttl{
+    font-size: get_vw(20);
+    color: $common_h2;
+    text-align: center;
+    position: relative;
+    &.main{
+      color: $c_green;
+    }
+    &.tora{
+      color: $c_red;
+    }
+    &.kochi{
+      color: $c_blue;
+    }
+    &.wing{
+      color: $c_orange;
+    }
+    &.mochi{
+      color: $c_pink;
+    }
+    &.iris{
+      color: $c_purple;
+    }
+  }
+  &__detail-img{
+    margin-top: get_vw(20);
+    & figcaption{
+      font-size: get_vw(13);
+      font-weight: 200;
+      margin: get_vw(10) 0 0 auto;
+      text-align: right;
+    }
+
+  }
+  &__detail-subttl{
+    margin-top: get_vw(20);
+      font-size: get_vw(19);
+      font-weight: 500;
+  }
+  &__detail-txt{
+    margin-top: get_vw(20);
+      font-size: get_vw(14);
+      font-weight: 200;
+      line-height: calc(26/14);
+  }
+
+}

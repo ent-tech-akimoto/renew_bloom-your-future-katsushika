@@ -4,3 +4,16 @@
 // template
 @use 'template/template';
 @use 'template/template-another';
+
+//top
+@use 'top/top';
+@use 'top/top-banner';
+@use 'top/top-news';
+@use 'top/top-insta';
+@use 'top/top-topic';
+@use 'top/top-event';
+@use 'top/top-about';
+@use 'top/top-area';
+@use 'top/top-map';
+@use 'top/top-gallery';
+

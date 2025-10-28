@@ -1,0 +1,110 @@
+@use '../setting/setting' as *;
+@use '../setting/mixin' as *;
+
+
+.top-banner{
+  &__swiper{
+    padding-bottom: get_vw(28);
+    overflow: hidden;
+  }
+  &__swiper-wrapper{
+
+  }
+  
+  &__swiper-slide{
+    position: relative;
+    padding: 0 calc(get_vw(9)/2);
+    overflow: hidden;
+    @include before{
+      width: get_vw(381);
+      height: get_vw(243);
+      background: linear-gradient(to top, rgba(1, 16, 0, 1) 0%, rgba(8, 151, 0, 0) 100%);
+      position: absolute;
+      bottom: get_vw(0);
+      left: calc(get_vw(9)/2);
+      opacity: 0.6;
+      border-radius: 0 0 get_vw(20) get_vw(20);
+    }
+    @include after{
+    }
+    &>a{
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  
+  &__atten{
+    width: get_vw(169);
+    height: get_vw(58);
+    padding: get_vw(9) get_vw(10);
+    background-color: rgba(255,255,255,0.7);
+    position: absolute;
+    top: 0;
+    left: calc(get_vw(9)/2);
+    border-radius: 0 0 get_vw(20) 0;
+  }
+
+  &__atten-ttl{
+    font-size: get_vw(12);
+    text-align: center;
+    position: relative;
+    @include before{
+      width: get_vw(50);
+      height: get_vw(1);
+      background-color: $common_font;
+      position: absolute;
+      top: 50%;
+      left: get_vw(0);
+    }
+    @include after{
+      width: get_vw(50);
+      height: get_vw(1);
+      background-color: $common_font;
+      position: absolute;
+      top: 50%;
+      right: get_vw(0);
+    }
+  }
+
+&__atten-txt{
+  margin-top: get_vw(8);
+  font-size: get_vw(10);
+  & span{
+    font-size: get_vw(8);
+  }
+}
+
+  &__swiper-pagination{
+
+  }
+
+  &__swiper-btn{
+    &--next{
+      display: none;
+    }
+    &--prev{
+      display: none;
+    }
+  }
+
+  &__text{
+    width: get_vw(340);
+    color: $c_white;
+    position: absolute;
+    bottom: get_vw(36);
+    left: get_vw(20);
+
+    & .title{
+      font-size: get_vw(24);
+      font-weight: 500;
+      line-height: calc(34/24);
+    }
+    & .text{
+      margin-top: get_vw(10);
+      font-size: get_vw(14);
+      font-weight: 300;
+      line-height: calc(24/14);
+    }
+  }
+}

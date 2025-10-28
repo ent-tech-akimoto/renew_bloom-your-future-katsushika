@@ -1,0 +1,54 @@
+@use '../setting/setting' as *;
+@use '../setting/mixin' as *;
+
+.top-topic{
+  width: get_vw(370);
+  margin-inline: auto;
+  background-color: $c_white;
+  border-radius: get_vw(20);
+  padding: get_vw(76) get_vw(30);
+  overflow: hidden;
+  &__ttl{
+    font-size: get_vw(20);
+    color: $common_h2;
+    text-align: center;
+    position: relative;
+    @include after{
+      background-color: $common_h2;
+      width: get_vw(25);
+      height: get_vw(2);
+      border-radius: get_vw(20);
+      position: absolute;
+      bottom: get_vw(-20);
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+  &__swiper{
+    margin-top: get_vw(65);
+  }
+  &__swiper-wrapper{
+
+  }
+  &__swiper-slide{
+    width: get_vw(270);
+    margin: 0 calc(get_vw(20)/2);
+    background-color: $c_ivory;
+    border-radius: get_vw(20);
+    & p{
+      font-size: get_vw(18);
+      line-height: calc(24/18);
+      color: #343434;
+    }
+    & a{
+      display: block;
+      margin-top: get_vw(15);
+      font-size: get_vw(14);
+      text-align: center;
+
+    }
+  }
+  &__slide-box{
+    padding: get_vw(15) get_vw(12) get_vw(24);
+  }
+}
