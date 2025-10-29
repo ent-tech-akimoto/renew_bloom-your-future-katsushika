@@ -81,7 +81,7 @@ picture {
 // sp非表示
 .sp-none {
   @include min-screen() {
-    display: none;
+    display: block;
   }
 
   @include max-screen(var.$bp_sp) {

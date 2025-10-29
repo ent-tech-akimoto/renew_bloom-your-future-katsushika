@@ -8,13 +8,14 @@
         padding-bottom: get_vw(62);
         background-image: url('../img/top/bg_green.png');
         background-size: 100% 100%;
-        background-position: center;
+        background-position: center get_vw(205);
         background-repeat: repeat-x;
+        @include pc-fluid-bg-size(1440, auto);
+        @include pc-fluid-size(padding-top, (169));
+        @include pc-fluid-size(padding-bottom, (163));
         @include min-screen{
-          @include pc-fluid-bg-size(1600, auto);
-          @include pc-fluid-size(width, (1000));
-          @include pc-fluid-size(height, (285));
-          @include pc-fluid-size(margin, (0, 0, 0, -40));
+          background-image: url('../img/top/bg_green_pc.png');
+          background-position: center top;
         }
       }
       &.pink{
@@ -23,42 +24,45 @@
         padding-bottom: get_vw(93);
         background-image: url('../img/top/bg_pink.png');
         background-size: 100% 100%;
-        background-position: center;
+        background-position: center top;
         background-repeat: repeat-x;
+        @include pc-fluid-bg-size(1440, auto);
+        @include pc-fluid-size(margin-top, (-220));
+        @include pc-fluid-size(padding-top, (169));
+        @include pc-fluid-size(padding-bottom, (163));
         @include min-screen{
-          @include pc-fluid-bg-size(1600, auto);
-          @include pc-fluid-size(width, (1000));
-          @include pc-fluid-size(height, (285));
-          @include pc-fluid-size(margin, (0, 0, 0, -40));
+          background-image: url('../img/top/bg_pink_pc.png');
         }
       }
       &.orange{
         margin-top: get_vw(-136);
-      padding-top: get_vw(134);
-      background-image: url('../img/top/bg_orange.png');
-      background-size: 100% auto;
-      background-position: center top;
-      background-repeat: repeat-x;
+        padding-top: get_vw(134);
+        background-image: url('../img/top/bg_orange.png');
+        background-size: 100% auto;
+        background-position: center top;
+        background-repeat: repeat-x;
+        @include pc-fluid-bg-size(1440, auto);
+        @include pc-fluid-size(margin-top, (-230));
+        @include pc-fluid-size(padding-top, (169));
+        @include pc-fluid-size(padding-bottom, (1000));
         @include min-screen{
-          @include pc-fluid-bg-size(1600, auto);
-          @include pc-fluid-size(width, (1000));
-          @include pc-fluid-size(height, (285));
-          @include pc-fluid-size(margin, (0, 0, 0, -40));
+          background-image: url('../img/top/bg_orange_pc.png');
         }
       }
       &.blue{
         margin-top: get_vw(-136);
-      padding-top: get_vw(134);
-      padding-bottom: get_vw(80);
-      background-image: url('../img/top/bg_blue.png');
-      background-size: 100% auto;
-      background-position: center top;
-      background-repeat: repeat-x;
+        padding-top: get_vw(134);
+        padding-bottom: get_vw(80);
+        background-image: url('../img/top/bg_blue.png');
+        background-size: 100% auto;
+        background-position: center top;
+        background-repeat: repeat-x;
+        @include pc-fluid-bg-size(1440, auto);
+        @include pc-fluid-size(margin-top, (-1410));
+        @include pc-fluid-size(padding-top, (169));
+        @include pc-fluid-size(padding-bottom, (163));
         @include min-screen{
-          @include pc-fluid-bg-size(1600, auto);
-          @include pc-fluid-size(width, (1000));
-          @include pc-fluid-size(height, (285));
-          @include pc-fluid-size(margin, (0, 0, 0, -40));
+          background-image: url('../img/top/bg_blue_pc.png');
         }
       }
     }

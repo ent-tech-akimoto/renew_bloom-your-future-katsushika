@@ -2,17 +2,22 @@
 @use '../setting/mixin' as *;
 
 .top-topic{
+  position: relative;
   width: get_vw(370);
   margin-inline: auto;
   background-color: $c_white;
   border-radius: get_vw(20);
-  padding: get_vw(76) get_vw(30);
+  padding: get_vw(76) get_vw(0) get_vw(80);
   overflow: hidden;
+  @include pc-fluid-size(width, (1280));
+  @include pc-fluid-size(border-radius, (40));
+  @include pc-fluid-size(padding, (100 0));
   &__ttl{
     font-size: get_vw(20);
     color: $common_h2;
     text-align: center;
     position: relative;
+    @include pc-fluid-size(font-size, (40));
     @include after{
       background-color: $common_h2;
       width: get_vw(25);
@@ -22,33 +27,144 @@
       bottom: get_vw(-20);
       left: 50%;
       transform: translateX(-50%);
+      @include pc-fluid-size(width, (25));
+      @include pc-fluid-size(height, (2));
+      @include pc-fluid-size(bottom, (-16));
     }
   }
   &__swiper{
     margin-top: get_vw(65);
+    @include pc-fluid-size(margin-top, (95));
   }
   &__swiper-wrapper{
 
   }
   &__swiper-slide{
     width: get_vw(270);
+    height: get_vw(340);
     margin: 0 calc(get_vw(20)/2);
     background-color: $c_ivory;
+    border: solid $c_ivory get_vw(2);
     border-radius: get_vw(20);
+    overflow: hidden;
+    @include pc-fluid-size(width, (300));
+    @include pc-fluid-size(height, (410));
+    @include pc-fluid-size(max-height, (410));
+    @include pc-fluid-size(margin, (0 10));
+    @include pc-fluid-size(border-width, (2));
+    @include pc-fluid-size(border-radius, (40));
     & p{
       font-size: get_vw(18);
       line-height: calc(24/18);
       color: #343434;
+      @include pc-fluid-size(font-size, (18));
+      @include pc-fluid-size(line-height, (24));
     }
     & a{
       display: block;
       margin-top: get_vw(15);
+      margin-inline: auto;
+      padding: get_vw(14);
+      width: get_vw(230);
+      height: get_vw(50);
       font-size: get_vw(14);
       text-align: center;
+      background-color: $c_white;
+      border-radius: get_vw(60);
+      @include center;
+      @include pc-fluid-size(margin-top, (0));
+      @include pc-fluid-size(font-size, (14));
+      @include pc-fluid-size(padding, (14));
+      @include pc-fluid-size(width, (260));
+      @include pc-fluid-size(height, (50));
+      @include pc-fluid-size(border-radius, (60));
 
     }
   }
   &__slide-box{
+    height: get_vw(150);
     padding: get_vw(15) get_vw(12) get_vw(24);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    @include pc-fluid-size(height, (185));
+    @include pc-fluid-size(padding, (36 18 38));
+    @include min-screen{
+    }
+  }
+
+  &__swiper-nav{
+    width: 100%;
+    height: get_vw(8);
+    position: relative;
+    margin-top: get_vw(20);
+    margin-inline: auto;
+    @include pc-fluid-size(width, (280));
+    @include pc-fluid-size(height, (58));
+    @include pc-fluid-size(margin-top, (40));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__swiper-btn{
+    &--next{
+      display: none;
+      @include min-screen{
+        display: block;
+        position: relative;
+        top: 0;
+          @include pc-fluid-size(width, (40));
+          @include pc-fluid-size(height, (40));
+          @include pc-fluid-size(bottom, (0));
+          @include pc-fluid-size(right, (0));
+          @include after{
+          background-image: url('../img/top/topic_arrow.png');
+          background-size: 100% 100%;
+          border-radius: 50%;
+          @include pc-fluid-size(width, (40));
+          @include pc-fluid-size(height, (40));
+        }
+
+      }
+    }
+    &--prev{
+      display: none;
+      @include min-screen{
+        display: block;
+        position: relative;
+        top: 0;
+          @include pc-fluid-size(width, (40));
+          @include pc-fluid-size(height, (40));
+        @include pc-fluid-size(bottom, (0));
+        @include pc-fluid-size(left, (0));
+        @include after{
+          background-image: url('../img/top/topic_arrow.png');
+          background-size: 100% 100%;
+          border-radius: 50%;
+          transform: scaleX(-1);
+          @include pc-fluid-size(width, (40));
+          @include pc-fluid-size(height, (40));
+        }
+      }
+    }
+  }
+
+  &__swiper-pagination.swiper-pagination{
+    display: block;
+    position: relative;
+    top: 0;
+    @include min-screen{
+      top: auto;
+    }
+
+    & .swiper-pagination-bullet{
+      background: $c_ivory;
+      opacity: 1;
+    @include pc-fluid-size(margin, (0 5));
+    }
+    & .swiper-pagination-bullet-active{
+      background: $c_pink;
+    }
   }
 }

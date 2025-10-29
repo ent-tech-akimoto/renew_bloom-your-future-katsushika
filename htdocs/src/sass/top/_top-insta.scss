@@ -7,13 +7,17 @@
   margin-inline: auto;
   background-color: $c_white;
   border-radius: get_vw(20);
-  padding: get_vw(76) get_vw(30);
+  padding: get_vw(76) get_vw(0);
   overflow: hidden;
+  @include pc-fluid-size(width, (1280));
+  @include pc-fluid-size(border-radius, (40));
+  @include pc-fluid-size(padding, (100 0));
   &__ttl{
     font-size: get_vw(20);
     color: $common_h2;
     text-align: center;
     position: relative;
+    @include pc-fluid-size(font-size, (40));
     @include after{
       background-color: $common_h2;
       width: get_vw(25);
@@ -23,22 +27,43 @@
       bottom: get_vw(-20);
       left: 50%;
       transform: translateX(-50%);
+      @include pc-fluid-size(width, (25));
+      @include pc-fluid-size(height, (2));
+      @include pc-fluid-size(bottom, (-16));
     }
   }
   &__gallery{
     margin-top: get_vw(65);
+    @include pc-fluid-size(margin-top, (85));
+  }
+  &__swiper{
+    @include pc-fluid-size(padding-top, (32));
   }
   &__swipersp{
     &:not(:first-child){
       margin-top: get_vw(22);
     }
   }
-  &__swiper-wrapper{
+  &__swipersp-wrapper{
 
   }
   &__swipersp-slide{
     width: get_vw(118);
     margin: 0 calc(get_vw(20)/2) 0;
+    transition: all 0.3s ease;
+    @include pc-fluid-size(width, (158));
+    @include pc-fluid-size(margin-inline, (10));
+    @include pc-fluid-size(border-radius, (26));
+    @include min-screen{
+      border: solid transparent get_vw(1);
+      @include pc-fluid-size(border-width, (2));
+      &:hover{
+        transform: translateY(-20px);
+        border: solid $c_green get_vw(1);
+        @include pc-fluid-size(border-width, (2));
+        @include pc-fluid-size(border-radius, (26));
+      }
+    }
   }
 
   &__catch{
@@ -47,15 +72,21 @@
     color: #8FC31F;
     text-align: center;
     position: relative;
+    @include pc-fluid-size(margin-top, (40));
+    @include pc-fluid-size(font-size, (24));
     @include before{
       background-color: #8FC31F;
       width: get_vw(32);
       height: get_vw(2);
       position: absolute;
       top: 50%;
-      left: get_vw(-15);
+      left: get_vw(10);
       transform: translateY(-50%) rotate(70deg);
       border-radius: get_vw(20);
+      @include pc-fluid-size(width, (32));
+      @include pc-fluid-size(height, (2));
+      @include pc-fluid-size(left, (440));
+      @include pc-fluid-size(border-radius, (20));
     }
     @include after{
       background-color: #8FC31F;
@@ -63,13 +94,19 @@
       height: get_vw(2);
       position: absolute;
       top: 50%;
-      right: get_vw(-11);
+      right: get_vw(16);
       transform: translateY(-50%) rotate(-70deg);
       border-radius: get_vw(20);
+      @include pc-fluid-size(width, (32));
+      @include pc-fluid-size(height, (2));
+      @include pc-fluid-size(right, (448));
+      @include pc-fluid-size(border-radius, (20));
     }
   }
   &__hash{
+    width: get_vw(310);
     margin-top: get_vw(20);
+    margin-inline: auto;
     padding: get_vw(50) get_vw(10) get_vw(16);
     background-color: rgba(143, 195, 31, 0.2);
     border-radius: get_vw(8);
@@ -78,6 +115,14 @@
     line-height: calc(28/18);
     text-align: center;
     position: relative;
+    @include pc-fluid-size(width, (472));
+    @include pc-fluid-size(margin-top, (15));  
+    @include pc-fluid-size(padding, (15 20 15 72));
+    @include pc-fluid-size(border-radius, (10));
+    @include pc-fluid-size(font-size, (18));
+    @include min-screen{
+      margin-inline: auto;
+    }
     @include before{
       background-image: url(../img/top/insta_icon.png);
       background-size: 100% 100%;
@@ -86,7 +131,14 @@
       position: absolute;
       top: get_vw(20);
       left: 50%;
-      transform: translateX(-50%);
+      transform: translate(-50%, 0%);
+      @include pc-fluid-size(width, (30));
+      @include pc-fluid-size(height, (30));
+      @include pc-fluid-size(left, (35));
+      @include min-screen{
+        top: 50%;
+        transform: translate(0%, -50%);
+      }
     }
   }
 }
