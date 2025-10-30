@@ -9,13 +9,14 @@
         background-image: url('../img/top/bg_green.png');
         background-size: 100% 100%;
         background-position: center get_vw(205);
-        background-repeat: repeat-x;
+        background-repeat: no-repeat;
         @include pc-fluid-bg-size(1440, auto);
         @include pc-fluid-size(padding-top, (169));
-        @include pc-fluid-size(padding-bottom, (163));
+        @include pc-fluid-size(padding-bottom, (263));
         @include min-screen{
           background-image: url('../img/top/bg_green_pc.png');
-          background-position: center top;
+          background-size: 2802px auto;
+          background-position: calc(50% + 350px) 280px;
         }
       }
       &.pink{
@@ -25,13 +26,15 @@
         background-image: url('../img/top/bg_pink.png');
         background-size: 100% 100%;
         background-position: center top;
-        background-repeat: repeat-x;
+        background-repeat: no-repeat;
         @include pc-fluid-bg-size(1440, auto);
-        @include pc-fluid-size(margin-top, (-220));
+        @include pc-fluid-size(margin-top, (-320));
         @include pc-fluid-size(padding-top, (169));
-        @include pc-fluid-size(padding-bottom, (163));
+        @include pc-fluid-size(padding-bottom, (263));
         @include min-screen{
           background-image: url('../img/top/bg_pink_pc.png');
+          background-size: 3838px auto;
+          background-position: calc(50% + 350px) 0px;
         }
       }
       &.orange{
@@ -40,13 +43,15 @@
         background-image: url('../img/top/bg_orange.png');
         background-size: 100% auto;
         background-position: center top;
-        background-repeat: repeat-x;
+        background-repeat: no-repeat;
         @include pc-fluid-bg-size(1440, auto);
-        @include pc-fluid-size(margin-top, (-230));
+        @include pc-fluid-size(margin-top, (-330));
         @include pc-fluid-size(padding-top, (169));
         @include pc-fluid-size(padding-bottom, (1000));
         @include min-screen{
           background-image: url('../img/top/bg_orange_pc.png');
+          background-size: 2999px auto;
+          background-position: calc(50% + -110px) 0px;
         }
       }
       &.blue{
@@ -56,13 +61,15 @@
         background-image: url('../img/top/bg_blue.png');
         background-size: 100% auto;
         background-position: center top;
-        background-repeat: repeat-x;
+        background-repeat: no-repeat;
         @include pc-fluid-bg-size(1440, auto);
         @include pc-fluid-size(margin-top, (-1410));
         @include pc-fluid-size(padding-top, (169));
         @include pc-fluid-size(padding-bottom, (163));
         @include min-screen{
           background-image: url('../img/top/bg_blue_pc.png');
+          background-size: 3892px auto;
+          background-position: calc(50% + 0px) 0px;
         }
       }
     }
