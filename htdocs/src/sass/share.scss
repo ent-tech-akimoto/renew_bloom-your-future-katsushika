@@ -5,6 +5,12 @@
 @use 'template/template';
 @use 'template/template-another';
 
+// partail
+@use 'partial/header';
+@use 'partial/footer';
+@use 'partial/common';
+@use 'partial/detail';
+
 //top
 @use 'top/top';
 @use 'top/top-banner';
@@ -19,4 +25,3 @@
 
 //fixed
 @use 'fixed';
-

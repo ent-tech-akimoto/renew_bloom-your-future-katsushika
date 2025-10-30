@@ -1,0 +1,20 @@
+<%
+var pageID = "event-detail";
+var lang = "ja";
+var relative_path = "../../";
+var myMeta = meta[lang][pageID];
+%>
+<!DOCTYPE html>
+<html lang="<%= lang %>">
+<%-include(`${relative_path}_partial/_head`,{lang:lang,pageID:pageID,relative_path:relative_path})%>
+
+<body>
+  <div class="page">
+    <main class="common-detail">
+    </main>
+    <%-include(`${relative_path}_partial/_footer`,{lang:lang,pageID:pageID,relative_path:relative_path})%>
+  </div>
+  <%- include( `${relative_path}_partial/_foot`,{lang:lang,pageID:pageID,relative_path:relative_path}) %>
+</body>
+
+</html>

@@ -10,6 +10,15 @@
     },
     "top": {
       "title": "全国みどりと花のフェアかつしか"
+    },
+    "event-detail": {
+      "title": "イベント詳細"
+    },
+    "sponsor-detail": {
+      "title": "お知らせ詳細"
+    },
+    "news-detail": {
+      "title": "お知らせ詳細"
     }
   }
 }
