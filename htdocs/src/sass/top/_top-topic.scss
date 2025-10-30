@@ -47,12 +47,20 @@
     border: solid $c_ivory get_vw(2);
     border-radius: get_vw(20);
     overflow: hidden;
+    border: solid transparent get_vw(2);
+    transition: border-color 0.3s ease;
     @include pc-fluid-size(width, (300));
     @include pc-fluid-size(height, (410));
     @include pc-fluid-size(max-height, (410));
     @include pc-fluid-size(margin, (0 10));
     @include pc-fluid-size(border-width, (2));
     @include pc-fluid-size(border-radius, (40));
+    @include min-screen{
+      cursor: pointer;
+      &:hover{
+        border-color: $c_pink;
+      }
+    }
     & p{
       font-size: get_vw(18);
       line-height: calc(24/18);

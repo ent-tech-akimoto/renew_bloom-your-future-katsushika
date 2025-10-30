@@ -14,7 +14,7 @@
   pointer-events: none;
   transition: all 0.4s ease;
   @include pc-fluid-size(width, (1440));
-  @include pc-fluid-size(padding, (20 160 20 80));
+  @include pc-fluid-size(padding, (24 160 20 80));
   @include min-screen{
     display: flex;
     flex-direction: row;
@@ -35,7 +35,7 @@
     font-weight: 500;
     @include pc-fluid-size(width, (207));
     @include pc-fluid-size(height, (60));
-    @include pc-fluid-size(padding, (18));
+    @include pc-fluid-size(padding, (14 18 18));
     @include pc-fluid-size(border-radius, (10));
     @include pc-fluid-size(font-size, (24));
 

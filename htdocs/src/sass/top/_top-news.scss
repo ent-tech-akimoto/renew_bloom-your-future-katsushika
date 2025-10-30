@@ -37,6 +37,7 @@
     @include pc-fluid-size(margin-top, (95));
   }
   &__box{
+    position: relative;
     padding-bottom: get_vw(18);
     border-bottom: solid get_vw(2) $c_ivory;
     @include pc-fluid-size(padding-bottom, (46));
@@ -51,7 +52,22 @@
         .top-news__txt{
           color: $c_red;
         }
+        @include after{
+          opacity: 1;
+        }
       }
+    }
+    @include after{
+      background-image: url('../img/top/news_arrow.png');
+      background-size: 100% 100%;
+      @include pc-fluid-size(width, (15));
+      @include pc-fluid-size(height, (15));
+      position: absolute;
+      top: 25%;
+      right: get_vw(0);
+      transform: translateY(-50%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
     }
   }
   &__cate{
