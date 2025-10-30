@@ -1,0 +1,54 @@
+@use '../setting/setting' as *;
+@use '../setting/mixin' as *;
+
+.loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  overflow: hidden;
+  z-index: 99999;
+  @include center;
+  flex-direction: column;
+  row-gap: get_vw(15);
+  opacity: 1;
+  transition: opacity 0.4s ease;
+  @include pc-fluid-size(row-gap, (30));
+  &__logo {
+    width: get_vw(180);
+    @include pc-fluid-size(width, (332));
+    @include min-screen {
+    }
+  }
+  &__bar {
+    width: get_vw(180);
+    height: get_vw(4);
+    background-color: $c_gray;;
+    border-radius: get_vw(4);
+    overflow: hidden;
+    @include pc-fluid-size(width, (332));
+    @include pc-fluid-size(height, (8));
+    @include pc-fluid-size(border-radius, (6));
+    &::after {
+      content: '';
+      display: block;
+      width: 0;
+      height: 100%;
+      background-color: $c_red;
+      animation: loadingBarAnim 2s linear forwards;
+      @include pc-fluid-size(width, (0));
+    }
+  }
+
+  &.js-hide {
+    opacity: 0;
+  }
+}
+
+@keyframes loadingBarAnim {
+  to {
+    width: 100%;
+  }
+}

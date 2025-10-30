@@ -11,6 +11,7 @@ var myMeta = meta[lang][pageID];
     <%- include(`${relative_path}_partial/_body-after`,{lang:lang,pageID:pageID,relative_path:relative_path})%>
     <div class="page">
       <%-include(`${relative_path}_partial/_header`,{lang:lang,pageID:pageID,relative_path:relative_path})%>
+      <%-include(`${relative_path}_component/_loading`,{lang:lang,pageID:pageID,relative_path:relative_path})%>
       <main class="top">
         <div class="top__bg green">
           <section class="top-banner">
@@ -70,37 +71,63 @@ var myMeta = meta[lang][pageID];
                     <h5 class="title">
                       全国みどりと花のフェアかつしかタイトル入ります。
                     </h5>
-                    <p class="text">
-                      テキスト入ります。テキスト入ります。テキスト入ります。
-                    </p>
+                    <p class="text"></p>
                   </div>
                   <div class="top-banner__progress"></div>
                 </div>
-                <div class="top-banner__swiper-slide swiper-slide">
+                <div class="top-banner__swiper-slide swiper-slide no-link">
                   <div class="top-banner__atten">
                     <p class="top-banner__atten-ttl">会場</p>
                     <p class="top-banner__atten-txt">
                       葛飾にいじゅくみらい公園<span>ほか</span>
                     </p>
                   </div>
-                  <a>
-                    <picture>
-                      <source
-                        srcset="<%= relative_path %>assets/img/top/banner/1_pc.png"
-                        media="(min-width: 768px)"
-                      >
-                      <img
-                        class="top-banner__img"
-                        src="<%= relative_path %>assets/img/top/banner/1.png"
-                        alt=""
-                      >
-                    </picture>
-                  </a>
+                  <picture>
+                    <source
+                      srcset="<%= relative_path %>assets/img/top/banner/1_pc.png"
+                      media="(min-width: 768px)"
+                    >
+                    <img
+                      class="top-banner__img"
+                      src="<%= relative_path %>assets/img/top/banner/1.png"
+                      alt=""
+                    >
+                  </picture>
                   <div class="top-banner__text">
                     <h5 class="title">
                       全国みどりと花のフェアかつしかタイトル入ります。
                     </h5>
-                    <p class="text"></p>
+                    <p class="text">
+                      テキスト入ります。テキスト入ります。テキスト入ります。
+                    </p>
+                  </div>
+                  <div class="top-banner__progress"></div>
+                </div>
+                <div class="top-banner__swiper-slide swiper-slide no-link">
+                  <div class="top-banner__atten">
+                    <p class="top-banner__atten-ttl">会場</p>
+                    <p class="top-banner__atten-txt">
+                      葛飾にいじゅくみらい公園<span>ほか</span>
+                    </p>
+                  </div>
+                  <picture>
+                    <source
+                      srcset="<%= relative_path %>assets/img/top/banner/1_pc.png"
+                      media="(min-width: 768px)"
+                    >
+                    <img
+                      class="top-banner__img"
+                      src="<%= relative_path %>assets/img/top/banner/1.png"
+                      alt=""
+                    >
+                  </picture>
+                  <div class="top-banner__text">
+                    <h5 class="title">
+                      全国みどりと花のフェアかつしかタイトル入ります。
+                    </h5>
+                    <p class="text">
+                      テキスト入ります。テキスト入ります。テキスト入ります。
+                    </p>
                   </div>
                   <div class="top-banner__progress"></div>
                 </div>
