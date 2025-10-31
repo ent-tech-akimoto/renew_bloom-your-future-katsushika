@@ -1,0 +1,13 @@
+@use '../../setting/setting' as *;
+@use '../../setting/mixin' as *;
+
+.top{
+  &__bg.js-scroll{
+    transform: translateY(10%);
+    transition: all 500ms ease;
+    &.js-show{
+      transform: translateY(0);
+    }
+  }
+  
+}

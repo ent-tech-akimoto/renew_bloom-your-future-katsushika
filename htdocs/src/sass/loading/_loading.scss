@@ -7,7 +7,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: #fff;
+  // background-color: #fff;
   overflow: hidden;
   z-index: 99999;
   @include center;
@@ -16,6 +16,18 @@
   opacity: 1;
   transition: opacity 0.4s ease;
   @include pc-fluid-size(row-gap, (30));
+  @include before {
+    position: absolute;
+    left: 50%;
+    top:  -50%;
+    transform: translateX(-50%);
+    /* diameter = 2 * radius (radius provided by JS as --circle-radius) */
+    width: calc(var(--circle-radius, 0px) * 2);
+    height: calc(var(--circle-radius, 0px) * 2);
+    border-radius: 50%;
+    background-color: #ffffff;
+    z-index: -1;
+  }
   &__logo {
     width: get_vw(180);
     @include pc-fluid-size(width, (332));
@@ -34,22 +46,28 @@
     &::after {
       content: '';
       display: block;
-      width: 0;
+      width: var(--progress, 0);
       height: 100%;
       background-color: $c_red;
-      animation: loadingBarAnim 2s linear forwards;
-      @include pc-fluid-size(width, (0));
+      transition: width 0.3s ease-out;
     }
   }
 
   &.js-hide {
     opacity: 0;
     pointer-events: none;
+    transition: all 300ms 1000ms ease;
+    @include before{
+      top: 100%;
+      transition: all 1000ms ease;
+    }
+  }
+
+  /* ensure logo and bar sit above the circle */
+  &__logo,
+  &__bar {
+    position: relative;
+    z-index: 1;
   }
 }
 
-@keyframes loadingBarAnim {
-  to {
-    width: 100%;
-  }
-}

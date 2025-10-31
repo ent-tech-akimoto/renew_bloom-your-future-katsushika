@@ -1,52 +1,77 @@
-document.addEventListener('DOMContentLoaded', function () {
+document.addEventListener('DOMContentLoaded', function() {
   const images = Array.from(document.querySelectorAll('img')).filter(
-    (img) => img.loading !== 'lazy'
+    img => !img.complete && img.loading !== 'lazy'
   );
-  const totalImages = images.length;
+  const loadedImagesTotal = images.length;
   let loadedImages = 0;
 
-  const countElement = document.getElementById('loadingNum');
+  const loadingBar = document.getElementById('loadingBar');
   const loadingWrapper = document.getElementById('loading');
   const mainContent = document.getElementById('main');
 
+  // Calculate and set circle radius using Pythagoras:
+  // radius = sqrt((halfWidth)^2 + (height)^2)
+  function setCircleRadius() {
+    if (!loadingWrapper) return;
+    const halfWidth = window.innerWidth / 2;
+    const height = window.innerHeight;
+    const radius = Math.sqrt(halfWidth * halfWidth + height * height);
+    // expose as CSS variable (px)
+    loadingWrapper.style.setProperty('--circle-radius', `${Math.ceil(radius)}px`);
+  }
+
+  // initialize radius and update on resize (debounced)
+  setCircleRadius();
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(setCircleRadius, 120);
+  });
+
+  function updateProgressBar(percent) {
+    if (!loadingBar) return;
+    loadingBar.style.setProperty('--progress', `${Math.min(Math.max(percent, 0), 100)}%`);
+  }
+
   function finishLoading() {
-    loadingWrapper.classList.add('js--after-counter');
-    setTimeout(function () {
-      loadingWrapper.classList.add('js--hide');
-      setTimeout(function () {
-        loadingWrapper.style.display = 'none';
-        if (mainContent) mainContent.style.display = 'block';
-      }, 500);
-    }, 800);
+    if (loadingWrapper) loadingWrapper.classList.add('js-hide');
+    if (mainContent) {
+      setTimeout(() => {
+        mainContent.style.display = 'block';
+      }, 400);
+    }
+  }
+
+  // If there are no images to track, show a quick progress animation then finish
+  if (loadedImagesTotal === 0) {
+    let progress = 0;
+    const interval = setInterval(() => {
+      progress += 4;
+      updateProgressBar(Math.min(progress, 100));
+      if (progress >= 100) {
+        clearInterval(interval);
+        setTimeout(finishLoading, 300);
+      }
+    }, 30);
+    return;
   }
 
   function updateProgress() {
     loadedImages++;
-    const percentComplete = Math.round((loadedImages / totalImages) * 100);
-    countElement.textContent = percentComplete + '%';
-    if (loadedImages === totalImages) {
+    const percentComplete = Math.min((loadedImages / loadedImagesTotal) * 100, 100);
+    updateProgressBar(percentComplete);
+    if (loadedImages >= loadedImagesTotal) {
       setTimeout(finishLoading, 500);
     }
   }
 
-  if (totalImages === 0) {
-    setTimeout(finishLoading, 500);
-  } else {
-    images.forEach(function (image) {
-      let counted = false;
-      function countOnce() {
-        if (!counted) {
-          counted = true;
-          updateProgress();
-        }
-      }
-      image.addEventListener('load', countOnce);
-      image.addEventListener('error', countOnce);
-      // If already complete, still wait for load/error event
-      if (image.complete) {
-        // Some browsers fire 'load' immediately, but to be safe:
-        setTimeout(countOnce, 50);
-      }
-    });
-  }
+  // Attach listeners
+  images.forEach(img => {
+    if (img.complete) {
+      updateProgress();
+    } else {
+      img.addEventListener('load', updateProgress);
+      img.addEventListener('error', updateProgress);
+    }
+  });
 });
