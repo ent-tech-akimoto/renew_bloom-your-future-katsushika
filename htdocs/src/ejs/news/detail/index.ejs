@@ -11,7 +11,52 @@ var myMeta = meta[lang][pageID];
 <body>
   <div class="page">
     <article class="detail">
-      <div>test</div>
+      <div class="detail__wrap">
+        <div class="detail__header">
+          <div class="detail__inner">
+            <div class="detail__header-top" data-update="new">
+              <div class="detail__header-datetime">
+                <span class="detail__header-date"><span>5月15日</span>〜<span>6月15日</span></span> <span
+                  class="detail__header-time"><span>10:00</span>〜</span>
+              </div>
+            </div>
+            <div class="detail__header-category">
+              <p>＃カテゴリー</p>
+              <p>＃カテゴリー</p>
+              <p>＃カテゴリー</p>
+            </div>
+            <h1 class="detail__header-title">h1 募集名入ります募集名入ります募集名入ります募集名入ります募集名入ります</h1>
+          </div>
+        </div>
+        <div class="detail__content">
+          <div class="detail__inner">
+            <div class="detail__content-wrap">
+              <h2>h2 タイトル入りますh2 タイトル入りますh2 タイトル入りますh2 タイトル入りますh2 タイトル入ります</h2>
+              <p>詳細は、近日公開いたしますので、お楽しみに♪<br>
+                開講に先駆けて5月21日（日）に体験会を実施いたします。<br>
+                ４枠のみの募集になります。先着順ですので、ご希望の方はお早めにお申し込みください！</p>
+              <h3>h3タイトル入ります</h3>
+              <p>詳細は、近日公開いたしますので、お楽しみに♪<br>
+                開講に先駆けて5月21日（日）に体験会を実施いたします。<br>
+                ４枠のみの募集になります。先着順ですので、ご希望の方はお早めにお申し込みください！</p>
+              <h4>h4タイトル入ります</h4>
+              <p>詳細は、近日公開いたしますので、お楽しみに♪<br>
+                開講に先駆けて5月21日（日）に体験会を実施いたします。<br>
+                ４枠のみの募集になります。先着順ですので、ご希望の方はお早めにお申し込みください！</p>
+              <div class="detail__content-img">
+                <img src="<%= relative_path %>assets/img/event/media_2.png" alt="">
+              </div>
+              <ul>
+                <li>リスト入ります</li>
+                <li>リスト入ります</li>
+                <li>リスト入ります</li>
+              </ul>
+              <a href="">テキスト入ります</a>
+            </div>
+          </div>
+        </div>
+        <a href="" class="detail__back">もどる</a>
+      </div>
     </article>
     <%-include(`${relative_path}_partial/_footer`,{lang:lang,pageID:pageID,relative_path:relative_path})%>
   </div>
