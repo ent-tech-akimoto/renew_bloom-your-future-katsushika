@@ -1,0 +1,204 @@
+<%
+var pageID = "event";
+var lang = "ja";
+var relative_path = "../";
+var myMeta = meta[lang][pageID];
+%>
+<!DOCTYPE html>
+<html lang="<%= lang %>">
+  <%-include(`${relative_path}_partial/_head`,{lang:lang,pageID:pageID,relative_path:relative_path})%>
+  <body>
+    <div class="page">
+      <article class="event">
+        <div class="event__bg"></div>
+        <p class="common-bread event__bread">
+          <span>TOP</span><span>イベント情報</span>
+        </p>
+        <h1 class="common__h1 event__h1">イベント</h1>
+        <div class="event__switch">
+          <a id="event-calendar" class="event__switch-btn" href=""
+            >イベントカレンダー<br class="pc-none">から探す</a
+          >
+          <a id="event-detail" class="event__switch-btn js-active" href=""
+            >詳細を探す</a
+          >
+        </div>
+        <section class="event__calendar">
+          <h2 class="event__h2">イベントカレンダーから探す</h2>
+          <a class="event__btn" href=""> 各月毎のイベントはこちら </a>
+        </section>
+        <section class="event__form">
+          <h2 class="event__h2">詳細から探す</h2>
+          <form class="event__form-wrapper" action=""></form>
+        </section>
+        <section class="event__box">
+          <h3 class="event__h3">検索結果<span>15</span>件</h3>
+          <ul class="event__box-list">
+            <li class="event__box-item">
+              <div class="event__box-img">
+                <img
+                  src="<%= relative_path %>assets/img/event/thumb/1.png"
+                  alt=""
+                >
+              </div>
+              <p class="event__box-date">2026年 5月16日（火）16：00〜</p>
+              <h4 class="event__box-ttl">
+                葛飾で咲いているお花を使って、オリジナル石鹸作り体験ができます
+              </h4>
+              <div class="event__box-cat">
+                <span>#カテゴリー</span><span>#カテゴリー</span
+                ><span>#カテゴリー</span>
+              </div>
+              <span class="monchi">モンチッチエリア</span>
+            </li>
+            <li class="event__box-item">
+              <div class="event__box-img">
+                <img
+                  src="<%= relative_path %>assets/img/event/thumb/1.png"
+                  alt=""
+                >
+              </div>
+              <p class="event__box-date">2026年 5月16日（火）16：00〜</p>
+              <h4 class="event__box-ttl">
+                葛飾で咲いているお花を使って、オリジナル石鹸作り体験ができます
+              </h4>
+              <div class="event__box-cat">
+                <span>#カテゴリー</span><span>#カテゴリー</span
+                ><span>#カテゴリー</span>
+              </div>
+              <span class="monchi">モンチッチエリア</span>
+            </li>
+            <li class="event__box-item">
+              <div class="event__box-img">
+                <img
+                  src="<%= relative_path %>assets/img/event/thumb/1.png"
+                  alt=""
+                >
+              </div>
+              <p class="event__box-date">2026年 5月16日（火）16：00〜</p>
+              <h4 class="event__box-ttl">
+                葛飾で咲いているお花を使って、オリジナル石鹸作り体験ができます
+              </h4>
+              <div class="event__box-cat">
+                <span>#カテゴリー</span><span>#カテゴリー</span
+                ><span>#カテゴリー</span><span>#カテゴリー</span
+                ><span>#カテゴリー</span><span>#カテゴリー</span
+                ><span>#カテゴリー</span><span>#カテゴリー</span
+                ><span>#カテゴリー</span>
+              </div>
+              <span class="monchi">モンチッチエリア</span>
+            </li>
+            <li class="event__box-item">
+              <div class="event__box-img">
+                <img
+                  src="<%= relative_path %>assets/img/event/thumb/1.png"
+                  alt=""
+                >
+              </div>
+              <p class="event__box-date">2026年 5月16日（火）16：00〜</p>
+              <h4 class="event__box-ttl">
+                葛飾で咲いているお花を使って、オリジナル石鹸作り体験ができます
+              </h4>
+              <div class="event__box-cat">
+                <span>#カテゴリー</span><span>#カテゴリー</span
+                ><span>#カテゴリー</span>
+              </div>
+              <span class="monchi">モンチッチエリア</span>
+            </li>
+            <li class="event__box-item">
+              <div class="event__box-img">
+                <img
+                  src="<%= relative_path %>assets/img/event/thumb/1.png"
+                  alt=""
+                >
+              </div>
+              <p class="event__box-date">2026年 5月16日（火）16：00〜</p>
+              <h4 class="event__box-ttl">
+                葛飾で咲いているお花を使って、オリジナル石鹸作り体験ができます
+              </h4>
+              <div class="event__box-cat">
+                <span>#カテゴリー</span><span>#カテゴリー</span
+                ><span>#カテゴリー</span>
+              </div>
+              <span class="monchi">モンチッチエリア</span>
+            </li>
+            <li class="event__box-item">
+              <div class="event__box-img">
+                <img
+                  src="<%= relative_path %>assets/img/event/thumb/1.png"
+                  alt=""
+                >
+              </div>
+              <p class="event__box-date">2026年 5月16日（火）16：00〜</p>
+              <h4 class="event__box-ttl">
+                葛飾で咲いているお花を使って、オリジナル石鹸作り体験ができます
+              </h4>
+              <div class="event__box-cat">
+                <span>#カテゴリー</span><span>#カテゴリー</span
+                ><span>#カテゴリー</span>
+              </div>
+              <span class="monchi">モンチッチエリア</span>
+            </li>
+            <li class="event__box-item">
+              <div class="event__box-img">
+                <img
+                  src="<%= relative_path %>assets/img/event/thumb/1.png"
+                  alt=""
+                >
+              </div>
+              <p class="event__box-date">2026年 5月16日（火）16：00〜</p>
+              <h4 class="event__box-ttl">
+                葛飾で咲いているお花を使って、オリジナル石鹸作り体験ができます
+              </h4>
+              <div class="event__box-cat">
+                <span>#カテゴリー</span><span>#カテゴリー</span
+                ><span>#カテゴリー</span>
+              </div>
+              <span class="monchi">モンチッチエリア</span>
+            </li>
+            <li class="event__box-item">
+              <div class="event__box-img">
+                <img
+                  src="<%= relative_path %>assets/img/event/thumb/1.png"
+                  alt=""
+                >
+              </div>
+              <p class="event__box-date">2026年 5月16日（火）16：00〜</p>
+              <h4 class="event__box-ttl">
+                葛飾で咲いているお花を使って、オリジナル石鹸作り体験ができます
+              </h4>
+              <div class="event__box-cat">
+                <span>#カテゴリー</span><span>#カテゴリー</span
+                ><span>#カテゴリー</span>
+              </div>
+              <span class="monchi">モンチッチエリア</span>
+            </li>
+            <li class="event__box-item">
+              <div class="event__box-img">
+                <img
+                  src="<%= relative_path %>assets/img/event/thumb/1.png"
+                  alt=""
+                >
+              </div>
+              <p class="event__box-date">2026年 5月16日（火）16：00〜</p>
+              <h4 class="event__box-ttl">
+                葛飾で咲いているお花を使って、オリジナル石鹸作り体験ができます
+              </h4>
+              <div class="event__box-cat">
+                <span>#カテゴリー</span><span>#カテゴリー</span
+                ><span>#カテゴリー</span>
+              </div>
+              <span class="monchi">モンチッチエリア</span>
+            </li>
+          </ul>
+          <div class="event__pagination">
+            <button class="active">1</button>
+            <button>2</button>
+          </div>
+        </section>
+      </article>
+      <%-include(`${relative_path}_partial/_footer`,{lang:lang,pageID:pageID,relative_path:relative_path})%>
+    </div>
+    <%- include( `${relative_path}_partial/_foot`,{lang:lang,pageID:pageID,relative_path:relative_path}) %>
+  </body>
+</html>
