@@ -11,7 +11,56 @@ var myMeta = meta[lang][pageID];
 <body>
   <div class="page">
     <article class="detail">
-      <div>test</div>
+      <div class="detail__wrap">
+        <div class="detail__header">
+          <div class="detail__inner">
+            <div class="detail__header-datetime">
+              <span class="detail__header-date"><span>5月15日</span>〜<span>6月15日</span></span> <span
+                class="detail__header-time"><span>10:00</span>〜</span>
+            </div>
+            <p class="detail__header-area" data-area="monchichi">
+              <svg viewBox="0 0 19 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M9.35714 0C4.18955 0 0 3.85528 0 8.61057C0 13.3659 9.35714 27 9.35714 27C9.35714 27 18.7143 13.3665 18.7143 8.61057C18.7143 3.8546 14.5247 0 9.35714 0ZM9.35714 12.6835C6.60824 12.6835 4.37921 10.633 4.37921 8.10274C4.37921 5.57247 6.60749 3.52198 9.35714 3.52198C12.1068 3.52198 14.3351 5.57247 14.3351 8.10274C14.3351 10.633 12.1068 12.6835 9.35714 12.6835Z" />
+              </svg>
+              <span>モンチッチエリア</span>
+            </p>
+            <div class="detail__header-category">
+              <p>＃カテゴリー</p>
+              <p>＃カテゴリー</p>
+              <p>＃カテゴリー</p>
+            </div>
+            <h1 class="detail__header-title">h1 募集名入ります募集名入ります募集名入ります募集名入ります募集名入ります</h1>
+          </div>
+        </div>
+        <div class="detail__content">
+          <div class="detail__inner">
+            <div class="detail__content-wrap">
+              <h2>h2 タイトル入りますh2 タイトル入りますh2 タイトル入りますh2 タイトル入りますh2 タイトル入ります</h2>
+              <p>詳細は、近日公開いたしますので、お楽しみに♪<br>
+                開講に先駆けて5月21日（日）に体験会を実施いたします。<br>
+                ４枠のみの募集になります。先着順ですので、ご希望の方はお早めにお申し込みください！</p>
+              <h3>h3タイトル入ります</h3>
+              <p>詳細は、近日公開いたしますので、お楽しみに♪<br>
+                開講に先駆けて5月21日（日）に体験会を実施いたします。<br>
+                ４枠のみの募集になります。先着順ですので、ご希望の方はお早めにお申し込みください！</p>
+              <h4>h4タイトル入ります</h4>
+              <p>詳細は、近日公開いたしますので、お楽しみに♪<br>
+                開講に先駆けて5月21日（日）に体験会を実施いたします。<br>
+                ４枠のみの募集になります。先着順ですので、ご希望の方はお早めにお申し込みください！</p>
+              <img src="<%= relative_path %>assets/img/event/media_1.png" alt="" class="pc-none">
+              <img src="<%= relative_path %>assets/img/event/media_2.png" alt="" class="sp-none">
+              <ul>
+                <li>リスト入ります</li>
+                <li>リスト入ります</li>
+                <li>リスト入ります</li>
+              </ul>
+              <a href="">テキスト入ります</a>
+            </div>
+          </div>
+        </div>
+        <a href="" class="detail__back">もどる</a>
+      </div>
     </article>
     <%-include(`${relative_path}_partial/_footer`,{lang:lang,pageID:pageID,relative_path:relative_path})%>
   </div>
