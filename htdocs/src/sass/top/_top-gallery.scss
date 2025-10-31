@@ -91,12 +91,14 @@
     width: get_vw(260);
     height: get_vw(50);
     background-color: $c_white;
+    font-size: get_vw(14);
     border-radius: get_vw(60);
     @include center;
     @include pc-fluid-size(margin-top, (38));
     @include pc-fluid-size(padding, (14));
     @include pc-fluid-size(width, (260));
     @include pc-fluid-size(height, (50));
+    @include pc-fluid-size(font-size, (14));
     @include pc-fluid-size(border-radius, (60));
   }
 }

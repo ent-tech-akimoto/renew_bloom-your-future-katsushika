@@ -100,10 +100,14 @@ export function initSwipers() {
 
   // 
   const galleryswiper1 = new Swiper(".top-gallery__resident", {
-    modules: [Navigation, Pagination, Thumbs],
+    modules: [Navigation, Pagination, Thumbs, Autoplay],
     spaceBetween: 10,
     slidesPerView: 1,
-    speed: 0,
+    speed: 800,
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: false,
+    },
     thumbs: {
       swiper: galleryswiper1Thumb
     },
@@ -120,10 +124,14 @@ export function initSwipers() {
 
   // 
   const galleryswiper2 = new Swiper(".top-gallery__famous", {
-    modules: [Navigation, Pagination, Thumbs],
+    modules: [Navigation, Pagination, Thumbs, Autoplay],
     spaceBetween: 10,
     slidesPerView: 1,
-    speed: 0,
+    speed: 800,
+    autoplay: {
+      delay: 5000,
+      disableOnInteraction: false,
+    },
     thumbs: {
       swiper: galleryswiper2Thumb
     },

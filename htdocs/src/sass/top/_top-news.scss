@@ -105,12 +105,35 @@
     flex-direction: row;
     align-items: flex-end;
     column-gap: get_vw(16);
+    -webkit-line-clamp: 2; /* number of lines to show */
+    line-clamp: 2; 
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
       @include pc-fluid-size(margin-top, (-26));
       @include pc-fluid-size(font-size, (18));
       @include pc-fluid-size(line-height, (28));
       @include pc-fluid-size(column-gap, (11));
+      @include min-screen{
+        -webkit-line-clamp: 1; /* number of lines to show */
+        line-clamp: 1; 
+        -webkit-box-orient: vertical;
+        text-overflow: ellipsis;
+      }
       & span{
         text-wrap-mode: nowrap;
+      }
+      &> p{
+      overflow: hidden;
+      display: -webkit-box;
+      width: 100%;
+      -webkit-line-clamp: 2; /* number of lines to show */
+      line-clamp: 2; 
+      -webkit-box-orient: vertical;
+      text-overflow: ellipsis;
+        @include min-screen{
+          -webkit-line-clamp: 1; /* number of lines to show */
+          line-clamp: 1; 
+        }
       }
   }
   &__date{

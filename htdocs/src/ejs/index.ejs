@@ -6,628 +6,831 @@ var myMeta = meta[lang][pageID];
 %>
 <!DOCTYPE html>
 <html lang="<%= lang %>">
-<%-include(`${relative_path}_partial/_head`,{lang:lang,pageID:pageID,relative_path:relative_path})%>
+  <%-include(`${relative_path}_partial/_head`,{lang:lang,pageID:pageID,relative_path:relative_path})%>
 
-<body>
-  <%- include(`${relative_path}_partial/_body-after`,{lang:lang,pageID:pageID,relative_path:relative_path})%>
-  <div class="page">
-    <%-include(`${relative_path}_partial/_header`,{lang:lang,pageID:pageID,relative_path:relative_path})%>
-    <%-include(`${relative_path}_component/_loading`,{lang:lang,pageID:pageID,relative_path:relative_path})%>
-    <main class="top">
-      <div class="top__bg green">
-        <section class="top-banner">
-          <div class="top-banner__swiper swiper">
-            <div class="top-banner__swiper-wrapper swiper-wrapper">
-              <div class="top-banner__swiper-slide swiper-slide">
-                <div class="top-banner__atten">
-                  <h5 class="top-banner__atten-ttl">会場</h5>
-                  <p class="top-banner__atten-txt">
-                    葛飾にいじゅくみらい公園<span>ほか</span>
-                  </p>
+  <body>
+    <%- include(`${relative_path}_partial/_body-after`,{lang:lang,pageID:pageID,relative_path:relative_path})%>
+    <div class="page">
+      <%-include(`${relative_path}_partial/_header`,{lang:lang,pageID:pageID,relative_path:relative_path})%>
+      <%-include(`${relative_path}_component/_loading`,{lang:lang,pageID:pageID,relative_path:relative_path})%>
+      <main class="top">
+        <div class="top__bg green">
+          <section class="top-banner">
+            <div class="top-banner__swiper swiper">
+              <div class="top-banner__swiper-wrapper swiper-wrapper">
+                <div class="top-banner__swiper-slide swiper-slide">
+                  <div class="top-banner__atten">
+                    <h5 class="top-banner__atten-ttl">会場</h5>
+                    <p class="top-banner__atten-txt">
+                      葛飾にいじゅくみらい公園<span>ほか</span>
+                    </p>
+                  </div>
+                  <a>
+                    <picture>
+                      <source
+                        srcset="<%= relative_path %>assets/img/top/banner/1_pc.png"
+                        media="(min-width: 768px)"
+                      >
+                      <img
+                        class="top-banner__img"
+                        src="<%= relative_path %>assets/img/top/banner/1.png"
+                        alt=""
+                      >
+                    </picture>
+                  </a>
+                  <div class="top-banner__text">
+                    <h5 class="title">
+                      全国みどりと花のフェアかつしかタイトル入ります。
+                    </h5>
+                    <p class="text">
+                      テキスト入ります。テキスト入ります。テキスト入ります。テキスト入ります。テキスト入ります。テキスト入ります。テキスト入ります。
+                    </p>
+                  </div>
+                  <div class="top-banner__progress"></div>
                 </div>
-                <a>
+                <div class="top-banner__swiper-slide swiper-slide">
+                  <div class="top-banner__atten">
+                    <p class="top-banner__atten-ttl">会場</p>
+                    <p class="top-banner__atten-txt">
+                      葛飾にいじゅくみらい公園<span>ほか</span>
+                    </p>
+                  </div>
+                  <a>
+                    <picture>
+                      <source
+                        srcset="<%= relative_path %>assets/img/top/banner/1_pc.png"
+                        media="(min-width: 768px)"
+                      >
+                      <img
+                        class="top-banner__img"
+                        src="<%= relative_path %>assets/img/top/banner/1.png"
+                        alt=""
+                      >
+                    </picture>
+                  </a>
+                  <div class="top-banner__text">
+                    <h5 class="title">
+                      全国みどりと花のフェアかつしかタイトル入ります。
+                    </h5>
+                    <p class="text"></p>
+                  </div>
+                  <div class="top-banner__progress"></div>
+                </div>
+                <div class="top-banner__swiper-slide swiper-slide no-link">
+                  <div class="top-banner__atten">
+                    <p class="top-banner__atten-ttl">会場</p>
+                    <p class="top-banner__atten-txt">
+                      葛飾にいじゅくみらい公園<span>ほか</span>
+                    </p>
+                  </div>
                   <picture>
-                    <source srcset="<%= relative_path %>assets/img/top/banner/1_pc.png" media="(min-width: 768px)">
-                    <img class="top-banner__img" src="<%= relative_path %>assets/img/top/banner/1.png" alt="">
+                    <source
+                      srcset="<%= relative_path %>assets/img/top/banner/1_pc.png"
+                      media="(min-width: 768px)"
+                    >
+                    <img
+                      class="top-banner__img"
+                      src="<%= relative_path %>assets/img/top/banner/1.png"
+                      alt=""
+                    >
                   </picture>
-                </a>
-                <div class="top-banner__text">
-                  <h5 class="title">
-                    全国みどりと花のフェアかつしかタイトル入ります。
-                  </h5>
-                  <p class="text">
-                    テキスト入ります。テキスト入ります。テキスト入ります。テキスト入ります。テキスト入ります。テキスト入ります。テキスト入ります。
-                  </p>
+                  <div class="top-banner__text">
+                    <h5 class="title">
+                      全国みどりと花のフェアかつしかタイトル入ります。
+                    </h5>
+                    <p class="text">
+                      テキスト入ります。テキスト入ります。テキスト入ります。
+                    </p>
+                  </div>
+                  <div class="top-banner__progress"></div>
                 </div>
-                <div class="top-banner__progress"></div>
-              </div>
-              <div class="top-banner__swiper-slide swiper-slide">
-                <div class="top-banner__atten">
-                  <p class="top-banner__atten-ttl">会場</p>
-                  <p class="top-banner__atten-txt">
-                    葛飾にいじゅくみらい公園<span>ほか</span>
-                  </p>
-                </div>
-                <a>
+                <div class="top-banner__swiper-slide swiper-slide no-link">
+                  <div class="top-banner__atten">
+                    <p class="top-banner__atten-ttl">会場</p>
+                    <p class="top-banner__atten-txt">
+                      葛飾にいじゅくみらい公園<span>ほか</span>
+                    </p>
+                  </div>
                   <picture>
-                    <source srcset="<%= relative_path %>assets/img/top/banner/1_pc.png" media="(min-width: 768px)">
-                    <img class="top-banner__img" src="<%= relative_path %>assets/img/top/banner/1.png" alt="">
+                    <source
+                      srcset="<%= relative_path %>assets/img/top/banner/1_pc.png"
+                      media="(min-width: 768px)"
+                    >
+                    <img
+                      class="top-banner__img"
+                      src="<%= relative_path %>assets/img/top/banner/1.png"
+                      alt=""
+                    >
                   </picture>
-                </a>
-                <div class="top-banner__text">
-                  <h5 class="title">
-                    全国みどりと花のフェアかつしかタイトル入ります。
-                  </h5>
-                  <p class="text"></p>
+                  <div class="top-banner__text">
+                    <h5 class="title">
+                      全国みどりと花のフェアかつしかタイトル入ります。
+                    </h5>
+                    <p class="text">
+                      テキスト入ります。テキスト入ります。テキスト入ります。
+                    </p>
+                  </div>
+                  <div class="top-banner__progress"></div>
                 </div>
-                <div class="top-banner__progress"></div>
               </div>
-              <div class="top-banner__swiper-slide swiper-slide no-link">
-                <div class="top-banner__atten">
-                  <p class="top-banner__atten-ttl">会場</p>
-                  <p class="top-banner__atten-txt">
-                    葛飾にいじゅくみらい公園<span>ほか</span>
-                  </p>
+            </div>
+            <div class="top-banner__swiper-pagination swiper-pagination"></div>
+            <div
+              class="top-banner__swiper-btn--next swiper-button-next hover"
+            ></div>
+            <div
+              class="top-banner__swiper-btn--prev swiper-button-prev hover"
+            ></div>
+          </section>
+          <section class="common__section top-news">
+            <h2 class="common_h2 top-news__ttl">お知らせ</h2>
+            <div class="top-news__wrapper">
+              <div class="top-news__box">
+                <div class="top-news__cate">
+                  <p class="news">#お知らせ</p>
+                  <p class="event">#イベント</p>
+                  <p class="recruit">#募集</p>
                 </div>
+                <div class="top-news__txt">
+                  <div class="top-news__date">
+                    <span>2026年</span>
+                    <span>10月16日</span>
+                  </div>
+                  <p>今日から開催の「全国みど りと花のフェアかつしか…</p>
+                </div>
+              </div>
+              <div class="top-news__box">
+                <div class="top-news__cate">
+                  <p class="news">#お知らせ</p>
+                  <p class="event">#イベント</p>
+                  <p class="recruit">#募集</p>
+                </div>
+                <div class="top-news__txt">
+                  <div class="top-news__date">
+                    <span>2026年</span>
+                    <span>10月16日</span>
+                  </div>
+                  <p>開催まであと1日！</p>
+                </div>
+              </div>
+              <div class="top-news__box">
+                <div class="top-news__cate">
+                  <p class="news">#お知らせ</p>
+                  <p class="event">#イベント</p>
+                  <p class="recruit">#募集</p>
+                  <p class="purple">#募集</p>
+                </div>
+                <div class="top-news__txt">
+                  <div class="top-news__date">
+                    <span>2026年</span>
+                    <span>10月16日</span>
+                  </div>
+                  <p>今回のフェアで見られるお 花を紹介いたします。に…</p>
+                </div>
+              </div>
+              <div class="top-news__box">
+                <div class="top-news__cate">
+                  <p class="news">#お知らせ</p>
+                  <p class="event">#イベント</p>
+                  <p class="recruit">#募集</p>
+                </div>
+                <div class="top-news__txt">
+                  <div class="top-news__date">
+                    <span>2026年</span>
+                    <span>10月16日</span>
+                  </div>
+                  <p>アクセスについて</p>
+                </div>
+              </div>
+            </div>
+            <div class="common-btn top-news__btn">お知らせ一覧はこちらへ</div>
+          </section>
+          <section class="common__section top-insta">
+            <h2 class="common_h2 top-insta__ttl">インスタグラムに投稿中！</h2>
+            <div class="top-insta__gallery">
+              <div class="top-insta__swiper swiper">
+                <div class="top-insta__swipersp-wrapper swiper-wrapper">
+                  <div class="top-insta__swipersp-slide swiper-slide">
+                    <img
+                      src="<%= relative_path %>assets/img/top/insta/1.png"
+                      alt=""
+                    >
+                  </div>
+                  <div class="top-insta__swipersp-slide swiper-slide">
+                    <img
+                      src="<%= relative_path %>assets/img/top/insta/2.png"
+                      alt=""
+                    >
+                  </div>
+                  <div class="top-insta__swipersp-slide swiper-slide">
+                    <img
+                      src="<%= relative_path %>assets/img/top/insta/3.png"
+                      alt=""
+                    >
+                  </div>
+                  <div class="top-insta__swipersp-slide swiper-slide">
+                    <img
+                      src="<%= relative_path %>assets/img/top/insta/4.png"
+                      alt=""
+                    >
+                  </div>
+                  <div class="top-insta__swipersp-slide swiper-slide">
+                    <img
+                      src="<%= relative_path %>assets/img/top/insta/5.png"
+                      alt=""
+                    >
+                  </div>
+                  <div class="top-insta__swipersp-slide swiper-slide">
+                    <img
+                      src="<%= relative_path %>assets/img/top/insta/1.png"
+                      alt=""
+                    >
+                  </div>
+                  <div class="top-insta__swipersp-slide swiper-slide">
+                    <img
+                      src="<%= relative_path %>assets/img/top/insta/2.png"
+                      alt=""
+                    >
+                  </div>
+                  <div class="top-insta__swipersp-slide swiper-slide">
+                    <img
+                      src="<%= relative_path %>assets/img/top/insta/3.png"
+                      alt=""
+                    >
+                  </div>
+                  <div class="top-insta__swipersp-slide swiper-slide">
+                    <img
+                      src="<%= relative_path %>assets/img/top/insta/4.png"
+                      alt=""
+                    >
+                  </div>
+                  <div class="top-insta__swipersp-slide swiper-slide">
+                    <img
+                      src="<%= relative_path %>assets/img/top/insta/5.png"
+                      alt=""
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="top-insta__swipersp swiper pc-none">
+                <div class="top-insta__swipersp-wrapper swiper-wrapper">
+                  <div class="top-insta__swipersp-slide swiper-slide">
+                    <img
+                      src="<%= relative_path %>assets/img/top/insta/4.png"
+                      alt=""
+                    >
+                  </div>
+                  <div class="top-insta__swipersp-slide swiper-slide">
+                    <img
+                      src="<%= relative_path %>assets/img/top/insta/5.png"
+                      alt=""
+                    >
+                  </div>
+                  <div class="top-insta__swipersp-slide swiper-slide">
+                    <img
+                      src="<%= relative_path %>assets/img/top/insta/4.png"
+                      alt=""
+                    >
+                  </div>
+                  <div class="top-insta__swipersp-slide swiper-slide">
+                    <img
+                      src="<%= relative_path %>assets/img/top/insta/5.png"
+                      alt=""
+                    >
+                  </div>
+                  <div class="top-insta__swipersp-slide swiper-slide">
+                    <img
+                      src="<%= relative_path %>assets/img/top/insta/4.png"
+                      alt=""
+                    >
+                  </div>
+                  <div class="top-insta__swipersp-slide swiper-slide">
+                    <img
+                      src="<%= relative_path %>assets/img/top/insta/5.png"
+                      alt=""
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+            <p class="top-insta__catch">SNSに投稿して盛り上げよう！</p>
+            <p class="top-insta__hash">#BloomYourFutureKatsushika で投稿！</p>
+          </section>
+        </div>
+        <div class="top__bg pink js-scroll">
+          <section class="common-section top-topic">
+            <h2 class="common_h2 top-topic__ttl">トピックス</h2>
+            <div class="top-topic__swiper swiper">
+              <div class="top-topic__swiper-wrapper swiper-wrapper">
+                <div class="top-topic__swiper-slide swiper-slide">
+                  <img
+                    src="<%= relative_path%>assets/img/top/topic/1.png"
+                    alt=""
+                  >
+                  <div class="top-topic__slide-box">
+                    <p class="title">ハンドメイドブースオープンしました…</p>
+                    <a href="" class="common-btn">詳細はこちら</a>
+                  </div>
+                </div>
+                <div class="top-topic__swiper-slide swiper-slide">
+                  <img
+                    src="<%= relative_path%>assets/img/top/topic/2.png"
+                    alt=""
+                  >
+                  <div class="top-topic__slide-box">
+                    <p class="title">アクセスについて</p>
+                    <a href="" class="common-btn">詳細はこちら</a>
+                  </div>
+                </div>
+                <div class="top-topic__swiper-slide swiper-slide">
+                  <img
+                    src="<%= relative_path%>assets/img/top/topic/3.png"
+                    alt=""
+                  >
+                  <div class="top-topic__slide-box">
+                    <p class="title">開催地となる葛飾とは</p>
+                    <a href="" class="common-btn">詳細はこちら</a>
+                  </div>
+                </div>
+                <div class="top-topic__swiper-slide swiper-slide">
+                  <img
+                    src="<%= relative_path%>assets/img/top/topic/4.png"
+                    alt=""
+                  >
+                  <div class="top-topic__slide-box">
+                    <p class="title">インスタ更新ちゅう</p>
+                    <a href="" class="common-btn">詳細はこちら</a>
+                  </div>
+                </div>
+                <div class="top-topic__swiper-slide swiper-slide">
+                  <img
+                    src="<%= relative_path%>assets/img/top/topic/5.png"
+                    alt=""
+                  >
+                  <div class="top-topic__slide-box">
+                    <p class="title">フェアで見られるお花</p>
+                    <a href="" class="common-btn">詳細はこちら</a>
+                  </div>
+                </div>
+                <div class="top-topic__swiper-slide swiper-slide">
+                  <img
+                    src="<%= relative_path%>assets/img/top/topic/4.png"
+                    alt=""
+                  >
+                  <div class="top-topic__slide-box">
+                    <p class="title">インスタ更新ちゅう</p>
+                    <a href="" class="common-btn">詳細はこちら</a>
+                  </div>
+                </div>
+                <div class="top-topic__swiper-slide swiper-slide">
+                  <img
+                    src="<%= relative_path%>assets/img/top/topic/5.png"
+                    alt=""
+                  >
+                  <div class="top-topic__slide-box">
+                    <p class="title">フェアで見られるお花</p>
+                    <a href="" class="common-btn">詳細はこちら</a>
+                  </div>
+                </div>
+                <div class="top-topic__swiper-slide swiper-slide">
+                  <img
+                    src="<%= relative_path%>assets/img/top/topic/4.png"
+                    alt=""
+                  >
+                  <div class="top-topic__slide-box">
+                    <p class="title">インスタ更新ちゅう</p>
+                    <a href="" class="common-btn">詳細はこちら</a>
+                  </div>
+                </div>
+                <div class="top-topic__swiper-slide swiper-slide">
+                  <img
+                    src="<%= relative_path%>assets/img/top/topic/5.png"
+                    alt=""
+                  >
+                  <div class="top-topic__slide-box">
+                    <p class="title">フェアで見られるお花</p>
+                    <a href="" class="common-btn">詳細はこちら</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="top-topic__swiper-nav">
+              <div
+                class="top-topic__swiper-btn--prev swiper-button-prev sp-none"
+              ></div>
+              <div class="top-topic__swiper-pagination swiper-pagination"></div>
+              <div
+                class="top-topic__swiper-btn--next swiper-button-next sp-none"
+              ></div>
+            </div>
+          </section>
+          <section class="common-section top-event">
+            <h2 class="common-h2 top-event__ttl">注目イベント</h2>
+            <div class="top-event__wrapper">
+              <div class="top-event__box">
+                <div class="top-event__img">
+                  <img
+                    src="<%= relative_path%>assets/img/top/event/1.png"
+                    alt=""
+                  >
+                </div>
+                <div class="top-event__content">
+                  <h3>ハンドメイドブース ハンドメイドブース</h3>
+                  <p>
+                    オリジナルの作品が作れる！<br>
+                    葛飾で咲く花で「ハーバリウム」や「写真たて」を作ってみませんか？
+                  </p>
+                  <span class="main">メインエリア</span>
+                  <a class="common-btn top-event__btn" href="">
+                    詳細はこちら
+                  </a>
+                </div>
+              </div>
+              <div class="top-event__box">
+                <div class="top-event__img">
+                  <img
+                    src="<%= relative_path%>assets/img/top/event/2.png"
+                    alt=""
+                  >
+                </div>
+                <div class="top-event__content">
+                  <h3>フラワーアレンジ</h3>
+                  <p>
+                    オリジナルの作品が作れる！<br>
+                    葛飾で咲く花で「ハーバリウム」や「写真たて」を作ってみませんか？
+                  </p>
+                  <span class="monchi">モンチッチエリア</span>
+                  <a class="common-btn top-event__btn" href="">
+                    詳細はこちら
+                  </a>
+                </div>
+              </div>
+              <div class="top-event__box">
+                <div class="top-event__img">
+                  <img
+                    src="<%= relative_path%>assets/img/top/event/3.png"
+                    alt=""
+                  >
+                </div>
+                <div class="top-event__content">
+                  <h3>ドライフラワー</h3>
+                  <p>
+                    オリジナルの作品が作れる！<br>
+                    葛飾で咲く花で「ハーバリウム」や「写真たて」を作ってみませんか？
+                  </p>
+                  <span class="kochi">こち亀エリア</span>
+                  <a class="common-btn top-event__btn" href="">
+                    詳細はこちら
+                  </a>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+        <div class="top__bg orange js-scroll">
+          <section class="common-section top-about">
+            <h3 class="top-about__ttl">
+              <img src="<%= relative_path%>assets/img/top/about_ttl.png" alt="">
+            </h3>
+            <p class="top-about__txt">
+              2026年5月、<br>
+              葛飾区でみどりと花をテーマにした<br class="pc-none">
+              フェアが開催されます。<br
+                class="sp-none"
+              >「全国みどりと花のフェアかつしか」<br class="pc-none">
+              それは、<br class="sp-none">その時の花を楽しむだけでなく
+            </p>
+            <p class="top-about__txt orange">
+              葛飾に暮らす人と<br class="pc-none">葛飾を訪れる人、<br>
+              老若男女も問わずすべての人の<br class="pc-none">
+              未来に花を咲かせる、<br>
+              そんなフェアです。
+            </p>
+            <p class="top-about__txt">
+              年年歳歳、花は咲きます。<br>
+              だからこそ花に親しむことで、<br class="pc-none">
+              世代から世代へとつながり、<br>
+              未来を創っていけるのです。<br>
+              このまちから咲かせていく。<br>
+              みなさまの未来の安全・安心と発展の<br
+                class="pc-none"
+              >きっかけになれるよう<br>
+              <span class="bl">「</span>全国みどりと花のフェアかつしか<span
+                class="br"
+                >」</span
+              >は、<br>
+              お会いできるその日を<br class="pc-none">
+              心からお待ちしております。
+            </p>
+          </section>
+        </div>
+        <div class="top__bg blue js-scroll">
+          <section class="top-area">
+            <h2 class="common-h2 top-area__ttl">開催エリア</h2>
+            <div class="top-area__flex">
+              <div class="top-area__wrapper">
+                <p class="top-area__txt">
+                  葛飾区は、映画『男はつらいよ』、<br class="sp-none">
+                  漫画『こちら葛飾区亀有公園前派出所』、<br
+                    class="sp-none"
+                  >『キャプテン翼』、『モンチッチ』などの<br
+                    class="sp-none"
+                  >区ゆかりのキャラクターや、<br
+                    class="sp-none"
+                  >江戸の昔から人々を魅了した<br
+                    class="sp-none"
+                  >花菖蒲が美しい堀切菖蒲園などの<br
+                    class="sp-none"
+                  >観光資源に恵まれています。
+                </p>
+                <p class="top-area__txt sp-none">
+                  「全国みどりと花のフェアかつしか」では、<br>
+                  それぞれのエリアの魅力を生かし、<br>
+                  地域に根ざしたイベントを行います。
+                </p>
+              </div>
+              <div class="top-area__img">
                 <picture>
-                  <source srcset="<%= relative_path %>assets/img/top/banner/1_pc.png" media="(min-width: 768px)">
-                  <img class="top-banner__img" src="<%= relative_path %>assets/img/top/banner/1.png" alt="">
+                  <source
+                    srcset="<%= relative_path%>assets/img/top/area_img_pc.png"
+                    media="(min-width: 768px)"
+                  >
+                  <img
+                    src="<%= relative_path%>assets/img/top/area_img.png"
+                    alt=""
+                  >
                 </picture>
-                <div class="top-banner__text">
-                  <h5 class="title">
-                    全国みどりと花のフェアかつしかタイトル入ります。
-                  </h5>
-                  <p class="text">
-                    テキスト入ります。テキスト入ります。テキスト入ります。
+              </div>
+            </div>
+          </section>
+          <section class="top-map">
+            <div class="top-map__content">
+              <div class="top-map__content-map">
+                <p class="top-map__txt sp-none">エリア名クリックで詳細を表示</p>
+                <div class="top-map__content-map-img">
+                  <picture>
+                    <source
+                      srcset="<%= relative_path%>assets/img/top/map_img_pc.png"
+                      media="(min-width: 768px)"
+                    >
+                    <img
+                      src="<%= relative_path%>assets/img/top/map_img.png"
+                      alt=""
+                    >
+                  </picture>
+                  <ul class="top-map__button-list sp-none">
+                    <li>
+                      <button
+                        class="top-map__button-item js-active"
+                        data-area="area1"
+                      >
+                        <span>メインエリア</span>
+                      </button>
+                    </li>
+                    <li>
+                      <button class="top-map__button-item" data-area="area2">
+                        <span>寅さんエリア</span>
+                      </button>
+                    </li>
+                    <li>
+                      <button class="top-map__button-item" data-area="area3">
+                        <span>こち亀エリア</span>
+                      </button>
+                    </li>
+                    <li>
+                      <button class="top-map__button-item" data-area="area4">
+                        <span>翼エリア</span>
+                      </button>
+                    </li>
+                    <li>
+                      <button class="top-map__button-item" data-area="area5">
+                        <span>モンチッチエリア</span>
+                      </button>
+                    </li>
+                    <li>
+                      <button class="top-map__button-item" data-area="area6">
+                        <span>堀切菖蒲園</span>
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="top-map__content-detail">
+                <div id="area1" class="top-map__detail main js-active">
+                  <h4 class="top-map__detail-ttl main">メインエリア</h4>
+                  <figure class="top-map__detail-img">
+                    <img
+                      src="<%= relative_path%>assets/img/top/detail_main.png"
+                      alt=""
+                    >
+                    <figcaption>
+                      ※葛飾にいじゅくみらい公園<br class="pc-none">会場イメージ
+                    </figcaption>
+                  </figure>
+                  <p class="top-map__detail-subttl">
+                    メイン会場となる「葛飾にいじゅくみらい公園」を中心としたエリアです。
+                  </p>
+                  <p class="top-map__detail-txt">
+                    オープニングイベントなど様々なイベントが実施されます。「葛飾にいじゅくみらい公園」は、区立公園として区内最大の広さを有し、水と緑豊かで明るくにぎわいのある公園として、多くの方々に利用されています。都内で唯一水郷の景観をもった「都立水元公園」では、約100種、14,000株の花菖蒲が見ごろを迎える5月下旬から6月中旬に「葛飾菖蒲まつり」が堀切会場と同時開催されます。
                   </p>
                 </div>
-                <div class="top-banner__progress"></div>
-              </div>
-              <div class="top-banner__swiper-slide swiper-slide no-link">
-                <div class="top-banner__atten">
-                  <p class="top-banner__atten-ttl">会場</p>
-                  <p class="top-banner__atten-txt">
-                    葛飾にいじゅくみらい公園<span>ほか</span>
+                <div id="area2" class="top-map__detail tora">
+                  <h4 class="top-map__detail-ttl tora">寅さんエリア</h4>
+                  <p class="top-map__detail-subttl">
+                    「柴又公園」を中心としたエリアです。
+                  </p>
+                  <p class="top-map__detail-txt">
+                    「柴又公園」は地域の特色ある景観の保全と活用を目的とした歴史公園であり、区の観光名所の1つとして近代和風
+                    建築と純和風庭園が見事に調和する「山本亭」があります。
                   </p>
                 </div>
-                <picture>
-                  <source srcset="<%= relative_path %>assets/img/top/banner/1_pc.png" media="(min-width: 768px)">
-                  <img class="top-banner__img" src="<%= relative_path %>assets/img/top/banner/1.png" alt="">
-                </picture>
-                <div class="top-banner__text">
-                  <h5 class="title">
-                    全国みどりと花のフェアかつしかタイトル入ります。
-                  </h5>
-                  <p class="text">
-                    テキスト入ります。テキスト入ります。テキスト入ります。
+                <div id="area3" class="top-map__detail kochi">
+                  <h4 class="top-map__detail-ttl kochi">こち亀エリア</h4>
+                  <p class="top-map__detail-subttl">
+                    「亀有リリオパーク」を中心としたエリアです。
+                  </p>
+                  <p class="top-map__detail-txt">
+                    「亀有リリオパーク」は常設のステージがあり、様々なイベントが行われ区民の憩いの場として親しまれています。
                   </p>
                 </div>
-                <div class="top-banner__progress"></div>
-              </div>
-            </div>
-          </div>
-          <div class="top-banner__swiper-pagination swiper-pagination"></div>
-          <div class="top-banner__swiper-btn--next swiper-button-next hover"></div>
-          <div class="top-banner__swiper-btn--prev swiper-button-prev hover"></div>
-        </section>
-        <section class="common__section top-news">
-          <h2 class="common_h2 top-news__ttl">お知らせ</h2>
-          <div class="top-news__wrapper">
-            <div class="top-news__box">
-              <div class="top-news__cate">
-                <p class="news">#お知らせ</p>
-                <p class="event">#イベント</p>
-                <p class="recruit">#募集</p>
-              </div>
-              <div class="top-news__txt">
-                <div class="top-news__date">
-                  <span>2026年</span>
-                  <span>10月16日</span>
+                <div id="area4" class="top-map__detail wing">
+                  <h4 class="top-map__detail-ttl wing">翼エリア</h4>
+                  <p class="top-map__detail-subttl">
+                    「渋江公園」を中心としたエリアです。
+                  </p>
+                  <p class="top-map__detail-txt">
+                    「渋江公園」は『キャプテン翼』のキャラクター銅像もあり、多くの子どもたちに親しまれています。
+                  </p>
                 </div>
-                <p class="top-news__txt">
-                  今日から開催の「全国みど りと花のフェアかつしか…
-                </p>
-              </div>
-            </div>
-            <div class="top-news__box">
-              <div class="top-news__cate">
-                <p class="news">#お知らせ</p>
-                <p class="event">#イベント</p>
-                <p class="recruit">#募集</p>
-              </div>
-              <div class="top-news__txt">
-                <div class="top-news__date">
-                  <span>2026年</span>
-                  <span>10月16日</span>
+                <div id="area5" class="top-map__detail monchi">
+                  <h4 class="top-map__detail-ttl monchi">モンチッチエリア</h4>
+                  <p class="top-map__detail-subttl">
+                    「新小岩駅周辺」を中心としたエリアです。
+                  </p>
+                  <p class="top-map__detail-txt">
+                    新小岩駅は葛飾区内で乗降客数が最も多く、「新小岩駅周辺」はにぎわいと活気にあふれています。
+                  </p>
                 </div>
-                <p>開催まであと1日！</p>
-              </div>
-            </div>
-            <div class="top-news__box">
-              <div class="top-news__cate">
-                <p class="news">#お知らせ</p>
-                <p class="event">#イベント</p>
-                <p class="recruit">#募集</p>
-                <p class="purple">#募集</p>
-              </div>
-              <div class="top-news__txt">
-                <div class="top-news__date">
-                  <span>2026年</span>
-                  <span>10月16日</span>
-                </div>
-                <p>今回のフェアで見られるお 花を紹介いたします。に…</p>
-              </div>
-            </div>
-            <div class="top-news__box">
-              <div class="top-news__cate">
-                <p class="news">#お知らせ</p>
-                <p class="event">#イベント</p>
-                <p class="recruit">#募集</p>
-              </div>
-              <div class="top-news__txt">
-                <div class="top-news__date">
-                  <span>2026年</span>
-                  <span>10月16日</span>
-                </div>
-                <p>アクセスについて</p>
-              </div>
-            </div>
-          </div>
-          <div class="common-btn top-news__btn">お知らせ一覧はこちらへ</div>
-        </section>
-        <section class="common__section top-insta">
-          <h2 class="common_h2 top-insta__ttl">インスタグラムに投稿中！</h2>
-          <div class="top-insta__gallery">
-            <div class="top-insta__swiper swiper">
-              <div class="top-insta__swipersp-wrapper swiper-wrapper">
-                <div class="top-insta__swipersp-slide swiper-slide">
-                  <img src="<%= relative_path %>assets/img/top/insta/1.png" alt="">
-                </div>
-                <div class="top-insta__swipersp-slide swiper-slide">
-                  <img src="<%= relative_path %>assets/img/top/insta/2.png" alt="">
-                </div>
-                <div class="top-insta__swipersp-slide swiper-slide">
-                  <img src="<%= relative_path %>assets/img/top/insta/3.png" alt="">
-                </div>
-                <div class="top-insta__swipersp-slide swiper-slide">
-                  <img src="<%= relative_path %>assets/img/top/insta/4.png" alt="">
-                </div>
-                <div class="top-insta__swipersp-slide swiper-slide">
-                  <img src="<%= relative_path %>assets/img/top/insta/5.png" alt="">
-                </div>
-                <div class="top-insta__swipersp-slide swiper-slide">
-                  <img src="<%= relative_path %>assets/img/top/insta/1.png" alt="">
-                </div>
-                <div class="top-insta__swipersp-slide swiper-slide">
-                  <img src="<%= relative_path %>assets/img/top/insta/2.png" alt="">
-                </div>
-                <div class="top-insta__swipersp-slide swiper-slide">
-                  <img src="<%= relative_path %>assets/img/top/insta/3.png" alt="">
-                </div>
-                <div class="top-insta__swipersp-slide swiper-slide">
-                  <img src="<%= relative_path %>assets/img/top/insta/4.png" alt="">
-                </div>
-                <div class="top-insta__swipersp-slide swiper-slide">
-                  <img src="<%= relative_path %>assets/img/top/insta/5.png" alt="">
+                <div id="area6" class="top-map__detail iris">
+                  <h4 class="top-map__detail-ttl iris">堀切菖蒲園</h4>
+                  <figure class="top-map__detail-img">
+                    <img
+                      src="<%= relative_path%>assets/img/top/detail_iris.png"
+                      alt=""
+                    >
+                    <figcaption>葛飾区の花「花菖蒲」</figcaption>
+                  </figure>
+                  <p class="top-map__detail-subttl">
+                    葛飾区の花は「花菖蒲」です。
+                  </p>
+                  <p class="top-map__detail-txt">
+                    「堀切菖蒲園」は江戸古花を中心に約200種、6,000株の花菖蒲が植えられており、見ごろを迎える5月下旬から6月中旬(本フェアと同時期)には、「葛飾菖蒲まつり」が開催されます。
+                  </p>
                 </div>
               </div>
             </div>
-            <div class="top-insta__swipersp swiper pc-none">
-              <div class="top-insta__swipersp-wrapper swiper-wrapper">
-                <div class="top-insta__swipersp-slide swiper-slide">
-                  <img src="<%= relative_path %>assets/img/top/insta/4.png" alt="">
+          </section>
+          <section class="top-gallery">
+            <h2 class="common-h2 top-gallery__ttl">
+              まちなか花いっぱいプレイス
+            </h2>
+            <div class="top-gallery__container">
+              <div class="top-gallery__box">
+                <p class="top-gallery__box-ttl">区民の花壇</p>
+                <div class="top-gallery__resident swiper">
+                  <div class="swiper-wrapper">
+                    <div class="top-gallery__resident-thumb-slide swiper-slide">
+                      <img
+                        src="<%= relative_path%>assets/img/top/gallery/resident/1.png"
+                        alt=""
+                      >
+                    </div>
+                    <div class="top-gallery__resident-thumb-slide swiper-slide">
+                      <img
+                        src="<%= relative_path%>assets/img/top/gallery/resident/2.png"
+                        alt=""
+                      >
+                    </div>
+                    <div class="top-gallery__resident-thumb-slide swiper-slide">
+                      <img
+                        src="<%= relative_path%>assets/img/top/gallery/resident/3.png"
+                        alt=""
+                      >
+                    </div>
+                    <div class="top-gallery__resident-thumb-slide swiper-slide">
+                      <img
+                        src="<%= relative_path%>assets/img/top/gallery/resident/4.png"
+                        alt=""
+                      >
+                    </div>
+                  </div>
                 </div>
-                <div class="top-insta__swipersp-slide swiper-slide">
-                  <img src="<%= relative_path %>assets/img/top/insta/5.png" alt="">
+                <div class="top-gallery__resident-thumb swiper">
+                  <div class="swiper-wrapper">
+                    <div class="top-gallery__resident-slide swiper-slide">
+                      <img
+                        src="<%= relative_path%>assets/img/top/gallery/resident/1.png"
+                        alt=""
+                      >
+                    </div>
+                    <div class="top-gallery__resident-slide swiper-slide">
+                      <img
+                        src="<%= relative_path%>assets/img/top/gallery/resident/2.png"
+                        alt=""
+                      >
+                    </div>
+                    <div class="top-gallery__resident-slide swiper-slide">
+                      <img
+                        src="<%= relative_path%>assets/img/top/gallery/resident/3.png"
+                        alt=""
+                      >
+                    </div>
+                    <div class="top-gallery__resident-slide swiper-slide">
+                      <img
+                        src="<%= relative_path%>assets/img/top/gallery/resident/4.png"
+                        alt=""
+                      >
+                    </div>
+                  </div>
                 </div>
-                <div class="top-insta__swipersp-slide swiper-slide">
-                  <img src="<%= relative_path %>assets/img/top/insta/4.png" alt="">
+                <a class="common-btn top-gallery__btn" href="">詳細はこちら</a>
+              </div>
+              <div class="top-gallery__box">
+                <p class="top-gallery__box-ttl">区内の花の名所</p>
+                <div class="top-gallery__famous swiper">
+                  <div class="swiper-wrapper">
+                    <div class="top-gallery__resident-thumb-slide swiper-slide">
+                      <img
+                        src="<%= relative_path%>assets/img/top/gallery/famous/1.png"
+                        alt=""
+                      >
+                    </div>
+                    <div class="top-gallery__resident-thumb-slide swiper-slide">
+                      <img
+                        src="<%= relative_path%>assets/img/top/gallery/famous/2.png"
+                        alt=""
+                      >
+                    </div>
+                    <div class="top-gallery__resident-thumb-slide swiper-slide">
+                      <img
+                        src="<%= relative_path%>assets/img/top/gallery/famous/3.png"
+                        alt=""
+                      >
+                    </div>
+                    <div class="top-gallery__resident-thumb-slide swiper-slide">
+                      <img
+                        src="<%= relative_path%>assets/img/top/gallery/famous/4.png"
+                        alt=""
+                      >
+                    </div>
+                  </div>
                 </div>
-                <div class="top-insta__swipersp-slide swiper-slide">
-                  <img src="<%= relative_path %>assets/img/top/insta/5.png" alt="">
+                <div class="top-gallery__famous-thumb swiper">
+                  <div class="swiper-wrapper">
+                    <div class="top-gallery__resident-slide swiper-slide">
+                      <img
+                        src="<%= relative_path%>assets/img/top/gallery/famous/1.png"
+                        alt=""
+                      >
+                    </div>
+                    <div class="top-gallery__resident-slide swiper-slide">
+                      <img
+                        src="<%= relative_path%>assets/img/top/gallery/famous/2.png"
+                        alt=""
+                      >
+                    </div>
+                    <div class="top-gallery__resident-slide swiper-slide">
+                      <img
+                        src="<%= relative_path%>assets/img/top/gallery/famous/3.png"
+                        alt=""
+                      >
+                    </div>
+                    <div class="top-gallery__resident-slide swiper-slide">
+                      <img
+                        src="<%= relative_path%>assets/img/top/gallery/famous/4.png"
+                        alt=""
+                      >
+                    </div>
+                  </div>
                 </div>
-                <div class="top-insta__swipersp-slide swiper-slide">
-                  <img src="<%= relative_path %>assets/img/top/insta/4.png" alt="">
-                </div>
-                <div class="top-insta__swipersp-slide swiper-slide">
-                  <img src="<%= relative_path %>assets/img/top/insta/5.png" alt="">
-                </div>
+                <a class="common-btn top-gallery__btn" href="">詳細はこちら</a>
               </div>
             </div>
-          </div>
-          <p class="top-insta__catch">SNSに投稿して盛り上げよう！</p>
-          <p class="top-insta__hash">#BloomYourFutureKatsushika で投稿！</p>
-        </section>
-      </div>
-      <div class="top__bg pink js-scroll">
-        <section class="common-section top-topic">
-          <h2 class="common_h2 top-topic__ttl">トピックス</h2>
-          <div class="top-topic__swiper swiper">
-            <div class="top-topic__swiper-wrapper swiper-wrapper">
-              <div class="top-topic__swiper-slide swiper-slide">
-                <img src="<%= relative_path%>assets/img/top/topic/1.png" alt="">
-                <div class="top-topic__slide-box">
-                  <p class="title">ハンドメイドブースオープンしました…</p>
-                  <a href="" class="common-btn">詳細はこちら</a>
-                </div>
-              </div>
-              <div class="top-topic__swiper-slide swiper-slide">
-                <img src="<%= relative_path%>assets/img/top/topic/2.png" alt="">
-                <div class="top-topic__slide-box">
-                  <p class="title">アクセスについて</p>
-                  <a href="" class="common-btn">詳細はこちら</a>
-                </div>
-              </div>
-              <div class="top-topic__swiper-slide swiper-slide">
-                <img src="<%= relative_path%>assets/img/top/topic/3.png" alt="">
-                <div class="top-topic__slide-box">
-                  <p class="title">開催地となる葛飾とは</p>
-                  <a href="" class="common-btn">詳細はこちら</a>
-                </div>
-              </div>
-              <div class="top-topic__swiper-slide swiper-slide">
-                <img src="<%= relative_path%>assets/img/top/topic/4.png" alt="">
-                <div class="top-topic__slide-box">
-                  <p class="title">インスタ更新ちゅう</p>
-                  <a href="" class="common-btn">詳細はこちら</a>
-                </div>
-              </div>
-              <div class="top-topic__swiper-slide swiper-slide">
-                <img src="<%= relative_path%>assets/img/top/topic/5.png" alt="">
-                <div class="top-topic__slide-box">
-                  <p class="title">フェアで見られるお花</p>
-                  <a href="" class="common-btn">詳細はこちら</a>
-                </div>
-              </div>
-              <div class="top-topic__swiper-slide swiper-slide">
-                <img src="<%= relative_path%>assets/img/top/topic/4.png" alt="">
-                <div class="top-topic__slide-box">
-                  <p class="title">インスタ更新ちゅう</p>
-                  <a href="" class="common-btn">詳細はこちら</a>
-                </div>
-              </div>
-              <div class="top-topic__swiper-slide swiper-slide">
-                <img src="<%= relative_path%>assets/img/top/topic/5.png" alt="">
-                <div class="top-topic__slide-box">
-                  <p class="title">フェアで見られるお花</p>
-                  <a href="" class="common-btn">詳細はこちら</a>
-                </div>
-              </div>
-              <div class="top-topic__swiper-slide swiper-slide">
-                <img src="<%= relative_path%>assets/img/top/topic/4.png" alt="">
-                <div class="top-topic__slide-box">
-                  <p class="title">インスタ更新ちゅう</p>
-                  <a href="" class="common-btn">詳細はこちら</a>
-                </div>
-              </div>
-              <div class="top-topic__swiper-slide swiper-slide">
-                <img src="<%= relative_path%>assets/img/top/topic/5.png" alt="">
-                <div class="top-topic__slide-box">
-                  <p class="title">フェアで見られるお花</p>
-                  <a href="" class="common-btn">詳細はこちら</a>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="top-topic__swiper-nav">
-            <div class="top-topic__swiper-btn--prev swiper-button-prev sp-none"></div>
-            <div class="top-topic__swiper-pagination swiper-pagination"></div>
-            <div class="top-topic__swiper-btn--next swiper-button-next sp-none"></div>
-          </div>
-        </section>
-        <section class="common-section top-event">
-          <h2 class="common-h2 top-event__ttl">注目イベント</h2>
-          <div class="top-event__wrapper">
-            <div class="top-event__box">
-              <div class="top-event__img">
-                <img src="<%= relative_path%>assets/img/top/event/1.png" alt="">
-              </div>
-              <div class="top-event__content">
-                <h3>ハンドメイドブース ハンドメイドブース</h3>
-                <p>
-                  オリジナルの作品が作れる！<br>
-                  葛飾で咲く花で「ハーバリウム」や「写真たて」を作ってみませんか？
-                </p>
-                <span class="main">メインエリア</span>
-                <a class="common-btn top-event__btn" href="">
-                  詳細はこちら
-                </a>
-              </div>
-            </div>
-            <div class="top-event__box">
-              <div class="top-event__img">
-                <img src="<%= relative_path%>assets/img/top/event/2.png" alt="">
-              </div>
-              <div class="top-event__content">
-                <h3>フラワーアレンジ</h3>
-                <p>
-                  オリジナルの作品が作れる！<br>
-                  葛飾で咲く花で「ハーバリウム」や「写真たて」を作ってみませんか？
-                </p>
-                <span class="monchi">モンチッチエリア</span>
-                <a class="common-btn top-event__btn" href="">
-                  詳細はこちら
-                </a>
-              </div>
-            </div>
-            <div class="top-event__box">
-              <div class="top-event__img">
-                <img src="<%= relative_path%>assets/img/top/event/3.png" alt="">
-              </div>
-              <div class="top-event__content">
-                <h3>ドライフラワー</h3>
-                <p>
-                  オリジナルの作品が作れる！<br>
-                  葛飾で咲く花で「ハーバリウム」や「写真たて」を作ってみませんか？
-                </p>
-                <span class="kochi">こち亀エリア</span>
-                <a class="common-btn top-event__btn" href="">
-                  詳細はこちら
-                </a>
-              </div>
-            </div>
-          </div>
-        </section>
-      </div>
-      <div class="top__bg orange js-scroll">
-        <section class="common-section top-about">
-          <h3 class="top-about__ttl">
-            <img src="<%= relative_path%>assets/img/top/about_ttl.png" alt="">
-          </h3>
-          <p class="top-about__txt">
-            2026年5月、<br>
-            葛飾区でみどりと花をテーマにした<br class="pc-none">
-            フェアが開催されます。<br class="sp-none">「全国みどりと花のフェアかつしか」<br class="pc-none">
-            それは、<br class="sp-none">その時の花を楽しむだけでなく
+          </section>
+        </div>
+        <div class="fixed js-show">
+          <a>重要なお知らせ</a>
+          <p>
+            雨天のため、一部のイベントを中止いたします。詳しいじ情報はイベントページからご確認ください。雨天のため、一部のイベントを中止いたします。詳しいじ情報はイベントページからご確認ください。
           </p>
-          <p class="top-about__txt orange">
-            葛飾に暮らす人と<br class="pc-none">葛飾を訪れる人、<br>
-            老若男女も問わずすべての人の<br class="pc-none">
-            未来に花を咲かせる、<br>
-            そんなフェアです。
-          </p>
-          <p class="top-about__txt">
-            年年歳歳、花は咲きます。<br>
-            だからこそ花に親しむことで、<br class="pc-none">
-            世代から世代へとつながり、<br>
-            未来を創っていけるのです。<br>
-            このまちから咲かせていく。<br>
-            みなさまの未来の安全・安心と発展の<br class="pc-none">きっかけになれるよう<br>
-            <span class="bl">「</span>全国みどりと花のフェアかつしか<span class="br">」</span>は、<br>
-            お会いできるその日を<br class="pc-none">
-            心からお待ちしております。
-          </p>
-        </section>
-      </div>
-      <div class="top__bg blue js-scroll">
-        <section class="top-area">
-          <h2 class="common-h2 top-area__ttl">開催エリア</h2>
-          <div class="top-area__flex">
-            <div class="top-area__wrapper">
-              <p class="top-area__txt">
-                葛飾区は、映画『男はつらいよ』、<br class="sp-none">
-                漫画『こちら葛飾区亀有公園前派出所』、<br class="sp-none">『キャプテン翼』、『モンチッチ』などの<br class="sp-none">区ゆかりのキャラクターや、<br class="sp-none">江戸の昔から人々を魅了した<br class="sp-none">花菖蒲が美しい堀切菖蒲園などの<br class="sp-none">観光資源に恵まれています。
-              </p>
-              <p class="top-area__txt sp-none">
-                「全国みどりと花のフェアかつしか」では、<br>
-                それぞれのエリアの魅力を生かし、<br>
-                地域に根ざしたイベントを行います。
-              </p>
-            </div>
-            <div class="top-area__img">
-              <picture>
-                <source srcset="<%= relative_path%>assets/img/top/area_img_pc.png" media="(min-width: 768px)">
-                <img src="<%= relative_path%>assets/img/top/area_img.png" alt="">
-              </picture>
-            </div>
-          </div>
-        </section>
-        <section class="top-map">
-          <div class="top-map__content">
-            <div class="top-map__content-map">
-              <p class="top-map__txt sp-none">エリア名クリックで詳細を表示</p>
-              <div class="top-map__content-map-img">
-                <picture>
-                  <source srcset="<%= relative_path%>assets/img/top/map_img_pc.png" media="(min-width: 768px)">
-                  <img src="<%= relative_path%>assets/img/top/map_img.png" alt="">
-                </picture>
-                <ul class="top-map__button-list sp-none">
-                  <li>
-                    <button class="top-map__button-item js-active" data-area="area1">
-                      <span>メインエリア</span>
-                    </button>
-                  </li>
-                  <li>
-                    <button class="top-map__button-item" data-area="area2">
-                      <span>寅さんエリア</span>
-                    </button>
-                  </li>
-                  <li>
-                    <button class="top-map__button-item" data-area="area3">
-                      <span>こち亀エリア</span>
-                    </button>
-                  </li>
-                  <li>
-                    <button class="top-map__button-item" data-area="area4">
-                      <span>翼エリア</span>
-                    </button>
-                  </li>
-                  <li>
-                    <button class="top-map__button-item" data-area="area5">
-                      <span>モンチッチエリア</span>
-                    </button>
-                  </li>
-                  <li>
-                    <button class="top-map__button-item" data-area="area6">
-                      <span>堀切菖蒲園</span>
-                    </button>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div class="top-map__content-detail">
-              <div id="area1" class="top-map__detail main js-active">
-                <h4 class="top-map__detail-ttl main">メインエリア</h4>
-                <figure class="top-map__detail-img">
-                  <img src="<%= relative_path%>assets/img/top/detail_main.png" alt="">
-                  <figcaption>
-                    ※葛飾にいじゅくみらい公園<br class="pc-none">会場イメージ
-                  </figcaption>
-                </figure>
-                <p class="top-map__detail-subttl">
-                  メイン会場となる「葛飾にいじゅくみらい公園」を中心としたエリアです。
-                </p>
-                <p class="top-map__detail-txt">
-                  オープニングイベントなど様々なイベントが実施されます。「葛飾にいじゅくみらい公園」は、区立公園として区内最大の広さを有し、水と緑豊かで明るくにぎわいのある公園として、多くの方々に利用されています。都内で唯一水郷の景観をもった「都立水元公園」では、約100種、14,000株の花菖蒲が見ごろを迎える5月下旬から6月中旬に「葛飾菖蒲まつり」が堀切会場と同時開催されます。
-                </p>
-              </div>
-              <div id="area2" class="top-map__detail tora">
-                <h4 class="top-map__detail-ttl tora">寅さんエリア</h4>
-                <p class="top-map__detail-subttl">
-                  「柴又公園」を中心としたエリアです。
-                </p>
-                <p class="top-map__detail-txt">
-                  「柴又公園」は地域の特色ある景観の保全と活用を目的とした歴史公園であり、区の観光名所の1つとして近代和風
-                  建築と純和風庭園が見事に調和する「山本亭」があります。
-                </p>
-              </div>
-              <div id="area3" class="top-map__detail kochi">
-                <h4 class="top-map__detail-ttl kochi">こち亀エリア</h4>
-                <p class="top-map__detail-subttl">
-                  「亀有リリオパーク」を中心としたエリアです。
-                </p>
-                <p class="top-map__detail-txt">
-                  「亀有リリオパーク」は常設のステージがあり、様々なイベントが行われ区民の憩いの場として親しまれています。
-                </p>
-              </div>
-              <div id="area4" class="top-map__detail wing">
-                <h4 class="top-map__detail-ttl wing">翼エリア</h4>
-                <p class="top-map__detail-subttl">
-                  「渋江公園」を中心としたエリアです。
-                </p>
-                <p class="top-map__detail-txt">
-                  「渋江公園」は『キャプテン翼』のキャラクター銅像もあり、多くの子どもたちに親しまれています。
-                </p>
-              </div>
-              <div id="area5" class="top-map__detail mochi">
-                <h4 class="top-map__detail-ttl mochi">モンチッチエリア</h4>
-                <p class="top-map__detail-subttl">
-                  「新小岩駅周辺」を中心としたエリアです。
-                </p>
-                <p class="top-map__detail-txt">
-                  新小岩駅は葛飾区内で乗降客数が最も多く、「新小岩駅周辺」はにぎわいと活気にあふれています。
-                </p>
-              </div>
-              <div id="area6" class="top-map__detail iris">
-                <h4 class="top-map__detail-ttl iris">堀切菖蒲園</h4>
-                <figure class="top-map__detail-img">
-                  <img src="<%= relative_path%>assets/img/top/detail_iris.png" alt="">
-                  <figcaption>葛飾区の花「花菖蒲」</figcaption>
-                </figure>
-                <p class="top-map__detail-subttl">
-                  葛飾区の花は「花菖蒲」です。
-                </p>
-                <p class="top-map__detail-txt">
-                  「堀切菖蒲園」は江戸古花を中心に約200種、6,000株の花菖蒲が植えられており、見ごろを迎える5月下旬から6月中旬(本フェアと同時期)には、「葛飾菖蒲まつり」が開催されます。
-                </p>
-              </div>
-            </div>
-          </div>
-        </section>
-        <section class="top-gallery">
-          <h2 class="common-h2 top-gallery__ttl">
-            まちなか花いっぱいプレイス
-          </h2>
-          <div class="top-gallery__container">
-            <div class="top-gallery__box">
-              <p class="top-gallery__box-ttl">区民の花壇</p>
-              <div class="top-gallery__resident swiper">
-                <div class="swiper-wrapper">
-                  <div class="top-gallery__resident-thumb-slide swiper-slide">
-                    <img src="<%= relative_path%>assets/img/top/gallery/resident/1.png" alt="">
-                  </div>
-                  <div class="top-gallery__resident-thumb-slide swiper-slide">
-                    <img src="<%= relative_path%>assets/img/top/gallery/resident/2.png" alt="">
-                  </div>
-                  <div class="top-gallery__resident-thumb-slide swiper-slide">
-                    <img src="<%= relative_path%>assets/img/top/gallery/resident/3.png" alt="">
-                  </div>
-                  <div class="top-gallery__resident-thumb-slide swiper-slide">
-                    <img src="<%= relative_path%>assets/img/top/gallery/resident/4.png" alt="">
-                  </div>
-                </div>
-              </div>
-              <div class="top-gallery__resident-thumb swiper">
-                <div class="swiper-wrapper">
-                  <div class="top-gallery__resident-slide swiper-slide">
-                    <img src="<%= relative_path%>assets/img/top/gallery/resident/1.png" alt="">
-                  </div>
-                  <div class="top-gallery__resident-slide swiper-slide">
-                    <img src="<%= relative_path%>assets/img/top/gallery/resident/2.png" alt="">
-                  </div>
-                  <div class="top-gallery__resident-slide swiper-slide">
-                    <img src="<%= relative_path%>assets/img/top/gallery/resident/3.png" alt="">
-                  </div>
-                  <div class="top-gallery__resident-slide swiper-slide">
-                    <img src="<%= relative_path%>assets/img/top/gallery/resident/4.png" alt="">
-                  </div>
-                </div>
-              </div>
-              <a class="common-btn top-gallery__btn" href="">詳細はこちら</a>
-            </div>
-            <div class="top-gallery__box">
-              <p class="top-gallery__box-ttl">区内の花の名所</p>
-              <div class="top-gallery__famous swiper">
-                <div class="swiper-wrapper">
-                  <div class="top-gallery__resident-thumb-slide swiper-slide">
-                    <img src="<%= relative_path%>assets/img/top/gallery/famous/1.png" alt="">
-                  </div>
-                  <div class="top-gallery__resident-thumb-slide swiper-slide">
-                    <img src="<%= relative_path%>assets/img/top/gallery/famous/2.png" alt="">
-                  </div>
-                  <div class="top-gallery__resident-thumb-slide swiper-slide">
-                    <img src="<%= relative_path%>assets/img/top/gallery/famous/3.png" alt="">
-                  </div>
-                  <div class="top-gallery__resident-thumb-slide swiper-slide">
-                    <img src="<%= relative_path%>assets/img/top/gallery/famous/4.png" alt="">
-                  </div>
-                </div>
-              </div>
-              <div class="top-gallery__famous-thumb swiper">
-                <div class="swiper-wrapper">
-                  <div class="top-gallery__resident-slide swiper-slide">
-                    <img src="<%= relative_path%>assets/img/top/gallery/famous/1.png" alt="">
-                  </div>
-                  <div class="top-gallery__resident-slide swiper-slide">
-                    <img src="<%= relative_path%>assets/img/top/gallery/famous/2.png" alt="">
-                  </div>
-                  <div class="top-gallery__resident-slide swiper-slide">
-                    <img src="<%= relative_path%>assets/img/top/gallery/famous/3.png" alt="">
-                  </div>
-                  <div class="top-gallery__resident-slide swiper-slide">
-                    <img src="<%= relative_path%>assets/img/top/gallery/famous/4.png" alt="">
-                  </div>
-                </div>
-              </div>
-              <a class="common-btn top-gallery__btn" href="">詳細はこちら</a>
-            </div>
-          </div>
-        </section>
-      </div>
-      <div class="fixed js-show">
-        <a>重要なお知らせ</a>
-        <p>
-          雨天のため、一部のイベントを中止いたします。詳しいじ情報はイベントページからご確認ください。雨天のため、一部のイベントを中止いたします。詳しいじ情報はイベントページからご確認ください。
-        </p>
-        <button id="fixed-close">
-          <span></span>
-          <span></span>
-        </button>
-      </div>
-    </main>
-    <%-include(`${relative_path}_partial/_footer`,{lang:lang,pageID:pageID,relative_path:relative_path})%>
-  </div>
-  <%- include( `${relative_path}_partial/_foot`,{lang:lang,pageID:pageID,relative_path:relative_path}) %>
-</body>
-
+          <button id="fixed-close">
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </main>
+      <%-include(`${relative_path}_partial/_footer`,{lang:lang,pageID:pageID,relative_path:relative_path})%>
+    </div>
+    <%- include( `${relative_path}_partial/_foot`,{lang:lang,pageID:pageID,relative_path:relative_path}) %>
+  </body>
 </html>
