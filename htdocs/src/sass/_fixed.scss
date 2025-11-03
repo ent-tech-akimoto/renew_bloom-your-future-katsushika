@@ -32,7 +32,7 @@
     border-radius: get_vw(10);
     color: $c_white;
     font-size: get_vw(18);
-    font-weight: 500;
+    font-weight: 400;
     @include pc-fluid-size(width, (207));
     @include pc-fluid-size(height, (60));
     @include pc-fluid-size(padding, (14 18 18));

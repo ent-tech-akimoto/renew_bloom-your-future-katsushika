@@ -10,9 +10,10 @@
   &__ttl{
     font-size: get_vw(20);
     color: $c_white;
-    font-weight: 500;
+    font-weight: 400;
     text-align: center;
     position: relative;
+    font-weight: 400;
     @include pc-fluid-size(font-size, (40));
     @include after{
       background-color: $c_white;

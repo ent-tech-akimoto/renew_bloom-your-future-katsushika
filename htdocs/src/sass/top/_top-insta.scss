@@ -9,6 +9,7 @@
   border-radius: get_vw(20);
   padding: get_vw(76) get_vw(0);
   overflow: hidden;
+  @include pc-fluid-size(margin-top, (40));
   @include pc-fluid-size(width, (1280));
   @include pc-fluid-size(border-radius, (40));
   @include pc-fluid-size(padding, (100 0));
@@ -17,6 +18,7 @@
     color: $common_h2;
     text-align: center;
     position: relative;
+    font-weight: 400;
     @include pc-fluid-size(font-size, (40));
     @include after{
       background-color: $common_h2;
@@ -72,6 +74,7 @@
     color: #8FC31F;
     text-align: center;
     position: relative;
+    font-weight: 500;
     @include pc-fluid-size(margin-top, (40));
     @include pc-fluid-size(font-size, (24));
     @include before{
@@ -115,6 +118,7 @@
     line-height: calc(28/18);
     text-align: center;
     position: relative;
+    font-weight: 500;
     @include pc-fluid-size(width, (472));
     @include pc-fluid-size(margin-top, (15));  
     @include pc-fluid-size(padding, (15 20 15 72));

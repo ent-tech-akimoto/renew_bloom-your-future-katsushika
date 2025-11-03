@@ -18,6 +18,7 @@
     color: $common_h2;
     text-align: center;
     position: relative;
+    font-weight: 400;
     @include pc-fluid-size(font-size, (40));
     @include after{
       background-color: $common_h2;
@@ -58,6 +59,7 @@
   &__box-ttl{
     font-size: get_vw(18);
     text-align: center;
+    font-weight: 500;
     @include pc-fluid-size(font-size, (24));
   }
 
@@ -69,7 +71,19 @@
   &__resident-slide,&__famous-slide{
     border-radius: get_vw(10);
     overflow: hidden;
+    border: solid transparent get_vw(2);
+    @include pc-fluid-size(border-width, (2));
     @include pc-fluid-size(border-radius, (10));
+    transition: border-color 0.4s ease;
+    @include min-screen{
+      cursor: pointer;
+    }
+    &.swiper-slide-thumb-active{
+      border-color: $c_blue;
+    }
+    &:hover{
+      border-color: $c_blue;
+    }
   }
 
   &__resident-thumb,&__famous-thumb{
@@ -81,6 +95,9 @@
     border-radius: get_vw(20);
     overflow: hidden;
     @include pc-fluid-size(border-radius, (20));
+    @include min-screen{
+      cursor: pointer;
+    }
   }
 
   &__btn{
