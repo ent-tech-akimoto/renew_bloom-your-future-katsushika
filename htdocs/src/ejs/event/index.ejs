@@ -29,7 +29,230 @@ var myMeta = meta[lang][pageID];
         </section>
         <section class="event__form">
           <h2 class="event__h2">詳細から探す</h2>
-          <form class="event__form-wrapper" action=""></form>
+          <form class="event__form-wrapper" action="">
+            <div class="event__form-flex area">
+              <label class="event__form-label area" for="eventArea"></label>
+              <div class="event__form-box area">
+                <span class="event__form-select--area main">メインエリア</span>
+                <span class="event__form-select--area kochi">こち亀エリア</span>
+                <span class="event__form-select--area monchi"
+                  >モンチッチエリア</span
+                >
+                <span class="event__form-select--area wing">翼エリア</span>
+                <span class="event__form-select--area iris">堀切菖蒲園</span>
+                <span class="event__form-select--area tora">寅さんエリア</span>
+              </div>
+              <div class="event__form-modal area">
+                <h5>イベントエリア</h5>
+                <div class="event__modal-flex area">
+                  <label class="event__form-label area" for="eventArea"></label>
+                  <div class="event__form-box area">
+                    <span class="event__form-select--area main"
+                      >メインエリア</span
+                    >
+                    <span class="event__form-select--area kochi"
+                      >こち亀エリア</span
+                    >
+                    <span class="event__form-select--area monchi"
+                      >モンチッチエリア</span
+                    >
+                    <span class="event__form-select--area wing">翼エリア</span>
+                    <span class="event__form-select--area iris"
+                      >堀切菖蒲園</span
+                    >
+                    <span class="event__form-select--area tora"
+                      >寅さんエリア</span
+                    >
+                  </div>
+                </div>
+                <div class="event__modal-map">
+                  <picture>
+                    <img
+                      src="<%= relative_path %>assets/img/event/modal_area.png"
+                      alt=""
+                    >
+                  </picture>
+                  <ul>
+                    <li class="main js-active" data-area="area1">
+                      メインエリア
+                    </li>
+                    <li class="tora" data-area="area2">寅さんエリア</li>
+                    <li class="kochi" data-area="area3">こち亀エリア</li>
+                    <li class="iris" data-area="area4">堀切菖蒲園</li>
+                    <li class="wing" data-area="area5">翼エリア</li>
+                    <li class="monchi" data-area="area6">モンチッチエリア</li>
+                  </ul>
+                </div>
+                <button class="event__modal-map-btn">現在地付近</button>
+                <button class="event__modal-btn">検索する</button>
+                <button class="event__modal-next">スキップする＞</button>
+                <button class="event__modal-close">
+                  <span></span>
+                  <span></span>
+                </button>
+              </div>
+            </div>
+            <div class="event__form-flex date">
+              <label class="event__form-label date" for="eventDate"></label>
+              <div class="event__form-box date">
+                <div class="event__date-start">
+                  <strong>開始日</strong>
+                  <p>2026.10.15</p>
+                </div>
+                <div class="event__date-wave">～</div>
+                <div class="event__date-end">
+                  <strong>終了日</strong>
+                  <p>2026.10.17</p>
+                </div>
+              </div>
+              <div class="event__form-modal date">
+                <h5>日付</h5>
+                <div class="event__modal-flex date">
+                  <label class="event__form-label date" for="eventDate"></label>
+                  <div class="event__form-box date">
+                    <div class="event__date-start">
+                      <strong>開始日</strong>
+                      <p>2026.10.15</p>
+                    </div>
+                    <div class="event__date-wave">～</div>
+                    <div class="event__date-end">
+                      <strong>終了日</strong>
+                      <p>2026.10.17</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="event__modal-date">
+                  <div class="event__date-flex">
+                    <div class="event__modal-date-start">
+                      <p>開始日</p>
+                      <div class="event__modal-date-show">
+                        <strong class="">15</strong>
+                        <div>
+                          <p class="day">日</p>
+                          <p class="month">10月</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="event__modal-date-arrow"></div>
+                    <div class="event__modal-date-end">
+                      <p>終了日</p>
+                      <div class="event__modal-date-show">
+                        <strong class="">17</strong>
+                        <div>
+                          <p class="day">火</p>
+                          <p class="month">10月</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <p class="">2026年10月</p>
+                  <div class="event__modal-date-days">
+                    <span>日</span>
+                    <span>月</span>
+                    <span>火</span>
+                    <span>水</span>
+                    <span>木</span>
+                    <span>金</span>
+                    <span>土</span>
+                  </div>
+                  <div class="event__modal-date-dates">
+                    <span>1</span>
+                    <span>2</span>
+                    <span>3</span>
+                    <span>4</span>
+                    <span>5</span>
+                    <span>6</span>
+                    <span>7</span>
+                    <span>8</span>
+                    <span>9</span>
+                    <span>10</span>
+                    <span>11</span>
+                    <span class="today">12</span>
+                    <span>13</span>
+                    <span>14</span>
+                    <span class="range-start">15</span>
+                    <span class="in-range">16</span>
+                    <span class="range-end">17</span>
+                    <span>18</span>
+                    <span>19</span>
+                    <span>20</span>
+                    <span>21</span>
+                    <span class="disable">22</span>
+                    <span class="disable">23</span>
+                    <span class="disable">24</span>
+                    <span class="disable">25</span>
+                    <span class="disable">26</span>
+                    <span class="disable">27</span>
+                    <span class="disable">28</span>
+                  </div>
+                </div>
+                <button class="event__modal-btn">検索する</button>
+                <button class="event__modal-next">スキップする＞</button>
+                <button class="event__modal-close">
+                  <span></span>
+                  <span></span>
+                </button>
+              </div>
+            </div>
+            <div class="event__form-flex cate">
+              <label class="event__form-label cate" for="eventCat"></label>
+              <div class="event__form-box cate">
+                <span class="event__form-select">カテゴリー</span>
+              </div>
+              <div class="event__form-modal cate">
+                <h5>カテゴリー</h5>
+                <div class="event__modal-flex cate">
+                  <label class="event__form-label cate" for="eventCat"></label>
+                  <div class="event__form-box cate">
+                    <span class="event__form-select">見る</span>
+                  </div>
+                </div>
+                <ul class="event__modal-cate">
+                  <li class="js-active">見る</li>
+                  <li class="">食べる</li>
+                  <li class="">買う</li>
+                  <li class="">学ぶ</li>
+                  <li class="">遊ぶ</li>
+                </ul>
+                <button class="event__modal-btn">検索する</button>
+                <button class="event__modal-next">スキップする＞</button>
+                <button class="event__modal-close">
+                  <span></span>
+                  <span></span>
+                </button>
+              </div>
+            </div>
+            <div class="event__form-flex word">
+              <label class="event__form-label word" for="eventWord"></label>
+              <textarea
+                class="event__form-box word"
+                placeholder="フリーワード"
+                rows="1"
+              ></textarea>
+              <div class="event__form-modal word">
+                <h5>フリーワード</h5>
+                <div class="event__modal-flex word">
+                  <label class="event__form-label word" for="eventWord"></label>
+                  <textarea
+                    class="event__form-box word"
+                    placeholder="フリーワード"
+                    rows="1"
+                  ></textarea>
+                </div>
+                <ul class="event__modal-word">
+                  <li class="js-active">フラワーアレンジ</li>
+                  <li class="">フラワーフォトコンクール</li>
+                  <li class="">フラワーロードフェア</li>
+                </ul>
+                <button class="event__modal-btn">検索する</button>
+                <button class="event__modal-next">スキップする＞</button>
+                <button class="event__modal-close">
+                  <span></span>
+                  <span></span>
+                </button>
+              </div>
+            </div>
+          </form>
         </section>
         <section class="event__box">
           <h3 class="event__h3">検索結果<span>15</span>件</h3>
