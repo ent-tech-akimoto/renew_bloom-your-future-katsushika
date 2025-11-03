@@ -819,14 +819,16 @@ var myMeta = meta[lang][pageID];
           </section>
         </div>
         <div class="fixed js-show">
-          <a>重要なお知らせ</a>
-          <p>
-            雨天のため、一部のイベントを中止いたします。詳しいじ情報はイベントページからご確認ください。雨天のため、一部のイベントを中止いたします。詳しいじ情報はイベントページからご確認ください。
-          </p>
-          <button id="fixed-close">
-            <span></span>
-            <span></span>
-          </button>
+          <div class="fixed__inner">
+            <a>重要なお知らせ</a>
+            <p>
+              雨天のため、一部のイベントを中止いたします。詳しいじ情報はイベントページからご確認ください。雨天のため、一部のイベントを中止いたします。詳しいじ情報はイベントページからご確認ください。
+            </p>
+            <button id="fixed-close">
+              <span></span>
+              <span></span>
+            </button>
+          </div>
         </div>
       </main>
       <%-include(`${relative_path}_partial/_footer`,{lang:lang,pageID:pageID,relative_path:relative_path})%>
