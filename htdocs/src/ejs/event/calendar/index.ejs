@@ -1,0 +1,284 @@
+<%
+var pageID = "calendar";
+var lang = "ja";
+var relative_path = "../../";
+var myMeta = meta[lang][pageID];
+%>
+<!DOCTYPE html>
+<html lang="<%= lang %>">
+  <%-include(`${relative_path}_partial/_head`,{lang:lang,pageID:pageID,relative_path:relative_path})%>
+  <body>
+    <div class="page">
+      <article class="event">
+        <div class="event__bg"></div>
+        <p class="common-bread event__bread">
+          <span>TOP</span><span>イベント情報</span>
+        </p>
+        <h1 class="common__h1 event__h1">イベント情報</h1>
+
+        <section class="event__calendar-search">
+          <div class="event__calendar-flex top">
+            <p class="before">＜9月/2026</p>
+            <strong>10月</strong>
+            <p class="after">11月/2026＞</p>
+          </div>
+          <div class="event__calendar-flex bot pc-none">
+            <div class="event__calendar-label"></div>
+            <div class="event__calendar-box">
+              <span class="event__calendar-select--area main"
+                >メインエリア</span
+              >
+              <span class="event__calendar-select--area kochi"
+                >こち亀エリア</span
+              >
+              <span class="event__calendar-select--area monchi"
+                >モンチッチエリア</span
+              >
+              <span class="event__calendar-select--area wing">翼エリア</span>
+              <span class="event__calendar-select--area iris">堀切菖蒲園</span>
+              <span class="event__calendar-select--area tora"
+                >寅さんエリア</span
+              >
+            </div>
+            <div class="event__form-modal area" data-modal="modal1">
+              <h5 class="pc-none">イベントエリア</h5>
+              <div class="event__modal-flex area pc-none">
+                <div class="event__form-label area" for="eventArea"></div>
+                <div class="event__form-box area">
+                  <span class="event__form-select--area main"
+                    >メインエリア</span
+                  >
+                  <span class="event__form-select--area kochi"
+                    >こち亀エリア</span
+                  >
+                  <span class="event__form-select--area monchi"
+                    >モンチッチエリア</span
+                  >
+                  <span class="event__form-select--area wing">翼エリア</span>
+                  <span class="event__form-select--area iris">堀切菖蒲園</span>
+                  <span class="event__form-select--area tora"
+                    >寅さんエリア</span
+                  >
+                </div>
+              </div>
+              <div class="event__modal-map">
+                <picture>
+                  <img
+                    src="<%= relative_path %>assets/img/event/modal_area.png"
+                    alt=""
+                  >
+                </picture>
+                <ul>
+                  <li class="main js-active" data-area="area1">メインエリア</li>
+                  <li class="tora" data-area="area2">寅さんエリア</li>
+                  <li class="kochi" data-area="area3">こち亀エリア</li>
+                  <li class="iris" data-area="area4">堀切菖蒲園</li>
+                  <li class="wing" data-area="area5">翼エリア</li>
+                  <li class="monchi" data-area="area6">モンチッチエリア</li>
+                </ul>
+              </div>
+              <button class="event__modal-map-btn">現在地付近</button>
+              <button class="event__modal-btn">検索する</button>
+              <button class="event__modal-next">スキップする＞</button>
+              <button class="event__modal-close">
+                <span></span>
+                <span></span>
+              </button>
+            </div>
+          </div>
+        </section>
+        <section class="event__box">
+          <h3 class="event__h3">検索結果<span>15</span>件</h3>
+          <ul class="event__box-list">
+            <li>
+              <a class="event__box-item" href="">
+                <div class="event__box-img">
+                  <img
+                    src="<%= relative_path %>assets/img/event/thumb/1.png"
+                    alt=""
+                  >
+                </div>
+                <p class="event__box-date">2026年 5月16日（火）16：00〜</p>
+                <h4 class="event__box-ttl">
+                  葛飾で咲いているお花を使って、オリジナル石鹸作り体験ができます
+                </h4>
+                <div class="event__box-cat">
+                  <span>#カテゴリー</span><span>#カテゴリー</span
+                  ><span>#カテゴリー</span>
+                </div>
+                <span class="main">メインエリア</span>
+              </a>
+            </li>
+            <li>
+              <a class="event__box-item" href="">
+                <div class="event__box-img">
+                  <img
+                    src="<%= relative_path %>assets/img/event/thumb/1.png"
+                    alt=""
+                  >
+                </div>
+                <p class="event__box-date">2026年 5月16日（火）16：00〜</p>
+                <h4 class="event__box-ttl">
+                  葛飾で咲いているお花を使って、オリジナル石鹸作り体験ができます
+                </h4>
+                <div class="event__box-cat">
+                  <span>#カテゴリー</span><span>#カテゴリー</span
+                  ><span>#カテゴリー</span>
+                </div>
+                <span class="main">メインエリア</span>
+              </a>
+            </li>
+            <li>
+              <a class="event__box-item" href="">
+                <div class="event__box-img">
+                  <img
+                    src="<%= relative_path %>assets/img/event/thumb/1.png"
+                    alt=""
+                  >
+                </div>
+                <p class="event__box-date">2026年 5月16日（火）16：00〜</p>
+                <h4 class="event__box-ttl">
+                  葛飾で咲いているお花を使って、オリジナル石鹸作り体験ができます
+                </h4>
+                <div class="event__box-cat">
+                  <span>#カテゴリー</span><span>#カテゴリー</span
+                  ><span>#カテゴリー</span><span>#カテゴリー</span
+                  ><span>#カテゴリー</span><span>#カテゴリー</span
+                  ><span>#カテゴリー</span><span>#カテゴリー</span
+                  ><span>#カテゴリー</span>
+                </div>
+                <span class="kochi">こち亀エリア</span>
+              </a>
+            </li>
+            <li>
+              <a class="event__box-item" href="">
+                <div class="event__box-img">
+                  <img
+                    src="<%= relative_path %>assets/img/event/thumb/1.png"
+                    alt=""
+                  >
+                </div>
+                <p class="event__box-date">2026年 5月16日（火）16：00〜</p>
+                <h4 class="event__box-ttl">
+                  葛飾で咲いているお花を使って、オリジナル石鹸作り体験ができます
+                </h4>
+                <div class="event__box-cat">
+                  <span>#カテゴリー</span><span>#カテゴリー</span
+                  ><span>#カテゴリー</span>
+                </div>
+                <span class="kochi">こち亀エリア</span>
+              </a>
+            </li>
+            <li>
+              <a class="event__box-item" href="">
+                <div class="event__box-img">
+                  <img
+                    src="<%= relative_path %>assets/img/event/thumb/1.png"
+                    alt=""
+                  >
+                </div>
+                <p class="event__box-date">2026年 5月16日（火）16：00〜</p>
+                <h4 class="event__box-ttl">
+                  葛飾で咲いているお花を使って、オリジナル石鹸作り体験ができます
+                </h4>
+                <div class="event__box-cat">
+                  <span>#カテゴリー</span><span>#カテゴリー</span
+                  ><span>#カテゴリー</span>
+                </div>
+                <span class="monchi">モンチッチエリア</span>
+              </a>
+            </li>
+            <li>
+              <a class="event__box-item" href="">
+                <div class="event__box-img">
+                  <img
+                    src="<%= relative_path %>assets/img/event/thumb/1.png"
+                    alt=""
+                  >
+                </div>
+                <p class="event__box-date">2026年 5月16日（火）16：00〜</p>
+                <h4 class="event__box-ttl">
+                  葛飾で咲いているお花を使って、オリジナル石鹸作り体験ができます
+                </h4>
+                <div class="event__box-cat">
+                  <span>#カテゴリー</span><span>#カテゴリー</span
+                  ><span>#カテゴリー</span>
+                </div>
+                <span class="monchi">モンチッチエリア</span>
+              </a>
+            </li>
+            <li>
+              <a class="event__box-item" href="">
+                <div class="event__box-img">
+                  <img
+                    src="<%= relative_path %>assets/img/event/thumb/1.png"
+                    alt=""
+                  >
+                </div>
+                <p class="event__box-date">2026年 5月16日（火）16：00〜</p>
+                <h4 class="event__box-ttl">
+                  葛飾で咲いているお花を使って、オリジナル石鹸作り体験ができます
+                </h4>
+                <div class="event__box-cat">
+                  <span>#カテゴリー</span><span>#カテゴリー</span
+                  ><span>#カテゴリー</span>
+                </div>
+                <span class="wing">翼エリア</span>
+              </a>
+            </li>
+            <li>
+              <a class="event__box-item" href="">
+                <div class="event__box-img">
+                  <img
+                    src="<%= relative_path %>assets/img/event/thumb/1.png"
+                    alt=""
+                  >
+                </div>
+                <p class="event__box-date">2026年 5月16日（火）16：00〜</p>
+                <h4 class="event__box-ttl">
+                  葛飾で咲いているお花を使って、オリジナル石鹸作り体験ができます
+                </h4>
+                <div class="event__box-cat">
+                  <span>#カテゴリー</span><span>#カテゴリー</span
+                  ><span>#カテゴリー</span>
+                </div>
+                <span class="wing">翼エリア</span>
+              </a>
+            </li>
+            <li>
+              <a class="event__box-item" href="">
+                <div class="event__box-img">
+                  <img
+                    src="<%= relative_path %>assets/img/event/thumb/1.png"
+                    alt=""
+                  >
+                </div>
+                <p class="event__box-date">2026年 5月16日（火）16：00〜</p>
+                <h4 class="event__box-ttl">
+                  葛飾で咲いているお花を使って、オリジナル石鹸作り体験ができます
+                </h4>
+                <div class="event__box-cat">
+                  <span>#カテゴリー</span><span>#カテゴリー</span
+                  ><span>#カテゴリー</span>
+                </div>
+                <span class="iris">堀切菖蒲園</span>
+              </a>
+            </li>
+          </ul>
+          <div class="event__pagination">
+            <button class="active">1</button>
+            <button>2</button>
+            <button>3</button>
+            <button class="small"></button>
+            <button class="small"></button>
+            <button class="small"></button>
+            <button class="arrow-next"></button>
+          </div>
+        </section>
+        <a class="event__btn back" href="../"> イベント情報へもどる </a>
+      </article>
+      <%-include(`${relative_path}_partial/_footer`,{lang:lang,pageID:pageID,relative_path:relative_path})%>
+    </div>
+    <%- include( `${relative_path}_partial/_foot`,{lang:lang,pageID:pageID,relative_path:relative_path}) %>
+  </body>
+</html>

@@ -3,10 +3,10 @@
 
 .event{
   position: relative;
-  margin-top: get_vw(0);
+  margin-top: get_vw(-106);
   padding-top: get_vw(126);
   padding-bottom: get_vw(104);
-  @include pc-fluid-size(margin-top, (0));
+  @include pc-fluid-size(margin-top, (-166));
   @include pc-fluid-size(padding-top, (190));
   @include pc-fluid-size(padding-bottom, (100));
   &__bg{
@@ -99,6 +99,194 @@
     margin-top: get_vw(80);
     @include pc-fluid-size(margin-top, (100));
   }
+  &__calendar-search{
+    margin-top: get_vw(106);
+    padding: get_vw(0) get_vw(20);
+    @include pc-fluid-size(margin-top, (186));
+    @include pc-fluid-size(width, (775));
+    @include pc-fluid-size(padding, (0));
+    @include min-screen{
+      margin-inline: auto;
+    }
+  }
+  &__calendar-flex{
+    position: relative;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    &>p{
+      padding-top: get_vw(17);
+      font-size: get_vw(18);
+      font-weight: 500;
+      text-decoration: underline;
+      text-underline-offset: get_vw(6);
+      @include pc-fluid-size(padding-top, (17));
+      @include pc-fluid-size(font-size, (18));
+      @include pc-fluid-size(text-underline-offset, (6));
+      @include min-screen{
+        cursor: pointer;
+      }
+    }
+    &>strong{
+      font-size: get_vw(24);
+      font-weight: 400;
+      position: relative;
+      @include pc-fluid-size(font-size, (40));
+      @include after{
+        width: get_vw(25);
+        height: get_vw(2);
+        background-color: $c_black;
+        position: absolute;
+        bottom: get_vw(-24);
+        left: 50%;
+        transform: translateX(-50%);
+        @include pc-fluid-size(width, (25));
+        @include pc-fluid-size(height, (2));
+        @include pc-fluid-size(bottom, (-15));
+      }
+    }
+    &.top{ 
+      @include pc-fluid-size(width, (404));
+      @include min-screen{
+        margin-inline: auto;
+      }
+    }
+    &.bot{
+      @include pc-fluid-size(width, (404));
+      padding: get_vw(11);
+      background-color: $c_lightgray;
+      border-radius: get_vw(20);
+      margin-top: get_vw(100);
+      column-gap: get_vw(10);
+      @include center;
+      @include pc-fluid-size(margin-top, (118));
+      @include pc-fluid-size(padding, (12 15 12 30));
+      @include pc-fluid-size(border-radius, (20));
+      @include pc-fluid-size(column-gap, (18));
+      @include min-screen{
+        width: 100%;
+        justify-content: space-between;
+      }
+    }
+  }
+  &__calendar-label{
+    width: get_vw(20);
+    height: get_vw(20);
+    position: relative;
+    @include pc-fluid-size(width, (20));
+    @include pc-fluid-size(height, (20));
+    @include before{
+      background-image: url('../img/event/form_area.png');
+      background-size: 100% 100%;
+      width: get_vw(18);
+      height: get_vw(27);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      @include pc-fluid-size(width, (18));
+      @include pc-fluid-size(height, (27));
+    }
+  }
+  &__calendar-box{
+    width: get_vw(298);
+    padding: get_vw(20) get_vw(12);
+    background-color: $c_white;
+    border: solid $c_gray get_vw(2);
+    border-radius: get_vw(15);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    row-gap: get_vw(10);
+    column-gap: get_vw(8);
+    @include pc-fluid-size(width, (696));
+    @include pc-fluid-size(height, (63));
+    @include pc-fluid-size(padding, ( 17 16));
+    @include pc-fluid-size(border-width, (2));
+    @include pc-fluid-size(border-radius, (15));
+    @include pc-fluid-size(row-gap, (8));
+    @include pc-fluid-size(column-gap, (5));
+    @include min-screen{
+      cursor: pointer;
+    }
+    &> span{
+      position: relative;
+      width: get_vw(130);
+      height: get_vw(30);
+      padding: 0 get_vw(9);
+      font-size: get_vw(12);
+      font-weight: 300;
+      color: $c_white;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      background-color: $c_lightgray;
+      border-radius: get_vw(30);
+      @include pc-fluid-size(width, (102));
+      @include pc-fluid-size(height, (22));
+      @include pc-fluid-size(padding, (0 9));
+      @include pc-fluid-size(font-size, (10));
+      @include pc-fluid-size(border-radius, (30));
+      @include min-screen{
+        cursor: pointer;
+      }
+      &.main{
+        background-color: $c_green;
+      }
+      &.tora{
+        background-color: $c_red;
+      }
+      &.kochi{
+        background-color: $c_blue;
+      }
+      &.wing{
+        background-color: $c_orange;
+      }
+      &.monchi{
+        background-color: $c_pink;
+      }
+      &.iris{
+        background-color: $c_purple;
+      }
+      @include min-screen{
+        cursor: pointer;
+      }
+      @include after{
+        background-image: url('../img/event/form_close.png');
+        background-size: 100%;
+        width: get_vw(8);
+        height: get_vw(8);
+        position: absolute;
+        top: 50%;
+        right: get_vw(12);
+        transform: translateY(-50%);
+        @include pc-fluid-size(width, (6));
+        @include pc-fluid-size(height, (6));
+        @include pc-fluid-size(right, (5));
+      }
+    }
+  }
+  &__calendar-select{
+    width: get_vw(20);
+    height: get_vw(20);
+    position: relative;
+    @include pc-fluid-size(width, (20));
+    @include pc-fluid-size(height, (20));
+    @include before{
+      background-image: url('../img/event/form_area.png');
+      background-size: 100% 100%;
+      width: get_vw(18);
+      height: get_vw(27);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      @include pc-fluid-size(width, (18));
+      @include pc-fluid-size(height, (27));
+    }
+  }
   &__h2{
     font-size: get_vw(20);
     color: $c_black;
@@ -152,7 +340,7 @@
       @include pc-fluid-size(left, (52));
     }
     @include after{
-      background-image: url('../img/event/btn_arrow.png');
+      background-image: url('../img/event/btn_arrow_white.png');
       background-size: 100% 100%;
       width: get_vw(40);
       height: get_vw(40);
@@ -163,6 +351,16 @@
       @include pc-fluid-size(width, (60));
       @include pc-fluid-size(height, (60));
       @include pc-fluid-size(right, (10));
+    }
+    &.back{
+      @include before{
+        display: none;
+      }
+      @include after{
+        left: get_vw(10);
+        right: auto;
+        transform: translateY(-50%) scale(-1);
+      }
     }
   }
   &__form{
@@ -291,6 +489,9 @@
     @include pc-fluid-size(border-radius, (15));
     @include pc-fluid-size(row-gap, (8));
     @include pc-fluid-size(column-gap, (5));
+    @include min-screen{
+      cursor: pointer;
+    }
     &> span{
       position: relative;
       width: get_vw(130);
@@ -311,6 +512,7 @@
       @include pc-fluid-size(border-radius, (30));
     }
     &.area{
+      @include pc-fluid-size(padding, (8 15));
       &>span{
         color: $c_white;
         justify-content: flex-start;
@@ -332,6 +534,9 @@
         &.iris{
           background-color: $c_purple;
         }
+        @include min-screen{
+          cursor: pointer;
+        }
         @include after{
           background-image: url('../img/event/form_close.png');
           background-size: 100%;
@@ -349,7 +554,9 @@
     }
     &.date{
       flex-direction: column;
-      @include center;
+      @include min-screen{      
+        @include center;
+      }
       & strong{
         display: block;
         font-size: get_vw(14);
@@ -365,11 +572,14 @@
       }
     }
     &.word{
-      width: 100%;
       font-size: get_vw(14);
       font-weight: 500;
+      resize: none;
       @include pc-fluid-size(padding, (25 18));
       @include pc-fluid-size(font-size, (14));
+      @include min-screen{      
+        width: 100%;
+      }
       &::placeholder{
         color: $c_gray;
       }
@@ -388,6 +598,11 @@
     opacity: 0;
     pointer-events: none;
     z-index: 999;
+    @include pc-fluid-size(width, (781));
+    @include pc-fluid-size(padding, (30 34 42 34));
+    @include pc-fluid-size(border-radius, (15));
+    @include pc-fluid-size(top, (80));
+    @include pc-fluid-size(left, (30));
     &.js-show{
       opacity: 1;
       pointer-events: all;
@@ -397,6 +612,48 @@
       font-weight: 400;
       color: $c_black;
       text-align: center;
+      @include min-screen{
+        display: none
+      }
+    }
+    &.date{
+      @include pc-fluid-size(width, (820));
+      @include pc-fluid-size(padding, (38 30 42 30));
+      @include pc-fluid-size(top, (80));
+      @include pc-fluid-size(border-width, (2));
+      @include min-screen{
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+    &.cate{
+      @include pc-fluid-size(width, (357));
+      @include pc-fluid-size(padding, (40 48 36 48));
+      @include pc-fluid-size(top, (80));
+      @include pc-fluid-size(left, (34));
+      @include pc-fluid-size(border-width, (2));
+      & .event__modal-next{
+        @include pc-fluid-size(margin-top, (28));
+      }
+    }
+    &.word{
+      @include pc-fluid-size(width, (1200));
+      @include pc-fluid-size(padding, (25 30 36 45));
+      @include pc-fluid-size(top, (80));
+      @include pc-fluid-size(left, (34));
+      @include pc-fluid-size(border-width, (2));
+      & .event__modal-next{
+        @include pc-fluid-size(margin-top, (-28));
+      }
+    }
+    @include min-screen{
+      position: absolute;
+      height: auto;
+      margin-inline: auto;
+      border: solid;
+      border-color: $c_gray;
+      overflow: visible;
+      @include pc-fluid-size(border-width, (2));
     }
   }
 
@@ -410,16 +667,21 @@
     align-items: center;
     background-color: $c_lightgray;
     border-radius: get_vw(20);
+
+    @include min-screen{
+      display: none;
+    }
   }
 
   &__modal-box{
-    
   }
 
   &__modal-map{
     margin-top: get_vw(40);
     width: 100%;
     position: relative;
+    @include pc-fluid-size(margin-top, (0));
+    @include pc-fluid-size(width, (556));
     & li{
       width: fit-content;
       height: get_vw(30);
@@ -434,29 +696,47 @@
       position: absolute;
       top: 0;
       left: 0;
+      transition: all 0.4s ease;
+      @include pc-fluid-size(height, (50));
+      @include pc-fluid-size(padding, (0 25));
+      @include pc-fluid-size(font-size, (18));
+      @include pc-fluid-size(border-width, (4));
+      @include pc-fluid-size(border-radius, (50));
       &[data-area="area1"]{
         top: get_vw(74);
         left: get_vw(107);
+        @include pc-fluid-size(top, (106));
+        @include pc-fluid-size(left, (180));
       }
       &[data-area="area2"]{
         top: get_vw(160);
         left: get_vw(250);
+        @include pc-fluid-size(top, (240));
+        @include pc-fluid-size(left, (360));
       }
       &[data-area="area3"]{
         top: get_vw(177);
         left: get_vw(107);
+        @include pc-fluid-size(top, (275));
+        @include pc-fluid-size(left, (105));
       }
       &[data-area="area4"]{
         top: get_vw(257);
         left: get_vw(2);
+        @include pc-fluid-size(top, (390));
+        @include pc-fluid-size(left, (20));
       }
       &[data-area="area5"]{
         top: get_vw(297);
         left: get_vw(132);
+        @include pc-fluid-size(top, (475));
+        @include pc-fluid-size(left, (210));
       }
       &[data-area="area6"]{
         top: get_vw(330);
         left: get_vw(203);
+        @include pc-fluid-size(top, (508));
+        @include pc-fluid-size(left, (340));
       }
       &.js-active{
         color: $c_white;
@@ -480,6 +760,34 @@
           background-color: $c_purple;
         }
       }
+      @include min-screen{
+        cursor: pointer;
+        &:hover{
+          border-color: transparent;
+          color: $c_white;
+          &.main{
+            background-color: $c_green;
+          }
+          &.tora{
+            background-color: $c_red;
+          }
+          &.kochi{
+            background-color: $c_blue;
+          }
+          &.wing{
+            background-color: $c_orange;
+          }
+          &.monchi{
+            background-color: $c_pink;
+          }
+          &.iris{
+            background-color: $c_purple;
+          }
+        }
+      }
+    }
+    @include min-screen{
+      margin-inline: auto;
     }
   }
 
@@ -496,6 +804,14 @@
     border: solid get_vw(4) $c_ivory;
     border-radius: get_vw(50);
     @include center;
+    @include pc-fluid-size(width, (154));
+    @include pc-fluid-size(height, (50));
+    @include pc-fluid-size(margin-top, (-42));  
+    @include pc-fluid-size(margin-left, (0));
+    @include pc-fluid-size(padding, (0 15));
+    @include pc-fluid-size(font-size, (18));
+    @include pc-fluid-size(border-width, (4));
+    @include pc-fluid-size(border-radius, (50));
     @include before{
       background-image: url("../img/event/modal_area_icon.png");
       background-size: 100%;
@@ -505,35 +821,31 @@
       top: 50%;
       left: get_vw(-30);
       transform: translateY(-50%);
-    }
-  }
-
-  &__modal-cate{
-    margin-top: get_vw(80);
-    & li{
-      width: 100%;
-      height: get_vw(60);
-      font-size: get_vw(18);
-      font-weight: 400;
-      border-radius: get_vw(50);
-      background-color: $c_lightgray;
-      @include center;
-      &:not(:first-child){
-        margin-top: get_vw(20);
-      }
-      &.js-active{
-        background-color: $c_ivory;
+      @include pc-fluid-size(width, (26));
+      @include pc-fluid-size(height, (26));
+      @include pc-fluid-size(bottom, (56));
+      @include min-screen{
+        top: auto;
+        left: 50%;
+        transform: translateX(-50%);
       }
     }
   }
 
   &__modal-date{
     margin-top:  get_vw(60);
-    &>p{
-      margin-top: get_vw(40);
-      font-size: get_vw(20);
-      font-weight: 400;
-      text-align: center;
+    @include pc-fluid-size(margin-top, (0));
+    &>span{
+    @include pc-fluid-size(width, (98));
+    @include pc-fluid-size(height, (50));
+    @include pc-fluid-size(margin-top, (26));
+    @include pc-fluid-size(font-size, (18));
+    @include pc-fluid-size(border-radius, (50));
+    @include min-screen{
+      margin-inline: auto;
+      background-color: $c_lightgray;
+      @include center;
+    }
     }
   }
   &__date-flex{
@@ -542,16 +854,106 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    @include pc-fluid-size(width, (350));
+    &.mid{
+
+    }
+    &.bot{
+    width: 100%;
+    justify-content: center;
+    @include pc-fluid-size(width, (750));
+    @include pc-fluid-size(margin-top, (-70));
+    @include min-screen{
+      justify-content: space-between;
+    }
+    }
   }
+  &__date-btn{
+    position: relative;
+    @include before{
+      width: get_vw(6);
+      height: get_vw(12);
+      position: absolute;
+      left: get_vw(20);
+      top: 50%;
+      transform: translateY(-50%);
+      background-image: url("../img/event/date_btn.png");
+      background-size: 100% 100%;
+      @include pc-fluid-size(width, (6));
+      @include pc-fluid-size(height, (12));
+      @include pc-fluid-size(left, (20));
+      @include min-screen{
+        cursor: pointer;
+      }
+    }
+    @include after{
+      width: get_vw(6);
+      height: get_vw(12);
+      position: absolute;
+      right: get_vw(20);
+      top: 50%;
+      transform: translateY(-50%) scale(-1);
+      background-image: url("../img/event/date_btn.png");
+      background-size: 100% 100%;
+      @include pc-fluid-size(width, (6));
+      @include pc-fluid-size(height, (12));
+      @include pc-fluid-size(right, (20));
+      @include min-screen{
+        cursor: pointer;
+      }
+    }
+    &.before{
+      @include min-screen{
+        @include after{
+          display: none;
+        }
+      }
+    }
+    &.after{
+      @include before{
+        display: none;
+      }
+    }
+  }
+
+  &__modal-date-cal{
+    &>p{
+      margin-top: get_vw(40);
+      font-size: get_vw(20);
+      font-weight: 400;
+      text-align: center;
+      @include pc-fluid-size(margin-top, (42));
+      @include pc-fluid-size(font-size, (20));
+    }
+
+  }
+
   &__modal-date-start,&__modal-date-end{
     & strong{
       font-size: get_vw(56);
       font-weight: 500;
       color: $c_black;
+      @include pc-fluid-size(font-size, (56));
     }
     & p{
       font-size: get_vw(14);
       font-weight: 500;
+      @include pc-fluid-size(font-size, (14));
+    }
+  }
+  &__modal-date-arrow{
+    position: relative;
+    @include after{
+      background-image: url("../img/event/date_arrow.png");
+      background-size: 100% 100%;
+      width: get_vw(60);
+      height: get_vw(15);
+      position: absolute;
+      top: 55%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      @include pc-fluid-size(width, (60));
+      @include pc-fluid-size(height, (15));
     }
   }
   &__modal-date-show{
@@ -559,9 +961,11 @@
       flex-direction: row;
       column-gap: get_vw(8);
       align-items: center;
+      @include pc-fluid-size(column-gap, (8));
     & div{
       display:flex;
       flex-direction: column;
+      @include pc-fluid-size(row-gap, (5));
     }
   }
   &__modal-date-days,&__modal-date-dates{
@@ -578,24 +982,45 @@
     font-size: get_vw(14);
     font-weight: 400;
     color: $c_orange;
+    @include pc-fluid-size(width, (345));
+    @include pc-fluid-size(margin-top, (40));
+    @include pc-fluid-size(font-size, (14));
   }
 
   &__modal-date-dates{
-    // width: get_vw(350);
     margin-top: get_vw(30);
     margin-inline: auto;
     font-size: get_vw(20);
     font-weight: 400;
     color: $c_black;
     row-gap: get_vw(20);
+    @include pc-fluid-size(margin-top, (20));
+    @include pc-fluid-size(width, (345));
+    @include pc-fluid-size(font-size, (20));
+    @include pc-fluid-size(row-gap, (0));
     & span{
       width: 100%;
       height: 100%;
       aspect-ratio: 1;
       @include center;
+      @include min-screen{
+        cursor: pointer;
+      }
       &.today{
-        border-radius: 50%;
-        border: solid get_vw(2) $c_orange;
+        position: relative;
+        @include before{
+          width: get_vw(40);
+          height: get_vw(40);
+          border-radius: 50%;
+          border: solid get_vw(2) $c_orange;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%,-50%);
+          @include pc-fluid-size(width, (40));
+          @include pc-fluid-size(height, (40));
+          @include pc-fluid-size(border-width, (2));
+        }
       }
       &.disable{
         color: $c_gray;
@@ -647,14 +1072,56 @@
     }
   }
 
+  &__modal-cate{
+    margin-top: get_vw(80);
+    @include pc-fluid-size(margin-top, (0));
+    & li{
+      width: 100%;
+      height: get_vw(60);
+      font-size: get_vw(18);
+      font-weight: 400;
+      border-radius: get_vw(50);
+      background-color: $c_lightgray;
+      transition: all 0.4s ease;
+      @include center;
+      @include pc-fluid-size(height, (50));
+      @include pc-fluid-size(font-size, (18));
+      @include pc-fluid-size(border-radius, (50));
+      @include min-screen{
+        cursor: pointer;
+        &:hover{
+          background-color: $c_ivory;
+        }
+      }
+      &:not(:first-child){
+        margin-top: get_vw(20);
+        @include pc-fluid-size(margin-top, (10));
+      }
+      &.js-active{
+        background-color: $c_ivory;
+      }
+    }
+  }
 
   &__modal-word{
     padding: get_vw(20) get_vw(30);
+    @include pc-fluid-size(padding, (0 0));
     & li{
       padding-left: get_vw(36);
       font-size: get_vw(18);
       font-weight: 400;
       position: relative;
+      @include pc-fluid-size(padding-left, (36));
+      @include pc-fluid-size(font-size, (18));
+      @include min-screen{
+        cursor: pointer;
+        &:hover{
+          color: $c_orange;
+          @include before{
+          background-image: url('../img/event/modal_word_active.png');
+          }
+        }
+      }
       @include before{
         background-image: url('../img/event/modal_word.png');
         background-size: 100%;
@@ -664,9 +1131,12 @@
         top: 50%;
         left: get_vw(0);
         transform: translateY(-50%);
+        @include pc-fluid-size(width, (18));
+        @include pc-fluid-size(height, (17));
       }
       &:not(:first-child){
         margin-top: get_vw(20);
+        @include pc-fluid-size(margin-top, (40));
       }
       &.js-active{
         color: $c_orange;
@@ -705,6 +1175,9 @@
       top: 50%;
       right: get_vw(10);
       transform: translateY(-50%);
+      @include pc-fluid-size(width, (40));
+      @include pc-fluid-size(height, (40));
+      @include pc-fluid-size(right, (6));
     }
   }
 
@@ -716,6 +1189,12 @@
     font-weight: 400;
     text-decoration: underline;
     text-underline-offset: get_vw(4);
+    @include pc-fluid-size(margin-top, (-40));
+    @include pc-fluid-size(font-size, (14));
+    @include pc-fluid-size(text-underline-offset, (4));
+    @include min-screen{
+      margin-inline: auto 0;
+    }
   }
 
   &__modal-close{
@@ -739,6 +1218,9 @@
         top: 50%;
         left: 50%;
       }
+    }
+    @include min-screen{
+      display: none;
     }
   }
 
@@ -777,11 +1259,20 @@
     }
   }
   &__box-item{
+    display: block;
     margin-top: get_vw(40);
     width: 100%;
     border-radius: get_vw(20) get_vw(20) 0 0;
     @include pc-fluid-size(margin-top, (0));
     @include pc-fluid-size(width, (413));
+    @include min-screen{
+      cursor: pointer;
+      &:hover{
+        & img{
+          scale: 1.1;
+        }
+      }
+    }
     &> p{
       margin-top: get_vw(20);
       font-size: get_vw(18);
@@ -824,9 +1315,42 @@
         @include pc-fluid-size(width, (18));
         @include pc-fluid-size(height, (27));
       }
+      &.main{
+        color: $c_green;
+        @include before{
+          background-image: url("../img/common/event_green.png");
+        }
+      }
+      &.tora{
+        color: $c_red;
+      }
+      &.kochi{
+        color: $c_blue;
+        @include before{
+          background-image: url("../img/common/event_blue.png");
+        }
+      }
+      &.wing{
+        color: $c_orange;
+        @include before{
+          background-image: url("../img/common/event_orange.png");
+        }
+      }
       &.monchi{
         color: $c_pink;
+        @include before{
+          background-image: url("../img/common/event_pink.png");
+        }
       }
+      &.iris{
+        color: $c_purple;
+        @include before{
+          background-image: url("../img/common/event_purple.png");
+        }
+      }
+    }
+    & img{    
+      transition: all 0.4s ease;
     }
   }
   &__box-img{
@@ -865,23 +1389,70 @@
     margin-inline: auto;
     width: fit-content;
     display: flex;
+    align-items: center;
+    justify-content: center;
     column-gap: get_vw(10);
     @include pc-fluid-size(margin-top, (80));
     @include pc-fluid-size(column-gap, (10));
     & button{
+      position: relative;
       width: get_vw(40);
       height: get_vw(40);
       background-color: $c_ivory;
       font-size: get_vw(14);
       color: $c_black;
       border-radius: 50%;
+      transition: all 0.4s ease;
       @include center;
       @include pc-fluid-size(width, (40));
       @include pc-fluid-size(height, (40));
       @include pc-fluid-size(font-size, (14));
+      @include min-screen{
+        &:hover{
+          background-color: $c_orange;
+          color: $c_white;
+        }
+      }
       &.active{
         background-color: $c_orange;
         color: $c_white;
+      }
+      &.arrow-next{
+        @include after{
+          background-image: url('../img/event/btn_arrow.png');
+          background-size: 100% 100%;
+          width: get_vw(15);
+          height: get_vw(15);
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%,-50%);
+          @include pc-fluid-size(width, (15));
+          @include pc-fluid-size(height, (15));
+        }
+      }
+      &.arrow-before{
+        @include after{
+          background-image: url('../img/event/btn_arrow.png');
+          background-size: 100% 100%;
+          width: get_vw(15);
+          height: get_vw(15);
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%,-50%) scale(-1);
+          @include pc-fluid-size(width, (15));
+          @include pc-fluid-size(height, (15));
+        }
+      }
+      &.small{
+        width: get_vw(7);
+        height: get_vw(7);
+        @include pc-fluid-size(width, (7));
+        @include pc-fluid-size(height, (7));
+        @include min-screen{
+          pointer-events: none;
+        }
       }
     }
   }

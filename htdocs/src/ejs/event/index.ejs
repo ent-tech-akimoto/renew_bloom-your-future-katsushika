@@ -14,7 +14,7 @@ var myMeta = meta[lang][pageID];
         <p class="common-bread event__bread">
           <span>TOP</span><span>イベント情報</span>
         </p>
-        <h1 class="common__h1 event__h1">イベント</h1>
+        <h1 class="common__h1 event__h1">イベント情報</h1>
         <div class="event__switch">
           <a id="event-calendar" class="event__switch-btn" href=""
             >イベントカレンダー<br class="pc-none">から探す</a
@@ -25,13 +25,15 @@ var myMeta = meta[lang][pageID];
         </div>
         <section class="event__calendar">
           <h2 class="event__h2">イベントカレンダーから探す</h2>
-          <a class="event__btn" href=""> 各月毎のイベントはこちら </a>
+          <a class="event__btn" href="./calendar/">
+            各月毎のイベントはこちら
+          </a>
         </section>
         <section class="event__form">
           <h2 class="event__h2">詳細から探す</h2>
           <form class="event__form-wrapper" action="">
             <div class="event__form-flex area">
-              <label class="event__form-label area" for="eventArea"></label>
+              <div class="event__form-label area"></div>
               <div class="event__form-box area">
                 <span class="event__form-select--area main">メインエリア</span>
                 <span class="event__form-select--area kochi">こち亀エリア</span>
@@ -42,10 +44,10 @@ var myMeta = meta[lang][pageID];
                 <span class="event__form-select--area iris">堀切菖蒲園</span>
                 <span class="event__form-select--area tora">寅さんエリア</span>
               </div>
-              <div class="event__form-modal area">
-                <h5>イベントエリア</h5>
-                <div class="event__modal-flex area">
-                  <label class="event__form-label area" for="eventArea"></label>
+              <div class="event__form-modal area" data-modal="modal1">
+                <h5 class="pc-none">イベントエリア</h5>
+                <div class="event__modal-flex area pc-none">
+                  <div class="event__form-label area"></div>
                   <div class="event__form-box area">
                     <span class="event__form-select--area main"
                       >メインエリア</span
@@ -93,7 +95,7 @@ var myMeta = meta[lang][pageID];
               </div>
             </div>
             <div class="event__form-flex date">
-              <label class="event__form-label date" for="eventDate"></label>
+              <div class="event__form-label date"></div>
               <div class="event__form-box date">
                 <div class="event__date-start">
                   <strong>開始日</strong>
@@ -105,10 +107,10 @@ var myMeta = meta[lang][pageID];
                   <p>2026.10.17</p>
                 </div>
               </div>
-              <div class="event__form-modal date">
-                <h5>日付</h5>
+              <div class="event__form-modal date" data-modal="modal2">
+                <h5 class="pc-none">日付</h5>
                 <div class="event__modal-flex date">
-                  <label class="event__form-label date" for="eventDate"></label>
+                  <div class="event__form-label date"></div>
                   <div class="event__form-box date">
                     <div class="event__date-start">
                       <strong>開始日</strong>
@@ -122,7 +124,7 @@ var myMeta = meta[lang][pageID];
                   </div>
                 </div>
                 <div class="event__modal-date">
-                  <div class="event__date-flex">
+                  <div class="event__date-flex top">
                     <div class="event__modal-date-start">
                       <p>開始日</p>
                       <div class="event__modal-date-show">
@@ -145,45 +147,92 @@ var myMeta = meta[lang][pageID];
                       </div>
                     </div>
                   </div>
-                  <p class="">2026年10月</p>
-                  <div class="event__modal-date-days">
-                    <span>日</span>
-                    <span>月</span>
-                    <span>火</span>
-                    <span>水</span>
-                    <span>木</span>
-                    <span>金</span>
-                    <span>土</span>
-                  </div>
-                  <div class="event__modal-date-dates">
-                    <span>1</span>
-                    <span>2</span>
-                    <span>3</span>
-                    <span>4</span>
-                    <span>5</span>
-                    <span>6</span>
-                    <span>7</span>
-                    <span>8</span>
-                    <span>9</span>
-                    <span>10</span>
-                    <span>11</span>
-                    <span class="today">12</span>
-                    <span>13</span>
-                    <span>14</span>
-                    <span class="range-start">15</span>
-                    <span class="in-range">16</span>
-                    <span class="range-end">17</span>
-                    <span>18</span>
-                    <span>19</span>
-                    <span>20</span>
-                    <span>21</span>
-                    <span class="disable">22</span>
-                    <span class="disable">23</span>
-                    <span class="disable">24</span>
-                    <span class="disable">25</span>
-                    <span class="disable">26</span>
-                    <span class="disable">27</span>
-                    <span class="disable">28</span>
+                  <span class="sp-none">本日</span>
+                  <div class="event__date-flex bot">
+                    <div class="event__modal-date-cal left">
+                      <p class="event__date-btn before">2026年10月</p>
+                      <div class="event__modal-date-days">
+                        <span>日</span>
+                        <span>月</span>
+                        <span>火</span>
+                        <span>水</span>
+                        <span>木</span>
+                        <span>金</span>
+                        <span>土</span>
+                      </div>
+                      <div class="event__modal-date-dates">
+                        <span>1</span>
+                        <span>2</span>
+                        <span>3</span>
+                        <span>4</span>
+                        <span>5</span>
+                        <span>6</span>
+                        <span>7</span>
+                        <span>8</span>
+                        <span>9</span>
+                        <span>10</span>
+                        <span>11</span>
+                        <span class="today">12</span>
+                        <span>13</span>
+                        <span>14</span>
+                        <span class="range-start">15</span>
+                        <span class="in-range">16</span>
+                        <span class="range-end">17</span>
+                        <span>18</span>
+                        <span>19</span>
+                        <span>20</span>
+                        <span>21</span>
+                        <span class="disable">22</span>
+                        <span class="disable">23</span>
+                        <span class="disable">24</span>
+                        <span class="disable">25</span>
+                        <span class="disable">26</span>
+                        <span class="disable">27</span>
+                        <span class="disable">28</span>
+                      </div>
+                    </div>
+                    <div class="event__modal-date-cal right sp-none">
+                      <p class="event__date-btn after">2026年11月</p>
+                      <div class="event__modal-date-days">
+                        <span>日</span>
+                        <span>月</span>
+                        <span>火</span>
+                        <span>水</span>
+                        <span>木</span>
+                        <span>金</span>
+                        <span>土</span>
+                      </div>
+                      <div class="event__modal-date-dates">
+                        <span>1</span>
+                        <span>2</span>
+                        <span>3</span>
+                        <span>4</span>
+                        <span>5</span>
+                        <span>6</span>
+                        <span>7</span>
+                        <span>8</span>
+                        <span>9</span>
+                        <span>10</span>
+                        <span>11</span>
+                        <span class="today">12</span>
+                        <span>13</span>
+                        <span>14</span>
+                        <span class="range-start">15</span>
+                        <span class="in-range">16</span>
+                        <span class="range-end">17</span>
+                        <span>18</span>
+                        <span>19</span>
+                        <span>20</span>
+                        <span>21</span>
+                        <span class="disable">22</span>
+                        <span class="disable">23</span>
+                        <span class="disable">24</span>
+                        <span class="disable">25</span>
+                        <span class="disable">26</span>
+                        <span class="disable">27</span>
+                        <span class="disable">28</span>
+                      </div>
+                    </div>
                   </div>
                 </div>
                 <button class="event__modal-btn">検索する</button>
@@ -195,14 +244,14 @@ var myMeta = meta[lang][pageID];
               </div>
             </div>
             <div class="event__form-flex cate">
-              <label class="event__form-label cate" for="eventCat"></label>
+              <div class="event__form-label cate"></div>
               <div class="event__form-box cate">
                 <span class="event__form-select">カテゴリー</span>
               </div>
-              <div class="event__form-modal cate">
-                <h5>カテゴリー</h5>
+              <div class="event__form-modal cate" data-modal="modal3">
+                <h5 cla>カテゴリー</h5>
                 <div class="event__modal-flex cate">
-                  <label class="event__form-label cate" for="eventCat"></label>
+                  <div class="event__form-label cate"></div>
                   <div class="event__form-box cate">
                     <span class="event__form-select">見る</span>
                   </div>
@@ -223,16 +272,17 @@ var myMeta = meta[lang][pageID];
               </div>
             </div>
             <div class="event__form-flex word">
-              <label class="event__form-label word" for="eventWord"></label>
+              <div class="event__form-label word" for="eventWord"></div>
               <textarea
                 class="event__form-box word"
                 placeholder="フリーワード"
                 rows="1"
+                name="eventWord"
               ></textarea>
-              <div class="event__form-modal word">
+              <div class="event__form-modal word" data-modal="modal4">
                 <h5>フリーワード</h5>
                 <div class="event__modal-flex word">
-                  <label class="event__form-label word" for="eventWord"></label>
+                  <div class="event__form-label word" for="eventWord"></div>
                   <textarea
                     class="event__form-box word"
                     placeholder="フリーワード"
@@ -257,166 +307,189 @@ var myMeta = meta[lang][pageID];
         <section class="event__box">
           <h3 class="event__h3">検索結果<span>15</span>件</h3>
           <ul class="event__box-list">
-            <li class="event__box-item">
-              <div class="event__box-img">
-                <img
-                  src="<%= relative_path %>assets/img/event/thumb/1.png"
-                  alt=""
-                >
-              </div>
-              <p class="event__box-date">2026年 5月16日（火）16：00〜</p>
-              <h4 class="event__box-ttl">
-                葛飾で咲いているお花を使って、オリジナル石鹸作り体験ができます
-              </h4>
-              <div class="event__box-cat">
-                <span>#カテゴリー</span><span>#カテゴリー</span
-                ><span>#カテゴリー</span>
-              </div>
-              <span class="monchi">モンチッチエリア</span>
+            <li>
+              <a class="event__box-item" href="">
+                <div class="event__box-img">
+                  <img
+                    src="<%= relative_path %>assets/img/event/thumb/1.png"
+                    alt=""
+                  >
+                </div>
+                <p class="event__box-date">2026年 5月16日（火）16：00〜</p>
+                <h4 class="event__box-ttl">
+                  葛飾で咲いているお花を使って、オリジナル石鹸作り体験ができます
+                </h4>
+                <div class="event__box-cat">
+                  <span>#カテゴリー</span><span>#カテゴリー</span
+                  ><span>#カテゴリー</span>
+                </div>
+                <span class="main">メインエリア</span>
+              </a>
             </li>
-            <li class="event__box-item">
-              <div class="event__box-img">
-                <img
-                  src="<%= relative_path %>assets/img/event/thumb/1.png"
-                  alt=""
-                >
-              </div>
-              <p class="event__box-date">2026年 5月16日（火）16：00〜</p>
-              <h4 class="event__box-ttl">
-                葛飾で咲いているお花を使って、オリジナル石鹸作り体験ができます
-              </h4>
-              <div class="event__box-cat">
-                <span>#カテゴリー</span><span>#カテゴリー</span
-                ><span>#カテゴリー</span>
-              </div>
-              <span class="monchi">モンチッチエリア</span>
+            <li>
+              <a class="event__box-item" href="">
+                <div class="event__box-img">
+                  <img
+                    src="<%= relative_path %>assets/img/event/thumb/1.png"
+                    alt=""
+                  >
+                </div>
+                <p class="event__box-date">2026年 5月16日（火）16：00〜</p>
+                <h4 class="event__box-ttl">
+                  葛飾で咲いているお花を使って、オリジナル石鹸作り体験ができます
+                </h4>
+                <div class="event__box-cat">
+                  <span>#カテゴリー</span><span>#カテゴリー</span
+                  ><span>#カテゴリー</span>
+                </div>
+                <span class="main">メインエリア</span>
+              </a>
             </li>
-            <li class="event__box-item">
-              <div class="event__box-img">
-                <img
-                  src="<%= relative_path %>assets/img/event/thumb/1.png"
-                  alt=""
-                >
-              </div>
-              <p class="event__box-date">2026年 5月16日（火）16：00〜</p>
-              <h4 class="event__box-ttl">
-                葛飾で咲いているお花を使って、オリジナル石鹸作り体験ができます
-              </h4>
-              <div class="event__box-cat">
-                <span>#カテゴリー</span><span>#カテゴリー</span
-                ><span>#カテゴリー</span><span>#カテゴリー</span
-                ><span>#カテゴリー</span><span>#カテゴリー</span
-                ><span>#カテゴリー</span><span>#カテゴリー</span
-                ><span>#カテゴリー</span>
-              </div>
-              <span class="monchi">モンチッチエリア</span>
+            <li>
+              <a class="event__box-item" href="">
+                <div class="event__box-img">
+                  <img
+                    src="<%= relative_path %>assets/img/event/thumb/1.png"
+                    alt=""
+                  >
+                </div>
+                <p class="event__box-date">2026年 5月16日（火）16：00〜</p>
+                <h4 class="event__box-ttl">
+                  葛飾で咲いているお花を使って、オリジナル石鹸作り体験ができます
+                </h4>
+                <div class="event__box-cat">
+                  <span>#カテゴリー</span><span>#カテゴリー</span
+                  ><span>#カテゴリー</span><span>#カテゴリー</span
+                  ><span>#カテゴリー</span><span>#カテゴリー</span
+                  ><span>#カテゴリー</span><span>#カテゴリー</span
+                  ><span>#カテゴリー</span>
+                </div>
+                <span class="kochi">こち亀エリア</span>
+              </a>
             </li>
-            <li class="event__box-item">
-              <div class="event__box-img">
-                <img
-                  src="<%= relative_path %>assets/img/event/thumb/1.png"
-                  alt=""
-                >
-              </div>
-              <p class="event__box-date">2026年 5月16日（火）16：00〜</p>
-              <h4 class="event__box-ttl">
-                葛飾で咲いているお花を使って、オリジナル石鹸作り体験ができます
-              </h4>
-              <div class="event__box-cat">
-                <span>#カテゴリー</span><span>#カテゴリー</span
-                ><span>#カテゴリー</span>
-              </div>
-              <span class="monchi">モンチッチエリア</span>
+            <li>
+              <a class="event__box-item" href="">
+                <div class="event__box-img">
+                  <img
+                    src="<%= relative_path %>assets/img/event/thumb/1.png"
+                    alt=""
+                  >
+                </div>
+                <p class="event__box-date">2026年 5月16日（火）16：00〜</p>
+                <h4 class="event__box-ttl">
+                  葛飾で咲いているお花を使って、オリジナル石鹸作り体験ができます
+                </h4>
+                <div class="event__box-cat">
+                  <span>#カテゴリー</span><span>#カテゴリー</span
+                  ><span>#カテゴリー</span>
+                </div>
+                <span class="kochi">こち亀エリア</span>
+              </a>
             </li>
-            <li class="event__box-item">
-              <div class="event__box-img">
-                <img
-                  src="<%= relative_path %>assets/img/event/thumb/1.png"
-                  alt=""
-                >
-              </div>
-              <p class="event__box-date">2026年 5月16日（火）16：00〜</p>
-              <h4 class="event__box-ttl">
-                葛飾で咲いているお花を使って、オリジナル石鹸作り体験ができます
-              </h4>
-              <div class="event__box-cat">
-                <span>#カテゴリー</span><span>#カテゴリー</span
-                ><span>#カテゴリー</span>
-              </div>
-              <span class="monchi">モンチッチエリア</span>
+            <li>
+              <a class="event__box-item" href="">
+                <div class="event__box-img">
+                  <img
+                    src="<%= relative_path %>assets/img/event/thumb/1.png"
+                    alt=""
+                  >
+                </div>
+                <p class="event__box-date">2026年 5月16日（火）16：00〜</p>
+                <h4 class="event__box-ttl">
+                  葛飾で咲いているお花を使って、オリジナル石鹸作り体験ができます
+                </h4>
+                <div class="event__box-cat">
+                  <span>#カテゴリー</span><span>#カテゴリー</span
+                  ><span>#カテゴリー</span>
+                </div>
+                <span class="monchi">モンチッチエリア</span>
+              </a>
             </li>
-            <li class="event__box-item">
-              <div class="event__box-img">
-                <img
-                  src="<%= relative_path %>assets/img/event/thumb/1.png"
-                  alt=""
-                >
-              </div>
-              <p class="event__box-date">2026年 5月16日（火）16：00〜</p>
-              <h4 class="event__box-ttl">
-                葛飾で咲いているお花を使って、オリジナル石鹸作り体験ができます
-              </h4>
-              <div class="event__box-cat">
-                <span>#カテゴリー</span><span>#カテゴリー</span
-                ><span>#カテゴリー</span>
-              </div>
-              <span class="monchi">モンチッチエリア</span>
+            <li>
+              <a class="event__box-item" href="">
+                <div class="event__box-img">
+                  <img
+                    src="<%= relative_path %>assets/img/event/thumb/1.png"
+                    alt=""
+                  >
+                </div>
+                <p class="event__box-date">2026年 5月16日（火）16：00〜</p>
+                <h4 class="event__box-ttl">
+                  葛飾で咲いているお花を使って、オリジナル石鹸作り体験ができます
+                </h4>
+                <div class="event__box-cat">
+                  <span>#カテゴリー</span><span>#カテゴリー</span
+                  ><span>#カテゴリー</span>
+                </div>
+                <span class="monchi">モンチッチエリア</span>
+              </a>
             </li>
-            <li class="event__box-item">
-              <div class="event__box-img">
-                <img
-                  src="<%= relative_path %>assets/img/event/thumb/1.png"
-                  alt=""
-                >
-              </div>
-              <p class="event__box-date">2026年 5月16日（火）16：00〜</p>
-              <h4 class="event__box-ttl">
-                葛飾で咲いているお花を使って、オリジナル石鹸作り体験ができます
-              </h4>
-              <div class="event__box-cat">
-                <span>#カテゴリー</span><span>#カテゴリー</span
-                ><span>#カテゴリー</span>
-              </div>
-              <span class="monchi">モンチッチエリア</span>
+            <li>
+              <a class="event__box-item" href="">
+                <div class="event__box-img">
+                  <img
+                    src="<%= relative_path %>assets/img/event/thumb/1.png"
+                    alt=""
+                  >
+                </div>
+                <p class="event__box-date">2026年 5月16日（火）16：00〜</p>
+                <h4 class="event__box-ttl">
+                  葛飾で咲いているお花を使って、オリジナル石鹸作り体験ができます
+                </h4>
+                <div class="event__box-cat">
+                  <span>#カテゴリー</span><span>#カテゴリー</span
+                  ><span>#カテゴリー</span>
+                </div>
+                <span class="wing">翼エリア</span>
+              </a>
             </li>
-            <li class="event__box-item">
-              <div class="event__box-img">
-                <img
-                  src="<%= relative_path %>assets/img/event/thumb/1.png"
-                  alt=""
-                >
-              </div>
-              <p class="event__box-date">2026年 5月16日（火）16：00〜</p>
-              <h4 class="event__box-ttl">
-                葛飾で咲いているお花を使って、オリジナル石鹸作り体験ができます
-              </h4>
-              <div class="event__box-cat">
-                <span>#カテゴリー</span><span>#カテゴリー</span
-                ><span>#カテゴリー</span>
-              </div>
-              <span class="monchi">モンチッチエリア</span>
+            <li>
+              <a class="event__box-item" href="">
+                <div class="event__box-img">
+                  <img
+                    src="<%= relative_path %>assets/img/event/thumb/1.png"
+                    alt=""
+                  >
+                </div>
+                <p class="event__box-date">2026年 5月16日（火）16：00〜</p>
+                <h4 class="event__box-ttl">
+                  葛飾で咲いているお花を使って、オリジナル石鹸作り体験ができます
+                </h4>
+                <div class="event__box-cat">
+                  <span>#カテゴリー</span><span>#カテゴリー</span
+                  ><span>#カテゴリー</span>
+                </div>
+                <span class="wing">翼エリア</span>
+              </a>
             </li>
-            <li class="event__box-item">
-              <div class="event__box-img">
-                <img
-                  src="<%= relative_path %>assets/img/event/thumb/1.png"
-                  alt=""
-                >
-              </div>
-              <p class="event__box-date">2026年 5月16日（火）16：00〜</p>
-              <h4 class="event__box-ttl">
-                葛飾で咲いているお花を使って、オリジナル石鹸作り体験ができます
-              </h4>
-              <div class="event__box-cat">
-                <span>#カテゴリー</span><span>#カテゴリー</span
-                ><span>#カテゴリー</span>
-              </div>
-              <span class="monchi">モンチッチエリア</span>
+            <li>
+              <a class="event__box-item" href="">
+                <div class="event__box-img">
+                  <img
+                    src="<%= relative_path %>assets/img/event/thumb/1.png"
+                    alt=""
+                  >
+                </div>
+                <p class="event__box-date">2026年 5月16日（火）16：00〜</p>
+                <h4 class="event__box-ttl">
+                  葛飾で咲いているお花を使って、オリジナル石鹸作り体験ができます
+                </h4>
+                <div class="event__box-cat">
+                  <span>#カテゴリー</span><span>#カテゴリー</span
+                  ><span>#カテゴリー</span>
+                </div>
+                <span class="iris">堀切菖蒲園</span>
+              </a>
             </li>
           </ul>
           <div class="event__pagination">
             <button class="active">1</button>
             <button>2</button>
+            <button>3</button>
+            <button class="small"></button>
+            <button class="small"></button>
+            <button class="small"></button>
+            <button class="arrow-next"></button>
           </div>
         </section>
       </article>
