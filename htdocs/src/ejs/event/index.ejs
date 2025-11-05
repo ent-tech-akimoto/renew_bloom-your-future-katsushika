@@ -33,6 +33,7 @@ var myMeta = meta[lang][pageID];
           <h2 class="event__h2">詳細から探す</h2>
           <form class="event__form-wrapper" action="">
             <div class="event__form-flex area">
+              <input type="hidden" name="area" id="areaInput">
               <div class="event__form-label area"></div>
               <div class="event__form-box area">
                 <span class="event__form-select--area main">メインエリア</span>
@@ -49,20 +50,26 @@ var myMeta = meta[lang][pageID];
                 <div class="event__modal-flex area pc-none">
                   <div class="event__form-label area"></div>
                   <div class="event__form-box area in-modal">
-                    <span class="event__form-select--area main"
+                    <span class="event__form-select--area main" data-area="main"
                       >メインエリア</span
                     >
-                    <span class="event__form-select--area kochi"
+                    <span
+                      class="event__form-select--area kochi"
+                      data-area="kochi"
                       >こち亀エリア</span
                     >
-                    <span class="event__form-select--area monchi"
+                    <span
+                      class="event__form-select--area monchi"
+                      data-area="monchi"
                       >モンチッチエリア</span
                     >
-                    <span class="event__form-select--area wing">翼エリア</span>
-                    <span class="event__form-select--area iris"
+                    <span class="event__form-select--area wing" data-area="wing"
+                      >翼エリア</span
+                    >
+                    <span class="event__form-select--area iris" data-area="iris"
                       >堀切菖蒲園</span
                     >
-                    <span class="event__form-select--area tora"
+                    <span class="event__form-select--area tora" data-area="tora"
                       >寅さんエリア</span
                     >
                   </div>
@@ -85,16 +92,21 @@ var myMeta = meta[lang][pageID];
                     <li class="monchi" data-area="area6">モンチッチエリア</li>
                   </ul>
                 </div>
-                <button class="event__modal-map-btn">現在地付近</button>
-                <button class="event__modal-btn">検索する</button>
-                <button class="event__modal-next">スキップする＞</button>
-                <button class="event__modal-close">
+                <button class="event__modal-map-btn" type="button">
+                  現在地付近
+                </button>
+                <button class="event__modal-btn" type="submit">検索する</button>
+                <button class="event__modal-next" type="button">
+                  スキップする＞
+                </button>
+                <button class="event__modal-close" type="button">
                   <span></span>
                   <span></span>
                 </button>
               </div>
             </div>
             <div class="event__form-flex date">
+              <input type="hidden" name="date" id="dateInput">
               <div class="event__form-label date"></div>
               <div class="event__form-box date">
                 <div class="event__date-start">
@@ -148,11 +160,18 @@ var myMeta = meta[lang][pageID];
                     </div>
                   </div>
                   <div class="event__date-flex bot">
-                    <span class="sp-none">本日</span>
+                    <button class="sp-none" type="button">本日</button>
                     <div class="event__modal-date-cal left">
                       <div class="event__date-control before">
-                        <button class="event__date-btn before"></button>
+                        <button
+                          class="event__date-btn before"
+                          type="button"
+                        ></button>
                         <p class="">2026年10月</p>
+                        <button
+                          class="event__date-btn after"
+                          type="button"
+                        ></button>
                       </div>
                       <div class="event__modal-date-days">
                         <span>日</span>
@@ -195,7 +214,17 @@ var myMeta = meta[lang][pageID];
                       </div>
                     </div>
                     <div class="event__modal-date-cal right sp-none">
-                      <p class="event__date-btn after">2026年11月</p>
+                      <div class="event__date-control after">
+                        <button
+                          class="event__date-btn before"
+                          type="button"
+                        ></button>
+                        <p>2026年11月</p>
+                        <button
+                          class="event__date-btn after"
+                          type="button"
+                        ></button>
+                      </div>
                       <div class="event__modal-date-days">
                         <span>日</span>
                         <span>月</span>
@@ -238,15 +267,18 @@ var myMeta = meta[lang][pageID];
                     </div>
                   </div>
                 </div>
-                <button class="event__modal-btn">検索する</button>
-                <button class="event__modal-next">スキップする＞</button>
-                <button class="event__modal-close">
+                <button class="event__modal-btn" type="submit">検索する</button>
+                <button class="event__modal-next" type="button">
+                  スキップする＞
+                </button>
+                <button class="event__modal-close" type="button">
                   <span></span>
                   <span></span>
                 </button>
               </div>
             </div>
             <div class="event__form-flex cate">
+              <input type="hidden" name="cate" id="cateInput">
               <div class="event__form-label cate"></div>
               <div class="event__form-box cate">
                 <span class="event__form-select">カテゴリー</span>
@@ -266,16 +298,19 @@ var myMeta = meta[lang][pageID];
                   <li class="">学ぶ</li>
                   <li class="">遊ぶ</li>
                 </ul>
-                <button class="event__modal-btn">検索する</button>
-                <button class="event__modal-next">スキップする＞</button>
-                <button class="event__modal-close">
+                <button class="event__modal-btn" type="submit">検索する</button>
+                <button class="event__modal-next" type="button">
+                  スキップする＞
+                </button>
+                <button class="event__modal-close" type="button">
                   <span></span>
                   <span></span>
                 </button>
               </div>
             </div>
             <div class="event__form-flex word">
-              <div class="event__form-label word" for="eventWord"></div>
+              <input type="hidden" name="word" id="wordInput">
+              <div class="event__form-label word"></div>
               <textarea
                 class="event__form-box word"
                 placeholder="フリーワード"
@@ -285,10 +320,7 @@ var myMeta = meta[lang][pageID];
               <div class="event__form-modal word" data-modal="modal4">
                 <h5>フリーワード</h5>
                 <div class="event__modal-flex word">
-                  <div
-                    class="event__form-label word in-modal"
-                    for="eventWord"
-                  ></div>
+                  <div class="event__form-label word in-modal"></div>
                   <textarea
                     class="event__form-box word"
                     placeholder="フリーワード"
@@ -300,9 +332,11 @@ var myMeta = meta[lang][pageID];
                   <li class="">フラワーフォトコンクール</li>
                   <li class="">フラワーロードフェア</li>
                 </ul>
-                <button class="event__modal-btn">検索する</button>
-                <button class="event__modal-next">スキップする＞</button>
-                <button class="event__modal-close">
+                <button class="event__modal-btn" type="submit">検索する</button>
+                <button class="event__modal-next" type="button">
+                  スキップする＞
+                </button>
+                <button class="event__modal-close" type="button">
                   <span></span>
                   <span></span>
                 </button>
@@ -489,13 +523,13 @@ var myMeta = meta[lang][pageID];
             </li>
           </ul>
           <div class="event__pagination">
-            <button class="active">1</button>
-            <button>2</button>
-            <button>3</button>
-            <button class="small"></button>
-            <button class="small"></button>
-            <button class="small"></button>
-            <button class="arrow-next"></button>
+            <button class="active" type="button">1</button>
+            <button type="button">2</button>
+            <button type="button">3</button>
+            <button class="small" type="button"></button>
+            <button class="small" type="button"></button>
+            <button class="small" type="button"></button>
+            <button class="arrow-next" type="button"></button>
           </div>
         </section>
       </article>
