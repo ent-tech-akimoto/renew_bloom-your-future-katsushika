@@ -30,7 +30,7 @@
         @include pc-fluid-bg-size(1440, auto);
         @include pc-fluid-size(margin-top, (-320));
         @include pc-fluid-size(padding-top, (169));
-        @include pc-fluid-size(padding-bottom, (363));
+        @include pc-fluid-size(padding-bottom, (1463));
         @include min-screen{
           background-image: url('../img/top/bg_pink_pc.png');
           background-size: 3838px auto;
@@ -45,7 +45,7 @@
         background-position: center top;
         background-repeat: no-repeat;
         @include pc-fluid-bg-size(1440, auto);
-        @include pc-fluid-size(margin-top, (-445));
+        @include pc-fluid-size(margin-top, (-1545));
         @include pc-fluid-size(padding-top, (220));
         @include pc-fluid-size(padding-bottom, (1000));
         @include min-screen{
