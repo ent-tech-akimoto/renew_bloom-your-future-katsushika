@@ -596,6 +596,7 @@
     left: 0;
     background-color: $c_white;
     opacity: 0;
+    transition: all 0.4s ease;
     pointer-events: none;
     z-index: 999;
     @include pc-fluid-size(width, (781));
@@ -603,10 +604,7 @@
     @include pc-fluid-size(border-radius, (15));
     @include pc-fluid-size(top, (80));
     @include pc-fluid-size(left, (30));
-    &.js-show{
-      opacity: 1;
-      pointer-events: all;
-    }
+    @include pc-fluid-size(border-width, (2));
     & h5{
       font-size: get_vw(20);
       font-weight: 400;
@@ -652,8 +650,11 @@
       margin-inline: auto;
       border: solid;
       border-color: $c_gray;
-      overflow: visible;
-      @include pc-fluid-size(border-width, (2));
+      overflow: hidden;
+    }
+    &.js-show{
+      opacity: 1;
+      pointer-events: all;
     }
   }
 
@@ -835,20 +836,9 @@
   &__modal-date{
     margin-top:  get_vw(60);
     @include pc-fluid-size(margin-top, (0));
-    &>span{
-    @include pc-fluid-size(width, (98));
-    @include pc-fluid-size(height, (50));
-    @include pc-fluid-size(margin-top, (26));
-    @include pc-fluid-size(font-size, (18));
-    @include pc-fluid-size(border-radius, (50));
-    @include min-screen{
-      margin-inline: auto;
-      background-color: $c_lightgray;
-      @include center;
-    }
-    }
   }
   &__date-flex{
+    position: relative;
     width: get_vw(316);
     margin-inline: auto;
     display: flex;
@@ -859,13 +849,28 @@
 
     }
     &.bot{
-    width: 100%;
-    justify-content: center;
-    @include pc-fluid-size(width, (750));
-    @include pc-fluid-size(margin-top, (-70));
-    @include min-screen{
-      justify-content: space-between;
+      width: 100%;
+      justify-content: center;
+      @include pc-fluid-size(width, (750));
+      @include pc-fluid-size(margin-top, (0));
+      @include min-screen{
+        justify-content: space-between;
+      }
     }
+    &>span{
+      @include pc-fluid-size(width, (98));
+      @include pc-fluid-size(height, (50));
+      @include pc-fluid-size(margin-top, (26));
+      @include pc-fluid-size(font-size, (18));
+      @include pc-fluid-size(border-radius, (50));
+      @include min-screen{
+        margin-inline: auto;
+        background-color: $c_lightgray;
+        @include center;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+      }
     }
   }
   &__date-btn{
@@ -917,7 +922,7 @@
   }
 
   &__modal-date-cal{
-    &>p{
+    & p{
       margin-top: get_vw(40);
       font-size: get_vw(20);
       font-weight: 400;
@@ -925,7 +930,6 @@
       @include pc-fluid-size(margin-top, (42));
       @include pc-fluid-size(font-size, (20));
     }
-
   }
 
   &__modal-date-start,&__modal-date-end{
@@ -1202,6 +1206,10 @@
     position: relative;
     margin-top: get_vw(72);
     margin-inline: auto;
+    width: get_vw(20);
+    height: get_vw(20);
+    @include pc-fluid-size(width, (20));
+    @include pc-fluid-size(height, (20));
     & span{
       display: block;
       width: get_vw(28);
