@@ -11,3 +11,10 @@ window.addEventListener('scroll', function () {
     }
   });
 });
+
+document.getElementById('pageTop').addEventListener('click', () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  });
+});

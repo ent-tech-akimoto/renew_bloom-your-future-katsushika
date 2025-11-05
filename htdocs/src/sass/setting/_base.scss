@@ -34,6 +34,7 @@ body {
 
 body {
   width: 100%;
+  overflow-x: hidden;
 }
 
 a {
@@ -67,6 +68,10 @@ picture {
   height: auto;
   pointer-events: none;
   vertical-align: bottom;
+}
+
+a {
+  color: var.$common_font;
 }
 
 // pc非表示

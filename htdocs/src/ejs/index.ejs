@@ -7,7 +7,6 @@ var myMeta = meta[lang][pageID];
 <!DOCTYPE html>
 <html lang="<%= lang %>">
   <%-include(`${relative_path}_partial/_head`,{lang:lang,pageID:pageID,relative_path:relative_path})%>
-
   <body>
     <%- include(`${relative_path}_partial/_body-after`,{lang:lang,pageID:pageID,relative_path:relative_path})%>
     <div class="page">
