@@ -45,13 +45,13 @@
         background-position: center top;
         background-repeat: no-repeat;
         @include pc-fluid-bg-size(1440, auto);
-        @include pc-fluid-size(margin-top, (-430));
-        @include pc-fluid-size(padding-top, (169));
+        @include pc-fluid-size(margin-top, (-445));
+        @include pc-fluid-size(padding-top, (220));
         @include pc-fluid-size(padding-bottom, (1000));
         @include min-screen{
           background-image: url('../img/top/bg_orange_pc.png');
-          background-size: 2999px auto;
-          background-position: calc(50% + -110px) 0px;
+          background-size: 3229px auto;
+          background-position: calc(50% + -130px) 0px;
         }
       }
       &.blue{
@@ -63,13 +63,13 @@
         background-position: center top;
         background-repeat: no-repeat;
         @include pc-fluid-bg-size(1440, auto);
-        @include pc-fluid-size(margin-top, (-1410));
-        @include pc-fluid-size(padding-top, (169));
+        @include pc-fluid-size(margin-top, (-1430));
+        @include pc-fluid-size(padding-top, (180));
         @include pc-fluid-size(padding-bottom, (163));
         @include min-screen{
           background-image: url('../img/top/bg_blue_pc.png');
-          background-size: 3892px auto;
-          background-position: calc(50% + 0px) 0px;
+          background-size: 4388px auto;
+          background-position: calc(50% + -50px) 0px;
         }
       }
     }
