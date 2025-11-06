@@ -2,20 +2,18 @@
 /*
 Template Name: Event Calendar
 */
+$slug = 'event';
 get_header();
 
 // 現在の年月をGETから取得。なければ現在
 $year  = isset($_GET['y'])  ? (int) $_GET['y']  : (int) current_time('Y');
 $month = isset($_GET['mo']) ? (int) $_GET['mo'] : (int) current_time('m');
-// エリア（main / kochi / monchi / wing / iris / tora を想定）
+// エリア（main / kochi / monchi / wing / iris / tora）
 $area  = isset($_GET['area']) ? sanitize_text_field($_GET['area']) : '';
-
 $base_url = get_permalink();
-
 // 当月の1日と末日
 $start_of_month = sprintf('%04d-%02d-01', $year, $month);
 $end_of_month   = date('Y-m-t', strtotime($start_of_month));
-
 // クエリを組む
 $meta_query = array(
   'relation' => 'AND',
@@ -60,11 +58,9 @@ $event_query  = new WP_Query( $args );
 $found_posts  = $event_query->found_posts;
 $current_page = $args['paged'];
 $total_pages  = $event_query->max_num_pages;
-
 // 前月・次月のためのタイムスタンプ
 $prev_ts = strtotime('-1 month', strtotime($start_of_month));
 $next_ts = strtotime('+1 month', strtotime($start_of_month));
-
 // 前月・次月のURLを作る
 $prev_url = add_query_arg(
   array(
@@ -89,8 +85,6 @@ $next_url = add_query_arg(
     <span>TOP</span><span>イベント情報</span>
   </p>
   <h1 class="common__h1 event__h1">イベント情報</h1>
-
-  <!-- カレンダー上部（年月＋エリア） -->
   <section class="event__calendar-search">
     <div class="event__calendar-flex top">
       <p class="before">
@@ -103,13 +97,9 @@ $next_url = add_query_arg(
           href="<?php echo esc_url( $next_url ); ?>"><?php echo esc_html( (int)date('n', $next_ts) ); ?>月/<?php echo esc_html( date('Y', $next_ts) ); ?>＞</a>
       </p>
     </div>
-
-    <!-- SP用エリア選択（見た目はそのまま、クリックでGETさせる前提） -->
     <div class="event__calendar-flex bot pc-none">
       <div class="event__calendar-label"></div>
       <div class="event__calendar-box">
-        <!-- クリックされたときに location.href で ?area=... を付けるか、
-             下に小さいformを置いてsubmitするJSを足してください -->
         <span class="event__calendar-select--area main<?php if($area==='main') echo ' js-active'; ?>"
           data-area="main">メインエリア</span>
         <span class="event__calendar-select--area kochi<?php if($area==='kochi') echo ' js-active'; ?>"
@@ -123,8 +113,6 @@ $next_url = add_query_arg(
         <span class="event__calendar-select--area tora<?php if($area==='tora') echo ' js-active'; ?>"
           data-area="tora">寅さんエリア</span>
       </div>
-
-      <!-- モーダルは元コードをほぼそのまま。中にある span にも data-area をつけておくと同じJSで使えます -->
       <div class="event__form-modal area" data-modal="modal1">
         <h5 class="pc-none">イベントエリア</h5>
         <div class="event__modal-flex area pc-none">
@@ -160,16 +148,12 @@ $next_url = add_query_arg(
         </button>
       </div>
     </div>
-
-    <!-- 実際にエリアを送るための最小フォーム（JSで使ってOK） -->
     <form id="event-calendar-filter" action="<?php echo esc_url( $base_url ); ?>" method="get" style="display:none;">
       <input type="hidden" name="y" value="<?php echo esc_attr($year); ?>">
       <input type="hidden" name="mo" value="<?php echo esc_attr(sprintf('%02d', $month)); ?>">
       <input type="hidden" name="area" value="<?php echo esc_attr($area); ?>" class="js-calendar-area">
     </form>
   </section>
-
-  <!-- 検索結果 -->
   <section class="event__box">
     <h3 class="event__h3">検索結果<span><?php echo esc_html( $found_posts ); ?></span>件</h3>
     <ul class="event__box-list">
@@ -184,14 +168,11 @@ $next_url = add_query_arg(
               $area_class = $area_terms[0]->slug;
               $area_label = $area_terms[0]->name;
             }
-
             // カテゴリターム
             $cat_terms = get_the_terms( get_the_ID(), 'event_cat' );
-
             // 日付
             $start = get_post_meta( get_the_ID(), 'event_start_date', true );
             $end   = get_post_meta( get_the_ID(), 'event_end_date', true );
-
             // 表示用の日付文字列
             $date_str = '';
             if ( $start ) {
@@ -231,7 +212,6 @@ $next_url = add_query_arg(
       <li>この月のイベントはありません。</li>
       <?php endif; ?>
     </ul>
-
     <div class="event__pagination">
       <?php
       // ページネーション（数字ボタンの代わりにWP標準を流し込む）
@@ -245,8 +225,6 @@ $next_url = add_query_arg(
       ?>
     </div>
   </section>
-
   <a class="event__btn back" href="<?php echo esc_url( home_url('/event/') ); ?>"> イベント情報へもどる </a>
 </article>
-
 <?php get_footer(); ?>

@@ -1,7 +1,6 @@
 <?php
   $slug = 'event';
   get_header();
-
   // ====== 受け取るパラメータ ======
   $paged   = get_query_var('paged') ? get_query_var('paged') : 1;
   $area    = isset($_GET['area']) ? sanitize_text_field($_GET['area']) : '';
@@ -9,16 +8,13 @@
   $to      = isset($_GET['to'])   ? sanitize_text_field($_GET['to'])   : '';
   $cat     = isset($_GET['cat'])  ? sanitize_text_field($_GET['cat'])  : '';
   $keyword = isset($_GET['keyword']) ? sanitize_text_field($_GET['keyword']) : '';
-
   // ====== クエリ組み立て ======
   $meta_query = array('relation' => 'AND');
-
   // 期間があれば「イベント期間と重なっているか」で絞る例
   if ( $from || $to ) {
     $date_cond = array('relation' => 'AND');
-
+    // イベント終了日が検索開始日以降
     if ( $from ) {
-      // イベント終了日が検索開始日以降
       $date_cond[] = array(
         'key'     => 'event_end_date',
         'value'   => $from,
@@ -26,8 +22,8 @@
         'type'    => 'DATE',
       );
     }
+    // イベント開始日が検索終了日以前
     if ( $to ) {
-      // イベント開始日が検索終了日以前
       $date_cond[] = array(
         'key'     => 'event_start_date',
         'value'   => $to,
@@ -35,12 +31,10 @@
         'type'    => 'DATE',
       );
     }
-
     $meta_query[] = $date_cond;
   }
 
   $tax_query = array();
-
   // エリア（taxonomy: event_area を想定）
   if ( $area ) {
     $tax_query[] = array(
@@ -49,7 +43,6 @@
       'terms'    => $area,
     );
   }
-
   // カテゴリ（taxonomy: event_cat を想定）
   if ( $cat ) {
     $tax_query[] = array(
@@ -58,7 +51,6 @@
       'terms'    => $cat,
     );
   }
-
   $args = array(
     'post_type'      => 'event',
     'paged'          => $paged,
@@ -98,34 +90,25 @@
       詳細を探す
     </a>
   </div>
-
-  <!-- カレンダー誘導 -->
   <section class="event__calendar">
     <h2 class="event__h2">イベントカレンダーから探す</h2>
     <a class="event__btn" href="<?php echo esc_url( home_url('/event-calendar/') ); ?>">
       各月毎のイベントはこちら
     </a>
   </section>
-
-  <!-- 検索フォーム -->
   <section class="event__form">
     <h2 class="event__h2">詳細から探す</h2>
-
-    <!-- action を /event/ にしてGETで投げる -->
     <form class="event__form-wrapper" action="<?php echo esc_url( get_post_type_archive_link('event') ); ?>"
       method="get">
-      <!-- 実際に送信するhiddenたち（JSで書き換える想定） -->
       <input type="hidden" name="area" value="<?php echo esc_attr($area); ?>" class="js-event-area">
       <input type="hidden" name="from" value="<?php echo esc_attr($from); ?>" class="js-event-from">
       <input type="hidden" name="to" value="<?php echo esc_attr($to); ?>" class="js-event-to">
       <input type="hidden" name="cat" value="<?php echo esc_attr($cat); ?>" class="js-event-cat">
       <input type="hidden" name="keyword" value="<?php echo esc_attr($keyword); ?>" class="js-event-keyword">
 
-      <!-- エリア行 -->
       <div class="event__form-flex area">
         <div class="event__form-label area"></div>
         <div class="event__form-box area">
-          <!-- ここは見た目用。クリックしたら上の hidden[name=area] を書き換えるJSを組む -->
           <span class="event__form-select--area main<?php if($area==='main') echo ' js-active'; ?>"
             data-area="main">メインエリア</span>
           <span class="event__form-select--area kochi<?php if($area==='kochi') echo ' js-active'; ?>"
@@ -175,7 +158,6 @@
         </div>
       </div>
 
-      <!-- 日付行（表示はそのまま／実際の送信は hidden） -->
       <div class="event__form-flex date">
         <div class="event__form-label date"></div>
         <div class="event__form-box date">
@@ -189,10 +171,7 @@
             <p><?php echo $to ? esc_html(str_replace('-', '.', $to)) : '—'; ?></p>
           </div>
         </div>
-        <!-- モーダル部分は元のまま。日付クリックで .js-event-from / .js-event-to を書き換えるJSを組んでください -->
         <div class="event__form-modal date" data-modal="modal2">
-          <!-- ここは元ソース省略せずにそのままでもOK。長いので省略 -->
-          <!-- ...あなたの元のモーダルHTML... -->
           <button class="event__modal-btn" type="submit">検索する</button>
           <button class="event__modal-next" type="button">スキップする＞</button>
           <button class="event__modal-close" type="button">
@@ -201,8 +180,6 @@
           </button>
         </div>
       </div>
-
-      <!-- カテゴリ行 -->
       <div class="event__form-flex cate">
         <div class="event__form-label cate"></div>
         <div class="event__form-box cate">
@@ -242,8 +219,6 @@
           </button>
         </div>
       </div>
-
-      <!-- フリーワード行 -->
       <div class="event__form-flex word">
         <div class="event__form-label word" for="eventWord"></div>
         <textarea class="event__form-box word" placeholder="フリーワード" rows="1"
@@ -265,8 +240,6 @@
       </div>
     </form>
   </section>
-
-  <!-- 検索結果 -->
   <section class="event__box">
     <h3 class="event__h3">検索結果<span><?php echo esc_html( $found_posts ); ?></span>件</h3>
 
@@ -274,7 +247,6 @@
       <?php if ( $event_query->have_posts() ) : ?>
       <?php while ( $event_query->have_posts() ) : $event_query->the_post(); ?>
       <?php
-            // エリアのクラスを付ける（最初のタームだけ使う）
             $area_terms = get_the_terms( get_the_ID(), 'event_area' );
             $area_class = '';
             $area_label = '';
