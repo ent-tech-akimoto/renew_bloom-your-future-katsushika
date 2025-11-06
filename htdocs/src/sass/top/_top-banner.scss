@@ -65,8 +65,10 @@
     top: 0;
     left: 0;
     border-radius: 0 0 get_vw(20) 0;
+    @include center;
+    flex-direction: column;
     @include pc-fluid-size(width, (372));
-    @include pc-fluid-size(height, (158));
+    @include pc-fluid-size(height, (150));
     @include pc-fluid-size(padding, (45 52));
     @include pc-fluid-size(border-radius, (0 0 40 0));
     @include pc-fluid-size(left, (0));
@@ -83,9 +85,10 @@
       background-color: $common_font;
       position: absolute;
       top: 50%;
-      left: get_vw(0);
+      left: get_vw(32);
     @include pc-fluid-size(width, (99));
     @include pc-fluid-size(height, (1));
+    @include pc-fluid-size(left, (48));
     }
     @include after{
       width: get_vw(50);
@@ -93,9 +96,10 @@
       background-color: $common_font;
       position: absolute;
       top: 50%;
-      right: get_vw(0);
+      right: get_vw(32);
     @include pc-fluid-size(width, (99));
     @include pc-fluid-size(height, (1));
+    @include pc-fluid-size(right, (48));
     }
   }
 
