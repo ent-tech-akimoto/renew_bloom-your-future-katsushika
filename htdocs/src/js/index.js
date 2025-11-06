@@ -2,6 +2,8 @@ import './device.js';
 import './common/loading.js';
 import './common/scroll.js';
 
+const CURRENT_PAGE = document.documentElement.dataset.page;
+
 
 if (window.pageID === 'top') {
   const { initSwipers } = require('./top/swiper.js');
@@ -19,4 +21,5 @@ if (window.pageID === 'event' ||  window.pageID === 'calendar' ) {
   initMapButtons();
   const { initCategoryButtons } = require('./event/cat.js');
   initCategoryButtons();
+  const calendar = require('./common/calendar.js');
 }
