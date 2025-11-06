@@ -34,7 +34,7 @@ var myMeta = meta[lang][pageID];
           <h2 class="event__h2">詳細から探す</h2>
           <form class="event__form-wrapper" method="get" action="">
             <div class="event__form-flex area">
-              <input type="hidden" name="area" id="areaInput">
+              <input type="hidden" name="area" id="areaInput" value="">
               <div class="event__form-label area"></div>
               <div class="event__form-box area">
                 <span
@@ -79,7 +79,6 @@ var myMeta = meta[lang][pageID];
                 <div class="event__modal-flex area pc-none">
                   <div class="event__form-label area"></div>
                   <div class="event__form-box area in-modal">
-                    <input type="hidden" name="area[]" value="">
                     <span
                       class="event__form-select--area main"
                       data-area="main"
@@ -150,10 +149,15 @@ var myMeta = meta[lang][pageID];
                     </li>
                   </ul>
                 </div>
-                <button class="event__modal-map-btn" type="button">
+                <button
+                  class="common__btn-w event__modal-map-btn"
+                  type="button"
+                >
                   現在地付近
                 </button>
-                <button class="event__modal-btn" type="submit">検索する</button>
+                <button class="common__btn-i event__modal-btn" type="submit">
+                  検索する
+                </button>
                 <button class="event__modal-next" type="button">
                   スキップする＞
                 </button>
@@ -164,8 +168,13 @@ var myMeta = meta[lang][pageID];
               </div>
             </div>
             <div class="event__form-flex date">
-              <input type="hidden" name="startDate" id="startDateInput">
-              <input type="hidden" name="endDate" id="endDateInput">
+              <input
+                type="hidden"
+                name="startDate"
+                id="startDateInput"
+                value=""
+              >
+              <input type="hidden" name="endDate" id="endDateInput" value="">
               <div class="event__form-label date"></div>
               <div class="event__form-box date">
                 <div class="event__date-start">
@@ -326,7 +335,9 @@ var myMeta = meta[lang][pageID];
                     </div>
                   </div>
                 </div>
-                <button class="event__modal-btn" type="submit">検索する</button>
+                <button class="common__btn-i event__modal-btn" type="submit">
+                  検索する
+                </button>
                 <button class="event__modal-next" type="button">
                   スキップする＞
                 </button>
@@ -337,7 +348,7 @@ var myMeta = meta[lang][pageID];
               </div>
             </div>
             <div class="event__form-flex cate">
-              <input type="hidden" name="cate" id="cateInput">
+              <input type="hidden" name="cate" id="cateInput" value="">
               <div class="event__form-label cate"></div>
               <div class="event__form-box cate">
                 <span class="event__form-select">カテゴリー</span>
@@ -359,7 +370,9 @@ var myMeta = meta[lang][pageID];
                   <li class="cat-btn" data-cat="learn" data-id="3">学ぶ</li>
                   <li class="cat-btn" data-cat="play" data-id="4">遊ぶ</li>
                 </ul>
-                <button class="event__modal-btn" type="submit">検索する</button>
+                <button class="common__btn-i event__modal-btn" type="submit">
+                  検索する
+                </button>
                 <button class="event__modal-next" type="button">
                   スキップする＞
                 </button>
@@ -370,7 +383,6 @@ var myMeta = meta[lang][pageID];
               </div>
             </div>
             <div class="event__form-flex word">
-              <input type="hidden" name="word" id="wordInput">
               <div class="event__form-label word"></div>
               <textarea
                 class="event__form-box word"
@@ -393,7 +405,9 @@ var myMeta = meta[lang][pageID];
                   <li class="">フラワーフォトコンクール</li>
                   <li class="">フラワーロードフェア</li>
                 </ul>
-                <button class="event__modal-btn" type="submit">検索する</button>
+                <button class="common__btn-i event__modal-btn" type="submit">
+                  検索する
+                </button>
                 <button class="event__modal-next" type="button">
                   スキップする＞
                 </button>

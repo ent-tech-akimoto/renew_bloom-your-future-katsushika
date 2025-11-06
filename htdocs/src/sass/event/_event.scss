@@ -834,6 +834,9 @@
         transform: translateX(-50%);
       }
     }
+    @include after{
+      display: none;
+    }
   }
 
   &__modal-date{
@@ -873,6 +876,10 @@
         position: absolute;
         left: 50%;
         transform: translateX(-50%);
+        cursor: pointer;
+        &:hover{
+          background-color: rgba(245, 164, 0, 0.1);
+        }
       }
     }
   }
@@ -1035,6 +1042,9 @@
       @include center;
       @include min-screen{
         cursor: pointer;
+        &:hover{
+          background-color: rgba(245, 164, 0, 0.1);
+        }
       }
       &.today{
         position: relative;
@@ -1224,6 +1234,10 @@
     @include pc-fluid-size(text-underline-offset, (4));
     @include min-screen{
       margin-inline: auto 0;
+        cursor: pointer;
+        &:hover{
+          color: $c_orange;
+        }
     }
   }
 
