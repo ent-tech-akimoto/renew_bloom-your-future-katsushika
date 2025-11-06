@@ -17,8 +17,10 @@ var myMeta = meta[lang][pageID];
         </p>
         <h1 class="common__h1 event__h1">イベント情報</h1>
 
-        <section class="event__calendar-search">
+        <form class="event__calendar-search" action="" method="get">
           <div class="event__calendar-flex top">
+            <input type="hidden" name="y" value="">
+            <input type="hidden" name="mo" value="">
             <p class="before">＜9月/2026</p>
             <strong>10月</strong>
             <p class="after">11月/2026＞</p>
@@ -26,6 +28,7 @@ var myMeta = meta[lang][pageID];
           <div class="event__calendar-flex area bot pc-none">
             <div class="event__calendar-label"></div>
             <div class="event__calendar-box area">
+              <input type="hidden" name="area" value="">
               <span
                 class="event__calendar-select--area"
                 data-area="main"
@@ -35,31 +38,31 @@ var myMeta = meta[lang][pageID];
               <span
                 class="event__calendar-select--area"
                 data-area="kochi"
-                data-id="1"
+                data-id="2"
                 >こち亀エリア</span
               >
               <span
                 class="event__calendar-select--area"
                 data-area="monchi"
-                data-id="2"
+                data-id="5"
                 >モンチッチエリア</span
               >
               <span
                 class="event__calendar-select--area"
                 data-area="wing"
-                data-id="3"
+                data-id="4"
                 >翼エリア</span
               >
               <span
                 class="event__calendar-select--area"
                 data-area="iris"
-                data-id="4"
+                data-id="3"
                 >堀切菖蒲園</span
               >
               <span
                 class="event__calendar-select--area"
                 data-area="tora"
-                data-id="5"
+                data-id="1"
                 >寅さんエリア</span
               >
             </div>
@@ -77,31 +80,31 @@ var myMeta = meta[lang][pageID];
                   <span
                     class="event__form-select--area kochi"
                     data-area="kochi"
-                    data-id="1"
+                    data-id="2"
                     >こち亀エリア</span
                   >
                   <span
                     class="event__form-select--area monchi"
                     data-area="monchi"
-                    data-id="2"
+                    data-id="5"
                     >モンチッチエリア</span
                   >
                   <span
                     class="event__form-select--area wing"
                     data-area="wing"
-                    data-id="3"
+                    data-id="4"
                     >翼エリア</span
                   >
                   <span
                     class="event__form-select--area iris"
                     data-area="iris"
-                    data-id="4"
+                    data-id="3"
                     >堀切菖蒲園</span
                   >
                   <span
                     class="event__form-select--area tora"
                     data-area="tora"
-                    data-id="5"
+                    data-id="1"
                     >寅さんエリア</span
                   >
                 </div>
@@ -149,7 +152,7 @@ var myMeta = meta[lang][pageID];
               </button>
             </div>
           </div>
-        </section>
+        </form>
         <section class="event__box">
           <h3 class="event__h3">検索結果<span>15</span>件</h3>
           <ul class="event__box-list">

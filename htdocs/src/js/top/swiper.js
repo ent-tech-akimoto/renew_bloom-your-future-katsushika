@@ -90,8 +90,9 @@ export function initSwipers() {
   // Resident swiper
   const galleryswiper1Thumb = new Swiper(".top-gallery__resident-thumb", {
     modules: [Navigation, Pagination, Thumbs],
-    spaceBetween: 10,
-    slidesPerView: 4,
+    // spaceBetween: 5,
+    // slidesPerView: 4,
+    slidesPerView: 'auto',
     freeMode: true,
     watchSlidesProgress: true,
   });
@@ -114,8 +115,9 @@ export function initSwipers() {
   // Famous Swiper  
   const galleryswiper2Thumb = new Swiper(".top-gallery__famous-thumb", {
     modules: [Navigation, Pagination, Thumbs],
-    spaceBetween: 10,
-    slidesPerView: 4,
+    // spaceBetween: 5,
+    // slidesPerView: 4,
+    slidesPerView: 'auto',
     freeMode: true,
     watchSlidesProgress: true,
   });

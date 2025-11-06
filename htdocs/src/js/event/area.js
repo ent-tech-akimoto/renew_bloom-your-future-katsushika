@@ -1,51 +1,58 @@
 export function initMapButtons() {
-    const mapButtons = document.querySelectorAll('.map-btn');
-    const mainFormBox = document.querySelector('.event__form-box.area:not(.in-modal)');
-    const modalFormBox = document.querySelector('.event__form-box.area.in-modal');
-    const areaInput = document.getElementById('areaInput');
-    
-    // Function to update form boxes based on active map buttons
-    const updateFormBoxes = () => {
-        // Clear existing selections
-        mainFormBox.innerHTML = '';
-        modalFormBox.innerHTML = '';
-        const selectedAreas = [];
-        
-        // Add spans for each active area
-        mapButtons.forEach(button => {
-            if (button.classList.contains('js-active')) {
-                const area = button.dataset.area;
-                const id = button.dataset.id;
-                const text = button.textContent.trim();
-                selectedAreas.push(id);
+  const mapButtons = document.querySelectorAll('.map-btn');
+  const mainFormBox = document.querySelector('.event__form-box.area:not(.in-modal)');
+  const modalFormBox = document.querySelector('.event__form-box.area.in-modal');
+  const areaInput = document.getElementById('areaInput');
 
-                // Add to main form box
-                mainFormBox.innerHTML += `
-                    <span class="event__form-select--area ${area}" data-area="${area}" data-id="${id}">${text}</span>
-                `;
-                
-                // Add to modal form box
-                modalFormBox.innerHTML += `
-                    <span class="event__form-select--area ${area}" data-area="${area}" data-id="${id}">${text}</span>
-                `;
-            }
-        });
+  // Keep track of selected areas in click order
+  let selectedAreas = [];
 
-        // Update hidden input value
-        areaInput.value = selectedAreas.join(',');
-    };
+  // Function to refresh displayed spans and hidden input
+  const updateFormBoxes = () => {
+    // Clear boxes
+    mainFormBox.innerHTML = '';
+    modalFormBox.innerHTML = '';
 
-    // Add click event to each map button
-    mapButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            // Toggle active state
-            button.classList.toggle('js-active');
-            
-            // Update form boxes
-            updateFormBoxes();
-        });
+    // Build spans in the order of selectedAreas
+    selectedAreas.forEach(id => {
+      const button = document.querySelector(`.map-btn[data-id="${id}"]`);
+      if (!button) return;
+      const area = button.dataset.area;
+      const text = button.textContent.trim();
+
+      const spanHTML = `<span class="event__form-select--area ${area}" data-area="${area}" data-id="${id}">${text}</span>`;
+
+      mainFormBox.insertAdjacentHTML('beforeend', spanHTML);
+      modalFormBox.insertAdjacentHTML('beforeend', spanHTML);
     });
 
-    // Initialize form boxes with current active buttons
-    updateFormBoxes();
+    // Update hidden input value
+    areaInput.value = selectedAreas.join(',');
+  };
+
+  // Handle button click
+  mapButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      const id = button.dataset.id;
+
+      if (button.classList.contains('js-active')) {
+        // Deselect
+        button.classList.remove('js-active');
+        selectedAreas = selectedAreas.filter(x => x !== id);
+      } else {
+        // Select
+        button.classList.add('js-active');
+        selectedAreas.push(id);
+      }
+
+      updateFormBoxes();
+    });
+  });
+
+  // Initialize form with any pre-active buttons
+  selectedAreas = Array.from(mapButtons)
+    .filter(btn => btn.classList.contains('js-active'))
+    .map(btn => btn.dataset.id);
+
+  updateFormBoxes();
 }

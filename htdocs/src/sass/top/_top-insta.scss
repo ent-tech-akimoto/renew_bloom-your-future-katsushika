@@ -66,6 +66,11 @@
         @include pc-fluid-size(border-radius, (26));
       }
     }
+    &>a{
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
   }
 
   &__catch{

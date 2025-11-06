@@ -38,39 +38,39 @@ var myMeta = meta[lang][pageID];
               <div class="event__form-label area"></div>
               <div class="event__form-box area">
                 <span
-                  class="event__form-select--area main"
+                  class="event__form-select--area"
                   data-area="main"
                   data-id="0"
                   >メインエリア</span
                 >
                 <span
-                  class="event__form-select--area kochi"
+                  class="event__form-select--area"
                   data-area="kochi"
-                  data-id="1"
+                  data-id="2"
                   >こち亀エリア</span
                 >
                 <span
-                  class="event__form-select--area monchi"
+                  class="event__form-select--area"
                   data-area="monchi"
-                  data-id="2"
+                  data-id="5"
                   >モンチッチエリア</span
                 >
                 <span
-                  class="event__form-select--area wing"
+                  class="event__form-select--area"
                   data-area="wing"
-                  data-id="3"
+                  data-id="4"
                   >翼エリア</span
                 >
                 <span
-                  class="event__form-select--area iris"
+                  class="event__form-select--area"
                   data-area="iris"
-                  data-id="4"
+                  data-id="3"
                   >堀切菖蒲園</span
                 >
                 <span
-                  class="event__form-select--area tora"
+                  class="event__form-select--area"
                   data-area="tora"
-                  data-id="5"
+                  data-id="2"
                   >寅さんエリア</span
                 >
               </div>
@@ -88,31 +88,31 @@ var myMeta = meta[lang][pageID];
                     <span
                       class="event__form-select--area kochi"
                       data-area="kochi"
-                      data-id="1"
+                      data-id="2"
                       >こち亀エリア</span
                     >
                     <span
                       class="event__form-select--area monchi"
                       data-area="monchi"
-                      data-id="2"
+                      data-id="5"
                       >モンチッチエリア</span
                     >
                     <span
                       class="event__form-select--area wing"
                       data-area="wing"
-                      data-id="3"
+                      data-id="4"
                       >翼エリア</span
                     >
                     <span
                       class="event__form-select--area iris"
                       data-area="iris"
-                      data-id="4"
+                      data-id="3"
                       >堀切菖蒲園</span
                     >
                     <span
                       class="event__form-select--area tora"
                       data-area="tora"
-                      data-id="5"
+                      data-id="2"
                       >寅さんエリア</span
                     >
                   </div>
@@ -128,22 +128,22 @@ var myMeta = meta[lang][pageID];
                     <li class="map-btn js-active" data-area="main" data-id="0">
                       メインエリア
                     </li>
-                    <li class="map-btn js-active" data-area="tora" data-id="5">
+                    <li class="map-btn js-active" data-area="tora" data-id="1">
                       寅さんエリア
                     </li>
-                    <li class="map-btn js-active" data-area="kochi" data-id="1">
+                    <li class="map-btn js-active" data-area="kochi" data-id="2">
                       こち亀エリア
                     </li>
-                    <li class="map-btn js-active" data-area="iris" data-id="4">
+                    <li class="map-btn js-active" data-area="iris" data-id="3">
                       堀切菖蒲園
                     </li>
-                    <li class="map-btn js-active" data-area="wing" data-id="3">
+                    <li class="map-btn js-active" data-area="wing" data-id="4">
                       翼エリア
                     </li>
                     <li
                       class="map-btn js-active"
                       data-area="monchi"
-                      data-id="2"
+                      data-id="5"
                     >
                       モンチッチエリア
                     </li>
@@ -168,13 +168,8 @@ var myMeta = meta[lang][pageID];
               </div>
             </div>
             <div class="event__form-flex date">
-              <input
-                type="hidden"
-                name="startDate"
-                id="startDateInput"
-                value=""
-              >
-              <input type="hidden" name="endDate" id="endDateInput" value="">
+              <input type="hidden" name="from" id="startDateInput" value="">
+              <input type="hidden" name="to" id="endDateInput" value="">
               <div class="event__form-label date"></div>
               <div class="event__form-box date">
                 <div class="event__date-start">
@@ -348,7 +343,7 @@ var myMeta = meta[lang][pageID];
               </div>
             </div>
             <div class="event__form-flex cate">
-              <input type="hidden" name="cate" id="cateInput" value="">
+              <input type="hidden" name="cat" id="cateInput" value="">
               <div class="event__form-label cate"></div>
               <div class="event__form-box cate">
                 <span class="event__form-select">カテゴリー</span>
@@ -388,7 +383,7 @@ var myMeta = meta[lang][pageID];
                 class="event__form-box word"
                 placeholder="フリーワード"
                 rows="1"
-                name="eventWord"
+                name="keyword"
               ></textarea>
               <div class="event__form-modal word" data-modal="modal4">
                 <h5>フリーワード</h5>
