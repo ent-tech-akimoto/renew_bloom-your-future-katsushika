@@ -40,7 +40,7 @@
     margin-left: get_vw(12);
 
     @include min-screen(1100px) {
-      margin-left: get_vw(20, $vp_pc_min);
+      margin-left: get_vw(20, $vp_pc);
     }
   }
 
@@ -52,7 +52,7 @@
       font-size: get_vw(10);
 
       @include min-screen(1100px) {
-        font-size: get_vw(14, $vp_pc_min);
+        font-size: get_vw(14, $vp_pc);
       }
     }
 
@@ -63,8 +63,8 @@
       margin-left: get_vw(10);
 
       @include min-screen(1100px) {
-        font-size: get_vw(24, $vp_pc_min);
-        margin-left: get_vw(10, $vp_pc_min);
+        font-size: get_vw(24, $vp_pc);
+        margin-left: get_vw(10, $vp_pc);
       }
 
       img {
@@ -73,8 +73,8 @@
         display: inline-block;
 
         @include min-screen(1100px) {
-          width: get_vw(14, $vp_pc_min);
-          margin: 0 get_vw(5, $vp_pc_min);
+          width: get_vw(14, $vp_pc);
+          margin: 0 get_vw(5, $vp_pc);
         }
       }
     }
@@ -274,7 +274,7 @@
 
     @include min-screen(1101px) {
       display: flex;
-      gap: get_vw(30, $vp_pc_min);
+      gap: get_vw(30, $vp_pc);
 
       li {
         font-size: get_vw(24);
@@ -306,7 +306,7 @@
       flex-direction: row;
       align-items: center;
       margin-top: 0;
-      gap: get_vw(20, $vp_pc_min);
+      gap: get_vw(20, $vp_pc);
     }
   }
 
