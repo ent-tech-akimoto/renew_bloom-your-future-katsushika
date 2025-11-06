@@ -46,7 +46,7 @@ export function initSwipers() {
     autoplay: {
       delay: 0,
       disableOnInteraction: false,
-      pauseOnMouseEnter: true,
+      pauseOnMouseEnter: false,
     },
   });
 

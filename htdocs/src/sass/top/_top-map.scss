@@ -69,26 +69,31 @@
     }
 
     &[data-area="area1"]{
+      background-color: $c_green;
       @include pc-fluid-size(top, (106));
       @include pc-fluid-size(left, (244));
     }
 
     &[data-area="area2"]{
+      background-color: $c_red;
       @include pc-fluid-size(top, (240));
       @include pc-fluid-size(left, (396));
     }
 
     &[data-area="area3"]{
+      background-color: $c_blue;
       @include pc-fluid-size(top, (270));
       @include pc-fluid-size(left, (154));
     }
 
     &[data-area="area4"]{
+      background-color: $c_orange;
       @include pc-fluid-size(top, (468));
       @include pc-fluid-size(left, (240));
     }
 
     &[data-area="area5"]{
+      background-color: $c_pink;
       @include pc-fluid-size(top, (518));
       @include pc-fluid-size(left, (332));
     }
@@ -155,11 +160,11 @@
     }
   }
   &__detail-ttl{
-    font-size: get_vw(20);
+    font-size: get_vw(26);
     color: $common_h2;
     text-align: center;
     position: relative;
-    @include pc-fluid-size(font-size, (18));
+    @include pc-fluid-size(font-size, (32));
     &.main{
       color: $c_green;
     }

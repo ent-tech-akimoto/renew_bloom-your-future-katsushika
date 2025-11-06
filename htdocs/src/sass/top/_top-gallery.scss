@@ -72,14 +72,16 @@
     border-radius: get_vw(10);
     overflow: hidden;
     border: solid transparent get_vw(2);
+    filter: brightness(0.5);
     @include pc-fluid-size(border-width, (2));
     @include pc-fluid-size(border-radius, (10));
-    transition: border-color 0.4s ease;
+    transition: all 0.4s ease;
     @include min-screen{
       cursor: pointer;
     }
     &.swiper-slide-thumb-active{
       border-color: $c_blue;
+      filter: brightness(1);
     }
     &:hover{
       border-color: $c_blue;

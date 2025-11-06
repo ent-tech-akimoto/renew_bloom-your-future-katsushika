@@ -68,6 +68,7 @@
     @include pc-fluid-size(width, (372));
     @include pc-fluid-size(height, (158));
     @include pc-fluid-size(padding, (45 52));
+    @include pc-fluid-size(border-radius, (0 0 40 0));
     @include pc-fluid-size(left, (0));
   }
 

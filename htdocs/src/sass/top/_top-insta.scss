@@ -36,10 +36,10 @@
   }
   &__gallery{
     margin-top: get_vw(65);
-    @include pc-fluid-size(margin-top, (85));
+    @include pc-fluid-size(margin-top, (75));
   }
   &__swiper{
-    @include pc-fluid-size(padding-top, (32));
+    @include pc-fluid-size(padding-top, (42));
   }
   &__swipersp{
     &:not(:first-child){
@@ -47,7 +47,7 @@
     }
   }
   &__swipersp-wrapper{
-
+    transition-timing-function: linear !important;
   }
   &__swipersp-slide{
     width: get_vw(118);
@@ -128,7 +128,7 @@
       margin-inline: auto;
     }
     @include before{
-      background-image: url(../img/top/insta_icon.png);
+      background-image: url(../data/webp/common/sns_insta.webp);
       background-size: 100% 100%;
       width: get_vw(24);
       height: get_vw(24);
