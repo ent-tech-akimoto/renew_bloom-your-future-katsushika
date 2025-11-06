@@ -9,7 +9,8 @@ var myMeta = meta[lang][pageID];
   <%-include(`${relative_path}_partial/_head`,{lang:lang,pageID:pageID,relative_path:relative_path})%>
   <body>
     <div class="page">
-      <article class="event">
+      <%-include(`${relative_path}_partial/_header`,{lang:lang,pageID:pageID,relative_path:relative_path})%>
+      <article class="event__wrapper">
         <div class="event__bg"></div>
         <p class="common-bread event__bread">
           <span>TOP</span><span>イベント情報</span>
@@ -25,51 +26,94 @@ var myMeta = meta[lang][pageID];
         </div>
         <section class="event__calendar">
           <h2 class="event__h2">イベントカレンダーから探す</h2>
-          <a class="event__btn" href="./calendar/">
+          <a class="common__btn-i event__btn" href="./calendar/">
             各月毎のイベントはこちら
           </a>
         </section>
         <section class="event__form">
           <h2 class="event__h2">詳細から探す</h2>
-          <form class="event__form-wrapper" action="">
+          <form class="event__form-wrapper" method="get" action="">
             <div class="event__form-flex area">
               <input type="hidden" name="area" id="areaInput">
               <div class="event__form-label area"></div>
               <div class="event__form-box area">
-                <span class="event__form-select--area main">メインエリア</span>
-                <span class="event__form-select--area kochi">こち亀エリア</span>
-                <span class="event__form-select--area monchi"
+                <span
+                  class="event__form-select--area main"
+                  data-area="main"
+                  data-id="0"
+                  >メインエリア</span
+                >
+                <span
+                  class="event__form-select--area kochi"
+                  data-area="kochi"
+                  data-id="1"
+                  >こち亀エリア</span
+                >
+                <span
+                  class="event__form-select--area monchi"
+                  data-area="monchi"
+                  data-id="2"
                   >モンチッチエリア</span
                 >
-                <span class="event__form-select--area wing">翼エリア</span>
-                <span class="event__form-select--area iris">堀切菖蒲園</span>
-                <span class="event__form-select--area tora">寅さんエリア</span>
+                <span
+                  class="event__form-select--area wing"
+                  data-area="wing"
+                  data-id="3"
+                  >翼エリア</span
+                >
+                <span
+                  class="event__form-select--area iris"
+                  data-area="iris"
+                  data-id="4"
+                  >堀切菖蒲園</span
+                >
+                <span
+                  class="event__form-select--area tora"
+                  data-area="tora"
+                  data-id="5"
+                  >寅さんエリア</span
+                >
               </div>
               <div class="event__form-modal area" data-modal="modal1">
                 <h5 class="pc-none">イベントエリア</h5>
                 <div class="event__modal-flex area pc-none">
                   <div class="event__form-label area"></div>
                   <div class="event__form-box area in-modal">
-                    <span class="event__form-select--area main" data-area="main"
+                    <input type="hidden" name="area[]" value="">
+                    <span
+                      class="event__form-select--area main"
+                      data-area="main"
+                      data-id="0"
                       >メインエリア</span
                     >
                     <span
                       class="event__form-select--area kochi"
                       data-area="kochi"
+                      data-id="1"
                       >こち亀エリア</span
                     >
                     <span
                       class="event__form-select--area monchi"
                       data-area="monchi"
+                      data-id="2"
                       >モンチッチエリア</span
                     >
-                    <span class="event__form-select--area wing" data-area="wing"
+                    <span
+                      class="event__form-select--area wing"
+                      data-area="wing"
+                      data-id="3"
                       >翼エリア</span
                     >
-                    <span class="event__form-select--area iris" data-area="iris"
+                    <span
+                      class="event__form-select--area iris"
+                      data-area="iris"
+                      data-id="4"
                       >堀切菖蒲園</span
                     >
-                    <span class="event__form-select--area tora" data-area="tora"
+                    <span
+                      class="event__form-select--area tora"
+                      data-area="tora"
+                      data-id="5"
                       >寅さんエリア</span
                     >
                   </div>
@@ -82,14 +126,28 @@ var myMeta = meta[lang][pageID];
                     >
                   </picture>
                   <ul>
-                    <li class="main js-active" data-area="area1">
+                    <li class="map-btn js-active" data-area="main" data-id="0">
                       メインエリア
                     </li>
-                    <li class="tora" data-area="area2">寅さんエリア</li>
-                    <li class="kochi" data-area="area3">こち亀エリア</li>
-                    <li class="iris" data-area="area4">堀切菖蒲園</li>
-                    <li class="wing" data-area="area5">翼エリア</li>
-                    <li class="monchi" data-area="area6">モンチッチエリア</li>
+                    <li class="map-btn js-active" data-area="tora" data-id="5">
+                      寅さんエリア
+                    </li>
+                    <li class="map-btn js-active" data-area="kochi" data-id="1">
+                      こち亀エリア
+                    </li>
+                    <li class="map-btn js-active" data-area="iris" data-id="4">
+                      堀切菖蒲園
+                    </li>
+                    <li class="map-btn js-active" data-area="wing" data-id="3">
+                      翼エリア
+                    </li>
+                    <li
+                      class="map-btn js-active"
+                      data-area="monchi"
+                      data-id="2"
+                    >
+                      モンチッチエリア
+                    </li>
                   </ul>
                 </div>
                 <button class="event__modal-map-btn" type="button">
@@ -106,7 +164,8 @@ var myMeta = meta[lang][pageID];
               </div>
             </div>
             <div class="event__form-flex date">
-              <input type="hidden" name="date" id="dateInput">
+              <input type="hidden" name="startDate" id="startDateInput">
+              <input type="hidden" name="endDate" id="endDateInput">
               <div class="event__form-label date"></div>
               <div class="event__form-box date">
                 <div class="event__date-start">
@@ -292,11 +351,13 @@ var myMeta = meta[lang][pageID];
                   </div>
                 </div>
                 <ul class="event__modal-cate">
-                  <li class="js-active">見る</li>
-                  <li class="">食べる</li>
-                  <li class="">買う</li>
-                  <li class="">学ぶ</li>
-                  <li class="">遊ぶ</li>
+                  <li class="cat-btn js-active" data-cat="watch" data-id="0">
+                    見る
+                  </li>
+                  <li class="cat-btn" data-cat="eat" data-id="1">食べる</li>
+                  <li class="cat-btn" data-cat="buy" data-id="2">買う</li>
+                  <li class="cat-btn" data-cat="learn" data-id="3">学ぶ</li>
+                  <li class="cat-btn" data-cat="play" data-id="4">遊ぶ</li>
                 </ul>
                 <button class="event__modal-btn" type="submit">検索する</button>
                 <button class="event__modal-next" type="button">

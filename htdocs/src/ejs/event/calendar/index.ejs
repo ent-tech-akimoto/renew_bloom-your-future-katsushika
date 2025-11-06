@@ -9,7 +9,8 @@ var myMeta = meta[lang][pageID];
   <%-include(`${relative_path}_partial/_head`,{lang:lang,pageID:pageID,relative_path:relative_path})%>
   <body>
     <div class="page">
-      <article class="event">
+      <%-include(`${relative_path}_partial/_header`,{lang:lang,pageID:pageID,relative_path:relative_path})%>
+      <article class="event__wrapper">
         <div class="event__bg"></div>
         <p class="common-bread event__bread">
           <span>TOP</span><span>イベント情報</span>
@@ -22,21 +23,43 @@ var myMeta = meta[lang][pageID];
             <strong>10月</strong>
             <p class="after">11月/2026＞</p>
           </div>
-          <div class="event__calendar-flex bot pc-none">
+          <div class="event__calendar-flex area bot pc-none">
             <div class="event__calendar-label"></div>
-            <div class="event__calendar-box">
-              <span class="event__calendar-select--area main"
+            <div class="event__calendar-box area">
+              <span
+                class="event__calendar-select--area"
+                data-area="main"
+                data-id="0"
                 >メインエリア</span
               >
-              <span class="event__calendar-select--area kochi"
+              <span
+                class="event__calendar-select--area"
+                data-area="kochi"
+                data-id="1"
                 >こち亀エリア</span
               >
-              <span class="event__calendar-select--area monchi"
+              <span
+                class="event__calendar-select--area"
+                data-area="monchi"
+                data-id="2"
                 >モンチッチエリア</span
               >
-              <span class="event__calendar-select--area wing">翼エリア</span>
-              <span class="event__calendar-select--area iris">堀切菖蒲園</span>
-              <span class="event__calendar-select--area tora"
+              <span
+                class="event__calendar-select--area"
+                data-area="wing"
+                data-id="3"
+                >翼エリア</span
+              >
+              <span
+                class="event__calendar-select--area"
+                data-area="iris"
+                data-id="4"
+                >堀切菖蒲園</span
+              >
+              <span
+                class="event__calendar-select--area"
+                data-area="tora"
+                data-id="5"
                 >寅さんエリア</span
               >
             </div>
@@ -44,19 +67,41 @@ var myMeta = meta[lang][pageID];
               <h5 class="pc-none">イベントエリア</h5>
               <div class="event__modal-flex area pc-none">
                 <div class="event__form-label area" for="eventArea"></div>
-                <div class="event__form-box area">
-                  <span class="event__form-select--area main"
+                <div class="event__form-box area in-modal">
+                  <span
+                    class="event__form-select--area main"
+                    data-area="main"
+                    data-id="0"
                     >メインエリア</span
                   >
-                  <span class="event__form-select--area kochi"
+                  <span
+                    class="event__form-select--area kochi"
+                    data-area="kochi"
+                    data-id="1"
                     >こち亀エリア</span
                   >
-                  <span class="event__form-select--area monchi"
+                  <span
+                    class="event__form-select--area monchi"
+                    data-area="monchi"
+                    data-id="2"
                     >モンチッチエリア</span
                   >
-                  <span class="event__form-select--area wing">翼エリア</span>
-                  <span class="event__form-select--area iris">堀切菖蒲園</span>
-                  <span class="event__form-select--area tora"
+                  <span
+                    class="event__form-select--area wing"
+                    data-area="wing"
+                    data-id="3"
+                    >翼エリア</span
+                  >
+                  <span
+                    class="event__form-select--area iris"
+                    data-area="iris"
+                    data-id="4"
+                    >堀切菖蒲園</span
+                  >
+                  <span
+                    class="event__form-select--area tora"
+                    data-area="tora"
+                    data-id="5"
                     >寅さんエリア</span
                   >
                 </div>
@@ -69,18 +114,34 @@ var myMeta = meta[lang][pageID];
                   >
                 </picture>
                 <ul>
-                  <li class="main js-active" data-area="area1">メインエリア</li>
-                  <li class="tora" data-area="area2">寅さんエリア</li>
-                  <li class="kochi" data-area="area3">こち亀エリア</li>
-                  <li class="iris" data-area="area4">堀切菖蒲園</li>
-                  <li class="wing" data-area="area5">翼エリア</li>
-                  <li class="monchi" data-area="area6">モンチッチエリア</li>
+                  <li class="map-btn js-active" data-area="main" data-id="0">
+                    メインエリア
+                  </li>
+                  <li class="map-btn js-active" data-area="tora" data-id="1">
+                    寅さんエリア
+                  </li>
+                  <li class="map-btn js-active" data-area="kochi" data-id="2">
+                    こち亀エリア
+                  </li>
+                  <li class="map-btn js-active" data-area="iris" data-id="3">
+                    堀切菖蒲園
+                  </li>
+                  <li class="map-btn js-active" data-area="wing" data-id="4">
+                    翼エリア
+                  </li>
+                  <li class="map-btn js-active" data-area="monchi" data-id="5">
+                    モンチッチエリア
+                  </li>
                 </ul>
               </div>
-              <button class="event__modal-map-btn">現在地付近</button>
-              <button class="event__modal-btn">検索する</button>
-              <button class="event__modal-next">スキップする＞</button>
-              <button class="event__modal-close">
+              <button class="event__modal-map-btn" type="button">
+                現在地付近
+              </button>
+              <button class="event__modal-btn" type="submit">検索する</button>
+              <button class="event__modal-next" type="button">
+                スキップする＞
+              </button>
+              <button class="event__modal-close" type="button">
                 <span></span>
                 <span></span>
               </button>
@@ -275,7 +336,9 @@ var myMeta = meta[lang][pageID];
             <button class="arrow-next"></button>
           </div>
         </section>
-        <a class="event__btn back" href="../"> イベント情報へもどる </a>
+        <a class="common__btn-i event__btn back" href="../">
+          イベント情報へもどる
+        </a>
       </article>
       <%-include(`${relative_path}_partial/_footer`,{lang:lang,pageID:pageID,relative_path:relative_path})%>
     </div>

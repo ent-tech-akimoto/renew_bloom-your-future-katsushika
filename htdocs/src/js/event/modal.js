@@ -1,6 +1,6 @@
 export function initEventModals() {
-  
-    const formBoxes = document.querySelectorAll('.event__form-box:not(.in-modal)');
+    // Select both form boxes and calendar boxes, excluding those inside modals
+    const boxes = document.querySelectorAll('.event__form-box:not(.in-modal), .event__calendar-box');
     const formModals = document.querySelectorAll('.event__form-modal');
     
     // Function to close all modals
@@ -10,16 +10,19 @@ export function initEventModals() {
         });
     };
 
-    // Add click event to each form box
-    formBoxes.forEach(box => {
+    // Add click event to each box
+    boxes.forEach(box => {
         box.addEventListener('click', (e) => {
             e.preventDefault();
-            
-            // Get the modal type from the box's class (area, date, cate, or word)
-            const type = box.classList.contains('area') ? 'modal1' :
-                        box.classList.contains('date') ? 'modal2' :
-                        box.classList.contains('cate') ? 'modal3' :
-                        box.classList.contains('word') ? 'modal4' : null;
+            e.stopPropagation(); // Stop event from bubbling up
+            // Get the modal type from parent's class (area, date, cate, or word)
+            const parentEl = box.closest('.event__form-flex, .event__calendar-flex');
+            if (!parentEl) return;
+
+            const type = parentEl.classList.contains('area') ? 'modal1' :
+                        parentEl.classList.contains('date') ? 'modal2' :
+                        parentEl.classList.contains('cate') ? 'modal3' :
+                        parentEl.classList.contains('word') ? 'modal4' : null;
             
             if (!type) return;
 
@@ -40,9 +43,7 @@ export function initEventModals() {
             // Show the target modal
             targetModal.classList.add('js-show');
         });
-    });
-
-    // Close modal when clicking the close button
+    });    // Close modal when clicking the close button
     const closeButtons = document.querySelectorAll('.event__modal-close');
     closeButtons.forEach(button => {
         button.addEventListener('click', (e) => {
@@ -56,9 +57,12 @@ export function initEventModals() {
 
     // Close modal when clicking outside
     document.addEventListener('click', (e) => {
-        if (!e.target.closest('.event__form-box:not(.in-modal)') && 
-            !e.target.closest('.event__form-modal')) {
-            closeAllModals();
+        // If clicked inside a modal or a box, don't close
+        if (e.target.closest('.event__form-box:not(.in-modal)') || 
+            e.target.closest('.event__calendar-box') ||
+            e.target.closest('.event__form-modal')) {
+            return;
         }
+        closeAllModals();
     });
 }

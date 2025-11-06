@@ -12,7 +12,11 @@ if (window.pageID === 'top') {
   require('./common/scroll.js');
 }
 
-if (window.pageID === 'event') {
+if (window.pageID === 'event' ||  window.pageID === 'calendar' ) {
   const { initEventModals } = require('./event/modal.js');
   initEventModals();
+  const { initMapButtons } = require('./event/area.js');
+  initMapButtons();
+  const { initCategoryButtons } = require('./event/cat.js');
+  initCategoryButtons();
 }

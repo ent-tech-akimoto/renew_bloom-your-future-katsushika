@@ -2,13 +2,15 @@
 @use '../setting/mixin' as *;
 
 .event{
-  position: relative;
-  margin-top: get_vw(-106);
-  padding-top: get_vw(126);
-  padding-bottom: get_vw(104);
-  @include pc-fluid-size(margin-top, (-166));
-  @include pc-fluid-size(padding-top, (190));
-  @include pc-fluid-size(padding-bottom, (100));
+  &__wrapper{
+    position: relative;
+    margin-top: get_vw(-46);
+    padding-top: get_vw(126);
+    padding-bottom: get_vw(104);
+    @include pc-fluid-size(margin-top, (-0));
+    @include pc-fluid-size(padding-top, (190));
+    @include pc-fluid-size(padding-bottom, (100));
+  }
   &__bg{
     background-image: url('../img/common/orange_bg.png');
     background-size: 100% 100%;
@@ -29,6 +31,7 @@
     position: relative;
     font-size: get_vw(14);
     color: $c_white;
+    padding-left: get_vw(20);
     @include pc-fluid-size(font-size, (14));
     @include pc-fluid-size(padding-left, (80));
     & span{
@@ -232,22 +235,22 @@
       @include min-screen{
         cursor: pointer;
       }
-      &.main{
+      &[data-area="main"]{
         background-color: $c_green;
       }
-      &.tora{
+      &[data-area="tora"]{
         background-color: $c_red;
       }
-      &.kochi{
+      &[data-area="kochi"]{
         background-color: $c_blue;
       }
-      &.wing{
+      &[data-area="wing"]{
         background-color: $c_orange;
       }
-      &.monchi{
+      &[data-area="monchi"]{
         background-color: $c_pink;
       }
-      &.iris{
+      &[data-area="iris"]{
         background-color: $c_purple;
       }
       @include min-screen{
@@ -479,7 +482,7 @@
     border-radius: get_vw(15);
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    // justify-content: space-between;
     row-gap: get_vw(10);
     column-gap: get_vw(8);
     @include pc-fluid-size(width, (357));
@@ -516,22 +519,22 @@
       &>span{
         color: $c_white;
         justify-content: flex-start;
-        &.main{
+        &[data-area="main"]{
           background-color: $c_green;
         }
-        &.tora{
+        &[data-area="tora"]{
           background-color: $c_red;
         }
-        &.kochi{
+        &[data-area="kochi"]{
           background-color: $c_blue;
         }
-        &.wing{
+        &[data-area="wing"]{
           background-color: $c_orange;
         }
-        &.monchi{
+        &[data-area="monchi"]{
           background-color: $c_pink;
         }
-        &.iris{
+        &[data-area="iris"]{
           background-color: $c_purple;
         }
         @include min-screen{
@@ -703,37 +706,37 @@
       @include pc-fluid-size(font-size, (18));
       @include pc-fluid-size(border-width, (4));
       @include pc-fluid-size(border-radius, (50));
-      &[data-area="area1"]{
+      &[data-area="main"]{
         top: get_vw(74);
         left: get_vw(107);
         @include pc-fluid-size(top, (106));
         @include pc-fluid-size(left, (180));
       }
-      &[data-area="area2"]{
+      &[data-area="tora"]{
         top: get_vw(160);
         left: get_vw(250);
         @include pc-fluid-size(top, (240));
         @include pc-fluid-size(left, (360));
       }
-      &[data-area="area3"]{
+      &[data-area="kochi"]{
         top: get_vw(177);
         left: get_vw(107);
         @include pc-fluid-size(top, (275));
         @include pc-fluid-size(left, (105));
       }
-      &[data-area="area4"]{
+      &[data-area="iris"]{
         top: get_vw(257);
         left: get_vw(2);
         @include pc-fluid-size(top, (390));
         @include pc-fluid-size(left, (20));
       }
-      &[data-area="area5"]{
+      &[data-area="wing"]{
         top: get_vw(297);
         left: get_vw(132);
         @include pc-fluid-size(top, (475));
         @include pc-fluid-size(left, (210));
       }
-      &[data-area="area6"]{
+      &[data-area="monchi"]{
         top: get_vw(330);
         left: get_vw(203);
         @include pc-fluid-size(top, (508));
@@ -741,23 +744,23 @@
       }
       &.js-active{
         color: $c_white;
-        border: solid get_vw(4) transparent;
-        &.main{
+        border-color: transparent;
+        &[data-area="main"]{
           background-color: $c_green;
         }
-        &.tora{
+        &[data-area="tora"]{
           background-color: $c_red;
         }
-        &.kochi{
+        &[data-area="kochi"]{
           background-color: $c_blue;
         }
-        &.wing{
+        &[data-area="wing"]{
           background-color: $c_orange;
         }
-        &.monchi{
+        &[data-area="monchi"]{
           background-color: $c_pink;
         }
-        &.iris{
+        &[data-area="iris"]{
           background-color: $c_purple;
         }
       }
@@ -766,22 +769,22 @@
         &:hover{
           border-color: transparent;
           color: $c_white;
-          &.main{
+          &[data-area="main"]{
             background-color: $c_green;
           }
-          &.tora{
+          &[data-area="tora"]{
             background-color: $c_red;
           }
-          &.kochi{
+          &[data-area="kochi"]{
             background-color: $c_blue;
           }
-          &.wing{
+          &[data-area="wing"]{
             background-color: $c_orange;
           }
-          &.monchi{
+          &[data-area="monchi"]{
             background-color: $c_pink;
           }
-          &.iris{
+          &[data-area="iris"]{
             background-color: $c_purple;
           }
         }
