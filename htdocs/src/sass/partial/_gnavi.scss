@@ -1,0 +1,103 @@
+@use '../setting/setting'as *;
+@use '../setting/mixin'as *;
+
+
+
+.gnavi {
+  display: none;
+
+  @media screen and (min-width: 768px) and (max-width: 1439px) {
+    display: flex;
+    justify-content: end;
+    flex-wrap: wrap;
+  }
+
+  &__contents {
+    @media screen and (min-width: 768px) and (max-width: 1439px) {
+      display: flex;
+      justify-content: end;
+      padding-right: get_vw(50, $vp_pc);
+    }
+  }
+
+  &__contact {
+    @media screen and (min-width: 768px) and (max-width: 1439px) {
+      border-radius: get_vw(8, $vp_pc);
+      background-color: $c_orange;
+      width: get_vw(140, $vp_pc);
+      height: get_vw(30, $vp_pc);
+      @include center;
+      color: $c_white;
+      font-size: get_vw(14, $vp_pc);
+    }
+  }
+
+  &__sns {
+    @media screen and (min-width: 768px) and (max-width: 1439px) {
+      display: flex;
+      align-items: center;
+    }
+    &--item {
+      @media screen and (min-width: 768px) and (max-width: 1439px) {
+        flex-basis: get_vw(28, $vp_pc);
+        margin-left: get_vw(20, $vp_pc);
+      }
+
+    }
+  }
+
+  &__menu {
+    @media screen and (min-width: 768px) and (max-width: 1439px) {
+      display: flex;
+      justify-content: end;
+      margin: get_vw(30, $vp_pc) 0 0;
+    } 
+
+    &--item {
+      @media screen and (min-width: 768px) and (max-width: 1439px) {
+        position: relative;
+      } 
+
+      > a {
+        @media screen and (min-width: 768px) and (max-width: 1439px) {
+          font-size: get_vw(16, $vp_pc);
+          font-weight: $w_medium;
+          margin-left: get_vw(25, $vp_pc);
+          display: inline-block;
+        } 
+      }
+    }
+  }
+
+  &__submenu {
+    @media screen and (min-width: 768px) and (max-width: 1439px) {
+      border-radius: get_vw(10, $vp_pc);
+      background-color: $c_white;
+      padding: get_vw(15, $vp_pc);
+      opacity: 0;
+      pointer-events: none;
+      transition: $transition;
+      position: absolute;
+      top: get_vw(30, $vp_pc);
+      left: get_vw(15, $vp_pc);
+    }
+
+    &--item {
+      
+      > a {
+        @media screen and (min-width: 768px) and (max-width: 1439px) {
+          font-size: get_vw(14, $vp_pc);
+          white-space: nowrap;
+          display: inline-block;
+        }
+      }
+    }
+  }
+
+  .gnavi__menu--item a:hover + .gnavi__submenu {
+    @media screen and (min-width: 768px) and (max-width: 1439px) {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  }
+}
