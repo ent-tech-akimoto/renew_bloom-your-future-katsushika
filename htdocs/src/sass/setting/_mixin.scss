@@ -57,6 +57,257 @@
   }
 }
 
+//btn
+@mixin btn-w () {
+  border: $c_white solid;
+  border-width: 0;
+  border-radius: get_vw(25);
+  background-color: $c_white;
+  width: get_vw(350);
+  height: get_vw(50);
+  margin-left: auto;
+  margin-right: auto;
+  @include center;
+  position: relative;
+  @include pc-fluid-size(border-width, (4));
+  @include pc-fluid-size(border-radius, (25));
+  @include pc-fluid-size(width, (260));
+  @include pc-fluid-size(height, (50));
+
+  @include min-screen() {
+    transition: $transition;
+
+    &:hover {
+      background-color: $c_ivory;
+    }
+  }
+
+  span {
+    font-size: get_vw(14);
+    font-weight: $w_medium;
+    display: flex;
+    align-items: center;
+    position: relative;
+    @include pc-fluid-size(font-size, (14));
+  }
+
+  @include after() {
+    border-radius: 50%;
+    background-image: url('../data/webp/common/icon_arw_btn.webp');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: get_vw(15) auto;
+    background-color: $c_ivory;
+    width: get_vw(40);
+    height: get_vw(40);
+    position: absolute;
+    top: get_vw(5);
+    right: get_vw(5);
+    @include pc-fluid-bg-size(15, auto);
+    @include pc-fluid-size(width, (40));
+    @include pc-fluid-size(height, (40));
+    @include pc-fluid-size(top, (1));
+    @include pc-fluid-size(right, (3));
+
+    @include min-screen() {
+      transition: $transition;
+    }
+  }
+}
+
+@mixin btn-i () {
+  border: $c_ivory solid;
+  border-width: 0;
+  border-radius: get_vw(25);
+  background-color: $c_ivory;
+  width: get_vw(350);
+  height: get_vw(50);
+  margin-left: auto;
+  margin-right: auto;
+  @include center;
+  position: relative;
+  @include pc-fluid-size(border-width, (4));
+  @include pc-fluid-size(border-radius, (25));
+  @include pc-fluid-size(width, (260));
+  @include pc-fluid-size(height, (50));
+
+  @include min-screen() {
+    transition: $transition;
+
+    &:hover {
+      background-color: $c_white;
+    }
+  }
+
+  span {
+    font-size: get_vw(14);
+    font-weight: $w_medium;
+    display: flex;
+    align-items: center;
+    position: relative;
+    @include pc-fluid-size(font-size, (14));
+  }
+
+  @include after() {
+    border-radius: 50%;
+    background-image: url('../data/webp/common/icon_arw_btn.webp');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: get_vw(15) auto;
+    background-color: $c_white;
+    width: get_vw(40);
+    height: get_vw(40);
+    position: absolute;
+    top: get_vw(5);
+    right: get_vw(5);
+    @include pc-fluid-bg-size(15, auto);
+    @include pc-fluid-size(width, (40));
+    @include pc-fluid-size(height, (40));
+    @include pc-fluid-size(top, (1));
+    @include pc-fluid-size(right, (3));
+
+    @include min-screen() {
+      transition: $transition;
+    }
+  }
+}
+
+@mixin btn-l () {
+  border: $c_ivory solid;
+  border-width: 0;
+  border-radius: get_vw(25);
+  background-color: $c_ivory;
+  width: get_vw(350);
+  height: get_vw(50);
+  margin-left: auto;
+  margin-right: auto;
+  @include center;
+  position: relative;
+  @include pc-fluid-size(border-width, (4));
+  @include pc-fluid-size(border-radius, (40));
+  @include pc-fluid-size(width, (600));
+  @include pc-fluid-size(height, (80));
+
+  @include min-screen() {
+    transition: $transition;
+
+    &:hover {
+      background-color: $c_white;
+    }
+  }
+
+  span {
+    font-size: get_vw(14);
+    font-weight: $w_medium;
+    display: flex;
+    align-items: center;
+    position: relative;
+    @include pc-fluid-size(font-size, (18));
+    
+    @include before() {
+      background-position: left center;
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+  }
+}
+
+@mixin btn-l-icon () {
+  border: $c_ivory solid;
+  border-width: 0;
+  border-radius: get_vw(25);
+  background-color: $c_ivory;
+  width: get_vw(350);
+  height: get_vw(50);
+  margin-left: auto;
+  margin-right: auto;
+  @include center;
+  position: relative;
+  @include pc-fluid-size(border-width, (4));
+  @include pc-fluid-size(border-radius, (40));
+  @include pc-fluid-size(width, (600));
+  @include pc-fluid-size(height, (80));
+
+  @include min-screen() {
+    transition: $transition;
+
+    &:hover {
+      background-color: $c_white;
+
+      &:after {
+        background-color: $c_ivory;
+      }
+    }
+  }
+
+  span {
+    font-size: get_vw(14);
+    font-weight: $w_medium;
+    display: flex;
+    align-items: center;
+    position: relative;
+    @include pc-fluid-size(font-size, (18));
+    
+    @include before() {
+      background-position: left center;
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+  }
+
+  @include after() {
+    border-radius: 50%;
+    background-image: url('../data/webp/common/icon_arw_btn.webp');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: get_vw(15) auto;
+    background-color: $c_white;
+    width: get_vw(40);
+    height: get_vw(40);
+    position: absolute;
+    top: get_vw(5);
+    right: get_vw(5);
+    @include pc-fluid-bg-size(15, auto);
+    @include pc-fluid-size(width, (60));
+    @include pc-fluid-size(height, (60));
+    @include pc-fluid-size(top, (5));
+    @include pc-fluid-size(right, (8));
+
+    @include min-screen() {
+      transition: $transition;
+    }
+  }
+}
+
+// hover animation
+@mixin hov-opacity() {
+  @include min-screen() {
+    transition: $transition;
+
+    &:hover {
+      opacity: .8;
+    }
+  }
+}
+
+@mixin hov-underline() {
+  @include min-screen() {
+    transition: $transition;
+
+    &:hover {
+      border-bottom: get_vw(2) solid $c_black;
+      @include pc-fluid-size(border-bottom-width, (2));
+    }
+  }
+}
+  
+// img 縦基準
+@mixin img-ver() {
+  width: auto;
+  max-height: 100%;
+  height: 100%;
+}
+
 // スクロールバー削除
 @mixin scrollbar_none {
   overflow: scroll;
@@ -133,7 +384,7 @@
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1440px) {
     @if $is-list {
       $px-values: ();
 
@@ -155,7 +406,7 @@
     background-size: #{get_vw($width, $viewport)} #{if($height == auto, auto, get_vw($height, $viewport))};
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1440px) {
     background-size: #{$width}px #{if($height == auto, auto, $height + px)};
   }
 }

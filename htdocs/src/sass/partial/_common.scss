@@ -1,2 +1,11 @@
 @use '../setting/setting'as *;
 @use '../setting/mixin'as *;
+
+.common {
+    &__btn-w {
+        @include btn-w;
+    }
+    &__btn-i {
+        @include btn-i;
+    }
+}
