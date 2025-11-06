@@ -2,3 +2,18 @@
   window.pageID = '<%= pageID %>';
 </script>
 <script src="<%= relative_path %>assets/js/project.js"></script>
+<script type="text/javascript">
+  document.getElementById('js-header-btn').addEventListener('click', function () {
+    this.classList.toggle('is-active');
+    document.getElementById('js-header-nav').classList.toggle('is-open');
+  });
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'ja',
+      includedLanguages: 'en,ko,zh-CN,zh-TW',
+      layout: google.translate.TranslateElement.InlineLayout.SIMPLE
+    }, 'google_translate_element');
+  }
+</script>
+
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
