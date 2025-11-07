@@ -5,7 +5,7 @@
     &__bg{
       &.green{
         padding-top: get_vw(60);
-        padding-bottom: get_vw(62);
+        padding-bottom: get_vw(562);
         background-image: url('../img/top/bg_green.png');
         background-size: 100% 100%;
         background-position: center get_vw(205);
@@ -20,9 +20,9 @@
         }
       }
       &.pink{
-        margin-top: get_vw(-95);
+        margin-top: get_vw(-595);
         padding-top: get_vw(96);
-        padding-bottom: get_vw(93);
+        padding-bottom: get_vw(593);
         background-image: url('../img/top/bg_pink.png');
         background-size: 100% 100%;
         background-position: center top;
@@ -38,8 +38,9 @@
         }
       }
       &.orange{
-        margin-top: get_vw(-136);
+        margin-top: get_vw(-636);
         padding-top: get_vw(134);
+        padding-bottom: get_vw(500);
         background-image: url('../img/top/bg_orange.png');
         background-size: 100% auto;
         background-position: center top;
@@ -55,7 +56,7 @@
         }
       }
       &.blue{
-        margin-top: get_vw(-136);
+        margin-top: get_vw(-636);
         padding-top: get_vw(134);
         padding-bottom: get_vw(100);
         background-image: url('../img/top/bg_blue.png');
