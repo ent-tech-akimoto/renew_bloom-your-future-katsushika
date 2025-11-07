@@ -28,7 +28,7 @@
       height: get_vw(30, $vp_pc);
       @include center;
       color: $c_white;
-      font-size: get_vw(14, $vp_pc);
+      font-size: get_vw(16, $vp_pc);
     }
   }
 
@@ -41,8 +41,8 @@
       @media screen and (min-width: 768px) and (max-width: 1439px) {
         flex-basis: get_vw(28, $vp_pc);
         margin-left: get_vw(20, $vp_pc);
+        @include hov-opacity;
       }
-
     }
   }
 
@@ -60,11 +60,62 @@
 
       > a {
         @media screen and (min-width: 768px) and (max-width: 1439px) {
-          font-size: get_vw(16, $vp_pc);
+          border-bottom: transparent solid get_vw(3, $vp_pc);
+          font-size: get_vw(19, $vp_pc);
           font-weight: $w_medium;
-          margin-left: get_vw(25, $vp_pc);
+          padding: 0 0 get_vw(3, $vp_pc);
+          margin-left: get_vw(30, $vp_pc);
           display: inline-block;
+          transition: $transition;
         } 
+      }
+
+      &.menu-about {
+        > a {
+          &:hover {
+            border-color: $c_red;
+          }
+        }
+      }
+
+      &.menu-area {
+        > a {
+          &:hover {
+            border-color: $c_pink;
+          }
+        }
+      }
+
+      &.menu-event {
+        > a {
+          &:hover {
+            border-color: $c_orange;
+          }
+        }
+      }
+
+      &.menu-sponsorship {
+        > a {
+          &:hover {
+            border-color: $c_purple; 
+          }
+        }
+      }
+
+      &.menu-sponsorinfo {
+        > a {
+          &:hover {
+            border-color: $c_blue;
+          }
+        }
+      }
+
+      &.menu-access {
+        > a {
+          &:hover {
+            border-color: $c_green;
+          }
+        }
       }
     }
   }
