@@ -1,0 +1,170 @@
+<%
+var pageID = "overview";
+var lang = "ja";
+var relative_path = "../";
+var myMeta = meta[lang][pageID];
+%>
+<!DOCTYPE html>
+<html lang="<%= lang %>">
+  <%-include(`${relative_path}_partial/_head`,{lang:lang,pageID:pageID,relative_path:relative_path})%>
+
+  <body>
+    <div class="page">
+      <%-include(`${relative_path}_partial/_header`,{lang:lang,pageID:pageID,relative_path:relative_path})%>
+      <article class="overview__wrapper">
+        <div class="overview__bg"></div>
+        <p class="common-bread overview__bread">
+          <span>TOP</span><span>開催概要</span>
+        </p>
+        <h1 class="common__h1 overview__h1">開催概要</h1>
+        <nav class="overview__nav">
+          <ul>
+            <li>
+              <a href="#about"
+                >「全国みどりと花のフェア<br>かつしか」について</a
+              >
+            </li>
+            <li><a href="#plan">基本計画</a></li>
+            <li><a href="#action">実施計画</a></li>
+            <li><a href="#amba">アンバサダー</a></li>
+            <li><a href="#logo">ロゴマーク</a></li>
+          </ul>
+        </nav>
+        <section id="about" class="overview__section about">
+          <h2 class="common__h2 overview__h2">
+            「全国みどりと花のフェアかつしか」<br class="pc-none">について
+          </h2>
+          <div class="overview__container">
+            <h3>趣旨</h3>
+            <p>
+              国、東京都等の関係自治体、地域住民及び事業者等との連携・協働により、葛飾区が初めての開催となる新たな緑花イベント
+              「全国みどりと花のフェアかつしか」を、令和8（2026）年度に開催します。
+              また、本フェアの開催期間中には、毎年、全国の自治体を巡って開催されている「全国『みどりの愛護』のつどい」を開催します。
+            </p>
+            <p>
+              <span>「全国『みどりの愛護』のつどい」の開催</span>
+              全国の緑の関係者が一堂に会し、広く都市緑化に意識の高揚を図り、緑豊かで潤いのある住みよい環境づくりを推進するとともに、緑を守り育てる国民運動を積極的に推進することを目的に、平成2（1990）年から毎年1回、全国の自治体を巡って開催しており、本フェアの開催期間中に、葛飾にいじゅくみらい公園及び隣接する東京都立大学の施設において開催します。
+            </p>
+          </div>
+          <div class="overview__container">
+            <h3>開催テーマ</h3>
+            <strong>
+              未来に向け成長する<br class="pc-none">
+              みどりと花のまちかつしか
+            </strong>
+            <p class="mt10">
+              本フェアを契機に、みどりと花を通して、人と人とが交流し、絆を深め、強いコミュニティを形成することで、様々な社会問題を解決し、持続可能で発展し続ける、葛飾区ならではのまちづくりを推進する。
+            </p>
+          </div>
+          <div class="overview__container">
+            <h3>キャッチコピー</h3>
+            <div class="overview__catch">
+              <img
+                src="<%= relative_path %>assets/img/overview/catch.png"
+                alt=""
+              >
+            </div>
+          </div>
+          <div class="overview__container about">
+            <h3>全体概要</h3>
+            <div class="overview__box">
+              <div class="overview__flex">
+                <p class="bold">名称</p>
+                <p>全国みどりと花のフェアかつしか</p>
+              </div>
+              <div class="overview__flex">
+                <p class="bold">開催期間</p>
+                <p>2026年5月16日（土）〜<br class="pc-none">6月14日（日）</p>
+              </div>
+              <div class="overview__flex">
+                <p class="bold">メイン会場</p>
+                <p>葛飾にいじゅくみらい公園</p>
+              </div>
+              <div class="overview__flex">
+                <p class="bold">主催者</p>
+                <p>葛飾区</p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section id="plan" class="overview__section plan">
+          <h2 class="common__h2 overview__h2">基本計画</h2>
+          <p class="mt80">
+            フェア開催に向けて、会場計画や行催事計画等を記載した「全国みどりと花のフェアかつしか」基本計画を策定しました。
+            詳しくは、下記の添付ファイルをご覧ください。
+          </p>
+          <div class="overview__dl">
+            <a href="" class="overview__dl-files pdf"
+              >「全国みどりと花のフェアかつしか」実施計画（36.8MB）</a
+            >
+            <a href="" class="overview__dl-files xls"
+              >「全国みどりと花のフェアかつしか」実施計画（概要版）（13.5MB）</a
+            >
+          </div>
+        </section>
+        <section id="action" class="overview__section action">
+          <h2 class="common__h2 overview__h2">実施計画</h2>
+          <p class="mt80">
+            本フェアの基本的事項、会場計画、出展展示、行催事、会場運営、広報宣伝、調達、交通輸送、協働推進、飲食・物販、事業推進体制等について、その詳細を記した実施計画を策定しました。詳しくは、下記の添付ファイルをご覧ください。
+          </p>
+          <div class="overview__dl">
+            <a href="" class="overview__dl-files pdf"
+              >「全国みどりと花のフェアかつしか」実施計画（36.8MB）</a
+            >
+            <a href="" class="overview__dl-files xls"
+              >「全国みどりと花のフェアかつしか」実施計画（概要版）（13.5MB）</a
+            >
+          </div>
+        </section>
+        <section id="amba" class="overview__section amba">
+          <h2 class="common__h2 overview__h2">アンバサダー</h2>
+          <div class="overview__amba-flex">
+            <div class="overview__amba-img">
+              <img
+                src="<%= relative_path %>assets/img/overview/amba.png"
+                alt=""
+              >
+            </div>
+            <div class="overview__amba-txt">
+              <strong>齋藤飛鳥</strong>
+              <p>
+                2026年5月、葛飾区でみどりと花をテーマにしたフェアが開催されます。<br>
+                それは、その時の花を楽しむだけでなく、<br>
+                すべての人の未来に花を咲かせる、そんなフェアです。 サカセ<br>
+                みらい『全国みどりと花のフェアかつしか』お会いできる日を<br>
+                心からお待ちしています。
+              </p>
+            </div>
+          </div>
+          <div class="overview__amba-yt">
+            <a href="">
+              <img
+                src="<%= relative_path %>assets/img/overview/amba.png"
+                alt=""
+              >
+            </a>
+          </div>
+        </section>
+        <section id="logo" class="overview__section logo">
+          <h2 class="common__h2 overview__h2">ロゴマーク</h2>
+          <div class="overview__logo-flex">
+            <div class="overview__logo-img">
+              <img
+                src="<%= relative_path %>assets/img/overview/logo.png"
+                alt=""
+              >
+            </div>
+            <div class="overview__logo-txt">
+              <strong>Bloom Your Future Katsushika</strong>
+              <p>
+                コンセプト入ります。コンセプト入ります。コンセプト入ります。コンセプト入ります。コンセプト入ります。コンセプト入ります。コンセプト入ります。コンセプト入ります。コンセプト入ります。コンセプト入ります。コンセプト入ります。コンセプト入ります。コンセプト入ります。コンセプト入ります。コンセプト入ります。コンセプト入ります。コンセプト入ります。
+              </p>
+            </div>
+          </div>
+        </section>
+      </article>
+      <%-include(`${relative_path}_partial/_footer`,{lang:lang,pageID:pageID,relative_path:relative_path})%>
+    </div>
+    <%- include( `${relative_path}_partial/_foot`,{lang:lang,pageID:pageID,relative_path:relative_path}) %>
+  </body>
+</html>

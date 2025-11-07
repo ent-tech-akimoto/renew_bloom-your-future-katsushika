@@ -1,0 +1,388 @@
+@use '../setting/setting' as *;
+@use '../setting/mixin' as *;
+
+.overview{
+  &__wrapper{
+    position: relative;
+    margin-top: get_vw(-46);
+    padding-top: get_vw(126);
+    padding-bottom: get_vw(220);
+    padding-inline: get_vw(20);
+    @include pc-fluid-size(margin-top, (-0));
+    @include pc-fluid-size(padding-top, (190));
+    @include pc-fluid-size(padding-bottom, (92));
+    @include pc-fluid-size(padding-inline, (78));
+
+  }
+  &__bg{
+    background-image: url('../img/common/red_bg.png');
+    background-size: 100% 100%;
+    width: 100%;
+    height: get_vw(232);
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 0;
+    pointer-events: none;
+    @include pc-fluid-size(height, (378));
+    @include min-screen{
+      background-image: url('../img/common/red_bg_pc.png');
+    }
+  }
+  &__bread{
+    position: relative;
+    font-size: get_vw(14);
+    color: $c_white;
+    padding-left: get_vw(20);
+    @include pc-fluid-size(font-size, (14));
+    @include pc-fluid-size(padding-left, (80));
+    & span{
+      &::after{
+        content: '>';
+        margin: 0 get_vw(8);
+        @include pc-fluid-size(margin, (0 8));
+      }
+      &:last-of-type::after{
+        content: '';
+        margin: 0;
+      }
+    }
+  }
+  &__h1{
+    margin-top: get_vw(32);
+    position: relative;
+    font-size: get_vw(24);
+    color: $c_white;
+    text-align: center;
+    @include pc-fluid-size(margin-top, (40));
+    @include pc-fluid-size(font-size, (56));
+  }
+  &__nav{
+    display: block;
+    & ul{
+      width: 100%;
+      height: get_vw(50);
+      margin: get_vw(108) auto 0;
+      padding: 0 get_vw(17);
+      display: flex;
+      flex-direction: row;
+      column-gap: get_vw(2);
+      overflow: hidden;
+      @include pc-fluid-size(width, (1072));
+      @include pc-fluid-size(height, (50));
+      @include pc-fluid-size(margin-top, (108));
+      @include pc-fluid-size(padding, (0));
+      @include pc-fluid-size(column-gap, (2));
+      @include min-screen{
+        margin-inline: center;
+      }
+      & li{
+        width: 100%;
+        height: 100%;
+        display: block;
+        text-align: center;
+        font-size: get_vw(12);
+        font-weight: 500;
+        color: $c_black;
+        background-color: $c_lightgray;
+        @include pc-fluid-size(font-size, (14));
+        @include min-screen{
+          cursor: pointer;
+        }
+        &:hover{
+          background-color: $c_ivory;
+        }
+        &:first-child{
+          border-radius: get_vw(10) 0 0 get_vw(10);
+          @include pc-fluid-size(border-radius, (10 0 0 10));
+        }
+        &:last-child{
+          border-radius: 0 get_vw(10) get_vw(10) 0;
+          @include pc-fluid-size(border-radius, (0 10 10 0));
+        }
+        & a{
+          display: block;
+          width: 100%;
+          height: 100%;
+          @include center;
+        }
+      }
+    }
+  }
+  &__section{
+    margin-top: get_vw(80);
+    @include pc-fluid-size(margin-top, (95));
+    & p{
+      margin-top: get_vw(40);
+      font-size: get_vw(18);
+      font-weight: 300;
+      line-height: calc(28/18);
+      @include pc-fluid-size(margin-top, (40));
+      @include pc-fluid-size(font-size, (18));
+      &.mt10{
+        margin-top: get_vw(10);
+        @include pc-fluid-size(margin-top, (40));
+      }
+      &.mt80{
+        margin-top: get_vw(80);
+        @include pc-fluid-size(margin-top, (95));
+      }
+    }
+    &.plan,&.action{
+        @include pc-fluid-size(padding-inline, (142));
+    }
+  }
+  &__h2{
+    font-size: get_vw(20);
+    color: $c_black;
+    text-align: center;
+    position: relative;
+    line-height: calc(34/20);
+    @include pc-fluid-size(font-size, (40));
+    @include after{
+      background-color: $common_h2;
+      width: get_vw(25);
+      height: get_vw(2);
+      border-radius: get_vw(20);
+      position: absolute;
+      bottom: get_vw(-20);
+      left: 50%;
+      transform: translateX(-50%);
+      @include pc-fluid-size(width, (25));
+      @include pc-fluid-size(height, (2));
+      @include pc-fluid-size(bottom, (-16));
+    }
+  }
+  &__container{
+    margin-top: get_vw(80);
+    @include pc-fluid-size(margin-top, (80));
+    @include pc-fluid-size(padding-inline, (142));
+    &.about{
+      @include min-screen{
+        padding: 0;
+      }
+    }
+    & h3{
+      font-size: get_vw(24);
+      font-weight: 500;
+      text-align: center;
+      @include pc-fluid-size(font-size, (32));
+    }
+    & span{
+      display: block;
+      margin-bottom: get_vw(8);
+      font-weight: 500;
+      @include pc-fluid-size(margin-bottom, (10));
+    }
+    & strong{
+      display: block;
+      margin-top: get_vw(40);
+      color: $c_red;
+      font-size: get_vw(24);
+      font-weight: 500;
+      line-height: calc(40/24);
+      text-align: center;
+      @include pc-fluid-size(margin-top, (40));
+      @include pc-fluid-size(font-size, (32));
+    }
+  }
+  &__catch{
+    margin-top: get_vw(40);
+    width: get_vw(346);
+    @include pc-fluid-size(margin-top, (40));
+    @include pc-fluid-size(width, (568));
+    @include min-screen{
+      margin-inline: auto;
+    }
+  }
+  &__box{
+    margin-top: get_vw(40);
+    padding: get_vw(40);
+    background-color: $c_lightgray;
+    border-radius: get_vw(20);
+    @include pc-fluid-size(margin-top, (40));
+    @include pc-fluid-size(padding, (40 130));
+    @include pc-fluid-size(border-radius, (40));
+  }
+  &__flex{
+    display: flex;
+    flex-direction: column;
+    @include min-screen{
+      flex-direction: row;
+    }
+    &>p{
+      margin-top: 0;
+      &.bold{
+        font-weight: 500;
+        @include pc-fluid-size(width, (106));
+        
+      }
+    }
+    &:not(:first-child){
+      margin-top: get_vw(40);
+      @include pc-fluid-size(margin-top, (10));
+    }
+  }
+  &__dl{
+    margin-top: get_vw(42);
+    @include pc-fluid-size(margin-top, (100));
+    @include min-screen{
+      margin-inline: auto;
+    }
+  }
+  &__dl-files{
+    display: block;
+    position: relative;
+    padding-inline: get_vw(74) get_vw(30);
+    width: 100%;
+    height: get_vw(80);
+    font-size: get_vw(14);
+    font-weight: 500;
+    line-height: calc(24/14);
+    border: solid get_vw(2) $c_ivory;
+    border-radius: get_vw(100);
+    @include center;
+    justify-content: flex-start;
+    @include pc-fluid-size(width, (600));
+    @include pc-fluid-size(padding-inline, (82 0));
+    @include pc-fluid-size(height, (60));
+    @include pc-fluid-size(font-size, (14));
+    @include pc-fluid-size(border-width, (4));
+    @include pc-fluid-size(border-radius, (60));
+    @include min-screen{
+      margin-inline: auto;
+    }
+    &:last-child{
+      margin-top: get_vw(20);
+      @include pc-fluid-size(margin-top, (20));
+    }
+    &.pdf{
+      @include before{
+        background-image: url('../img/overview/icon_pdf.png');
+        background-size: 100% 100%;
+        width: get_vw(23);
+        height: get_vw(26);
+        position: absolute;
+        top: 50%;
+        left: get_vw(25);
+        transform: translateY(-50%);
+        @include pc-fluid-size(width, (23));
+        @include pc-fluid-size(height, (26));
+        @include pc-fluid-size(left, (40));
+      }
+    }
+    &.xls{
+      @include before{
+        background-image: url('../img/overview/icon_xls.png');
+        background-size: 100% 100%;
+        width: get_vw(23);
+        height: get_vw(25);
+        position: absolute;
+        top: 50%;
+        left: get_vw(25);
+        transform: translateY(-50%);
+        @include pc-fluid-size(width, (23));
+        @include pc-fluid-size(height, (25));
+        @include pc-fluid-size(left, (40));
+      }
+    }
+  }
+  &__amba-flex{
+    margin-top: get_vw(70);
+    display: flex;
+    flex-direction: column;
+    row-gap: get_vw(40);
+    @include pc-fluid-size(margin-top, (95));
+    @include pc-fluid-size(column-gap, (40));
+    @include min-screen{
+      flex-direction: row;
+      row-gap: 0;
+    }
+    & strong{
+      font-size: get_vw(24);
+      font-weight: 500;
+    @include pc-fluid-size(font-size, (24));
+    }
+    & p{
+      margin-top: get_vw(20);
+      font-size: get_vw(18);
+      @include pc-fluid-size(margin-top, (34));
+      @include pc-fluid-size(font-size, (18));
+    }
+  }
+  &__amba-img{
+    border-radius: get_vw(20);
+    overflow: hidden;
+    @include pc-fluid-size(width, (570));
+    @include pc-fluid-size(border-radius, (40));
+  }
+  &__amba-yt{
+    position: relative;
+    margin-top: get_vw(40);
+    border-radius: get_vw(20);
+    overflow: hidden;
+    @include pc-fluid-size(border-radius, (40));
+    @include before{
+      width: 100%;
+      height: 100%;
+      background-color: $c_black;
+      opacity: 0.6;
+      border-radius: get_vw(20);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      pointer-events: none;
+      @include pc-fluid-size(border-radius, (40));
+    }
+    @include after{
+      background-image: url('../img/overview/amba_play.png');
+      background-size: contain;
+      width: get_vw(45);
+      height: get_vw(45);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      pointer-events: none;
+      @include pc-fluid-size(width, (117));
+      @include pc-fluid-size(height, (117));
+    }
+    & a{
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  &__logo-flex{
+    margin-top: get_vw(80);
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    @include pc-fluid-size(margin-top, (95));
+    @include pc-fluid-size(column-gap, (40));
+    @include min-screen{
+      flex-direction: row;
+    }
+  }
+  &__logo-img{
+    @include pc-fluid-size(width, (570));
+    flex-shrink: 0;
+  }
+
+  &__logo-txt{
+    margin-top: get_vw(40);
+    @include pc-fluid-size(margin-top, (0));
+    & strong{
+      font-size: get_vw(24);
+      font-weight: 500;
+      line-height: calc(40/24);
+      @include pc-fluid-size(font-size, (24));
+    }
+    & p{
+      margin-top: get_vw(10);
+      @include pc-fluid-size(margin-top, (40));
+    }
+  }
+}
