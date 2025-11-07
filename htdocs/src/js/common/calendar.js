@@ -8,6 +8,9 @@ const nextButtons = document.querySelectorAll(".event__date-btn.after");
 const selectionEl = datepicker.querySelector(".selection")
 const applyButton = datepicker.querySelector(".apply");
 const cancelButton = datepicker.querySelector(".cancel");
+const calendar = document.querySelector(".event__form-flex.date");
+const inputFrom = calendar.querySelector('input[name="from"]');
+const inputTo = calendar.querySelector('input[name="to"]');
 
 let start = null;
 let end = null;
@@ -66,16 +69,17 @@ const displaySelection = () => {
     startEl.querySelector("strong").textContent = startDay;          // number only
     startEl.querySelector(".month").textContent = `${startMonth}月`; // month
     startEl.querySelector(".day").textContent = "日";                // (you can change dynamically if you want)
-
+    inputFrom.value = `${startYear}.${startMonth}.${startDay}`;
     // Update END date
     endEl.querySelector("strong").textContent = endDay;
     endEl.querySelector(".month").textContent = `${endMonth}月`;
     endEl.querySelector(".day").textContent = "日";
+    inputTo.value = `${endYear}.${endMonth}.${endDay}`;
 
-    const startDateFull = document.querySelector(".event__date-start p");
-    const endDateFull = document.querySelector(".event__date-end p");
-     startDateFull.textContent = `${startYear}.${startMonth}.${startDay}`;
-     endDateFull.textContent = `${endYear}.${endMonth}.${endDay}日`;
+    // const startDateFull = document.querySelector(".event__date-start p");
+    // const endDateFull = document.querySelector(".event__date-end p");
+    //  startDateFull.textContent = `${startYear}.${startMonth}.${startDay}`;
+    //  endDateFull.textContent = `${endYear}.${endMonth}.${endDay}`;
 
     console.log(`${startYear}.${startMonth}.${startDay}`);
     console.log(`${endYear}.${endMonth}.${endDay}日`);
