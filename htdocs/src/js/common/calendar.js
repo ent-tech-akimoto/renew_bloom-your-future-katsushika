@@ -17,6 +17,9 @@ let end = null;
 let originalStart = null;
 let originalEnd = null;
 
+inputTo.value = "null";
+inputFrom.value = "null";
+
 let leftDate = new Date();
 let rightDate = new Date(leftDate);
 rightDate.setMonth(rightDate.getMonth() + 1);
@@ -35,6 +38,14 @@ const formatDate = (date) => {
   const m = String(date.getMonth() + 1).padStart(2, "0");
   const d = String(date.getDate()).padStart(2, "0");
   return `${y}-${m}-${d}`;
+};
+
+// format date for input value as YYYYMMDD
+const inputFormat = (date) => {
+  const y = date.getFullYear();
+  const m = String(date.getMonth() + 1).padStart(2, "0");
+  const d = String(date.getDate()).padStart(2, "0");
+  return `${y}${m}${d}`;
 };
 
 const createDateEl = (date, isDisabled, isToday) => {
@@ -69,22 +80,23 @@ const displaySelection = () => {
     startEl.querySelector("strong").textContent = startDay;          // number only
     startEl.querySelector(".month").textContent = `${startMonth}月`; // month
     startEl.querySelector(".day").textContent = "日";                // (you can change dynamically if you want)
-    inputFrom.value = `${startYear}.${startMonth}.${startDay}`;
+    inputFrom.value = inputFormat(start);
     // Update END date
     endEl.querySelector("strong").textContent = endDay;
     endEl.querySelector(".month").textContent = `${endMonth}月`;
     endEl.querySelector(".day").textContent = "日";
-    inputTo.value = `${endYear}.${endMonth}.${endDay}`;
+    inputTo.value = inputFormat(end);
 
-    // const startDateFull = document.querySelector(".event__date-start p");
-    // const endDateFull = document.querySelector(".event__date-end p");
-    //  startDateFull.textContent = `${startYear}.${startMonth}.${startDay}`;
-    //  endDateFull.textContent = `${endYear}.${endMonth}.${endDay}`;
+    const startDateFull = document.querySelector(".event__date-start p");
+    const endDateFull = document.querySelector(".event__date-end p");
+    
+    startDateFull.textContent = `${startYear}.${startMonth}.${startDay}`;
+    endDateFull.textContent = `${endYear}.${endMonth}.${endDay}`;
 
-    console.log(`${startYear}.${startMonth}.${startDay}`);
-    console.log(`${endYear}.${endMonth}.${endDay}日`);
+    // console.log(formatDate(start));
+    // console.log(formatDate(end));
     // Optional: if you need the year displayed somewhere
-    console.log(`期間: ${startYear}年${startMonth}月${startDay}日 〜 ${endYear}年${endMonth}月${endDay}日`);
+    // console.log(`期間: ${startYear}年${startMonth}月${startDay}日 〜 ${endYear}年${endMonth}月${endDay}日`);
   }
 };
 
