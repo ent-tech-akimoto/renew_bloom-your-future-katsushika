@@ -6,6 +6,12 @@ export function initCategoryButtons() {
     
     // Function to update form boxes based on active category buttons
     const updateFormBoxes = () => {
+        //default null
+        if (!cateInput.value) {
+            cateInput.value = "null";
+        }
+
+
         // Clear existing selections
         mainFormBox.innerHTML = '';
         modalFormBox.innerHTML = '';
