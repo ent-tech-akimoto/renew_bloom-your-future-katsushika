@@ -137,6 +137,7 @@
         @include min-screen{
           -webkit-line-clamp: 1; /* number of lines to show */
           line-clamp: 1; 
+          line-height: unset;
         }
       }
   }
@@ -149,6 +150,9 @@
     @include pc-fluid-size(font-size, (24));
     display: flex;
     flex-direction: column;
+    @include min-screen{
+      line-height: unset;
+    }
   }
 
   &__btn{
