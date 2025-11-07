@@ -21,7 +21,7 @@ if (window.pageID === 'event' ) {
   initMapButtons();
   const { initCategoryButtons } = require('./event/cat.js');
   initCategoryButtons();
-<<<<<<< HEAD
+  const commonCalendar = require('./common/calendar.js');
 }
 
 if( window.pageID === 'calendar' ) {
@@ -31,7 +31,3 @@ if( window.pageID === 'calendar' ) {
   initCalendarMapButtons();
   const calendarDate = require('./event/calendar_date.js');
 }
-=======
-  const calendar = require('./common/calendar.js');
-}
->>>>>>> main
