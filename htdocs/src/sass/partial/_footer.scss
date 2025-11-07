@@ -137,6 +137,11 @@
                 @include min-screen() {
                     background-image: url('../data/webp/common/footer/bg_pc.webp');
                 }
+
+                @include min-screen(1440px) {
+                    left: 50%;
+                    transform: translateX(-50%);
+                }
             }
         }
 
