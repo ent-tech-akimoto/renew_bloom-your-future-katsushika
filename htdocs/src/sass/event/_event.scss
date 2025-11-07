@@ -659,6 +659,14 @@
       opacity: 1;
       pointer-events: all;
     }
+
+    // &.date{
+    //   &:not([hidden]){
+    //     display: block;
+    //     opacity: 1;
+    //     pointer-events: all;
+    //   }
+    // }
   }
 
   &__modal-flex{
@@ -1062,7 +1070,7 @@
           @include pc-fluid-size(border-width, (2));
         }
       }
-      &.disable{
+      &.disabled{
         color: $c_gray;
         pointer-events: none;
       }
