@@ -201,7 +201,7 @@
     border-radius: get_vw(15);
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    // justify-content: space-between;
     row-gap: get_vw(10);
     column-gap: get_vw(8);
     @include pc-fluid-size(width, (696));
@@ -1056,11 +1056,12 @@
       }
       &.today{
         position: relative;
-        @include before{
+        border-radius: 0;
+        @include after{
           width: get_vw(40);
           height: get_vw(40);
-          border-radius: 50%;
           border: solid get_vw(2) $c_orange;
+          border-radius: 50%;
           position: absolute;
           top: 50%;
           left: 50%;
