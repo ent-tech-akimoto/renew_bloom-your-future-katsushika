@@ -133,6 +133,7 @@
       -webkit-box-orient: vertical;
       text-overflow: ellipsis;
       font-weight: 500;
+      line-height: calc(28/20);
         @include min-screen{
           -webkit-line-clamp: 1; /* number of lines to show */
           line-clamp: 1; 
@@ -143,6 +144,7 @@
     width: get_vw(78);
     font-size: get_vw(18);
     color: $common_font;
+    line-height: calc(28/20);
     @include pc-fluid-size(width, (110));
     @include pc-fluid-size(font-size, (24));
     display: flex;

@@ -450,7 +450,7 @@
 
   &__submenu {
 
-    @media screen and (min-width: 1440px) {
+    @include min-screen {
       border-radius: 10px;
       background-color: $c_white;
       padding: 15px;
@@ -492,7 +492,7 @@
   }
 
   .header__menu--item a:hover + .header__submenu {
-    @media screen and (min-width: 1440px) {
+    @include min-screen {
       opacity: 1;
       pointer-events: auto;
     }
