@@ -20,6 +20,9 @@
     "overview": {
       "title": "開催概要"
     },
+    "area": {
+      "title": "開催エリア"
+    },
     "event-detail": {
       "title": "イベント詳細"
     },

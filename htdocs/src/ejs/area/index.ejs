@@ -1,0 +1,327 @@
+<%
+var pageID = "area";
+var lang = "ja";
+var relative_path = "../";
+var myMeta = meta[lang][pageID];
+%>
+<!DOCTYPE html>
+<html lang="<%= lang %>">
+  <%-include(`${relative_path}_partial/_head`,{lang:lang,pageID:pageID,relative_path:relative_path})%>
+
+  <body>
+    <div class="page">
+      <%-include(`${relative_path}_partial/_header`,{lang:lang,pageID:pageID,relative_path:relative_path})%>
+      <article class="area__wrapper">
+        <div class="area__bg"></div>
+        <p class="common-bread area__bread">
+          <span>TOP</span><span>開催エリア</span>
+        </p>
+        <h1 class="common__h1 area__h1">開催エリア</h1>
+        <nav class="area__nav">
+          <ul>
+            <li>
+              <a href="#about">会場構成</a>
+            </li>
+            <li>
+              <a href="#plan">まちなか花いっぱい<br class="pc-none">プレイス</a>
+            </li>
+          </ul>
+        </nav>
+        <section id="map" class="area__section map">
+          <h2 class="common__h2 area__h2">会場構成</h2>
+          <p>
+            葛飾区は、映画『男はつらいよ』、漫画『こちら葛飾区亀有公園前派出所』、『キャプテン翼』、『モンチッチ』などの区ゆかりのキャラクターや、江戸の昔から人々を魅了した花菖蒲が美しい堀切菖蒲園などの観光資源に恵まれています。
+            「全国みどりと花のフェアかつしか」では、それぞれのエリアの魅力を生かし、地域に根ざしたイベントを行います。
+          </p>
+          <div class="area__map">
+            <div class="area__content">
+              <div class="area__content-map">
+                <p class="area__txt sp-none">エリア名クリックで詳細を表示</p>
+                <div class="area__content-map-img">
+                  <picture>
+                    <source
+                      srcset="<%= relative_path%>assets/img/top/map_img_pc.png"
+                      media="(min-width: 768px)"
+                    >
+                    <img
+                      src="<%= relative_path%>assets/img/top/map_img.png"
+                      alt=""
+                    >
+                  </picture>
+                  <ul class="area__button-list sp-none">
+                    <li>
+                      <button
+                        class="area__button-item map-btn js-active"
+                        data-area="area1"
+                      >
+                        <span>メインエリア</span>
+                      </button>
+                    </li>
+                    <li>
+                      <button
+                        class="area__button-item map-btn"
+                        data-area="area2"
+                      >
+                        <span>寅さんエリア</span>
+                      </button>
+                    </li>
+                    <li>
+                      <button
+                        class="area__button-item map-btn"
+                        data-area="area3"
+                      >
+                        <span>こち亀エリア</span>
+                      </button>
+                    </li>
+                    <li>
+                      <button
+                        class="area__button-item map-btn"
+                        data-area="area4"
+                      >
+                        <span>翼エリア</span>
+                      </button>
+                    </li>
+                    <li>
+                      <button
+                        class="area__button-item map-btn"
+                        data-area="area5"
+                      >
+                        <span>モンチッチエリア</span>
+                      </button>
+                    </li>
+                    <li>
+                      <button
+                        class="area__button-item map-btn"
+                        data-area="area6"
+                      >
+                        <span>堀切菖蒲園</span>
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              <div class="area__content-detail">
+                <div id="area1" class="area__detail map-detail main js-active">
+                  <h4 class="area__detail-ttl main">メインエリア</h4>
+                  <figure class="area__detail-img">
+                    <img
+                      src="<%= relative_path%>assets/img/top/detail_main.png"
+                      alt=""
+                    >
+                    <figcaption>
+                      ※葛飾にいじゅくみらい公園<br class="pc-none">会場イメージ
+                    </figcaption>
+                  </figure>
+                  <p class="area__detail-subttl">
+                    メイン会場となる「葛飾にいじゅくみらい公園」を中心としたエリアです。
+                  </p>
+                  <p class="area__detail-txt">
+                    オープニングイベントなど様々なイベントが実施されます。「葛飾にいじゅくみらい公園」は、区立公園として区内最大の広さを有し、水と緑豊かで明るくにぎわいのある公園として、多くの方々に利用されています。都内で唯一水郷の景観をもった「都立水元公園」では、約100種、14,000株の花菖蒲が見ごろを迎える5月下旬から6月中旬に「葛飾菖蒲まつり」が堀切会場と同時開催されます。
+                  </p>
+                </div>
+                <div id="area2" class="area__detail map-detail tora">
+                  <h4 class="area__detail-ttl tora">寅さんエリア</h4>
+                  <p class="area__detail-subttl">
+                    「柴又公園」を中心としたエリアです。
+                  </p>
+                  <p class="area__detail-txt">
+                    「柴又公園」は地域の特色ある景観の保全と活用を目的とした歴史公園であり、区の観光名所の1つとして近代和風
+                    建築と純和風庭園が見事に調和する「山本亭」があります。
+                  </p>
+                </div>
+                <div id="area3" class="area__detail map-detail kochi">
+                  <h4 class="area__detail-ttl kochi">こち亀エリア</h4>
+                  <p class="area__detail-subttl">
+                    「亀有リリオパーク」を中心としたエリアです。
+                  </p>
+                  <p class="area__detail-txt">
+                    「亀有リリオパーク」は常設のステージがあり、様々なイベントが行われ区民の憩いの場として親しまれています。
+                  </p>
+                </div>
+                <div id="area4" class="area__detail map-detail wing">
+                  <h4 class="area__detail-ttl wing">翼エリア</h4>
+                  <p class="area__detail-subttl">
+                    「渋江公園」を中心としたエリアです。
+                  </p>
+                  <p class="area__detail-txt">
+                    「渋江公園」は『キャプテン翼』のキャラクター銅像もあり、多くの子どもたちに親しまれています。
+                  </p>
+                </div>
+                <div id="area5" class="area__detail map-detail monchi">
+                  <h4 class="area__detail-ttl monchi">モンチッチエリア</h4>
+                  <p class="area__detail-subttl">
+                    「新小岩駅周辺」を中心としたエリアです。
+                  </p>
+                  <p class="area__detail-txt">
+                    新小岩駅は葛飾区内で乗降客数が最も多く、「新小岩駅周辺」はにぎわいと活気にあふれています。
+                  </p>
+                </div>
+                <div id="area6" class="area__detail map-detail iris">
+                  <h4 class="area__detail-ttl iris">堀切菖蒲園</h4>
+                  <figure class="area__detail-img">
+                    <img
+                      src="<%= relative_path%>assets/img/top/detail_iris.png"
+                      alt=""
+                    >
+                    <figcaption>葛飾区の花「花菖蒲」</figcaption>
+                  </figure>
+                  <p class="area__detail-subttl">
+                    葛飾区の花は「花菖蒲」です。
+                  </p>
+                  <p class="area__detail-txt">
+                    「堀切菖蒲園」は江戸古花を中心に約200種、6,000株の花菖蒲が植えられており、見ごろを迎える5月下旬から6月中旬(本フェアと同時期)には、「葛飾菖蒲まつり」が開催されます。
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="area__map-btn">
+            <a class="common__btn-i" href="">アクセス情報はこちら</a>
+            <a class="common__btn-i" href="">イベント情報はこちら</a>
+          </div>
+        </section>
+        <section class="area__section gallery">
+          <h2 class="common-h2 area__h2">まちなか花いっぱいプレイス</h2>
+          <div class="area__gallery-container">
+            <div class="area__gallery-box">
+              <p class="area__gallery-box-ttl">区民の花壇</p>
+              <p class="area__gallery-box-txt">
+                「花いっぱいのまちづくり推進プロジェクト」で展開する区内全域に点在する130以上の区民団体が活動している150か所以上の花壇を中心に、来場者をおもてなしします。
+              </p>
+              <div class="area__gallery-resident swiper">
+                <div class="swiper-wrapper">
+                  <div class="area__gallery-resident-slide swiper-slide">
+                    <img
+                      src="<%= relative_path%>assets/img/area/gallery/resident/1.png"
+                      alt=""
+                    >
+                  </div>
+                  <div class="area__gallery-resident-slide swiper-slide">
+                    <img
+                      src="<%= relative_path%>assets/img/area/gallery/resident/2.png"
+                      alt=""
+                    >
+                  </div>
+                  <div class="area__gallery-resident-slide swiper-slide">
+                    <img
+                      src="<%= relative_path%>assets/img/area/gallery/resident/3.png"
+                      alt=""
+                    >
+                  </div>
+                  <div class="area__gallery-resident-slide swiper-slide">
+                    <img
+                      src="<%= relative_path%>assets/img/area/gallery/resident/4.png"
+                      alt=""
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="area__gallery-resident-thumb swiper">
+                <div class="swiper-wrapper">
+                  <div class="area__gallery-resident-thumb-slide swiper-slide">
+                    <img
+                      src="<%= relative_path%>assets/img/area/gallery/resident/1.png"
+                      alt=""
+                    >
+                  </div>
+                  <div class="area__gallery-resident-thumb-slide swiper-slide">
+                    <img
+                      src="<%= relative_path%>assets/img/area/gallery/resident/2.png"
+                      alt=""
+                    >
+                  </div>
+                  <div class="area__gallery-resident-thumb-slide swiper-slide">
+                    <img
+                      src="<%= relative_path%>assets/img/area/gallery/resident/3.png"
+                      alt=""
+                    >
+                  </div>
+                  <div class="area__gallery-resident-thumb-slide swiper-slide">
+                    <img
+                      src="<%= relative_path%>assets/img/area/gallery/resident/4.png"
+                      alt=""
+                    >
+                  </div>
+                </div>
+              </div>
+              <a
+                class="common__btn-w area__gallery-btn"
+                href="https://www.hanaichi-katsushika.jp/flower/map/index.php"
+                target="_blank"
+              >
+                <span>詳細はこちら</span>
+              </a>
+            </div>
+            <div class="area__gallery-box">
+              <p class="area__gallery-box-ttl">区内の花の名所</p>
+              <p class="area__gallery-box-txt">
+                奥戸ローズガーデンや小菅西公園の花時計などの公園や花の名所を取り上げ、来場者に区内にある花の魅力に触れてもらいます。
+              </p>
+              <div class="area__gallery-famous swiper">
+                <div class="swiper-wrapper">
+                  <div class="area__gallery-resident-slide swiper-slide">
+                    <img
+                      src="<%= relative_path%>assets/img/area/gallery/famous/1.png"
+                      alt=""
+                    >
+                  </div>
+                  <div class="area__gallery-resident-slide swiper-slide">
+                    <img
+                      src="<%= relative_path%>assets/img/area/gallery/famous/2.png"
+                      alt=""
+                    >
+                  </div>
+                  <div class="area__gallery-resident-slide swiper-slide">
+                    <img
+                      src="<%= relative_path%>assets/img/area/gallery/famous/3.png"
+                      alt=""
+                    >
+                  </div>
+                  <div class="area__gallery-resident-slide swiper-slide">
+                    <img
+                      src="<%= relative_path%>assets/img/area/gallery/famous/4.png"
+                      alt=""
+                    >
+                  </div>
+                </div>
+              </div>
+              <div class="area__gallery-famous-thumb swiper">
+                <div class="swiper-wrapper">
+                  <div class="area__gallery-resident-thumb-slide swiper-slide">
+                    <img
+                      src="<%= relative_path%>assets/img/area/gallery/famous/1.png"
+                      alt=""
+                    >
+                  </div>
+                  <div class="area__gallery-resident-thumb-slide swiper-slide">
+                    <img
+                      src="<%= relative_path%>assets/img/area/gallery/famous/2.png"
+                      alt=""
+                    >
+                  </div>
+                  <div class="area__gallery-resident-thumb-slide swiper-slide">
+                    <img
+                      src="<%= relative_path%>assets/img/area/gallery/famous/3.png"
+                      alt=""
+                    >
+                  </div>
+                  <div class="area__gallery-resident-thumb-slide swiper-slide">
+                    <img
+                      src="<%= relative_path%>assets/img/area/gallery/famous/4.png"
+                      alt=""
+                    >
+                  </div>
+                </div>
+              </div>
+              <a class="common__btn-w area__gallery-btn" href="">
+                <span>詳細はこちら</span>
+              </a>
+            </div>
+          </div>
+        </section>
+      </article>
+      <%-include(`${relative_path}_partial/_footer`,{lang:lang,pageID:pageID,relative_path:relative_path})%>
+    </div>
+    <%- include( `${relative_path}_partial/_foot`,{lang:lang,pageID:pageID,relative_path:relative_path}) %>
+  </body>
+</html>

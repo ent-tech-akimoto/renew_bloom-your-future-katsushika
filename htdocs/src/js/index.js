@@ -31,3 +31,9 @@ if( window.pageID === 'calendar' ) {
   initCalendarMapButtons();
   const calendarDate = require('./event/calendar_date.js');
 }
+
+if( window.pageID === 'area' ) {
+  const { initSwipers } = require('./top/swiper.js');
+  initSwipers();
+  require('./top/map_button.js');
+}

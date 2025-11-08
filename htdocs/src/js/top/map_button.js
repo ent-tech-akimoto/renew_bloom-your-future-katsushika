@@ -2,10 +2,10 @@
 // Example: <button data-area="area1"> -> activates <div id="area1"> by adding .js-active
 (function () {
 	document.addEventListener('DOMContentLoaded', function () {
-		var buttons = document.querySelectorAll('.top-map__button-item[data-area]');
+		var buttons = document.querySelectorAll('.map-btn[data-area]');
 		if (!buttons || buttons.length === 0) return;
 
-		var areaSelector = '.top-map__detail';
+		var areaSelector = '.map-detail';
 
 		function activate(areaId, clickedButton) {
 			// Toggle content areas
