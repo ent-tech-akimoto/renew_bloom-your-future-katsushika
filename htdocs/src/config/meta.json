@@ -23,6 +23,9 @@
     "area": {
       "title": "開催エリア"
     },
+    "purpose": {
+      "title": "アクセス情報"
+    },
     "event-detail": {
       "title": "イベント詳細"
     },
