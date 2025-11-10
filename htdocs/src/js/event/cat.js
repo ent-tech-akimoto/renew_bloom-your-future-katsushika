@@ -4,14 +4,15 @@ export function initCategoryButtons() {
     const modalFormBox = document.querySelector('.event__form-box.cate.in-modal');
     const cateInput = document.getElementById('cateInput');
     
+    document.addEventListener("DOMContentLoaded", () => {
+    const cateInput = document.getElementById("cateInput");
+    if (!cateInput.value) {
+        cateInput.value = null;
+    }
+    });
     // Function to update form boxes based on active category buttons
     const updateFormBoxes = () => {
-        //default null
-        if (!cateInput.value) {
-            cateInput.value = "null";
-        }
-
-
+        
         // Clear existing selections
         mainFormBox.innerHTML = '';
         modalFormBox.innerHTML = '';

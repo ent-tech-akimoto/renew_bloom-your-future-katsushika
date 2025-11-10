@@ -12,13 +12,29 @@ const calendar = document.querySelector(".event__form-flex.date");
 const inputFrom = calendar.querySelector('input[name="from"]');
 const inputTo = calendar.querySelector('input[name="to"]');
 
+
+
+
 let start = null;
 let end = null;
 let originalStart = null;
 let originalEnd = null;
 
-inputTo.value = "null";
-inputFrom.value = "null";
+document.addEventListener("DOMContentLoaded", () => {
+  const startDateFull = document.querySelector(".event__date-start p");
+  const endDateFull = document.querySelector(".event__date-end p");
+
+  if ((inputTo.value == "null" || inputTo.value == null) && (inputFrom.value == "null" || inputFrom.value == null)){
+    inputTo.value = null;
+    inputFrom.value = null;
+    startDateFull.textContent = "-";
+    endDateFull.textContent = "-";
+  } else if ( !inputTo.value && !inputFrom.value){
+    startDateFull.textContent = `${inputFrom.value.slice(0,4)}.${inputFrom.value.slice(4,6)}.${inputFrom.value.slice(6,8)}`;
+    endDateFull.textContent = `${inputTo.value.slice(0,4)}.${inputTo.value.slice(4,6)}.${inputTo.value.slice(6,8)}`;
+  }
+
+});
 
 let leftDate = new Date();
 let rightDate = new Date(leftDate);
@@ -67,10 +83,12 @@ const displaySelection = () => {
     const startYear = start.getFullYear();
     const startMonth = start.getMonth() + 1;
     const startDay = start.getDate();
+    const startDay2Digit = String(start.getDate()).padStart(2, "0");
 
     const endYear = end.getFullYear();
     const endMonth = end.getMonth() + 1;
     const endDay = end.getDate();
+    const endDay2Digit = String(end.getDate()).padStart(2, "0");
 
     // Find your elements
     const startEl = document.querySelector(".event__modal-date-start");
@@ -90,8 +108,8 @@ const displaySelection = () => {
     const startDateFull = document.querySelector(".event__date-start p");
     const endDateFull = document.querySelector(".event__date-end p");
     
-    startDateFull.textContent = `${startYear}.${startMonth}.${startDay}`;
-    endDateFull.textContent = `${endYear}.${endMonth}.${endDay}`;
+    startDateFull.textContent = `${startYear}.${startMonth}.${startDay2Digit}`;
+    endDateFull.textContent = `${endYear}.${endMonth}.${endDay2Digit}`;
 
     // console.log(formatDate(start));
     // console.log(formatDate(end));
