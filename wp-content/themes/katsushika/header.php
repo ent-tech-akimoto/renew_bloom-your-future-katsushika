@@ -4,7 +4,6 @@ if (!defined('ABSPATH')) exit;
 $uri = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
 $segments = explode('/', $uri);
 
-$predefined_slug = isset($slug) ? $slug : '';
 $slug = 'top';
 $page_title = '';
 
@@ -61,11 +60,6 @@ if (!isset($slug) || empty($slug)) {
   $slug = 'top';
 }
 
-// テンプレート側で事前に設定された$slugがあればそれを最優先
-if (!empty($predefined_slug)) {
-  $slug = $predefined_slug;
-}
-
 
 if (is_home() || is_front_page()) {
   $page_title = '';
@@ -119,17 +113,67 @@ $url         = 'https://bloom-your-future-katsushika.jp/';
   <div class="page">
     <header class="header <?php echo $slug; ?>">
       <div class="header__inner">
-        <a class="header__logo" href="/">
-          <img src="/assets/data/webp/common/logo.webp" alt="Bloom Your Future Katsushika">
-        </a>
-        <div class="header__info">
-          <p class="header__date">
-            <span class="header__date--year">2026年</span>
-            <span class="header__date--period">5/16<img src="/assets/data/webp/common/icon_polygon.webp"
-                alt="">6/14</span>
-          </p>
-          <p class="header__countdown"> 開催まで <span class="header__countdown--num">360<small>日</small></span>
-          </p>
+        <div class="header__main">
+          <a class="header__logo" href="/">
+            <img src="/assets/data/webp/common/logo.webp" alt="Bloom Your Future Katsushika">
+          </a>
+          <div class="header__info">
+            <p class="header__date">
+              <span class="header__date--year">2026年</span>
+              <span class="header__date--period">5/16<img src="/assets/data/webp/common/icon_polygon.webp"
+                  alt="">6/14</span>
+            </p>
+            <p class="header__countdown"> 開催まで <span class="header__countdown--num">360<small>日</small></span>
+            </p>
+          </div>
+        </div>
+        <div class="gnavi">
+          <div class="gnavi__contents">
+            <a class="gnavi__contact" href="#">お問い合わせ</a>
+            <div class="gnavi__sns">
+              <a class="gnavi__sns--item -x" href="https://x.com/katsu_midohana" target="_blank">
+                <img src="/assets/data/webp/common/sns_x.webp" alt="X">
+              </a>
+              <a class="gnavi__sns--item -insta" href="https://www.instagram.com/katsushika_midorihanafair/"
+                target="_blank">
+                <img src="/assets/data/webp/common/sns_insta.webp" alt="Instagram">
+              </a>
+              <a class="gnavi__sns--item -fb" href="https://www.facebook.com/profile.php?id=61576628410141"
+                target="_blank">
+                <img src="/assets/data/webp/common/sns_fb.webp" alt="facebook">
+              </a>
+            </div>
+          </div>
+          <ul class="gnavi__menu">
+            <li class="gnavi__menu--item menu-about">
+              <a href="#">開催概要</a>
+            </li>
+            <li class="gnavi__menu--item menu-area">
+              <a href="#">開催エリア</a>
+            </li>
+            <li class="gnavi__menu--item menu-event">
+              <a href="#">イベント情報</a>
+              <ul class="gnavi__submenu">
+                <li class="gnavi__submenu--item">
+                  <a href="">&gt; イベントカレンダー</a>
+                </li>
+              </ul>
+            </li>
+            <li class="gnavi__menu--item menu-sponsorship">
+              <a href="#">募集情報</a>
+              <ul class="gnavi__submenu">
+                <li class="gnavi__submenu--item">
+                  <a href="">&gt; 協力企業・団体一覧</a>
+                </li>
+              </ul>
+            </li>
+            <li class="gnavi__menu--item menu-sponsorinfo">
+              <a href="#">協賛募集</a>
+            </li>
+            <li class="gnavi__menu--item menu-access">
+              <a href="#">アクセス情報</a>
+            </li>
+          </ul>
         </div>
         <button id="js-header-btn" class="header__btn" aria-label="メニューを開閉">
           <div class="header__btn--line">
@@ -139,7 +183,7 @@ $url         = 'https://bloom-your-future-katsushika.jp/';
           </div>
         </button>
         <nav id="js-header-nav" class="header__nav">
-          <ul class="header__menu">
+          <ul class="header__menu -main">
             <li class="header__menu--item menu-about">
               <a href="#">開催概要</a>
             </li>
@@ -168,14 +212,16 @@ $url         = 'https://bloom-your-future-katsushika.jp/';
             <li class="header__menu--item menu-access">
               <a href="#">アクセス情報</a>
             </li>
-            <li class="header__menu--item menu-sub">
-              <a href="#">お知らせ</a>
-            </li>
-            <li class="header__menu--item menu-sub">
-              <a href="#">関連サイト</a>
-            </li>
           </ul>
           <div class="header__utility">
+            <ul class="header__menu">
+              <li class="header__menu--item menu-sub">
+                <a href="#">お知らせ</a>
+              </li>
+              <li class="header__menu--item menu-sub">
+                <a href="#">関連サイト</a>
+              </li>
+            </ul>
             <div id="google_translate_element"></div>
             <div class="header__search">
               <form id="siteSearchForm" class="header__search--form">
@@ -197,24 +243,15 @@ $url         = 'https://bloom-your-future-katsushika.jp/';
             <a class="header__contact" href="#">お問い合わせ</a>
             <div class="header__sns">
               <a class="header__sns--item -x" href="https://x.com/katsu_midohana" target="_blank">
-                <picture>
-                  <source srcset="/assets/data/webp/common/sns_x.webp" media="(min-width: 768px)">
-                  <img src="/assets/data/webp/common/footer/sns_x.webp" alt="X">
-                </picture>
+                <img src="/assets/data/webp/common/sns_x.webp" alt="X">
               </a>
               <a class="header__sns--item -insta" href="https://www.instagram.com/katsushika_midorihanafair/"
                 target="_blank">
-                <picture>
-                  <source srcset="/assets/data/webp/common/sns_insta.webp" media="(min-width: 768px)">
-                  <img src="/assets/data/webp/common/footer/sns_insta.webp" alt="Instagram">
-                </picture>
+                <img src="/assets/data/webp/common/sns_insta.webp" alt="Instagram">
               </a>
               <a class="header__sns--item -fb" href="https://www.facebook.com/profile.php?id=61576628410141"
                 target="_blank">
-                <picture>
-                  <source srcset="/assets/data/webp/common/sns_fb.webp" media="(min-width: 768px)">
-                  <img src="/assets/data/webp/common/footer/sns_fb.webp" alt="facebook">
-                </picture>
+                <img src="/assets/data/webp/common/sns_fb.webp" alt="facebook">
               </a>
             </div>
           </div>

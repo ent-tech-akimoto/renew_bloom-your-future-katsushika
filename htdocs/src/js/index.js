@@ -22,6 +22,7 @@ if (window.pageID === 'event' ) {
   const { initCategoryButtons } = require('./event/cat.js');
   initCategoryButtons();
   const commonCalendar = require('./common/calendar.js');
+  const commonForm = require('./common/form.js');
 }
 
 if( window.pageID === 'calendar' ) {

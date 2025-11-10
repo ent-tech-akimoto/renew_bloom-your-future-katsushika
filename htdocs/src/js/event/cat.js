@@ -1,58 +1,53 @@
 export function initCategoryButtons() {
-    const catButtons = document.querySelectorAll('.cat-btn');
-    const mainFormBox = document.querySelector('.event__form-box.cate:not(.in-modal)');
-    const modalFormBox = document.querySelector('.event__form-box.cate.in-modal');
-    const cateInput = document.getElementById('cateInput');
-    
-    // Function to update form boxes based on active category buttons
-    const updateFormBoxes = () => {
-        //default null
-        if (!cateInput.value) {
-            cateInput.value = "null";
-        }
+  const catButtons = document.querySelectorAll('.cat-btn');
+  const mainFormBox = document.querySelector('.event__form-box.cate:not(.in-modal)');
+  const modalFormBox = document.querySelector('.event__form-box.cate.in-modal');
+  const cateInput = document.getElementById('cateInput');
 
+  if (!catButtons.length || !cateInput) return;
 
-        // Clear existing selections
-        mainFormBox.innerHTML = '';
-        modalFormBox.innerHTML = '';
-        const selectedCategories = [];
-        
-        // Add spans for each active category
-        catButtons.forEach(button => {
-            if (button.classList.contains('js-active')) {
-                const category = button.dataset.cat;
-                const id = button.dataset.id;
-                const text = button.textContent.trim();
-                selectedCategories.push(id);
+  // keep track of selected IDs in click order
+  let selected = [];
 
-                // Create span HTML with consistent formatting
-                const spanHtml = `<span class="event__form-select" data-cat="${category}" data-id="${id}">${text}</span>`;
-                
-                // Add to main form box
-                mainFormBox.innerHTML += spanHtml;
-                
-                // Add to modal form box
-                modalFormBox.innerHTML += spanHtml;
-            }
-        });
+  const updateFormBoxes = () => {
+    if (mainFormBox) mainFormBox.innerHTML = '';
+    if (modalFormBox) modalFormBox.innerHTML = '';
 
-        // Update hidden input value
-        if (cateInput) {
-            cateInput.value = selectedCategories.join(',');
-        }
-    };
+    selected.forEach(id => {
+      const btn = [...catButtons].find(b => b.dataset.id === id);
+      if (!btn) return;
 
-    // Add click event to each category button
-    catButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            // Toggle active state
-            button.classList.toggle('js-active');
-            
-            // Update form boxes
-            updateFormBoxes();
-        });
+      const slug = btn.dataset.cat;
+      const text = btn.textContent.trim();
+      const span = `<span class="event__form-select" data-cat="${slug}" data-id="${id}">${text}</span>`;
+
+      if (mainFormBox) mainFormBox.insertAdjacentHTML('beforeend', span);
+      if (modalFormBox) modalFormBox.insertAdjacentHTML('beforeend', span);
     });
 
-    // Initialize form boxes with current active buttons
-    updateFormBoxes();
+    cateInput.value = selected.join(',');
+  };
+
+  catButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const id = btn.dataset.id;
+
+      if (btn.classList.toggle('js-active')) {
+        // add to end if newly activated
+        selected.push(id);
+      } else {
+        // remove if deactivated
+        selected = selected.filter(x => x !== id);
+      }
+
+      updateFormBoxes();
+    });
+  });
+
+  // initial state from PHP (js-active)
+  selected = [...catButtons]
+    .filter(btn => btn.classList.contains('js-active'))
+    .map(btn => btn.dataset.id);
+
+  updateFormBoxes();
 }
