@@ -29,6 +29,9 @@
     "event-detail": {
       "title": "イベント詳細"
     },
+    "sponsor": {
+      "title": "協賛募集"
+    },
     "sponsor-detail": {
       "title": "募集内容"
     },
