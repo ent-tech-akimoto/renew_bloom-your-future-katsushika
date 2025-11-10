@@ -152,10 +152,10 @@ $url         = 'https://bloom-your-future-katsushika.jp/';
               <a href="#">開催エリア</a>
             </li>
             <li class="gnavi__menu--item menu-event">
-              <a href="#">イベント情報</a>
+              <a href="/event/">イベント情報</a>
               <ul class="gnavi__submenu">
                 <li class="gnavi__submenu--item">
-                  <a href="">&gt; イベントカレンダー</a>
+                  <a href="/event-calendar/">&gt; イベントカレンダー</a>
                 </li>
               </ul>
             </li>

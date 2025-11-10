@@ -123,11 +123,11 @@
     <div class="footer__main--bg">
       <div class="footer__main--contents">
         <div class="footer__block">
-          <p class="footer__block--tit"> Contents </p>
+          <p class="footer__block--tit">Contents</p>
           <nav class="footer__nav">
             <a href="">開催概要</a>
             <a href="">開催エリア</a>
-            <a href="">イベント情報</a>
+            <a href="/event/">イベント情報</a>
             <a href="">募集情報</a>
             <a href="">協賛募集</a>
             <a href="">アクセス情報</a>
@@ -140,7 +140,7 @@
             <a href="">プライバシーポリシー</a>
             <a href="">運用ポリシーサイトマップ</a>
           </nav>
-          <p class="footer__block--tit"> Follow us </p>
+          <p class="footer__block--tit">Follow us</p>
           <div class="footer__sns">
             <a class="footer__sns--item -x" href="https://x.com/katsu_midohana" target="_blank">
               <img src="/assets/data/webp/common/sns_x.webp" alt="X">
