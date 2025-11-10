@@ -39,3 +39,8 @@ if( window.pageID === 'area' ) {
   initSwipers();
   require('./top/map_button.js');
 }
+
+if( window.pageID === 'overview' || window.pageID === 'purpose' ) {
+  const { initSwipersNav } = require('./common/nav_swiper.js');
+  initSwipersNav();
+}

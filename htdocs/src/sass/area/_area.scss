@@ -34,9 +34,9 @@
     position: relative;
     font-size: get_vw(14);
     color: $c_white;
-    padding-left: get_vw(20);
+    padding-left: get_vw(0);
     @include pc-fluid-size(font-size, (14));
-    @include pc-fluid-size(padding-left, (80));
+    @include pc-fluid-size(padding-left, (0));
     & span{
       &::after{
         content: '>';
