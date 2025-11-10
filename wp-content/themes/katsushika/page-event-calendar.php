@@ -4,7 +4,6 @@ Template Name: Event Calendar
 */
 $slug = 'calendar';
 get_header();
-
 // パラメータを拾う ?y=2025&mo=12&area=14,15
 $year  = isset($_GET['y'])  ? (int) $_GET['y']  : (int) current_time('Y');
 $month = isset($_GET['mo']) ? (int) $_GET['mo'] : (int) current_time('m');

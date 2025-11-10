@@ -1,5 +1,5 @@
 <section class="top-gallery">
-  <h2 class="common-h2 top-gallery__ttl"> まちなか花いっぱいプレイス </h2>
+  <h2 class="common-h2 top-gallery__ttl">まちなか花いっぱいプレイス</h2>
   <div class="top-gallery__container">
     <div class="top-gallery__box">
       <p class="top-gallery__box-ttl">区民の花壇</p>
@@ -35,7 +35,8 @@
           </div>
         </div>
       </div>
-      <a class="common__btn-w top-gallery__btn" href="">
+      <a class="common__btn-w top-gallery__btn" href="https://www.hanaichi-katsushika.jp/flower/map/index.php"
+        target="_blank">
         <span>詳細はこちら</span>
       </a>
     </div>

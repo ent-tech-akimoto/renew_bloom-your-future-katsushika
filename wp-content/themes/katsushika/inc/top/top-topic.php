@@ -5,7 +5,7 @@
       <div class="top-topic__swiper-slide swiper-slide">
         <img src="/assets/img/top/topic/1.png" alt="">
         <div class="top-topic__slide-box">
-          <p class="title">ハンドメイドブースオープンしました…</p>
+          <p class="title"></p>ハンドメイドブースオープンしましたハンドメイドブースオープンしました</p>
           <a href="" class="common__btn-w">
             <span>詳細はこちら</span>
           </a>
@@ -14,7 +14,7 @@
       <div class="top-topic__swiper-slide swiper-slide">
         <img src="/assets/img/top/topic/2.png" alt="">
         <div class="top-topic__slide-box">
-          <p class="title">アクセスについて</p>
+          <p class="title">アクセスについてアクセスについてアクセスについてアクセスについて</p>
           <a href="" class="common__btn-w">
             <span>詳細はこちら</span>
           </a>
