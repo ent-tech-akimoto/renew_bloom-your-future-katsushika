@@ -1,5 +1,4 @@
 <?php
-// ---- フリーワード予測AJAX
 add_action('wp_ajax_event_keyword_suggest', 'my_event_keyword_suggest');
 add_action('wp_ajax_nopriv_event_keyword_suggest', 'my_event_keyword_suggest');
 

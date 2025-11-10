@@ -60,6 +60,6 @@
     </div>
   </div>
   <div class="common__btn-i top-news__btn">
-    <span>お知らせ一覧はこちらへ</span>
+    <span>お知らせ一覧はこちら</span>
   </div>
 </section>

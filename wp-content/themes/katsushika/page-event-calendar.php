@@ -4,126 +4,150 @@ Template Name: Event Calendar
 */
 $slug = 'calendar';
 get_header();
-
-// 現在の年月をGETから取得。なければ現在
+// パラメータを拾う ?y=2025&mo=12&area=14,15
 $year  = isset($_GET['y'])  ? (int) $_GET['y']  : (int) current_time('Y');
 $month = isset($_GET['mo']) ? (int) $_GET['mo'] : (int) current_time('m');
-// エリア（main / kochi / monchi / wing / iris / tora）
-$area  = isset($_GET['area']) ? sanitize_text_field($_GET['area']) : '';
-$base_url = get_permalink();
-// 当月の1日と末日
-$start_of_month = sprintf('%04d-%02d-01', $year, $month);
-$end_of_month   = date('Y-m-t', strtotime($start_of_month));
-// クエリを組む
-$meta_query = array(
+$area_param = isset($_GET['area']) ? sanitize_text_field($_GET['area']) : '';
+$base_url   = get_permalink();
+$area_ids = [];
+if ($area_param !== '') {
+  $area_ids = array_map('intval', explode(',', $area_param));
+  $area_ids = array_values(array_filter($area_ids, function($v){
+    return $v > 0;
+  }));
+}
+// Ymd format
+$start_of_month_date = sprintf('%04d-%02d-01', $year, $month);
+$end_of_month_date   = date('Y-m-t', strtotime($start_of_month_date));
+$start_of_month = date('Ymd', strtotime($start_of_month_date));
+$end_of_month   = date('Ymd', strtotime($end_of_month_date));
+// クエリ「終了日が月初以降」かつ「開始日が月末以前」ならその月にかぶっているとみなす
+$meta_query = [
   'relation' => 'AND',
-  // イベント終了日が月初以降
-  array(
+  [
     'key'     => 'event_end_date',
     'value'   => $start_of_month,
     'compare' => '>=',
-    'type'    => 'DATE',
-  ),
-  // イベント開始日が月末以前
-  array(
+    'type'    => 'NUMERIC',
+  ],
+  [
     'key'     => 'event_start_date',
     'value'   => $end_of_month,
     'compare' => '<=',
-    'type'    => 'DATE',
-  ),
-);
+    'type'    => 'NUMERIC',
+  ],
+];
+// ページ番号
+$paged = max(1, get_query_var('page'), get_query_var('paged'));
 
-$args = array(
+// WP_Query
+$args = [
   'post_type'      => 'event',
+  'post_status'    => 'publish',
   'posts_per_page' => 12,
-  'paged'          => get_query_var('paged') ? get_query_var('paged') : 1,
-  'orderby'        => 'meta_value',
+  'paged'          => $paged,
+  'orderby'        => 'meta_value_num',
   'meta_key'       => 'event_start_date',
   'order'          => 'ASC',
   'meta_query'     => $meta_query,
-);
-
-// エリア指定があればタクソノミーで絞る
-if ( $area ) {
-  $args['tax_query'] = array(
-    array(
+];
+// エリア絞る
+if (!empty($area_ids)) {
+  $args['tax_query'] = [
+    [
       'taxonomy' => 'event_area',
-      'field'    => 'slug',
-      'terms'    => $area,
-    ),
-  );
+      'field'    => 'term_id',
+      'terms'    => $area_ids,
+    ],
+  ];
 }
 
-$event_query  = new WP_Query( $args );
+$event_query  = new WP_Query($args);
 $found_posts  = $event_query->found_posts;
-$current_page = $args['paged'];
-$total_pages  = $event_query->max_num_pages;
-// 前月・次月のためのタイムスタンプ
-$prev_ts = strtotime('-1 month', strtotime($start_of_month));
-$next_ts = strtotime('+1 month', strtotime($start_of_month));
-// 前月・次月のURLを作る
+$total_pages  = (int) $event_query->max_num_pages;
+
+// 前月・次月のURL
+$prev_ts = strtotime('-1 month', strtotime($start_of_month_date));
+$next_ts = strtotime('+1 month', strtotime($start_of_month_date));
+
 $prev_url = add_query_arg(
-  array(
+  [
     'y'    => date('Y', $prev_ts),
-    'mo'   => date('m', $prev_ts),
-    'area' => $area,
-  ),
+    'mo'   => date('n', $prev_ts),
+    'area' => $area_param,
+  ],
   $base_url
 );
 $next_url = add_query_arg(
-  array(
+  [
     'y'    => date('Y', $next_ts),
-    'mo'   => date('m', $next_ts),
-    'area' => $area,
-  ),
+    'mo'   => date('n', $next_ts),
+    'area' => $area_param,
+  ],
   $base_url
 );
+
+// エリア一覧（表示用）
+$areas = get_terms([
+  'taxonomy'   => 'event_area',
+  'hide_empty' => false,
+  'orderby'    => 'term_id',
+  'order'      => 'ASC',
+]);
 ?>
-<article class="event">
+<article class="event__wrapper">
   <div class="event__bg"></div>
   <p class="common-bread event__bread">
     <span>TOP</span><span>イベント情報</span>
   </p>
   <h1 class="common__h1 event__h1">イベント情報</h1>
-  <section class="event__calendar-search">
+  <form class="event__calendar-search" action="<?php echo esc_url($base_url); ?>" method="get">
     <div class="event__calendar-flex top">
+      <input type="hidden" name="y" value="<?php echo esc_attr($year); ?>">
+      <input type="hidden" name="mo" value="<?php echo esc_attr($month); ?>">
       <p class="before">
-        <a
-          href="<?php echo esc_url( $prev_url ); ?>">＜<?php echo esc_html( (int)date('n', $prev_ts) ); ?>月/<?php echo esc_html( date('Y', $prev_ts) ); ?></a>
+        <a href="<?php echo esc_url($prev_url); ?>">＜<?php echo esc_html(date('n', $prev_ts)); ?>月/<?php echo esc_html(date('Y', $prev_ts)); ?>
+        </a>
       </p>
-      <strong><?php echo esc_html( $month ); ?>月</strong>
+      <strong><?php echo esc_html($month); ?>月</strong>
       <p class="after">
-        <a
-          href="<?php echo esc_url( $next_url ); ?>"><?php echo esc_html( (int)date('n', $next_ts) ); ?>月/<?php echo esc_html( date('Y', $next_ts) ); ?>＞</a>
+        <a href="<?php echo esc_url($next_url); ?>">
+          <?php echo esc_html(date('n',$next_ts)); ?>月/<?php echo esc_html(date('Y',$next_ts)); ?>＞</a>
       </p>
     </div>
-    <div class="event__calendar-flex bot pc-none">
+    <div class="event__calendar-flex area bot pc-none">
+      <input type="hidden" name="area" id="areaInput" value="<?php echo esc_attr($area_param); ?>">
       <div class="event__calendar-label"></div>
-      <div class="event__calendar-box">
-        <span class="event__calendar-select--area main<?php if($area==='main') echo ' js-active'; ?>"
-          data-area="main">メインエリア</span>
-        <span class="event__calendar-select--area kochi<?php if($area==='kochi') echo ' js-active'; ?>"
-          data-area="kochi">こち亀エリア</span>
-        <span class="event__calendar-select--area monchi<?php if($area==='monchi') echo ' js-active'; ?>"
-          data-area="monchi">モンチッチエリア</span>
-        <span class="event__calendar-select--area wing<?php if($area==='wing') echo ' js-active'; ?>"
-          data-area="wing">翼エリア</span>
-        <span class="event__calendar-select--area iris<?php if($area==='iris') echo ' js-active'; ?>"
-          data-area="iris">堀切菖蒲園</span>
-        <span class="event__calendar-select--area tora<?php if($area==='tora') echo ' js-active'; ?>"
-          data-area="tora">寅さんエリア</span>
+      <div class="event__calendar-box area">
+        <?php if (!is_wp_error($areas) && !empty($areas)): ?>
+        <?php foreach ($areas as $area_term): ?>
+        <?php
+          $is_active = empty($area_ids) || in_array($area_term->term_id, $area_ids, true);
+        ?>
+        <span class="event__calendar-select--area<?php echo $is_active ? ' js-active' : ''; ?>"
+          data-area="<?php echo esc_attr($area_term->slug); ?>" data-id="<?php echo esc_attr($area_term->term_id); ?>">
+          <?php echo esc_html($area_term->name); ?>
+        </span>
+        <?php endforeach; ?>
+        <?php else: ?>
+        <span class="event__calendar-select--area">エリア</span>
+        <?php endif; ?>
       </div>
       <div class="event__form-modal area" data-modal="modal1">
         <h5 class="pc-none">イベントエリア</h5>
         <div class="event__modal-flex area pc-none">
           <div class="event__form-label area" for="eventArea"></div>
-          <div class="event__form-box area">
-            <span class="event__form-select--area main" data-area="main">メインエリア</span>
-            <span class="event__form-select--area kochi" data-area="kochi">こち亀エリア</span>
-            <span class="event__form-select--area monchi" data-area="monchi">モンチッチエリア</span>
-            <span class="event__form-select--area wing" data-area="wing">翼エリア</span>
-            <span class="event__form-select--area iris" data-area="iris">堀切菖蒲園</span>
-            <span class="event__form-select--area tora" data-area="tora">寅さんエリア</span>
+          <div class="event__form-box area in-modal">
+            <?php if (!is_wp_error($areas) && !empty($areas)): ?>
+            <?php foreach ($areas as $area_term): ?>
+            <?php $is_active = empty($area_ids) || in_array($area_term->term_id, $area_ids, true); ?>
+            <span class="event__form-select--area<?php echo $is_active ? ' js-active' : ''; ?>"
+              data-area="<?php echo esc_attr($area_term->slug); ?>"
+              data-id="<?php echo esc_attr($area_term->term_id); ?>">
+              <?php echo esc_html($area_term->name); ?>
+            </span>
+            <?php endforeach; ?>
+            <?php endif; ?>
           </div>
         </div>
         <div class="event__modal-map">
@@ -131,16 +155,20 @@ $next_url = add_query_arg(
             <img src="/assets/img/event/modal_area.png" alt="">
           </picture>
           <ul>
-            <li class="main <?php if($area==='main') echo 'js-active'; ?>" data-area="main">メインエリア</li>
-            <li class="tora <?php if($area==='tora') echo 'js-active'; ?>" data-area="tora">寅さんエリア</li>
-            <li class="kochi <?php if($area==='kochi') echo 'js-active'; ?>" data-area="kochi">こち亀エリア</li>
-            <li class="iris <?php if($area==='iris') echo 'js-active'; ?>" data-area="iris">堀切菖蒲園</li>
-            <li class="wing <?php if($area==='wing') echo 'js-active'; ?>" data-area="wing">翼エリア</li>
-            <li class="monchi <?php if($area==='monchi') echo 'js-active'; ?>" data-area="monchi">モンチッチエリア</li>
+            <?php if (!is_wp_error($areas) && !empty($areas)): ?>
+            <?php foreach ($areas as $area_term): ?>
+            <?php $is_active = empty($area_ids) || in_array($area_term->term_id, $area_ids, true); ?>
+            <li class="map-btn<?php echo $is_active ? ' js-active' : ''; ?>"
+              data-area="<?php echo esc_attr($area_term->slug); ?>"
+              data-id="<?php echo esc_attr($area_term->term_id); ?>">
+              <?php echo esc_html($area_term->name); ?>
+            </li>
+            <?php endforeach; ?>
+            <?php endif; ?>
           </ul>
         </div>
         <button class="event__modal-map-btn" type="button">現在地付近</button>
-        <button class="event__modal-btn" type="button">検索する</button>
+        <button class="common__btn-i event__modal-btn" type="submit">検索する</button>
         <button class="event__modal-next" type="button">スキップする＞</button>
         <button class="event__modal-close" type="button">
           <span></span>
@@ -148,83 +176,106 @@ $next_url = add_query_arg(
         </button>
       </div>
     </div>
-    <form id="event-calendar-filter" action="<?php echo esc_url( $base_url ); ?>" method="get" style="display:none;">
-      <input type="hidden" name="y" value="<?php echo esc_attr($year); ?>">
-      <input type="hidden" name="mo" value="<?php echo esc_attr(sprintf('%02d', $month)); ?>">
-      <input type="hidden" name="area" value="<?php echo esc_attr($area); ?>" class="js-calendar-area">
-    </form>
-  </section>
+  </form>
   <section class="event__box">
-    <h3 class="event__h3">検索結果<span><?php echo esc_html( $found_posts ); ?></span>件</h3>
+    <h3 class="event__h3">検索結果<span><?php echo esc_html($found_posts); ?></span>件</h3>
     <ul class="event__box-list">
-      <?php if ( $event_query->have_posts() ) : ?>
-      <?php while ( $event_query->have_posts() ) : $event_query->the_post(); ?>
+      <?php if ($event_query->have_posts()) : ?>
+      <?php while ($event_query->have_posts()) : $event_query->the_post(); ?>
       <?php
-            // エリアターム
-            $area_terms = get_the_terms( get_the_ID(), 'event_area' );
-            $area_class = '';
-            $area_label = '';
-            if ( $area_terms && ! is_wp_error($area_terms) ) {
-              $area_class = $area_terms[0]->slug;
-              $area_label = $area_terms[0]->name;
-            }
-            // カテゴリターム
-            $cat_terms = get_the_terms( get_the_ID(), 'event_cat' );
-            // 日付
-            $start = get_post_meta( get_the_ID(), 'event_start_date', true );
-            $end   = get_post_meta( get_the_ID(), 'event_end_date', true );
-            // 表示用の日付文字列
-            $date_str = '';
-            if ( $start ) {
-              $date_str = date_i18n('Y年 n月j日', strtotime($start));
-            }
-            if ( $end && $end !== $start ) {
-              $date_str .= '（～' . date_i18n('n月j日', strtotime($end)) . '）';
-            }
+          $area_terms = get_the_terms(get_the_ID(), 'event_area');
+          $area_slug  = '';
+          $area_name  = '';
+          if ($area_terms && !is_wp_error($area_terms)) {
+            $area_slug = $area_terms[0]->slug;
+            $area_name = $area_terms[0]->name;
+          }
+          $cat_terms = get_the_terms(get_the_ID(), 'event_cat');
+          $start_raw = get_post_meta(get_the_ID(), 'event_start_date', true);
+          $end_raw   = get_post_meta(get_the_ID(), 'event_end_date', true);
+          $date_str = '';
+          if ($start_raw) {
+            $date_str = date_i18n('Y年 n月j日', strtotime($start_raw));
+          }
+          if ($end_raw && $end_raw !== $start_raw) {
+            $date_str .= '（～' . date_i18n('n月j日', strtotime($end_raw)) . '）';
+          }
           ?>
       <li>
         <a class="event__box-item" href="<?php the_permalink(); ?>">
           <div class="event__box-img">
-            <?php if ( has_post_thumbnail() ) : ?>
+            <?php if (has_post_thumbnail()) : ?>
             <?php the_post_thumbnail('medium'); ?>
             <?php else: ?>
-            <img src="/assets/img/event/thumb/1.png" alt="">
+            <img src="/assets/img/common/thumb.png" alt="">
             <?php endif; ?>
           </div>
-          <?php if ( $date_str ) : ?>
-          <p class="event__box-date"><?php echo esc_html( $date_str ); ?></p>
+          <?php if ($date_str) : ?>
+          <p class="event__box-date"><?php echo esc_html($date_str); ?></p>
           <?php endif; ?>
           <h4 class="event__box-ttl"><?php the_title(); ?></h4>
+          <?php if ($cat_terms && !is_wp_error($cat_terms)) : ?>
           <div class="event__box-cat">
-            <?php if ( $cat_terms && ! is_wp_error($cat_terms) ) : ?>
-            <?php foreach ( $cat_terms as $term ) : ?>
-            <span>#<?php echo esc_html( $term->name ); ?></span>
+            <?php foreach ($cat_terms as $ct) : ?>
+            <span>#<?php echo esc_html($ct->name); ?></span>
             <?php endforeach; ?>
-            <?php endif; ?>
           </div>
-          <?php if ( $area_label ) : ?>
-          <span class="<?php echo esc_attr($area_class); ?>"><?php echo esc_html($area_label); ?></span>
+          <?php endif; ?>
+          <?php if ($area_name) : ?>
+          <span class="<?php echo esc_attr($area_slug); ?>"><?php echo esc_html($area_name); ?></span>
           <?php endif; ?>
         </a>
       </li>
       <?php endwhile; wp_reset_postdata(); ?>
       <?php else: ?>
-      <li>この月のイベントはありません。</li>
+      <li class="event__zero-txt">この月のイベントはありません。</li>
       <?php endif; ?>
     </ul>
+    <?php
+    // ページネーション
+    if ($total_pages > 1) :
+      $current = $paged;
+      $base_args = [
+        'y'  => $year,
+        'mo' => $month,
+      ];
+      if ($area_param !== '') {
+        $base_args['area'] = $area_param;
+      }
+      $show_max = 3;
+      $start = max(1, $current - 1);
+      $end   = min($total_pages, $start + $show_max - 1);
+      if (($end - $start + 1) < $show_max) {
+        $start = max(1, $end - $show_max + 1);
+      }
+    ?>
     <div class="event__pagination">
       <?php
-      // ページネーション（数字ボタンの代わりにWP標準を流し込む）
-      echo paginate_links( array(
-        'total'   => $total_pages,
-        'current' => $current_page,
-        'mid_size'=> 1,
-        'prev_text' => '',
-        'next_text' => '',
-      ) );
-      ?>
+        // ←prev
+        if ($current > 1) {
+          $prev_page_url = add_query_arg(array_merge($base_args, [ 'page' => $current - 1 ]), $base_url);
+          echo '<button class="arrow-prev" type="button" onclick="location.href=\'' . esc_url($prev_page_url) . '\'"></button>';
+        }
+        // numbers
+        for ($i = $start; $i <= $end; $i++) {
+          $page_url = add_query_arg(array_merge($base_args, [ 'page' => $i ]), $base_url);
+          $active   = ($i === $current) ? 'active' : '';
+          echo '<button class="' . esc_attr($active) . '" type="button" onclick="location.href=\'' . esc_url($page_url) . '\'">' . esc_html($i) . '</button>';
+        }
+        if ($end < $total_pages) {
+          echo '<button class="small" type="button"></button>';
+          echo '<button class="small" type="button"></button>';
+          echo '<button class="small" type="button"></button>';
+        }
+        // →next
+        if ($current < $total_pages) {
+          $next_page_url = add_query_arg(array_merge($base_args, [ 'page' => $current + 1 ]), $base_url);
+          echo '<button class="arrow-next" type="button" onclick="location.href=\'' . esc_url($next_page_url) . '\'"></button>';
+        }
+        ?>
     </div>
+    <?php endif; ?>
   </section>
-  <a class="event__btn back" href="<?php echo esc_url( home_url('/event/') ); ?>"> イベント情報へもどる </a>
+  <a class="event__btn back" href="<?php echo esc_url(home_url('/event/')); ?>">イベント情報へもどる</a>
 </article>
 <?php get_footer(); ?>
