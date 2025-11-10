@@ -5,27 +5,42 @@
 $slug = 'event';
 get_header();
 
-// GET値を受け取る
+// --- GET値を受け取る ------------------------------------------
+// エリア
 $area_param = isset($_GET['area']) ? sanitize_text_field($_GET['area']) : '';
 $area_ids   = [];
-// "1,2" みたいに来たら分割する
 if ($area_param !== '') {
   $area_ids = array_map('intval', explode(',', $area_param));
-  // 0とか空を消す
   $area_ids = array_values(array_filter($area_ids, function($v){
     return $v > 0;
   }));
 }
-$from_d   = isset($_GET['from']) ? sanitize_text_field($_GET['from']) : '';
-$to_d     = isset($_GET['to'])   ? sanitize_text_field($_GET['to'])   : '';
-$cat_id   = isset($_GET['cat'])  ? sanitize_text_field($_GET['cat'])  : '';
+// 開始日・終了日
+$from_d = isset($_GET['from']) ? sanitize_text_field($_GET['from']) : '';
+$to_d   = isset($_GET['to'])   ? sanitize_text_field($_GET['to'])   : '';
+// カテゴリー
+$cat_param = isset($_GET['ev_cat']) ? sanitize_text_field($_GET['ev_cat']) : '';
+$cat_ids   = [];
+if ($cat_param !== '') {
+  $cat_ids = array_map('intval', explode(',', $cat_param));
+  $cat_ids = array_values(array_filter($cat_ids, function($v){
+    return $v > 0;
+  }));
+}
+
+// フリーワード
 $keyword  = isset($_GET['keyword']) ? sanitize_text_field($_GET['keyword']) : '';
 
 // ページング
 $paged = max(1, get_query_var('paged'), get_query_var('page'));
 
+// ----------------------------------------------------
+// クエリを組む
+// ----------------------------------------------------
+
 // tax_query（エリア・カテゴリが送られてきたときだけ）
 $tax_query = ['relation' => 'AND'];
+
 if (!empty($area_ids)) {
   $tax_query[] = [
     'taxonomy' => 'event_area',
@@ -33,14 +48,16 @@ if (!empty($area_ids)) {
     'terms'    => $area_ids,
   ];
 }
-if ($cat_id !== '' && $cat_id !== '0') {
+
+if (!empty($cat_ids)) {
   $tax_query[] = [
     'taxonomy' => 'event_cat',
     'field'    => 'term_id',
-    'terms'    => [(int)$cat_id],
+    'terms'    => $cat_ids,
   ];
 }
-// ここだけ開催日順に変更（ACFの event_start を Ymdで保存してる想定）
+
+// 基本の引数（開催日で並べる）
 $args = [
   'post_type'      => 'event',
   'post_status'    => 'publish',
@@ -51,12 +68,42 @@ $args = [
   'order'          => 'ASC',
 ];
 
-if ( !empty($area_ids) || ($cat_id !== '' && $cat_id !== '0') ) {
+if ( !empty($area_ids) || !empty($cat_ids) ) {
   $args['tax_query'] = $tax_query;
 }
 
 if ($keyword) {
   $args['s'] = $keyword;
+}
+
+// 日付で絞る（期間がかぶっているイベントを取る想定）
+$meta_query = [];
+
+if ($from_d) {
+  $from_ymd = date('Ymd', strtotime($from_d));
+  $meta_query[] = [
+    'key'     => 'event_end_date',
+    'value'   => $from_ymd,
+    'compare' => '>=',
+    'type'    => 'NUMERIC',
+  ];
+}
+
+if ($to_d) {
+  $to_ymd = date('Ymd', strtotime($to_d));
+  $meta_query[] = [
+    'key'     => 'event_start_date',
+    'value'   => $to_ymd,
+    'compare' => '<=',
+    'type'    => 'NUMERIC',
+  ];
+}
+
+if (!empty($meta_query)) {
+  if (count($meta_query) > 1) {
+    $meta_query['relation'] = 'AND';
+  }
+  $args['meta_query'] = $meta_query;
 }
 
 $event_query = new WP_Query($args);
@@ -156,9 +203,7 @@ $found = $event_query->found_posts;
             <ul>
               <?php if ( ! is_wp_error($areas) && ! empty($areas) ) : ?>
               <?php foreach ($areas as $area) : ?>
-              <?php // 初期は全部アクティブ、検索後は選択されたものだけアクティブ
-                $is_active = empty($area_ids) || in_array($area->term_id, $area_ids, true);
-              ?>
+              <?php $is_active = empty($area_ids) || in_array($area->term_id, $area_ids, true); ?>
               <li class="map-btn<?php echo $is_active ? ' js-active' : ''; ?>"
                 data-area="<?php echo esc_attr($area->slug); ?>" data-id="<?php echo esc_attr($area->term_id); ?>">
                 <?php echo esc_html($area->name); ?>
@@ -290,20 +335,26 @@ $found = $event_query->found_posts;
         </div>
       </div>
       <div class="event__form-flex cate">
-        <?php $cat_val = ($cat_id === '0') ? '' : $cat_id; ?>
-        <input type="hidden" name="cat" id="cateInput" value="<?php echo esc_attr($cat_val); ?>">
+        <input type="hidden" name="ev_cat" id="cateInput" value="<?php echo esc_attr($cat_param); ?>">
         <div class="event__form-label cate"></div>
         <div class="event__form-box cate">
-          <span class="event__form-select">
-            <?php
-            if ($cat_val !== '') {
-              $cat_term = get_term((int)$cat_val, 'event_cat');
-              echo $cat_term && !is_wp_error($cat_term) ? esc_html($cat_term->name) : '';
-            } else {
-              echo '';
+          <?php
+          // 選択されているIDがあればその名前を出す、なければ「カテゴリー」
+          if ( !empty($cat_ids) ) {
+            $terms_to_show = get_terms([
+              'taxonomy'   => 'event_cat',
+              'hide_empty' => false,
+              'include'    => $cat_ids,
+            ]);
+            if ( !is_wp_error($terms_to_show) && !empty($terms_to_show) ) {
+              foreach ($terms_to_show as $t) {
+                echo '<span class="event__form-select js-active" data-cat="'.esc_attr($t->slug).'" data-id="'.esc_attr($t->term_id).'">'.esc_html($t->name).'</span>';
+              }
             }
-            ?>
-          </span>
+          } else {
+            echo '<span class="event__form-select">カテゴリー</span>';
+          }
+          ?>
         </div>
 
         <div class="event__form-modal cate" data-modal="modal3">
@@ -311,24 +362,33 @@ $found = $event_query->found_posts;
           <div class="event__modal-flex cate">
             <div class="event__form-label cate"></div>
             <div class="event__form-box cate in-modal">
-              <span class="event__form-select">見る</span>
+              <span class="event__form-select">カテゴリー</span>
             </div>
           </div>
           <ul class="event__modal-cate">
-            <li
-              class="cat-btn<?php echo ($cat_val === '0' || $cat_val === '') ? '' : (($cat_val == 0) ? ' js-active' : ''); ?>"
-              data-cat="watch" data-id="0">見る</li>
-            <li class="cat-btn<?php echo ($cat_val == 1) ? ' js-active' : ''; ?>" data-cat="eat" data-id="1">食べる</li>
-            <li class="cat-btn<?php echo ($cat_val == 2) ? ' js-active' : ''; ?>" data-cat="buy" data-id="2">買う</li>
-            <li class="cat-btn<?php echo ($cat_val == 3) ? ' js-active' : ''; ?>" data-cat="learn" data-id="3">学ぶ</li>
-            <li class="cat-btn<?php echo ($cat_val == 4) ? ' js-active' : ''; ?>" data-cat="play" data-id="4">遊ぶ</li>
+            <?php
+            $cats = get_terms([
+              'taxonomy'   => 'event_cat',
+              'hide_empty' => false,
+              'orderby'    => 'term_id',
+              'order'      => 'ASC',
+            ]);
+            if ( !is_wp_error($cats) && !empty($cats) ) :
+              foreach ($cats as $cat) :
+                $is_active = !empty($cat_ids) && in_array($cat->term_id, $cat_ids, true);
+                ?>
+            <li class="cat-btn<?php echo $is_active ? ' js-active' : ''; ?>"
+              data-cat="<?php echo esc_attr($cat->slug); ?>" data-id="<?php echo esc_attr($cat->term_id); ?>">
+              <?php echo esc_html($cat->name); ?>
+            </li>
+            <?php
+              endforeach;
+            endif;
+            ?>
           </ul>
           <button class="common__btn-i event__modal-btn" type="submit">検索する</button>
           <button class="event__modal-next" type="button">スキップする＞</button>
-          <button class="event__modal-close" type="button">
-            <span></span>
-            <span></span>
-          </button>
+          <button class="event__modal-close" type="button"><span></span><span></span></button>
         </div>
       </div>
       <div class="event__form-flex word">
@@ -406,7 +466,7 @@ $found = $event_query->found_posts;
         ?>
     </div>
     <?php else: ?>
-    <p>該当するイベントはありませんでした。</p>
+    <p class="event__zero-txt">該当するイベントはありませんでした。</p>
     <?php endif; ?>
   </section>
 </article>
