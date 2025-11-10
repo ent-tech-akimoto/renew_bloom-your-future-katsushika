@@ -27,16 +27,11 @@ if ($cat_param !== '') {
     return $v > 0;
   }));
 }
-
 // フリーワード
 $keyword  = isset($_GET['keyword']) ? sanitize_text_field($_GET['keyword']) : '';
 
 // ページング
 $paged = max(1, get_query_var('paged'), get_query_var('page'));
-
-// ----------------------------------------------------
-// クエリを組む
-// ----------------------------------------------------
 
 // tax_query（エリア・カテゴリが送られてきたときだけ）
 $tax_query = ['relation' => 'AND'];
@@ -118,7 +113,7 @@ $found = $event_query->found_posts;
   <h1 class="common__h1 event__h1">イベント情報</h1>
 
   <div class="event__switch">
-    <a id="event-calendar" class="event__switch-btn" href="<?php echo esc_url( home_url('/event/calendar/') ); ?>">
+    <a id="event-calendar" class="event__switch-btn" href="<?php echo esc_url( home_url('/event-calendar/') ); ?>">
       イベントカレンダー<br class="pc-none">から探す
     </a>
     <a id="event-detail" class="event__switch-btn js-active"
@@ -128,7 +123,7 @@ $found = $event_query->found_posts;
   </div>
   <section class="event__calendar">
     <h2 class="event__h2">イベントカレンダーから探す</h2>
-    <a class="common__btn-i event__btn" href="<?php echo esc_url( home_url('/event/calendar/') ); ?>"> 各月毎のイベントはこちら </a>
+    <a class="common__btn-i event__btn" href="<?php echo esc_url( home_url('/event-calendar/') ); ?>"> 各月毎のイベントはこちら </a>
   </section>
   <section class="event__form">
     <h2 class="event__h2">詳細から探す</h2>
@@ -339,7 +334,6 @@ $found = $event_query->found_posts;
         <div class="event__form-label cate"></div>
         <div class="event__form-box cate">
           <?php
-          // 選択されているIDがあればその名前を出す、なければ「カテゴリー」
           if ( !empty($cat_ids) ) {
             $terms_to_show = get_terms([
               'taxonomy'   => 'event_cat',
@@ -456,15 +450,53 @@ $found = $event_query->found_posts;
       </li>
       <?php endwhile; wp_reset_postdata(); ?>
     </ul>
+    <?php
+    $total_pages = (int) $event_query->max_num_pages;
+    $current     = (int) $paged;
+    if ( $total_pages > 1 ): ?>
     <div class="event__pagination">
       <?php
-          echo paginate_links([
-            'total'   => $event_query->max_num_pages,
-            'current' => $paged,
-            'type'    => 'list',
-          ]);
-        ?>
+    $base_args = [];
+    if ( !empty($area_param) ) $base_args['area']    = $area_param;
+    if ( !empty($from_d) )     $base_args['from']    = $from_d;
+    if ( !empty($to_d) )       $base_args['to']      = $to_d;
+    if ( !empty($cat_param) )  $base_args['ev_cat']  = $cat_param;
+    if ( !empty($keyword) )    $base_args['keyword'] = $keyword;
+    $base_url = get_post_type_archive_link('event');
+    // 表示数（3つ）
+    $show_max = 3;
+    $start = max(1, $current - 1);
+    $end   = min($total_pages, $start + $show_max - 1);
+    if ( ($end - $start + 1) < $show_max ) {
+      $start = max(1, $end - $show_max + 1);
+    }
+    // ← prev
+    if ( $current > 1 ) {
+      $prev_args = array_merge( $base_args, ['page' => $current - 1] );
+      $prev_url  = add_query_arg( $prev_args, $base_url );
+      echo '<button class="arrow-before" type="button" onclick="location.href=\'' . esc_url( $prev_url ) . '\'"></button>';
+    }
+    // 中央の数字
+    for ( $i = $start; $i <= $end; $i++ ) {
+      $page_args = array_merge( $base_args, ['page' => $i] );
+      $page_url  = add_query_arg( $page_args, $base_url );
+      $active    = ($i === $current) ? 'active' : '';
+      echo '<button class="' . esc_attr($active) . '" type="button" onclick="location.href=\'' . esc_url($page_url) . '\'">' . esc_html($i) . '</button>';
+    }
+    if ( $end < $total_pages ) {
+      echo '<button class="small" type="button"></button>';
+      echo '<button class="small" type="button"></button>';
+      echo '<button class="small" type="button"></button>';
+    }
+    // → next
+    if ( $current < $total_pages ) {
+      $next_args = array_merge( $base_args, ['page' => $current + 1] );
+      $next_url  = add_query_arg( $next_args, $base_url );
+      echo '<button class="arrow-next" type="button" onclick="location.href=\'' . esc_url( $next_url ) . '\'"></button>';
+    }
+    ?>
     </div>
+    <?php endif; ?>
     <?php else: ?>
     <p class="event__zero-txt">該当するイベントはありませんでした。</p>
     <?php endif; ?>

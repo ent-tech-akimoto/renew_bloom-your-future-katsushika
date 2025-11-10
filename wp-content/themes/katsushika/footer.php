@@ -180,8 +180,10 @@
 </div>
 <script>
 <?php
-  if ( is_post_type_archive('event') || is_singular('event') || is_page('event-calendar') ) {
+  if (is_post_type_archive('event') || is_singular('event')) {
     $page_id = 'event';
+  } elseif (is_page('event-calendar')) {
+    $page_id = 'calendar';
   } else {
     $page_id = 'top';
   }
@@ -205,7 +207,7 @@ function googleTranslateElementInit() {
 }
 </script>
 <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-<?php if (is_post_type_archive('event') || is_singular('event') || is_page('event-calendar')) : ?>
+<?php if (is_post_type_archive('event') || is_singular('event')) : ?>
 <script
   src="/assets/js/word_suggest.js?v=<?php echo filemtime($_SERVER['DOCUMENT_ROOT'] . '/assets/js/word_suggest.js'); ?>">
 </script>

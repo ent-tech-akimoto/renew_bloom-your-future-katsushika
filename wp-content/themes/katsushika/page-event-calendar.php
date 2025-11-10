@@ -79,7 +79,7 @@ $next_url = add_query_arg(
   $base_url
 );
 ?>
-<article class="event">
+<article class="event__wrapper">
   <div class="event__bg"></div>
   <p class="common-bread event__bread">
     <span>TOP</span><span>イベント情報</span>
@@ -209,7 +209,7 @@ $next_url = add_query_arg(
       </li>
       <?php endwhile; wp_reset_postdata(); ?>
       <?php else: ?>
-      <li>この月のイベントはありません。</li>
+      <li class="event__zero-txt">この月のイベントはありません。</li>
       <?php endif; ?>
     </ul>
     <div class="event__pagination">
