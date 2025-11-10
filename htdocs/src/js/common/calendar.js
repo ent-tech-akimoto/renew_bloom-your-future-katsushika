@@ -29,7 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
     inputFrom.value = null;
     startDateFull.textContent = "-";
     endDateFull.textContent = "-";
-  } else if ( !inputTo.value && !inputFrom.value){
+  } else if ( inputTo.value && inputFrom.value){
     startDateFull.textContent = `${inputFrom.value.slice(0,4)}.${inputFrom.value.slice(4,6)}.${inputFrom.value.slice(6,8)}`;
     endDateFull.textContent = `${inputTo.value.slice(0,4)}.${inputTo.value.slice(4,6)}.${inputTo.value.slice(6,8)}`;
   }
