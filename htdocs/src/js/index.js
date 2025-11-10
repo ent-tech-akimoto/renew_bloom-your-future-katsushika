@@ -23,6 +23,7 @@ if (window.pageID === 'event' ) {
   initCategoryButtons();
   const commonCalendar = require('./common/calendar.js');
   const commonForm = require('./common/form.js');
+  const textArea = require('./event/textarea.js');
 }
 
 if( window.pageID === 'calendar' ) {
