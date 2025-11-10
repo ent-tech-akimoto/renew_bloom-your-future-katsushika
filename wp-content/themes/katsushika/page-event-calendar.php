@@ -2,7 +2,7 @@
 /*
 Template Name: Event Calendar
 */
-$slug = 'event';
+$slug = 'calendar';
 get_header();
 
 // 現在の年月をGETから取得。なければ現在

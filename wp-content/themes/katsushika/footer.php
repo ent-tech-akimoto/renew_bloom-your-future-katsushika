@@ -188,7 +188,8 @@
 ?>
 window.pageID = '<?php echo esc_js($page_id); ?>';
 </script>
-<script src="/assets/js/project.js"></script>
+<script src="/assets/js/project.js?v=<?php echo filemtime($_SERVER['DOCUMENT_ROOT'] . '/assets/js/project.js'); ?>">
+</script>
 <script type="text/javascript">
 document.getElementById('js-header-btn').addEventListener('click', function() {
   this.classList.toggle('is-active');
@@ -204,6 +205,11 @@ function googleTranslateElementInit() {
 }
 </script>
 <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<?php if (is_post_type_archive('event') || is_singular('event') || is_page('event-calendar')) : ?>
+<script
+  src="/assets/js/word_suggest.js?v=<?php echo filemtime($_SERVER['DOCUMENT_ROOT'] . '/assets/js/word_suggest.js'); ?>">
+</script>
+<?php endif; ?>
 <?php wp_footer(); ?>
 </body>
 
