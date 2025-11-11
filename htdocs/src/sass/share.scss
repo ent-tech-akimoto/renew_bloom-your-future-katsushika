@@ -30,18 +30,21 @@
 //loading
 @use 'loading/loading';
 
-//event
-@use 'event/event';
-
-//sponsor
-@use 'sponsor/sponsors';
-@use 'sponsor/sponsor-detail';
-
 //overview
 @use 'overview/overview';
 
 //area
 @use 'area/area';
+
+//event
+@use 'event/event';
+
+//sponsors
+@use 'sponsors/sponsors';
+@use 'sponsors/sponsors-detail';
+
+//support
+@use 'support/support';
 
 //access
 @use 'access/access';
