@@ -9,7 +9,9 @@ var myMeta = meta[lang][pageID];
 <%-include(`${relative_path}_partial/_head`,{lang:lang,pageID:pageID,relative_path:relative_path})%>
 
 <body>
+  <%- include(`${relative_path}_partial/_body-after`,{lang:lang,pageID:pageID,relative_path:relative_path})%>
   <div class="page">
+    <%-include(`${relative_path}_partial/_header`,{lang:lang,pageID:pageID,relative_path:relative_path})%>
     <article class="detail">
       <div class="detail__wrap">
         <div class="detail__header">

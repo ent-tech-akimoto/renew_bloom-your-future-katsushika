@@ -6,7 +6,9 @@
     margin: 0 auto;
     position: relative;
     width: 100%;
+    padding-top: get_vw(60);
     padding-bottom: get_vw(100);
+    @include pc-fluid-size(padding-top, (168));
     @include pc-fluid-size(padding-bottom, (100));
   }
 
