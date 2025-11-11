@@ -207,7 +207,7 @@ $areas = get_terms([
             <?php if (has_post_thumbnail()) : ?>
             <?php the_post_thumbnail('medium'); ?>
             <?php else: ?>
-            <img src="/assets/img/common/thumb.png" alt="">
+            <img src="/assets/img/common/thumbnail.png" alt="">
             <?php endif; ?>
           </div>
           <?php if ($date_str) : ?>

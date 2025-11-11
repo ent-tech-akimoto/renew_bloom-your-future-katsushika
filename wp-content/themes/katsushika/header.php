@@ -191,10 +191,10 @@ $url         = 'https://bloom-your-future-katsushika.jp/';
               <a href="#">開催エリア</a>
             </li>
             <li class="header__menu--item menu-event">
-              <a href="#">イベント情報</a>
+              <a href="/event/">イベント情報</a>
               <ul class="header__submenu">
                 <li class="header__submenu--item">
-                  <a href="">&gt; イベントカレンダー</a>
+                  <a href="/event-calendar/">&gt; イベントカレンダー</a>
                 </li>
               </ul>
             </li>

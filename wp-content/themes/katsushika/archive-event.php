@@ -422,7 +422,7 @@ $found = $event_query->found_posts;
             <?php if ($thumb_id): ?>
             <?php echo wp_get_attachment_image($thumb_id, 'medium'); ?>
             <?php else: ?>
-            <img src="/assets/img/common/thumb.png" alt="">
+            <img src="/assets/img/common/thumbnail.png" alt="">
             <?php endif; ?>
           </div>
           <p class="event__box-date">
