@@ -34,7 +34,7 @@
 @use 'event/event';
 
 //sponsor
-@use 'sponsor/sponsor';
+@use 'sponsor/sponsors';
 @use 'sponsor/sponsor-detail';
 
 //overview
@@ -43,8 +43,8 @@
 //area
 @use 'area/area';
 
-//purpose
-@use 'purpose/purpose';
+//access
+@use 'access/access';
 
 //animation
 @use 'animation/animation';

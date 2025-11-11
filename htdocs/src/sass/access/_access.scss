@@ -1,7 +1,7 @@
 @use '../setting/setting' as *;
 @use '../setting/mixin' as *;
 
-.purpose{
+.access{
   &__wrapper{
     position: relative;
     margin-top: get_vw(-46);
