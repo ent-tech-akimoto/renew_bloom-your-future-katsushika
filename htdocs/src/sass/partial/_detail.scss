@@ -373,36 +373,4 @@
     @include pc-fluid-size(height, (80));
     @include pc-fluid-size(margin-top, (80));
   }
-
-  &__bread {
-    position: relative;
-    font-size: get_vw(10);
-    font-weight: $w_medium;
-    color: $c_gray;
-    margin: 0 auto;
-    width: 100%;
-    @include pc-fluid-size(font-size, (14));
-    @include pc-fluid-size(max-width, (1280));
-
-    @include max-screen {
-      padding: 0 get_vw(20);
-    }
-
-    & span {
-      &::after {
-        content: '>';
-        margin: 0 get_vw(8);
-        @include pc-fluid-size(margin, (0 8));
-      }
-
-      &:last-of-type::after {
-        content: '';
-        margin: 0;
-      }
-    }
-
-    a {
-      color: $c_black;
-    }
-  }
 }

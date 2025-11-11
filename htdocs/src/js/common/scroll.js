@@ -18,3 +18,24 @@ document.getElementById('pageTop').addEventListener('click', () => {
     behavior: 'smooth'
   });
 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  const header = document.querySelector("header");
+  const headerHeight = header ? header.offsetHeight : 0;
+
+  document.querySelectorAll('a[href^="#anchor-"]').forEach(anchor => {
+    anchor.addEventListener("click", e => {
+      const targetId = anchor.getAttribute("href");
+      if (targetId === "#" || targetId === "" || !document.querySelector(targetId)) return;
+      e.preventDefault();
+
+      const target = document.querySelector(targetId);
+      const position = target.getBoundingClientRect().top + window.scrollY - headerHeight;
+
+      window.scrollTo({
+        top: position,
+        behavior: "smooth"
+      });
+    });
+  });
+});

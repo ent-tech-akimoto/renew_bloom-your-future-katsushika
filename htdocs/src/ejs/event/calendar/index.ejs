@@ -12,11 +12,10 @@ var myMeta = meta[lang][pageID];
       <%-include(`${relative_path}_partial/_header`,{lang:lang,pageID:pageID,relative_path:relative_path})%>
       <article class="event__wrapper">
         <div class="event__bg"></div>
-        <p class="common-bread event__bread">
-          <span>TOP</span><span>イベント情報</span>
+        <p class="common__bread l-page">
+          <span><a href="https://test-bloom-your-future-katsushika.entacl.net/">TOP</a></span><span>イベントカレンダー</span>
         </p>
         <h1 class="common__h1 event__h1">イベント情報</h1>
-
         <form class="event__calendar-search" action="" method="get">
           <div class="event__calendar-flex top">
             <input type="hidden" name="y" value="">

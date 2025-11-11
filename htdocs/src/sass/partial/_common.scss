@@ -2,6 +2,10 @@
 @use '../setting/mixin'as *;
 
 .common {
+
+    &__bread {
+        @include common-bread;
+    }
     &__btn-w {
         @include btn-w;
     }

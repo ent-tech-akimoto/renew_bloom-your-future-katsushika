@@ -13,19 +13,19 @@ var myMeta = meta[lang][pageID];
       <%-include(`${relative_path}_partial/_header`,{lang:lang,pageID:pageID,relative_path:relative_path})%>
       <article class="area__wrapper">
         <div class="area__bg"></div>
-        <p class="common-bread area__bread">
-          <span>TOP</span><span>開催エリア</span>
+        <p class="common__bread l-page">
+          <span><a href="https://test-bloom-your-future-katsushika.entacl.net/">TOP</a></span><span>開催エリア</span>
         </p>
         <h1 class="common__h1 area__h1">開催エリア</h1>
         <nav class="area__nav">
-          <ul>
-            <li>
+          <ul class="area__nav--list">
+            <li class="area__nav--item">
               <a href="#anchor-map">会場構成</a>
             </li>
-            <li>
-              <a href="#anchor-gallery"
-                >まちなか花いっぱい<br class="pc-none">プレイス</a
-              >
+            <li class="area__nav--item">
+              <a href="#anchor-gallery">
+                まちなか花いっぱい<br class="pc-none">プレイス
+              </a>
             </li>
           </ul>
         </nav>
