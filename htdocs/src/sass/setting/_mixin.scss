@@ -472,7 +472,7 @@
 // パンくず
 @mixin common-bread() {
   width: 100%;
-  font-size: get_vw(14);
+  font-size: get_vw(10);
   font-weight: $w_medium;
   color: $c_gray;
   padding-left: get_vw(20);

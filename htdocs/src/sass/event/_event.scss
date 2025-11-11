@@ -1425,8 +1425,14 @@
     }
   }
   &__box-img{
+    border: get_vw(1) solid $c_gray;
     border-radius: get_vw(20) get_vw(20) 0 0;
+    width: get_vw(350);
+    height: get_vw(262);
+    @include pc-fluid-size(border-width, (1));
     @include pc-fluid-size(border-radius, (40));
+    @include pc-fluid-size(width, (413));
+    @include pc-fluid-size(height, (310));
     overflow: hidden;
   }
   &__box-cat{
