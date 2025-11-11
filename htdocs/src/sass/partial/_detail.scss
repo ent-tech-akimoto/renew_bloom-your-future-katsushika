@@ -109,11 +109,51 @@
       }
     }
 
-    &[data-area="monchichi"] {
+    &[data-area="monchi"] {
       color: $c_pink;
 
       svg path {
         fill: $c_pink;
+      }
+    }
+
+    &[data-area="tora"] {
+      color: $c_red;
+
+      svg path {
+        fill: $c_red;
+      }
+    }
+
+    &[data-area="main"] {
+      color: $c_green;
+
+      svg path {
+        fill: $c_green;
+      }
+    }
+
+    &[data-area="iris"] {
+      color: $c_purple;
+
+      svg path {
+        fill: $c_purple;
+      }
+    }
+
+    &[data-area="wing"] {
+      color: $c_orange;
+
+      svg path {
+        fill: $c_orange;
+      }
+    }
+
+    &[data-area="kochi"] {
+      color: $c_blue;
+
+      svg path {
+        fill: $c_blue;
       }
     }
   }
