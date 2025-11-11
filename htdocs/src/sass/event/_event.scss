@@ -723,8 +723,8 @@
       &[data-area="kochi"]{
         top: get_vw(177);
         left: get_vw(107);
-        @include pc-fluid-size(top, (275));
-        @include pc-fluid-size(left, (105));
+        @include pc-fluid-size(top, (265));
+        @include pc-fluid-size(left, (175));
       }
       &[data-area="iris"]{
         top: get_vw(257);
@@ -733,13 +733,13 @@
         @include pc-fluid-size(left, (20));
       }
       &[data-area="wing"]{
-        top: get_vw(297);
-        left: get_vw(132);
+        top: get_vw(312);
+        left: get_vw(116);
         @include pc-fluid-size(top, (475));
         @include pc-fluid-size(left, (210));
       }
       &[data-area="monchi"]{
-        top: get_vw(330);
+        top: get_vw(340);
         left: get_vw(203);
         @include pc-fluid-size(top, (508));
         @include pc-fluid-size(left, (340));
