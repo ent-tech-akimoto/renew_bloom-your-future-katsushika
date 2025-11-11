@@ -8,6 +8,7 @@ get_header();
 $year  = isset($_GET['y'])  ? (int) $_GET['y']  : (int) current_time('Y');
 $month = isset($_GET['mo']) ? (int) $_GET['mo'] : (int) current_time('m');
 $area_param = isset($_GET['area']) ? sanitize_text_field($_GET['area']) : '';
+$area_order = isset($_GET['area_order']) ? sanitize_text_field($_GET['area_order']) : '';
 $base_url   = get_permalink();
 $area_ids = [];
 if ($area_param !== '') {
@@ -62,7 +63,16 @@ if (!empty($area_ids)) {
   ];
 }
 
+// 現在地
+global $event_area_order_for_archive;
+$event_area_order_for_archive = $area_ids;
+if (!empty($area_ids) && $area_order === 'nearby') {
+  add_filter('posts_clauses', 'my_event_order_by_area_tax', 10, 2);
+}
 $event_query  = new WP_Query($args);
+if (!empty($area_ids) && $area_order === 'nearby') {
+  remove_filter('posts_clauses', 'my_event_order_by_area_tax', 10);
+}
 $found_posts  = $event_query->found_posts;
 $total_pages  = (int) $event_query->max_num_pages;
 
@@ -70,22 +80,29 @@ $total_pages  = (int) $event_query->max_num_pages;
 $prev_ts = strtotime('-1 month', strtotime($start_of_month_date));
 $next_ts = strtotime('+1 month', strtotime($start_of_month_date));
 
-$prev_url = add_query_arg(
-  [
-    'y'    => date('Y', $prev_ts),
-    'mo'   => date('n', $prev_ts),
-    'area' => $area_param,
-  ],
-  $base_url
-);
-$next_url = add_query_arg(
-  [
-    'y'    => date('Y', $next_ts),
-    'mo'   => date('n', $next_ts),
-    'area' => $area_param,
-  ],
-  $base_url
-);
+$prev_args = [
+  'y'  => date('Y', $prev_ts),
+  'mo' => date('n', $prev_ts),
+];
+if ($area_param !== '') {
+  $prev_args['area'] = $area_param;
+}
+if ($area_order === 'nearby') {
+  $prev_args['area_order'] = 'nearby';
+}
+$prev_url = add_query_arg($prev_args, $base_url);
+
+$next_args = [
+  'y'  => date('Y', $next_ts),
+  'mo' => date('n', $next_ts),
+];
+if ($area_param !== '') {
+  $next_args['area'] = $area_param;
+}
+if ($area_order === 'nearby') {
+  $next_args['area_order'] = 'nearby';
+}
+$next_url = add_query_arg($next_args, $base_url);
 
 // エリア一覧（表示用）
 $areas = get_terms([
@@ -117,6 +134,8 @@ $areas = get_terms([
     </div>
     <div class="event__calendar-flex area bot pc-none">
       <input type="hidden" name="area" id="areaInput" value="<?php echo esc_attr($area_param); ?>">
+      <input type="hidden" name="area_order" id="areaOrderInput"
+        value="<?php echo $area_order === 'nearby' ? 'nearby' : ''; ?>">
       <div class="event__calendar-label"></div>
       <div class="event__calendar-box area">
         <?php if (!is_wp_error($areas) && !empty($areas)): ?>
@@ -210,9 +229,16 @@ $areas = get_terms([
             <img src="/assets/img/common/thumbnail.png" alt="">
             <?php endif; ?>
           </div>
-          <?php if ($date_str) : ?>
-          <p class="event__box-date"><?php echo esc_html($date_str); ?></p>
-          <?php endif; ?>
+          <p class="event__box-date">
+            <?php
+            $event_period = function_exists('get_field') ? get_field('event_period') : '';
+            if (!empty($event_period)) {
+              echo esc_html($event_period);
+            } else {
+              echo esc_html(get_the_date('Y年n月j日'));
+            }
+            ?>
+          </p>
           <h4 class="event__box-ttl"><?php the_title(); ?></h4>
           <?php if ($cat_terms && !is_wp_error($cat_terms)) : ?>
           <div class="event__box-cat">
@@ -241,6 +267,9 @@ $areas = get_terms([
       ];
       if ($area_param !== '') {
         $base_args['area'] = $area_param;
+      }
+      if ($area_order === 'nearby') {
+        $base_args['area_order'] = 'nearby';
       }
       $show_max = 3;
       $start = max(1, $current - 1);
