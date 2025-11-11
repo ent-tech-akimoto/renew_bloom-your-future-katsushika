@@ -29,14 +29,14 @@
     "event-detail": {
       "title": "イベント詳細"
     },
-    "sponsor": {
-      "title": "募集情報"
-    },
     "sponsors": {
-      "title": "協賛募集"
-    },
-    "sponsor-detail": {
       "title": "募集内容"
+    },
+    "sponsors-detail": {
+      "title": "募集内容"
+    },
+    "support": {
+      "title": "協賛募集"
     },
     "news-detail": {
       "title": "お知らせ詳細"
