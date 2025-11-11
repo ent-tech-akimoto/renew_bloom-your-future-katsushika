@@ -27,25 +27,6 @@
       background-image: url('../img/common/orange_bg_pc.png');
     }
   }
-  &__bread{
-    position: relative;
-    font-size: get_vw(14);
-    color: $c_white;
-    padding-left: get_vw(20);
-    @include pc-fluid-size(font-size, (14));
-    @include pc-fluid-size(padding-left, (80));
-    & span{
-      &::after{
-        content: '>';
-        margin: 0 get_vw(8);
-        @include pc-fluid-size(margin, (0 8));
-      }
-      &:last-of-type::after{
-        content: '';
-        margin: 0;
-      }
-    }
-  }
   &__h1{
     margin-top: get_vw(32);
     position: relative;
@@ -55,22 +36,17 @@
     @include pc-fluid-size(margin-top, (40));
     @include pc-fluid-size(font-size, (56));
   }
-  &__switch{
-    width: 100%;
-    height: get_vw(50);
-    margin: get_vw(108) auto 0;
-    padding: 0 get_vw(17);
-    display: flex;
-    flex-direction: row;
-    column-gap: get_vw(2);
-    overflow: hidden;
-    @include pc-fluid-size(width, (428));
-    @include pc-fluid-size(height, (50));
-    @include pc-fluid-size(margin-top, (108));
-    @include pc-fluid-size(padding, (0));
-    @include pc-fluid-size(column-gap, (2));
-    @include min-screen{
-      margin-inline: center;
+  &__nav{
+    @include anchor-nav;
+
+    &--list {
+      margin: get_vw(52) auto 0;
+      @include pc-fluid-size(width, (428));
+      @include pc-fluid-size(margin-top, (108));
+    }
+
+    &--item {
+      padding-inline: get_vw(11);
     }
   }
   &__switch-btn{
