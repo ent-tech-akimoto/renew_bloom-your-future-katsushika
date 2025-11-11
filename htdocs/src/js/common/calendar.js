@@ -13,8 +13,6 @@ const inputFrom = calendar.querySelector('input[name="from"]');
 const inputTo = calendar.querySelector('input[name="to"]');
 
 
-
-
 let start = null;
 let end = null;
 let originalStart = null;
@@ -41,7 +39,7 @@ let rightDate = new Date(leftDate);
 rightDate.setMonth(rightDate.getMonth() + 1);
 
 // comment this for actual test
-calendarContainer.hidden = true;
+// calendarContainer.hidden = true;
 
 //for testing only to see the modal open
 // calendarContainer.hidden = false;
@@ -239,21 +237,21 @@ const updateCalendars = () => {
 
 
 // show datepicker
-datepicker.addEventListener("click", () => {
-  originalStart = start;
-  originalEnd = end;
-  calendarContainer.hidden = false;
-});
+// datepicker.addEventListener("click", () => {
+//   originalStart = start;
+//   originalEnd = end;
+//   calendarContainer.hidden = false;
+// });
 
-// hide datepicker when clicked outside
-document.addEventListener("click", (event) => {
-  if (
-    !calendarContainer.contains(event.target) &&
-    !datepicker.contains(event.target)
-  ) {
-    calendarContainer.hidden = true;
-  }
-});
+// // hide datepicker when clicked outside
+// document.addEventListener("click", (event) => {
+//   if (
+//     !calendarContainer.contains(event.target) &&
+//     !datepicker.contains(event.target)
+//   ) {
+//     calendarContainer.hidden = true;
+//   }
+// });
 
 // navigate previous month
 

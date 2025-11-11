@@ -65,4 +65,30 @@ export function initEventModals() {
         }
         closeAllModals();
     });
+
+    // Handle "Skip" button
+    const nextButtons = document.querySelectorAll('.event__modal-next');
+    nextButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            e.preventDefault();
+
+            const currentModal = btn.closest('.event__form-modal');
+            if (!currentModal) return;
+
+            // Remove current modal
+            currentModal.classList.remove('js-show');
+
+            // Determine current modal index
+            const modalList = Array.from(document.querySelectorAll('.event__form-modal'));
+            const currentIndex = modalList.indexOf(currentModal);
+
+            // Show next modal if exists
+            if (currentIndex >= 0 && currentIndex < modalList.length - 1) {
+                const nextModal = modalList[currentIndex + 1];
+                nextModal.classList.add('js-show');
+            }
+        });
+    });
+
 }
+

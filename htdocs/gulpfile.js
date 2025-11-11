@@ -5,6 +5,9 @@
 const gulp = require('gulp');
 // browser-sync
 const browserSync = require('browser-sync');
+// https for browser-sync
+const fs = require('fs');
+// html
 // html
 const ejs = require('gulp-ejs');
 const htmlbeautify = require('gulp-html-beautify');
@@ -289,6 +292,7 @@ const BrowserSync = (done) => {
     server: {
       baseDir: DEVELOP,
     },
+    https: true,
     startPath: BASE_PATH,
     ghostMode: false,
     open: 'external',
