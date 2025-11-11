@@ -1433,7 +1433,7 @@
   }
   &__box-img{
     border-radius: get_vw(20) get_vw(20) 0 0;
-    @include pc-fluid-size(border-radius, (40 40 0 0));
+    @include pc-fluid-size(border-radius, (40));
     overflow: hidden;
   }
   &__box-cat{
