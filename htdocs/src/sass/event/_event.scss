@@ -232,18 +232,27 @@
       @include min-screen{
         cursor: pointer;
       }
-      @include after{
-        background-image: url('../img/event/form_close.png');
-        background-size: 100%;
-        width: get_vw(8);
-        height: get_vw(8);
+      & .btn-close{
+        width: get_vw(45);
+        height: 100%;
         position: absolute;
         top: 50%;
-        right: get_vw(12);
+        right: 0;
         transform: translateY(-50%);
-        @include pc-fluid-size(width, (6));
-        @include pc-fluid-size(height, (6));
-        @include pc-fluid-size(right, (5));
+        @include pc-fluid-size(width, (45));
+        @include after{
+          background-image: url('../img/event/form_close.png');
+          background-size: 100%;
+          width: get_vw(8);
+          height: get_vw(8);
+          position: absolute;
+          top: 50%;
+          right: get_vw(12);
+          transform: translateY(-50%);
+          @include pc-fluid-size(width, (6));
+          @include pc-fluid-size(height, (6));
+          @include pc-fluid-size(right, (5));
+        }
       }
     }
   }
@@ -458,7 +467,6 @@
     border-radius: get_vw(15);
     display: flex;
     flex-wrap: wrap;
-    // justify-content: space-between;
     row-gap: get_vw(10);
     column-gap: get_vw(8);
     @include pc-fluid-size(width, (357));
@@ -489,6 +497,7 @@
       @include pc-fluid-size(padding, (0 9));
       @include pc-fluid-size(font-size, (10));
       @include pc-fluid-size(border-radius, (30));
+
     }
     &.area{
       @include pc-fluid-size(padding, (8 15));
@@ -516,18 +525,27 @@
         @include min-screen{
           cursor: pointer;
         }
-        @include after{
-          background-image: url('../img/event/form_close.png');
-          background-size: 100%;
-          width: get_vw(8);
-          height: get_vw(8);
+        & .btn-close{
+          width: get_vw(45);
+          height: 100%;
           position: absolute;
           top: 50%;
-          right: get_vw(12);
+          right: 0;
           transform: translateY(-50%);
-          @include pc-fluid-size(width, (6));
-          @include pc-fluid-size(height, (6));
-          @include pc-fluid-size(right, (5));
+          @include pc-fluid-size(width, (45));
+          @include after{
+            background-image: url('../img/event/form_close.png');
+            background-size: 100%;
+            width: get_vw(8);
+            height: get_vw(8);
+            position: absolute;
+            top: 50%;
+            right: get_vw(12);
+            transform: translateY(-50%);
+            @include pc-fluid-size(width, (6));
+            @include pc-fluid-size(height, (6));
+            @include pc-fluid-size(right, (5));
+          }
         }
       }
     }
