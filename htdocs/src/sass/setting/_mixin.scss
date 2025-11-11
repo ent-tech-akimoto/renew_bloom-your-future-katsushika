@@ -128,6 +128,7 @@
   position: relative;
   @include pc-fluid-size(border-width, (4));
   @include pc-fluid-size(border-radius, (25));
+  @include pc-fluid-size(padding-right, (25));
   @include pc-fluid-size(width, (260));
   @include pc-fluid-size(height, (50));
 
