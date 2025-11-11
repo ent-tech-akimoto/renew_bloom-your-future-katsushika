@@ -379,9 +379,14 @@
     font-size: get_vw(10);
     font-weight: $w_medium;
     color: $c_gray;
-    padding-left: get_vw(20);
+    margin: 0 auto;
+    width: 100%;
     @include pc-fluid-size(font-size, (14));
-    @include pc-fluid-size(padding-left, (80));
+    @include pc-fluid-size(max-width, (1280));
+
+    @include max-screen {
+      padding: 0 get_vw(20);
+    }
 
     & span {
       &::after {
