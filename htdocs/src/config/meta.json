@@ -30,10 +30,13 @@
       "title": "イベント詳細"
     },
     "sponsors": {
-      "title": "募集内容"
+      "title": "募集情報"
     },
     "sponsors-detail": {
-      "title": "募集内容"
+      "title": "募集情報"
+    },
+    "sponsors-list": {
+      "title": "募集情報"
     },
     "support": {
       "title": "協賛募集"
