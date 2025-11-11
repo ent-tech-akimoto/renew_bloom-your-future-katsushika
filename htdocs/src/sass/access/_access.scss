@@ -308,13 +308,20 @@
     @include pc-fluid-size(height, (80));
     @include pc-fluid-size(font-size, (18));
     @include pc-fluid-size(border-radius, (100));
+    @include min-screen{
+      &:hover{
+        @include after{
+          background-color: $c_ivory;
+        }
+      }
+    }
     @include after{
       @include pc-fluid-size(width, (60));
       @include pc-fluid-size(height, (60));
       @include pc-fluid-size(right, (10));
       top: 50%;
       transform: translateY(-50%);
-
+      background-color: #fff;
     }
   }
   &__txt-last{

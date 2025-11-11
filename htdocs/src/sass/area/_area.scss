@@ -365,7 +365,7 @@
     @include min-screen{
       flex-direction: row;
       row-gap: 0;
-        margin-inline: auto;
+      margin-inline: auto;
     }
     &>a{
       font-size: get_vw(14);
@@ -373,6 +373,11 @@
       @include pc-fluid-size(font-size, (14));
       @include min-screen{
         margin: 0;
+        &:hover{
+          @include after{
+            background-color: $c_ivory;
+          }
+        }
       }
     }
   }
