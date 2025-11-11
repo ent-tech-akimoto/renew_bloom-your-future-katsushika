@@ -7,7 +7,7 @@ get_header();
 <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
 <article class="detail">
   <div class="detail__wrap">
-    <p class="common-bread detail__bread">
+    <p class="common__bread detail">
       <span><a href="<?php echo esc_url( home_url('/') ); ?>">TOP</a></span><span><a
           href="<?php echo esc_url( home_url('/event/') ); ?>">イベント情報</a></span><span><?php the_title(); ?></span>
     </p>

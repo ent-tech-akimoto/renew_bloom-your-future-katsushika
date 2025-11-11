@@ -170,7 +170,7 @@ export function initMapButtons() {
       if (!button) return;
       const area = button.dataset.area;
       const text = button.textContent.trim();
-      const spanHTML = `<span class="event__form-select--area ${area}" data-area="${area}" data-id="${id}">${text}</span>`;
+      const spanHTML = `<span class="event__form-select--area ${area}" data-area="${area}" data-id="${id}">${text}<span class="btn-close"></span></span>`;
       mainFormBox.insertAdjacentHTML('beforeend', spanHTML);
       modalFormBox.insertAdjacentHTML('beforeend', spanHTML);
     });
@@ -178,20 +178,24 @@ export function initMapButtons() {
     areaInput.value = selectedAreas.join(',');
   };
 
-  // Delegate span click to remove selected area (no duplicate listeners)
-  [mainFormBox, modalFormBox].forEach(box => {
-    box.addEventListener('click', (e) => {
-      if (!e.target.classList.contains('event__form-select--area')) return;
+  // Delegate click for removing selected area
+[mainFormBox, modalFormBox].forEach(box => {
+  box.addEventListener('click', (e) => {
+    // Only trigger if clicking the close button, not the entire span
+    if (!e.target.classList.contains('btn-close')) return;
 
-      const id = e.target.dataset.id;
-      selectedAreas = selectedAreas.filter(x => x !== id);
+    const parentSpan = e.target.closest('.event__form-select--area');
+    if (!parentSpan) return;
 
-      const btn = document.querySelector(`.map-btn[data-id="${id}"]`);
-      if (btn) btn.classList.remove('js-active');
+    const id = parentSpan.dataset.id;
+    selectedAreas = selectedAreas.filter(x => x !== id);
 
-      updateFormBoxes();
-    });
+    const btn = document.querySelector(`.map-btn[data-id="${id}"]`);
+    if (btn) btn.classList.remove('js-active');
+
+    updateFormBoxes();
   });
+});
 
   // Map button toggle
   mapButtons.forEach(button => {
@@ -217,14 +221,8 @@ export function initMapButtons() {
 
   updateFormBoxes();
 
-  // Handle 現在地付近 button
-  // --- 現在地付近ボタン ---
   if (locateBtn) {
     locateBtn.addEventListener('click', () => {
-      if (modal && !modal.classList.contains('js-show')) {
-        modal.classList.add('js-show');
-      }
-
       if (!navigator.geolocation) {
         alert('位置情報がサポートされていません。');
         return;
@@ -252,25 +250,26 @@ export function initMapButtons() {
               const id = btn.dataset.id;
               const area = btn.dataset.area;
               const loc = areaCoordinates[area];
-              if (!loc) return { id, distance: 999999 }; // safety fallback
+              if (!loc) return { id, distance: 999999 };
               const distance = calcDistance(latitude, longitude, loc.lat, loc.lng);
               return { id, distance };
             })
             .sort((a, b) => a.distance - b.distance)
             .map(item => item.id);
 
-          // 全部選択状態にする
+          // Activate all buttons and reorder by distance
           mapButtons.forEach(btn => btn.classList.add('js-active'));
-
-          // 並びは近い順
           selectedAreas = sorted;
 
-          // ★このときだけ「nearby」モードにする
-          if (areaOrderInput) {
-            areaOrderInput.value = 'nearby';  // <- NEW / highlighted
-          }
+          // Mark "nearby" mode
+          if (areaOrderInput) areaOrderInput.value = 'nearby';
 
           updateFormBoxes();
+
+          // ✅ Trigger submit button
+          const submitBtn = modal.querySelector('.event__modal-btn');
+          if (submitBtn) submitBtn.click();
+
         },
         err => {
           alert('位置情報の取得に失敗しました。');
@@ -279,4 +278,5 @@ export function initMapButtons() {
       );
     });
   }
+  
 }

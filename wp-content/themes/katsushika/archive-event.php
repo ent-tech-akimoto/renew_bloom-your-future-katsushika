@@ -121,25 +121,25 @@ $found = $event_query->found_posts;
 
 <article class="event__wrapper">
   <div class="event__bg"></div>
-  <p class="common-bread event__bread">
+  <p class="common__bread l-page">
     <span><a href="<?php echo esc_url(home_url('/')); ?>">TOP</a></span><span>イベント情報</span>
   </p>
   <h1 class="common__h1 event__h1">イベント情報</h1>
-
-  <div class="event__switch">
-    <a id="event-calendar" class="event__switch-btn" href="<?php echo esc_url(home_url('/event-calendar/')); ?>">
-      イベントカレンダー<br class="pc-none">から探す
-    </a>
-    <a id="event-detail" class="event__switch-btn js-active"
-      href="<?php echo esc_url(get_post_type_archive_link('event')); ?>">
-      詳細を探す
-    </a>
-  </div>
-  <section class="event__calendar">
+  <nav class="event__nav">
+    <ul class="event__nav--list">
+      <li class="event__nav--item">
+        <a href="#anchor-calendar">イベントカレンダー<br class="pc-none">から探す</a>
+      </li>
+      <li class="event__nav--item">
+        <a href="#anchor-form">詳細を探す</a>
+      </li>
+    </ul>
+  </nav>
+  <section id="anchor-calendar" class="event__calendar">
     <h2 class="event__h2">イベントカレンダーから探す</h2>
-    <a class="common__btn-i event__btn" href="<?php echo esc_url(home_url('/event-calendar/')); ?>"> 各月毎のイベントはこちら </a>
+    <a class="common__btn-i event__btn" href="<?php echo esc_url(home_url('/event-calendar/')); ?>">各月毎のイベントはこちら</a>
   </section>
-  <section class="event__form">
+  <section id="anchor-form" class="event__form">
     <h2 class="event__h2">詳細から探す</h2>
     <form class="event__form-wrapper" method="get" action="<?php echo esc_url(get_post_type_archive_link('event')); ?>">
       <div class="event__form-flex area">

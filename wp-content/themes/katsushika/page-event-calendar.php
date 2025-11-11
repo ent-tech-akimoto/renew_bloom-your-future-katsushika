@@ -114,10 +114,10 @@ $areas = get_terms([
 ?>
 <article class="event__wrapper">
   <div class="event__bg"></div>
-  <p class="common-bread event__bread">
-    <span>TOP</span><span>イベント情報</span>
+  <p class="common__bread l-page">
+    <span><a href="<?php echo esc_url(home_url('/')); ?>">TOP</a></span><span>イベントカレンダー</span>
   </p>
-  <h1 class="common__h1 event__h1">イベント情報</h1>
+  <h1 class="common__h1 event__h1">イベントカレンダー</h1>
   <form class="event__calendar-search" action="<?php echo esc_url($base_url); ?>" method="get">
     <div class="event__calendar-flex top">
       <input type="hidden" name="y" value="<?php echo esc_attr($year); ?>">
