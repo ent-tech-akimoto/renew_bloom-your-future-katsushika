@@ -12,4 +12,16 @@
     &__btn-i {
         @include btn-i;
     }
+    &__btn-w-l {
+        @include btn-w-l;
+    }
+    &__btn-i {
+        @include btn-i-l;
+    }
+    &__btn-w-icon {
+        @include btn-w-icon;
+    }
+    &__btn-i-icon {
+        @include btn-i-icon;
+    }
 }
