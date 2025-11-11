@@ -153,6 +153,7 @@ export function initCalendarMapButtons() {
     const areaInput = document.getElementById('areaInput');
     const locateBtn = document.querySelector('.event__modal-map-btn');
     const modal = document.querySelector('.event__form-modal.area');
+    const areaOrderInput = document.getElementById('areaOrderInput');
 
     if (!mainFormBox || !modalFormBox || !areaInput) return;
 
@@ -176,7 +177,10 @@ export function initCalendarMapButtons() {
         if (!button) return;
         const area = button.dataset.area;
         const text = button.textContent.trim();
-        const spanHTML = `<span class="event__calendar-select--area ${area}" data-area="${area}" data-id="${id}">${text}</span>`;
+        const spanHTML = `
+          <span class="event__calendar-select--area ${area}" data-area="${area}" data-id="${id}">
+            ${text}<span class="btn-close"></span>
+          </span>`;
         mainFormBox.insertAdjacentHTML('beforeend', spanHTML);
         modalFormBox.insertAdjacentHTML('beforeend', spanHTML);
       });
@@ -184,25 +188,22 @@ export function initCalendarMapButtons() {
       areaInput.value = selectedAreas.join(',');
     };
 
-    // Delegated click for removing selected span
     [mainFormBox, modalFormBox].forEach(box => {
       box.addEventListener('click', e => {
-        if (!e.target.classList.contains('event__calendar-select--area')) return;
-        const id = e.target.dataset.id;
+        if (!e.target.classList.contains('btn-close')) return;
+        const parent = e.target.closest('.event__calendar-select--area');
+        if (!parent) return;
+        const id = parent.dataset.id;
         selectedAreas = selectedAreas.filter(x => x !== id);
-
         const btn = document.querySelector(`.map-btn[data-id="${id}"]`);
         if (btn) btn.classList.remove('js-active');
-
         updateFormBoxes();
       });
     });
 
-    // Map button toggle
     mapButtons.forEach(button => {
       button.addEventListener('click', () => {
         const id = button.dataset.id;
-
         if (button.classList.contains('js-active')) {
           button.classList.remove('js-active');
           selectedAreas = selectedAreas.filter(x => x !== id);
@@ -210,23 +211,18 @@ export function initCalendarMapButtons() {
           button.classList.add('js-active');
           selectedAreas.push(id);
         }
-
         updateFormBoxes();
       });
     });
 
-    // Initialize selectedAreas from pre-active buttons (DOM order is fine initially)
     selectedAreas = Array.from(mapButtons)
       .filter(btn => btn.classList.contains('js-active'))
       .map(btn => btn.dataset.id);
 
     updateFormBoxes();
 
-    // --- Handle "現在地付近" geolocation button ---
     if (locateBtn) {
       locateBtn.addEventListener('click', () => {
-        if (modal && !modal.classList.contains('js-show')) modal.classList.add('js-show');
-
         if (!navigator.geolocation) {
           alert('位置情報がサポートされていません。');
           return;
@@ -237,7 +233,7 @@ export function initCalendarMapButtons() {
             const { latitude, longitude } = pos.coords;
 
             const calcDistance = (lat1, lng1, lat2, lng2) => {
-              const R = 6371; // km
+              const R = 6371;
               const dLat = ((lat2 - lat1) * Math.PI) / 180;
               const dLng = ((lng2 - lng1) * Math.PI) / 180;
               const a =
@@ -249,29 +245,28 @@ export function initCalendarMapButtons() {
               return R * c;
             };
 
-            // Sort areas by distance
             const sorted = Array.from(mapButtons)
               .map(btn => {
                 const id = btn.dataset.id;
                 const area = btn.dataset.area;
                 const loc = areaCoordinates[area];
-                if (!loc) return { id, distance: 999999 }; // safety fallback
+                if (!loc) return { id, distance: 999999 };
                 const distance = calcDistance(latitude, longitude, loc.lat, loc.lng);
                 return { id, distance };
               })
               .sort((a, b) => a.distance - b.distance)
               .map(item => item.id);
 
-            // Activate all buttons
             mapButtons.forEach(btn => btn.classList.add('js-active'));
             selectedAreas = sorted;
 
-            // ★ Only here we mark "nearby" mode
-            if (areaOrderInput) {
-              areaOrderInput.value = 'nearby';
-            }
-
+            if (areaOrderInput) areaOrderInput.value = 'nearby';
             updateFormBoxes();
+
+            // ✅ Trigger the submit button after geolocation
+            const submitBtn = modal.querySelector('.event__modal-btn');
+            if (submitBtn) submitBtn.click();
+
           },
           err => {
             alert('位置情報の取得に失敗しました。');
@@ -280,6 +275,6 @@ export function initCalendarMapButtons() {
         );
       });
     }
-
   }
 }
+
