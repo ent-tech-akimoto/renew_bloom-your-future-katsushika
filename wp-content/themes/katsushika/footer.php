@@ -180,12 +180,18 @@
 </div>
 <script>
 <?php
-  if (is_post_type_archive('event') || is_singular('event')) {
+  if (is_front_page()) {
+    $page_id = 'top';
+  } elseif (is_post_type_archive('event')) {
     $page_id = 'event';
   } elseif (is_page('event-calendar')) {
     $page_id = 'calendar';
+  } elseif (is_post_type_archive('sponsor')) {
+    $page_id = 'sponsor';
+  } elseif (is_singular('event') || is_singular('sponsor')) {
+    $page_id = 'detail';
   } else {
-    $page_id = 'top';
+    $page_id = '';
   }
 ?>
 window.pageID = '<?php echo esc_js($page_id); ?>';

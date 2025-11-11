@@ -8,4 +8,4 @@ require_once get_template_directory() . '/functions/event-content.php';
 
 
 // 管理バーOFF
-// add_filter('show_admin_bar', '__return_false');
+add_filter('show_admin_bar', '__return_false');
