@@ -20,17 +20,19 @@ var myMeta = meta[lang][pageID];
         <nav class="overview__nav nav-swiper swiper">
           <ul class="swiper-wrapper">
             <li class="swiper-slide">
-              <a href="#about"
+              <a href="#anchor-about"
                 >「全国みどりと花のフェア<br>かつしか」について</a
               >
             </li>
-            <li class="swiper-slide"><a href="#plan">基本計画</a></li>
-            <li class="swiper-slide"><a href="#action">実施計画</a></li>
-            <li class="swiper-slide"><a href="#amba">アンバサダー</a></li>
-            <li class="swiper-slide"><a href="#logo">ロゴマーク</a></li>
+            <li class="swiper-slide"><a href="#anchor-plan">基本計画</a></li>
+            <li class="swiper-slide"><a href="#anchor-action">実施計画</a></li>
+            <li class="swiper-slide">
+              <a href="#anchor-amba">アンバサダー</a>
+            </li>
+            <li class="swiper-slide"><a href="#anchor-logo">ロゴマーク</a></li>
           </ul>
         </nav>
-        <section id="about" class="overview__section about">
+        <section id="anchor-about" class="overview__section about">
           <h2 class="common__h2 overview__h2">
             「全国みどりと花のフェアかつしか」<br class="pc-none">について
           </h2>
@@ -87,7 +89,7 @@ var myMeta = meta[lang][pageID];
             </div>
           </div>
         </section>
-        <section id="plan" class="overview__section plan">
+        <section id="anchor-plan" class="overview__section plan">
           <h2 class="common__h2 overview__h2">基本計画</h2>
           <p class="mt80">
             フェア開催に向けて、会場計画や行催事計画等を記載した「全国みどりと花のフェアかつしか」基本計画を策定しました。
@@ -102,7 +104,7 @@ var myMeta = meta[lang][pageID];
             >
           </div>
         </section>
-        <section id="action" class="overview__section action">
+        <section id="anchor-action" class="overview__section action">
           <h2 class="common__h2 overview__h2">実施計画</h2>
           <p class="mt80">
             本フェアの基本的事項、会場計画、出展展示、行催事、会場運営、広報宣伝、調達、交通輸送、協働推進、飲食・物販、事業推進体制等について、その詳細を記した実施計画を策定しました。詳しくは、下記の添付ファイルをご覧ください。
@@ -116,7 +118,7 @@ var myMeta = meta[lang][pageID];
             >
           </div>
         </section>
-        <section id="amba" class="overview__section amba">
+        <section id="anchor-amba" class="overview__section amba">
           <h2 class="common__h2 overview__h2">アンバサダー</h2>
           <div class="overview__amba-flex">
             <div class="overview__amba-img">
@@ -145,14 +147,11 @@ var myMeta = meta[lang][pageID];
             </a>
           </div>
         </section>
-        <section id="logo" class="overview__section logo">
+        <section id="anchor-logo" class="overview__section logo">
           <h2 class="common__h2 overview__h2">ロゴマーク</h2>
           <div class="overview__logo-flex">
             <div class="overview__logo-img">
-              <img
-                src="<%= relative_path %>assets/img/overview/logo.png"
-                alt=""
-              >
+              <img src="<%= relative_path %>assets/img/common/logo.png" alt="">
             </div>
             <div class="overview__logo-txt">
               <strong>Bloom Your Future Katsushika</strong>

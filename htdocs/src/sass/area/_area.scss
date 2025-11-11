@@ -7,11 +7,9 @@
     margin-top: get_vw(-46);
     padding-top: get_vw(126);
     padding-bottom: get_vw(100);
-    padding-inline: get_vw(20);
     @include pc-fluid-size(margin-top, (-0));
     @include pc-fluid-size(padding-top, (190));
     @include pc-fluid-size(padding-bottom, (198));
-    @include pc-fluid-size(padding-inline, (78));
 
   }
   &__bg{
@@ -31,12 +29,15 @@
     }
   }
   &__bread{
+    width: 100%;
+    margin-inline: auto;
     position: relative;
     font-size: get_vw(14);
     color: $c_white;
-    padding-left: get_vw(0);
+    padding-left: get_vw(20);
+    @include pc-fluid-size(width, (1440));
     @include pc-fluid-size(font-size, (14));
-    @include pc-fluid-size(padding-left, (0));
+    @include pc-fluid-size(padding-left, (80));
     & span{
       &::after{
         content: '>';
@@ -63,7 +64,7 @@
     & ul{
       width: 100%;
       height: get_vw(50);
-      margin: get_vw(108) auto 0;
+      margin: get_vw(52) auto 0;
       padding: 0 get_vw(17);
       display: flex;
       flex-direction: row;
@@ -114,7 +115,9 @@
   }
   &__section{
     margin-top: get_vw(80);
+    padding-inline: get_vw(20);
     @include pc-fluid-size(margin-top, (95));
+    @include pc-fluid-size(padding-inline, (78));
     & p{
       margin-top: get_vw(80);
       font-size: get_vw(18);
@@ -208,7 +211,7 @@
     padding: get_vw(60) get_vw(14);
     overflow: hidden;
     @include pc-fluid-size(width, (1280));
-    @include pc-fluid-size(margin-top, (80));
+    @include pc-fluid-size(margin-top, (40));
     @include pc-fluid-size(padding, (80));
     @include pc-fluid-size(border-radius, (40));
   }
@@ -349,7 +352,7 @@
     font-size: get_vw(14);
     font-weight: 300;
     line-height: calc(26/14);
-    @include pc-fluid-size(margin-top, (20));
+    @include pc-fluid-size(margin-top, (10));
     @include pc-fluid-size(font-size, (14));
     @include pc-fluid-size(line-height, (24));
   }
@@ -460,8 +463,10 @@
       @include pc-fluid-size(margin-top, (0));
     }
     &>p.area__gallery-box-ttl{
+      font-size: get_vw(16);
       margin-top: 0;
       font-weight: 500;
+      @include pc-fluid-size(font-size, (24));
     }
     &>p.area__gallery-box-txt{
       margin-top: get_vw(40);
@@ -484,7 +489,7 @@
   }
 
   &__gallery-resident,&__gallery-famous{
-    margin-top: get_vw(37);
+    margin-top: get_vw(14);
     width: 100%;
     @include pc-fluid-size(margin-top, (40));
   }
@@ -492,7 +497,7 @@
   &__gallery-resident-slide,&__gallery-famous-slide{
     border-radius: get_vw(20);
     overflow: hidden;
-    aspect-ratio: 17 / 12;
+    aspect-ratio: 1.34;
     @include pc-fluid-size(border-radius, (20));
     @include min-screen{
       cursor: pointer;
@@ -514,7 +519,7 @@
     width: get_vw(64);
     margin-right: get_vw(5);
     overflow: hidden;
-    aspect-ratio: 17 / 12;
+    aspect-ratio: 1.33;
     border: solid transparent get_vw(2);
     filter: brightness(0.5);
     @include pc-fluid-size(margin-right, (12));

@@ -17,20 +17,18 @@ var myMeta = meta[lang][pageID];
         </p>
         <h1 class="common__h1 event__h1">イベント情報</h1>
         <div class="event__switch">
-          <a id="event-calendar" class="event__switch-btn" href=""
+          <a class="event__switch-btn" href="#anchor-calendar"
             >イベントカレンダー<br class="pc-none">から探す</a
           >
-          <a id="event-detail" class="event__switch-btn js-active" href=""
-            >詳細を探す</a
-          >
+          <a class="event__switch-btn" href="#anchor-form">詳細を探す</a>
         </div>
-        <section class="event__calendar">
+        <section id="anchor-calendar" class="event__calendar">
           <h2 class="event__h2">イベントカレンダーから探す</h2>
           <a class="common__btn-i event__btn" href="./calendar/">
             各月毎のイベントはこちら
           </a>
         </section>
-        <section class="event__form">
+        <section id="anchor-form" class="event__form">
           <h2 class="event__h2">詳細から探す</h2>
           <form class="event__form-wrapper" method="get" action="">
             <div class="event__form-flex area">

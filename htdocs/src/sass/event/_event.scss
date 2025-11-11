@@ -80,15 +80,14 @@
     text-align: center;
     font-size: get_vw(14);
     color: $c_black;
-    background-color: $c_ivory;
+    background-color: $c_lightgray;
     @include center;
     @include pc-fluid-size(font-size, (14));
     @include min-screen{
       cursor: pointer;
-    }
-    &.js-active{
-      background-color: $c_lightgray;
-      pointer-events: none;
+      &:hover{
+        background-color: $c_ivory;
+      }
     }
     &:first-child{
       border-radius: get_vw(10) 0 0 get_vw(10);
