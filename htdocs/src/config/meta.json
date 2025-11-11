@@ -30,6 +30,9 @@
       "title": "イベント詳細"
     },
     "sponsor": {
+      "title": "募集情報"
+    },
+    "sponsors": {
       "title": "協賛募集"
     },
     "sponsor-detail": {
