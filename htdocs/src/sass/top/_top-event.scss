@@ -58,6 +58,7 @@
           @include pc-fluid-size(width, (392));
           @include pc-fluid-size(border-radius, (0));
           @include min-screen{
+            height: 100%;
             border: none;
           }
         }
