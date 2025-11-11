@@ -6,7 +6,6 @@ $slug = 'event';
 get_header();
 
 // --- GET値を受け取る ------------------------------------------
-// エリア
 $area_param = isset($_GET['area']) ? sanitize_text_field($_GET['area']) : '';
 $area_ids   = [];
 if ($area_param !== '') {
@@ -15,9 +14,12 @@ if ($area_param !== '') {
     return $v > 0;
   }));
 }
+$area_order_mode = isset($_GET['area_order']) ? sanitize_text_field($_GET['area_order']) : '';
+
 // 開始日・終了日
 $from_d = isset($_GET['from']) ? sanitize_text_field($_GET['from']) : '';
 $to_d   = isset($_GET['to'])   ? sanitize_text_field($_GET['to'])   : '';
+
 // カテゴリー
 $cat_param = isset($_GET['ev_cat']) ? sanitize_text_field($_GET['ev_cat']) : '';
 $cat_ids   = [];
@@ -27,6 +29,7 @@ if ($cat_param !== '') {
     return $v > 0;
   }));
 }
+
 // フリーワード
 $keyword  = isset($_GET['keyword']) ? sanitize_text_field($_GET['keyword']) : '';
 
@@ -52,7 +55,7 @@ if (!empty($cat_ids)) {
   ];
 }
 
-// 基本の引数（開催日で並べる）
+// 開催日順
 $args = [
   'post_type'      => 'event',
   'post_status'    => 'publish',
@@ -63,7 +66,7 @@ $args = [
   'order'          => 'ASC',
 ];
 
-if ( !empty($area_ids) || !empty($cat_ids) ) {
+if (!empty($area_ids) || !empty($cat_ids)) {
   $args['tax_query'] = $tax_query;
 }
 
@@ -71,7 +74,7 @@ if ($keyword) {
   $args['s'] = $keyword;
 }
 
-// 日付で絞る（期間がかぶっているイベントを取る想定）
+// 日付で絞る
 $meta_query = [];
 
 if ($from_d) {
@@ -101,68 +104,71 @@ if (!empty($meta_query)) {
   $args['meta_query'] = $meta_query;
 }
 
+// 現在地
+global $event_area_order_for_archive;
+$event_area_order_for_archive = $area_ids;
+// nearbyのときだけソート用フィルターをつける
+if (!empty($area_ids) && $area_order_mode === 'nearby') {
+  add_filter('posts_clauses', 'my_event_order_by_area_tax', 10, 2);
+}
 $event_query = new WP_Query($args);
+// 終わったらフィルター外す
+if (!empty($area_ids) && $area_order_mode === 'nearby') {
+  remove_filter('posts_clauses', 'my_event_order_by_area_tax', 10);
+}
 $found = $event_query->found_posts;
 ?>
 
 <article class="event__wrapper">
   <div class="event__bg"></div>
   <p class="common-bread event__bread">
-    <span><a href="<?php echo esc_url( home_url('/') ); ?>">TOP</a></span><span>イベント情報</span>
+    <span><a href="<?php echo esc_url(home_url('/')); ?>">TOP</a></span><span>イベント情報</span>
   </p>
   <h1 class="common__h1 event__h1">イベント情報</h1>
 
   <div class="event__switch">
-    <a id="event-calendar" class="event__switch-btn" href="<?php echo esc_url( home_url('/event-calendar/') ); ?>">
+    <a id="event-calendar" class="event__switch-btn" href="<?php echo esc_url(home_url('/event-calendar/')); ?>">
       イベントカレンダー<br class="pc-none">から探す
     </a>
     <a id="event-detail" class="event__switch-btn js-active"
-      href="<?php echo esc_url( get_post_type_archive_link('event') ); ?>">
+      href="<?php echo esc_url(get_post_type_archive_link('event')); ?>">
       詳細を探す
     </a>
   </div>
   <section class="event__calendar">
     <h2 class="event__h2">イベントカレンダーから探す</h2>
-    <a class="common__btn-i event__btn" href="<?php echo esc_url( home_url('/event-calendar/') ); ?>"> 各月毎のイベントはこちら </a>
+    <a class="common__btn-i event__btn" href="<?php echo esc_url(home_url('/event-calendar/')); ?>"> 各月毎のイベントはこちら </a>
   </section>
   <section class="event__form">
     <h2 class="event__h2">詳細から探す</h2>
-    <form class="event__form-wrapper" method="get"
-      action="<?php echo esc_url( get_post_type_archive_link('event') ); ?>">
+    <form class="event__form-wrapper" method="get" action="<?php echo esc_url(get_post_type_archive_link('event')); ?>">
       <div class="event__form-flex area">
         <input type="hidden" name="area" id="areaInput" value="<?php echo esc_attr($area_param); ?>">
+        <input type="hidden" name="area_order" id="areaOrderInput" value="">
         <div class="event__form-label area"></div>
         <div class="event__form-box area">
           <?php
-          $areas = get_terms([
-            'taxonomy'   => 'event_area',
-            'hide_empty' => false,
-            'orderby'    => 'term_id',
-            'order'      => 'ASC',
-          ]);
-          if ( ! is_wp_error($areas) && ! empty($areas) ) :
-            if ( !empty($area_ids) ) {
-              foreach ($areas as $area) {
-                if ( in_array($area->term_id, $area_ids, true) ) {
-                  ?>
-          <span class="event__form-select--area js-active" data-area="<?php echo esc_attr($area->slug); ?>"
-            data-id="<?php echo esc_attr($area->term_id); ?>">
-            <?php echo esc_html($area->name); ?>
-          </span>
-          <?php
-                }
-              }
-            } else {
-              foreach ($areas as $area) {
-                ?>
-          <span class="event__form-select--area js-active" data-area="<?php echo esc_attr($area->slug); ?>"
-            data-id="<?php echo esc_attr($area->term_id); ?>">
-            <?php echo esc_html($area->name); ?>
-          </span>
-          <?php
+          if ( !empty($area_ids) && $area_order_mode === 'nearby' ) {
+            foreach ($area_ids as $tid) {
+              $area = get_term($tid, 'event_area');
+              if ($area && ! is_wp_error($area)) {
+                echo '<span class="event__form-select--area js-active" data-area="' . esc_attr($area->slug) . '" data-id="' . esc_attr($area->term_id) . '">' . esc_html($area->name) . '</span>';
               }
             }
-          endif;
+          } else {
+            // taxonomy順
+            $areas = get_terms([
+              'taxonomy'   => 'event_area',
+              'hide_empty' => false,
+              'orderby'    => 'term_id',
+              'order'      => 'ASC',
+            ]);
+            if (! is_wp_error($areas) && ! empty($areas)) {
+              foreach ($areas as $area) {
+                echo '<span class="event__form-select--area js-active" data-area="' . esc_attr($area->slug) . '" data-id="' . esc_attr($area->term_id) . '">' . esc_html($area->name) . '</span>';
+              }
+            }
+          }
           ?>
         </div>
         <div class="event__form-modal area" data-modal="modal1">
@@ -177,7 +183,7 @@ $found = $event_query->found_posts;
                 'orderby'    => 'term_id',
                 'order'      => 'ASC',
               ]);
-              if ( ! is_wp_error($areas) && ! empty($areas) ) :
+              if (! is_wp_error($areas) && ! empty($areas)) :
                 foreach ($areas as $area) :
                   $active_class = '';
               ?>
@@ -196,7 +202,7 @@ $found = $event_query->found_posts;
               <img src="/assets/img/event/modal_area.png" alt="">
             </picture>
             <ul>
-              <?php if ( ! is_wp_error($areas) && ! empty($areas) ) : ?>
+              <?php if (! is_wp_error($areas) && ! empty($areas)) : ?>
               <?php foreach ($areas as $area) : ?>
               <?php $is_active = empty($area_ids) || in_array($area->term_id, $area_ids, true); ?>
               <li class="map-btn<?php echo $is_active ? ' js-active' : ''; ?>"
@@ -253,14 +259,14 @@ $found = $event_query->found_posts;
                 <p>開始日</p>
                 <div class="event__modal-date-show">
                   <strong class="">
-                    <?php echo $from_d ? esc_html( date('j', strtotime($from_d)) ) : '-';?>
+                    <?php echo $from_d ? esc_html(date('j', strtotime($from_d))) : '-';?>
                   </strong>
                   <div>
                     <p class="day">
-                      <?php echo $from_d ? esc_html( date_i18n('D', strtotime($from_d)) ) : '';?>
+                      <?php echo $from_d ? esc_html(date_i18n('D', strtotime($from_d))) : '';?>
                     </p>
                     <p class="month">
-                      <?php echo $from_d ? esc_html( date_i18n('n月', strtotime($from_d)) ) : '';?>
+                      <?php echo $from_d ? esc_html(date_i18n('n月', strtotime($from_d))) : '';?>
                     </p>
                   </div>
                 </div>
@@ -270,14 +276,14 @@ $found = $event_query->found_posts;
                 <p>終了日</p>
                 <div class="event__modal-date-show">
                   <strong class="">
-                    <?php echo $to_d ? esc_html( date('j', strtotime($to_d)) ) : '-'; ?>
+                    <?php echo $to_d ? esc_html(date('j', strtotime($to_d))) : '-'; ?>
                   </strong>
                   <div>
                     <p class="day">
-                      <?php echo $to_d ? esc_html( date_i18n('D', strtotime($to_d)) ) : ''; ?>
+                      <?php echo $to_d ? esc_html(date_i18n('D', strtotime($to_d))) : ''; ?>
                     </p>
                     <p class="month">
-                      <?php echo $to_d ? esc_html( date_i18n('n月', strtotime($to_d)) ) : ''; ?>
+                      <?php echo $to_d ? esc_html(date_i18n('n月', strtotime($to_d))) : ''; ?>
                     </p>
                   </div>
                 </div>
@@ -334,13 +340,13 @@ $found = $event_query->found_posts;
         <div class="event__form-label cate"></div>
         <div class="event__form-box cate">
           <?php
-          if ( !empty($cat_ids) ) {
+          if (!empty($cat_ids)) {
             $terms_to_show = get_terms([
               'taxonomy'   => 'event_cat',
               'hide_empty' => false,
               'include'    => $cat_ids,
             ]);
-            if ( !is_wp_error($terms_to_show) && !empty($terms_to_show) ) {
+            if (!is_wp_error($terms_to_show) && !empty($terms_to_show)) {
               foreach ($terms_to_show as $t) {
                 echo '<span class="event__form-select js-active" data-cat="'.esc_attr($t->slug).'" data-id="'.esc_attr($t->term_id).'">'.esc_html($t->name).'</span>';
               }
@@ -367,7 +373,7 @@ $found = $event_query->found_posts;
               'orderby'    => 'term_id',
               'order'      => 'ASC',
             ]);
-            if ( !is_wp_error($cats) && !empty($cats) ) :
+            if (!is_wp_error($cats) && !empty($cats)) :
               foreach ($cats as $cat) :
                 $is_active = !empty($cat_ids) && in_array($cat->term_id, $cat_ids, true);
                 ?>
@@ -428,12 +434,12 @@ $found = $event_query->found_posts;
           <p class="event__box-date">
             <?php
             $event_period = function_exists('get_field') ? get_field('event_period') : '';
-            if (!empty( $event_period)) {
+            if (!empty($event_period)) {
               echo esc_html($event_period);
             } else {
               echo esc_html(get_the_date('Y年n月j日'));
             }
-          ?>
+            ?>
           </p>
           <h4 class="event__box-ttl"><?php the_title(); ?></h4>
           <?php if ($cats && !is_wp_error($cats)): ?>
@@ -453,46 +459,46 @@ $found = $event_query->found_posts;
     <?php
     $total_pages = (int) $event_query->max_num_pages;
     $current     = (int) $paged;
-    if ( $total_pages > 1 ): ?>
+    if ($total_pages > 1): ?>
     <div class="event__pagination">
       <?php
     $base_args = [];
-    if ( !empty($area_param) ) $base_args['area']    = $area_param;
-    if ( !empty($from_d) )     $base_args['from']    = $from_d;
-    if ( !empty($to_d) )       $base_args['to']      = $to_d;
-    if ( !empty($cat_param) )  $base_args['ev_cat']  = $cat_param;
-    if ( !empty($keyword) )    $base_args['keyword'] = $keyword;
+    if (!empty($area_param)) $base_args['area']    = $area_param;
+    if (!empty($from_d))     $base_args['from']    = $from_d;
+    if (!empty($to_d))       $base_args['to']      = $to_d;
+    if (!empty($cat_param))  $base_args['ev_cat']  = $cat_param;
+    if (!empty($keyword))    $base_args['keyword'] = $keyword;
     $base_url = get_post_type_archive_link('event');
     // 表示数（3つ）
     $show_max = 3;
     $start = max(1, $current - 1);
     $end   = min($total_pages, $start + $show_max - 1);
-    if ( ($end - $start + 1) < $show_max ) {
+    if (($end - $start + 1) < $show_max) {
       $start = max(1, $end - $show_max + 1);
     }
     // ← prev
-    if ( $current > 1 ) {
-      $prev_args = array_merge( $base_args, ['page' => $current - 1] );
-      $prev_url  = add_query_arg( $prev_args, $base_url );
-      echo '<button class="arrow-before" type="button" onclick="location.href=\'' . esc_url( $prev_url ) . '\'"></button>';
+    if ($current > 1) {
+      $prev_args = array_merge($base_args, ['page' => $current - 1]);
+      $prev_url  = add_query_arg($prev_args, $base_url);
+      echo '<button class="arrow-before" type="button" onclick="location.href=\'' . esc_url($prev_url) . '\'"></button>';
     }
     // 中央の数字
-    for ( $i = $start; $i <= $end; $i++ ) {
-      $page_args = array_merge( $base_args, ['page' => $i] );
-      $page_url  = add_query_arg( $page_args, $base_url );
+    for ($i = $start; $i <= $end; $i++) {
+      $page_args = array_merge($base_args, ['page' => $i]);
+      $page_url  = add_query_arg($page_args, $base_url);
       $active    = ($i === $current) ? 'active' : '';
       echo '<button class="' . esc_attr($active) . '" type="button" onclick="location.href=\'' . esc_url($page_url) . '\'">' . esc_html($i) . '</button>';
     }
-    if ( $end < $total_pages ) {
+    if ($end < $total_pages) {
       echo '<button class="small" type="button"></button>';
       echo '<button class="small" type="button"></button>';
       echo '<button class="small" type="button"></button>';
     }
     // → next
-    if ( $current < $total_pages ) {
-      $next_args = array_merge( $base_args, ['page' => $current + 1] );
-      $next_url  = add_query_arg( $next_args, $base_url );
-      echo '<button class="arrow-next" type="button" onclick="location.href=\'' . esc_url( $next_url ) . '\'"></button>';
+    if ($current < $total_pages) {
+      $next_args = array_merge($base_args, ['page' => $current + 1]);
+      $next_url  = add_query_arg($next_args, $base_url);
+      echo '<button class="arrow-next" type="button" onclick="location.href=\'' . esc_url($next_url) . '\'"></button>';
     }
     ?>
     </div>
