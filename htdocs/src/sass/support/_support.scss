@@ -103,7 +103,7 @@
         @include pc-fluid-size(margin-top, (50));
         }
       }
-      & .sponsor__detail-atten{
+      & .support__detail-atten{
         margin-top: get_vw(30);
         font-size: get_vw(14);
         font-weight: 300;
@@ -140,7 +140,7 @@
           @include pc-fluid-size(text-underline-offset, (2));
         }
       }
-      & p.sponsor__term-txt{
+      & p.support__term-txt{
         font-size: get_vw(14);
         @include pc-fluid-size(font-size, (14));
       }
@@ -299,7 +299,7 @@
       cursor: pointer;
     }
     @include after{
-      background-image: url('../img/sponsor/icon_search.png');
+      background-image: url('../img/support/icon_search.png');
       background-size: 100% 100%;
       width: get_vw(56);
       height: get_vw(56);
@@ -513,7 +513,7 @@
       @include pc-fluid-size(padding-left, (27));
       @include pc-fluid-size(font-size, (20));
       @include before{
-        background-image: url('../img/sponsor/icon_platinum.png');
+        background-image: url('../img/support/icon_platinum.png');
         background-size: 100% 100%;
         width: get_vw(17);
         height: get_vw(17);
@@ -541,7 +541,7 @@
       background-color: #E4EEEF;
       & p{
         @include before{
-          background-image: url('../img/sponsor/icon_platinum.png');
+          background-image: url('../img/support/icon_platinum.png');
         }
       }
     }
@@ -549,7 +549,7 @@
       background-color: #FFF3D1;
       & p{
         @include before{
-          background-image: url('../img/sponsor/icon_gold.png');
+          background-image: url('../img/support/icon_gold.png');
         }
       }
     }
@@ -557,7 +557,7 @@
       background-color: #EFEFEF;
       & p{
         @include before{
-          background-image: url('../img/sponsor/icon_silver.png');
+          background-image: url('../img/support/icon_silver.png');
         }
       }
     }
@@ -565,7 +565,7 @@
       background-color: #ECE5D1;
       & p{
         @include before{
-          background-image: url('../img/sponsor/icon_bronze.png');
+          background-image: url('../img/support/icon_bronze.png');
         }
       }
     }
@@ -573,7 +573,7 @@
       background-color: #EFF7FF;
       & p{
         @include before{
-          background-image: url('../img/sponsor/icon_supporter.png');
+          background-image: url('../img/support/icon_supporter.png');
         }
       }
     }
@@ -697,7 +697,7 @@
         letter-spacing: 0.1em;
       }
     }
-    & p.sponsor__howto-atten{
+    & p.support__howto-atten{
       margin-top: get_vw(20);
       font-size: get_vw(14);
       font-weight: 300;

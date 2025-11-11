@@ -222,7 +222,7 @@
     }
     &.walk{
       @include before{
-        background-image: url('../img/purpose/icon_walk.png');
+        background-image: url('../img/access/icon_walk.png');
         background-size: 100% 100%;
         width: get_vw(12);
         height: get_vw(19);
@@ -232,7 +232,7 @@
     }
     &.cycle{
       @include before{
-        background-image: url('../img/purpose/icon_cycle.png');
+        background-image: url('../img/access/icon_cycle.png');
         background-size: 100% 100%;
         width: get_vw(23);
         height: get_vw(16);
@@ -242,7 +242,7 @@
     }
     &.taxi{
       @include before{
-        background-image: url('../img/purpose/icon_taxi.png');
+        background-image: url('../img/access/icon_taxi.png');
         background-size: 100% 100%;
         width: get_vw(19);
         height: get_vw(19);
@@ -252,7 +252,7 @@
     }
     &.bus{
       @include before{
-        background-image: url('../img/purpose/icon_bus.png');
+        background-image: url('../img/access/icon_bus.png');
         background-size: 100% 100%;
         width: get_vw(23);
         height: get_vw(12);
@@ -288,7 +288,7 @@
       top: 50%;
       left: get_vw(0);
       transform: translateY(-50%);
-      background-image: url('../img/purpose/icon_bus_blue.png');
+      background-image: url('../img/access/icon_bus_blue.png');
       background-size: 100% 100%;
       width: get_vw(23);
       height: get_vw(12);
