@@ -16,15 +16,22 @@ $banner_query = new WP_Query(array(
       while ($banner_query->have_posts()) :
         $banner_query->the_post();
         // ACF値
-        $img   = get_field('top_banner_img');
-        $title = get_field('top_banner_title');
-        $lead  = get_field('top_banner_lead');
-        $int   = get_field('top_link_internal');
-        $ext   = get_field('top_link_external');
-
-        if (empty($img)) continue;
-        $img_url = is_array($img) && !empty($img['url']) ? esc_url($img['url']) : '';
-        $img_alt = is_array($img) && isset($img['alt']) && $img['alt'] !== '' ? esc_attr($img['alt']) : esc_attr($title ?: get_the_title());
+        $img_pc = get_field('top_banner_img_pc');
+        $img_sp = get_field('top_banner_img_sp');
+        $title  = get_field('top_banner_title');
+        $lead   = get_field('top_banner_lead');
+        $int    = get_field('top_link_internal');
+        $ext    = get_field('top_link_external');
+        // 画像
+        $pc_url = (is_array($img_pc) && !empty($img_pc['url'])) ? esc_url($img_pc['url']) : '';
+        $sp_url = (is_array($img_sp) && !empty($img_sp['url'])) ? esc_url($img_sp['url']) : '';
+        if (!$pc_url && !$sp_url) continue;
+        if (!$sp_url) $sp_url = $pc_url;
+        if (!$pc_url) $pc_url = $sp_url;
+        // alt
+        $alt_pc = (is_array($img_pc) && !empty($img_pc['alt'])) ? esc_attr($img_pc['alt']) : '';
+        $alt_sp = (is_array($img_sp) && !empty($img_sp['alt'])) ? esc_attr($img_sp['alt']) : '';
+        $img_alt = $alt_sp ?: $alt_pc ?: esc_attr($title ?: get_the_title());
         // 内部リンクURL判断
         $internal_url = '';
         if (!empty($int)) {
@@ -45,10 +52,8 @@ $banner_query = new WP_Query(array(
         } elseif ($ext && !$internal_url) {
           $link_url = esc_url($ext);
         }
-
         $slide_classes = array('top-banner__swiper-slide', 'swiper-slide');
         if (!$link_url) $slide_classes[] = 'no-link';
-
         $loading = ($i === 0) ? 'eager' : 'lazy';
       ?>
       <div class="<?php echo esc_attr(implode(' ', $slide_classes)); ?>">
@@ -57,33 +62,29 @@ $banner_query = new WP_Query(array(
           <p class="top-banner__atten-txt">葛飾にいじゅくみらい公園<span>ほか</span></p>
         </div>
         <?php
-        $img_tag = sprintf(
-          '<img class="top-banner__img" src="%1$s" alt="%2$s" loading="%3$s">',
-          $img_url,
-          $img_alt,
-          esc_attr($loading)
-        );
+        $picture = '<picture>';
+        if ($pc_url) {
+          $picture .= '<source srcset="' . $pc_url . '" media="(min-width: 768px)">';
+        }
+        $picture .= '<img class="top-banner__img" src="' . $sp_url . '" alt="' . $img_alt . '" loading="' . esc_attr($loading) . '">';
+        $picture .= '</picture>';
         if ($link_url) {
           $is_external = (strpos($link_url, home_url()) !== 0);
-          $target_rel  = $is_external ? ' target="_blank"' : '';
-          echo '<a href="' . $link_url . '"' . $target_rel . '>' . $img_tag . '</a>';
+          $target_rel  = $is_external ? ' target="_blank" rel="noopener"' : '';
+          echo '<a href="' . $link_url . '"' . $target_rel . '>' . $picture . '</a>';
         } else {
-          echo $img_tag;
+          echo $picture;
         }
         ?>
         <?php if ($title || $lead): ?>
         <div class="top-banner__text">
-          <?php if ($title): ?>
-          <h5 class="title"><?php echo esc_html($title); ?></h5>
-          <?php endif; ?>
-          <?php if ($lead): ?>
-          <p class="text"><?php echo esc_html($lead); ?></p>
-          <?php endif; ?>
+          <?php if ($title): ?><h5 class="title"><?php echo esc_html($title); ?></h5><?php endif; ?>
+          <?php if ($lead): ?><p class="text"><?php echo esc_html($lead); ?></p><?php endif; ?>
         </div>
         <?php endif; ?>
         <div class="top-banner__progress"></div>
       </div>
-      <?php $i++; endwhile; wp_reset_postdata();?>
+      <?php $i++; endwhile; wp_reset_postdata(); ?>
     </div>
   </div>
   <div class="top-banner__swiper-pagination swiper-pagination"></div>
