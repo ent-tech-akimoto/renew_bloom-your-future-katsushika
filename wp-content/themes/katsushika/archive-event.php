@@ -290,7 +290,7 @@ $found = $event_query->found_posts;
               </div>
             </div>
             <div class="event__date-flex bot">
-              <button class="sp-none" type="button">本日</button>
+              <button id="today-btn" class="sp-none" type="button">本日</button>
               <div class="event__modal-date-cal left-side">
                 <div class="event__date-control before">
                   <button class="event__date-btn before" type="button"></button>
