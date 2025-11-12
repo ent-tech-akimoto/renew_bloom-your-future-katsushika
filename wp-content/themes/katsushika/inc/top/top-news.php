@@ -1,65 +1,47 @@
+<?php
+$news_query = new WP_Query(array(
+  'post_type'      => 'post',
+  'post_status'    => 'publish',
+  'posts_per_page' => -1,
+  'orderby'        => 'date',
+  'order'          => 'DESC',
+));
+?>
+
 <section class="common__section top-news">
   <h2 class="common_h2 top-news__ttl">お知らせ</h2>
   <div class="top-news__wrapper">
+    <?php if ($news_query->have_posts()) : ?>
+    <?php while ($news_query->have_posts()) : $news_query->the_post(); ?>
+    <?php
+      $categories = get_the_category();
+      $year  = get_the_date('Y年');
+      $month_day = get_the_date('n月j日');
+      $excerpt = get_the_excerpt() ?: get_the_title();
+      $permalink = get_permalink();
+      ?>
     <div class="top-news__box">
-      <div class="top-news__cate">
-        <p class="news">#お知らせ</p>
-        <p class="events">#イベント</p>
-        <p class="recruit">#募集</p>
-      </div>
-      <div class="top-news__txt">
-        <div class="top-news__date">
-          <span>2026年</span>
-          <span>10月16日</span>
+      <a href="<?php echo esc_url($permalink); ?>" class="top-news__link">
+        <div class="top-news__cate">
+          <?php if ($categories) : ?>
+          <?php foreach ($categories as $cat) : ?>
+          <p class="<?php echo esc_attr($cat->slug); ?>">#<?php echo esc_html($cat->name); ?></p>
+          <?php endforeach; ?>
+          <?php endif; ?>
         </div>
-        <p>今日から開催の「全国みど りと花のフェアかつしか…</p>
-      </div>
-    </div>
-    <div class="top-news__box">
-      <div class="top-news__cate">
-        <p class="news">#お知らせ</p>
-        <p class="events">#イベント</p>
-        <p class="recruit">#募集</p>
-      </div>
-      <div class="top-news__txt">
-        <div class="top-news__date">
-          <span>2026年</span>
-          <span>10月16日</span>
+        <div class="top-news__txt">
+          <div class="top-news__date">
+            <span><?php echo esc_html($year); ?></span>
+            <span><?php echo esc_html($month_day); ?></span>
+          </div>
+          <p><?php echo esc_html(get_the_title()); ?></p>
         </div>
-        <p>開催まであと1日！</p>
-      </div>
+      </a>
     </div>
-    <div class="top-news__box">
-      <div class="top-news__cate">
-        <p class="news">#お知らせ</p>
-        <p class="events">#イベント</p>
-        <p class="recruit">#募集</p>
-        <p class="purple">#募集</p>
-      </div>
-      <div class="top-news__txt">
-        <div class="top-news__date">
-          <span>2026年</span>
-          <span>10月16日</span>
-        </div>
-        <p>今回のフェアで見られるお 花を紹介いたします。に…</p>
-      </div>
-    </div>
-    <div class="top-news__box">
-      <div class="top-news__cate">
-        <p class="news">#お知らせ</p>
-        <p class="events">#イベント</p>
-        <p class="recruit">#募集</p>
-      </div>
-      <div class="top-news__txt">
-        <div class="top-news__date">
-          <span>2026年</span>
-          <span>10月16日</span>
-        </div>
-        <p>アクセスについて</p>
-      </div>
-    </div>
+    <?php endwhile; wp_reset_postdata(); ?>
   </div>
   <div class="common__btn-i top-news__btn">
-    <span>お知らせ一覧はこちら</span>
+    <a href="/news/"><span>お知らせ一覧はこちら</span></a>
   </div>
 </section>
+<?php endif; ?>

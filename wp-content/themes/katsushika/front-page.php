@@ -24,14 +24,29 @@
     <?php include(get_template_directory() . '/inc/top/top-gallery.php'); ?>
   </div>
   <div class="fixed js-show">
+    <?php
+    $important_news = new WP_Query(array(
+      'post_type'      => 'post',
+      'post_status'    => 'publish',
+      'posts_per_page' => 1,
+      'meta_key'       => 'news__important',
+      'meta_value'     => true,
+      'orderby'        => 'date',
+      'order'          => 'DESC',
+    ));
+    ?>
+    <?php if ($important_news->have_posts()) : ?>
+    <?php while ($important_news->have_posts()) : $important_news->the_post(); ?>
     <div class="fixed__inner">
-      <a>重要なお知らせ</a>
-      <p> 雨天のため、一部のイベントを中止いたします。詳しいじ情報はイベントページからご確認ください。雨天のため、一部のイベントを中止いたします。詳しいじ情報はイベントページからご確認ください。 </p>
-      <button id="fixed-close">
+      <a href="<?php echo esc_url(get_permalink()); ?>">重要なお知らせ</a>
+      <p><?php echo esc_html(get_the_title()); ?></p>
+      <button id="fixed-close" type="button" aria-label="閉じる">
         <span></span>
         <span></span>
       </button>
     </div>
+    <?php endwhile; wp_reset_postdata(); ?>
+    <?php endif; ?>
   </div>
 </main>
 <?php get_footer(); ?>

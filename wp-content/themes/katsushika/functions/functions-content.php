@@ -21,8 +21,7 @@ function my_event_tinymce_formats($init) {
   if (! $screen_post_type && $post && ! empty($post->post_type)) {
     $screen_post_type = $post->post_type;
   }
-  // eventだけ適用
-  if ($screen_post_type !== 'event') {
+  if (!in_array($screen_post_type, ['event', 'post', 'sponsors', 'news'], true)) {
     return $init;
   }
   $init['block_formats'] = '段落=p;見出し2=h2;見出し3=h3;見出し4=h4';
@@ -30,3 +29,11 @@ function my_event_tinymce_formats($init) {
   return $init;
 }
 add_filter('tiny_mce_before_init', 'my_event_tinymce_formats');
+
+// 本文内の画像構造のHTML変換
+add_filter('the_content', function($content) {
+  $pattern = '/<p>\s*(<a [^>]+>\s*)?(<img [^>]+>)(\s*<\/a>)?\s*<\/p>/i';
+  $replacement = '<div class="detail__content-img">$1$2$3</div>';
+
+  return preg_replace($pattern, $replacement, $content);
+});

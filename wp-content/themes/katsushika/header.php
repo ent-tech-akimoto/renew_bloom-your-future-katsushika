@@ -216,7 +216,7 @@ $url         = 'https://bloom-your-future-katsushika.jp/';
           <div class="header__utility">
             <ul class="header__menu">
               <li class="header__menu--item menu-sub">
-                <a href="#">お知らせ</a>
+                <a href="/news/">お知らせ</a>
               </li>
               <li class="header__menu--item menu-sub">
                 <a href="#">関連サイト</a>
