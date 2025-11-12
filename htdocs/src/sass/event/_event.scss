@@ -1118,6 +1118,11 @@
           z-index: -1;
         }
       }
+      &.range-start.range-end{
+        @include before{
+          display: none;
+        }
+      }
     }
   }
 
