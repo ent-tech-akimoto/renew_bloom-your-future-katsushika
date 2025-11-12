@@ -43,7 +43,12 @@ var myMeta = meta[lang][pageID];
           <form class="event__form-wrapper" method="get" action="">
             <div class="event__form-flex area">
               <input type="hidden" name="area" id="areaInput" value="">
-              <input type="hidden" name="area_order" id="areaOrderInput" value="">
+              <input
+                type="hidden"
+                name="area_order"
+                id="areaOrderInput"
+                value=""
+              >
               <div class="event__form-label area"></div>
               <div class="event__form-box area">
                 <span
@@ -232,7 +237,9 @@ var myMeta = meta[lang][pageID];
                     </div>
                   </div>
                   <div class="event__date-flex bot">
-                    <button class="sp-none" type="button">本日</button>
+                    <button id="today-btn" class="sp-none" type="button">
+                      本日
+                    </button>
                     <div class="event__modal-date-cal left-side">
                       <div class="event__date-control before">
                         <button

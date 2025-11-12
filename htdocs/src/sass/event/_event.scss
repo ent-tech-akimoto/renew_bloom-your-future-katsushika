@@ -494,7 +494,7 @@
       border-radius: get_vw(30);
       @include pc-fluid-size(width, (102));
       @include pc-fluid-size(height, (22));
-      @include pc-fluid-size(padding, (0 9));
+      @include pc-fluid-size(padding, (0 9 1));
       @include pc-fluid-size(font-size, (10));
       @include pc-fluid-size(border-radius, (30));
 
