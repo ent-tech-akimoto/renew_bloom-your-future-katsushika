@@ -131,7 +131,7 @@
             <a href="">募集情報</a>
             <a href="">協賛募集</a>
             <a href="">アクセス情報</a>
-            <a href="">お知らせ</a>
+            <a href="/news/">お知らせ</a>
             <a href="">関連サイト</a>
             <a href="">お問い合わせ</a>
           </nav>

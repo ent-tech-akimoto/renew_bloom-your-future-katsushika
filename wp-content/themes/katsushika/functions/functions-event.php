@@ -1,4 +1,25 @@
 <?php
+// ---- 現在地付近
+function my_event_order_by_area_tax( $clauses, $query ) {
+  global $wpdb, $event_area_order_for_archive;
+  if ( empty($event_area_order_for_archive) ) {
+    return $clauses;
+  }
+  if ( $query->get('post_type') !== 'event' ) {
+    return $clauses;
+  }
+  $ids_for_field = implode(',', array_map('intval', $event_area_order_for_archive));
+  $clauses['join'] .= "
+    LEFT JOIN {$wpdb->term_relationships} tr ON ({$wpdb->posts}.ID = tr.object_id)
+    LEFT JOIN {$wpdb->term_taxonomy} tt ON (tr.term_taxonomy_id = tt.term_taxonomy_id)
+  ";
+  $clauses['where'] .= $wpdb->prepare(" AND tt.taxonomy = %s ", 'event_area');
+  $clauses['orderby'] = "FIELD(tt.term_id, {$ids_for_field}), " . $clauses['orderby'];
+
+  return $clauses;
+}
+
+// ---- フリーワード予測AJAX
 add_action('wp_ajax_event_keyword_suggest', 'my_event_keyword_suggest');
 add_action('wp_ajax_nopriv_event_keyword_suggest', 'my_event_keyword_suggest');
 
@@ -82,3 +103,38 @@ function add_suggest_from_text($text, $keyword, $kwLen, $remove_marks_pattern, &
     $offset = $pos + $kwLen;
   }
 }
+
+// ---- 検索で使うクエリパラメータを許可
+function my_event_add_query_vars( $vars ) {
+  $vars[] = 'ev_cat';
+  $vars[] = 'area';
+  $vars[] = 'from';
+  $vars[] = 'to';
+  return $vars;
+}
+add_filter( 'query_vars', 'my_event_add_query_vars' );
+function my_event_stop_canonical_on_event_archive() {
+  if ( is_post_type_archive( 'event' ) ) {
+    // GETで ?page=2 が付いてるパターン
+    if ( isset($_GET['page']) && (int) $_GET['page'] > 1 ) {
+      remove_action( 'template_redirect', 'redirect_canonical' );
+      return;
+    }
+    $paged = get_query_var('page');
+    if ( $paged && (int) $paged > 1 ) {
+      remove_action( 'template_redirect', 'redirect_canonical' );
+      return;
+    }
+    if (
+      get_query_var('ev_cat') ||
+      get_query_var('area')   ||
+      get_query_var('from')   ||
+      get_query_var('to')     ||
+      isset($_GET['keyword'])
+    ) {
+      remove_action( 'template_redirect', 'redirect_canonical' );
+      return;
+    }
+  }
+}
+add_action( 'template_redirect', 'my_event_stop_canonical_on_event_archive', 9 );
