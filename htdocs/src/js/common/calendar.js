@@ -272,6 +272,27 @@ nextButtons.forEach(nextbtn => {
   });
 });
 
+// today button: set both start and end to today
+const todayBtn = document.getElementById('today-btn');
+if (todayBtn) {
+  todayBtn.addEventListener('click', () => {
+    const today = new Date();
+    // normalize to midnight
+    start = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+    end = new Date(start);
+
+    // make sure calendars show the month containing today
+    leftDate = new Date(start.getFullYear(), start.getMonth(), 1);
+    rightDate = new Date(leftDate);
+    rightDate.setMonth(rightDate.getMonth() + 1);
+
+    // refresh UI
+    updateCalendars();
+    applyHighlighting();
+    displaySelection();
+  });
+}
+
 // // handle apply selection click
 // applyButton.addEventListener("click", () => {
 //   if (start && end) {
