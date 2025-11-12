@@ -112,7 +112,7 @@ export function initSwipers() {
   const topicslides = topicwrapper.querySelectorAll('.top-topic__swiper-slide');
   const topicoriginalSlidesCount = topicwrapper.querySelectorAll('.top-topic__swiper-slide:not(.swiper-slide-duplicate)').length;
   
-  const topicminSlides = 7;
+  const topicminSlides = 10;
   const originalCount = topicoriginalSlidesCount;
   // Only duplicate if total slides < minSlides
 if (originalCount < topicminSlides) {
@@ -136,7 +136,7 @@ if (originalCount < topicminSlides) {
       modules: [Navigation, Pagination],
       loop: true,
       loopedSlides: 1,
-      loopAdditionalSlides: 1,
+      loopAdditionalSlides: 2,
       slidesPerView: 'auto',
       centeredSlides: true,
       
