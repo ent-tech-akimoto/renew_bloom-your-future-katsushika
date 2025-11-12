@@ -46,9 +46,6 @@
     & .top-banner__progress:after{
       animation-play-state: paused;
     }
-    @include min-screen{
-      cursor: pointer;
-    }
     &.swiper-slide-active{
       & .top-banner__progress:after{
         animation-play-state: running;

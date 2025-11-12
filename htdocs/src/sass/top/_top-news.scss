@@ -61,7 +61,7 @@
     @include after{
       background-image: url('../img/top/news_arrow.png');
       background-size: 100% 100%;
-      @include pc-fluid-size(width, (15));
+      @include pc-fluid-size(width, (18));
       @include pc-fluid-size(height, (15));
       position: absolute;
       top: 25%;
@@ -134,6 +134,7 @@
       text-overflow: ellipsis;
       font-weight: 500;
       line-height: calc(28/20);
+      @include pc-fluid-size(width, (950));
         @include min-screen{
           -webkit-line-clamp: 1; /* number of lines to show */
           line-clamp: 1; 

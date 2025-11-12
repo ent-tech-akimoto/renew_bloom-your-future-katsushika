@@ -40,7 +40,7 @@ $featured_events = new WP_Query([
         <?php echo $thumb_html; ?>
       </div>
       <div class="top-event__content">
-        <h3><?php the_title(); ?></h3>
+        <h3><span><?php the_title(); ?></span></h3>
         <p><?php echo esc_html($desc); ?></p>
         <?php if ($area_name) : ?>
         <span class="<?php echo esc_attr($area_slug); ?>">

@@ -104,25 +104,86 @@ export function initSwipers() {
     
   });
 
+  // Topic Swiper Logic
+  // --- Top Banner Swiper ---
+  const topicswiperEl = document.querySelector('.top-topic__swiper');
+  if (!topicswiperEl) return; // safety check
+  const topicwrapper = topicswiperEl.querySelector('.top-topic__swiper-wrapper');
+  const topicslides = topicwrapper.querySelectorAll('.top-topic__swiper-slide');
+  const topicoriginalSlidesCount = topicwrapper.querySelectorAll('.top-topic__swiper-slide:not(.swiper-slide-duplicate)').length;
+  
+  const topicminSlides = 7;
+  const originalCount = topicoriginalSlidesCount;
+  // Only duplicate if total slides < minSlides
+if (originalCount < topicminSlides) {
+  const topicslidesArray = Array.from(topicslides); // convert NodeList to array
+  // Calculate how many times we need to duplicate
+  const timesToDuplicate = Math.ceil((topicminSlides - originalCount) / originalCount);
+
+  for (let i = 0; i < timesToDuplicate; i++) {
+    topicslidesArray.forEach(slide => {
+      const clone = slide.cloneNode(true);
+      clone.classList.add('swiper-slide-duplicate');
+      topicwrapper.appendChild(clone);
+    });
+  }
+}
+
   // Topic Swiper
-  const topicSwiper = new Swiper('.top-topic__swiper', {
-    // Optional parameters
-    modules: [Navigation, Pagination],
-    loop: true,
-    slidesPerView: 'auto',
-    centeredSlides: true,
-    // pagination
-    pagination: {
-      el: '.top-topic__swiper-pagination',
-      clickable: true, 
-      type: 'bullets',
-    },
-    // Navigation 
-    navigation: {
-      nextEl: '.top-topic__swiper-btn--next',
-      prevEl: '.top-topic__swiper-btn--prev',
-    },
-  });
+  if (topicoriginalSlidesCount > 1) {
+    const topicSwiper = new Swiper('.top-topic__swiper', {
+      // Optional parameters
+      modules: [Navigation, Pagination],
+      loop: true,
+      loopedSlides: 1,
+      loopAdditionalSlides: 1,
+      slidesPerView: 'auto',
+      centeredSlides: true,
+      
+      // pagination
+      pagination: {
+        el: '.top-topic__swiper-pagination',
+        clickable: true, 
+        type: 'bullets',
+        renderBullet: function (index, className) {
+          if (index >= topicoriginalSlidesCount) return '';
+          return `<span class="${className}"></span>`;
+        },
+      },
+      
+      on: {
+        slideChange: function () {
+        const bullets = document.querySelectorAll('.top-topic__swiper-pagination span');
+        bullets.forEach(b => b.classList.remove('swiper-pagination-bullet-active'));
+
+        // Find the real slide that represents the center
+        const total = topicoriginalSlidesCount;
+        let activeIndex = this.realIndex % total;
+
+        // Normalize in case of negative index (looping backward)
+        if (activeIndex < 0) activeIndex += total;
+
+        if (bullets[activeIndex]) bullets[activeIndex].classList.add('swiper-pagination-bullet-active');
+      },
+      },
+
+      // Navigation 
+      navigation: {
+        nextEl: '.top-topic__swiper-btn--next',
+        prevEl: '.top-topic__swiper-btn--prev',
+      },
+    });
+  } else {
+    // Only 3 slide → disable Swiper features
+    const topicnextBtn = document.querySelector('.top-topic__swiper-btn--next');
+    const topicprevBtn = document.querySelector('.top-topic__swiper-btn--prev');
+    if (topicnextBtn) topicnextBtn.style.display = 'none';
+    if (topicprevBtn) topicprevBtn.style.display = 'none';
+
+    const topicpaginationEl = document.querySelector('.top-topic__swiper-pagination');
+    if (topicpaginationEl) topicpaginationEl.style.display = 'none';
+    
+  };
 
 
   // Gallery Swiper 
