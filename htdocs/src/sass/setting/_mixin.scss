@@ -511,13 +511,11 @@
 
   &.detail {
     font-size: get_vw(10);
-    padding-top: get_vw(20);
-    padding-left: 0;
+    padding:get_vw(20) get_vw(20) 0;
     margin: 0 auto;
     @include pc-fluid-size(font-size, (14));
     @include pc-fluid-size(max-width, (1280));
-    @include pc-fluid-size(padding-top, (20));
-    @include pc-fluid-size(padding-left, (0));
+    @include pc-fluid-size(padding, (20 0 0 0));
   }
 
   &.l-page {

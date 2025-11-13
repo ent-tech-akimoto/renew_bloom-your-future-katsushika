@@ -46,9 +46,13 @@
   &__header-top {
     display: flex;
     flex-wrap: wrap;
-    flex-direction: column;
+    align-items: center;
     gap: get_vw(20);
     @include pc-fluid-size(gap, (10));
+
+    &:not(.news) {
+      flex-direction: column;
+    }
 
     @include min-screen {
       flex-direction: row;
@@ -178,6 +182,16 @@
       @include pc-fluid-size(border-radius, (30));
       @include pc-fluid-size(font-size, (10));
       @include pc-fluid-size(padding, (0 12));
+
+      &.news{
+        background-color: $news_news;
+      }
+      &.events{
+        background-color: $news_event;
+      }
+      &.recruit{
+        background-color: $news_recruit;
+      }
     }
   }
 
