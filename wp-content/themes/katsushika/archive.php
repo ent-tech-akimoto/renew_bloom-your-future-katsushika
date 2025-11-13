@@ -47,8 +47,8 @@ $total_pages = (int) $news_query->max_num_pages;
     <span><a href="/">TOP</a></span><span>お知らせ</span>
   </p>
   <h1 class="news__h1">お知らせ</h1>
+  <div id="search"></div>
   <section class="news__form">
-    <div id="search"></div>
     <?php
     $current_cat_param = isset($_GET['cat']) ? sanitize_text_field($_GET['cat']) : '';
     $current_cat_name = '';
@@ -114,6 +114,7 @@ $total_pages = (int) $news_query->max_num_pages;
         </div>
       </div>
     </form>
+    <a class="news__form-btn" href="/news#search">条件を初期化</a>
   </section>
   <section class="news__section">
     <?php if ($news_query->have_posts()) : ?>
