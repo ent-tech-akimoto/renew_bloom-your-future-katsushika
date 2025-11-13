@@ -71,7 +71,7 @@ $total_pages = (int) $news_query->max_num_pages;
       'order'      => 'ASC',
     ]);
     ?>
-    <form class="news__form-wrapper" method="get" action="">
+    <form class="news__form-wrapper" method="get" action="#search">
       <div class="news__form-flex cate">
         <input type="hidden" name="cat" id="cateInput" value="<?php echo esc_attr($current_cat_param); ?>">
         <div class="news__form-label cate"></div>
