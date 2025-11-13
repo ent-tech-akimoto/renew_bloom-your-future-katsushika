@@ -1,11 +1,11 @@
 <?php
 // ---- 現在地付近
-function my_event_order_by_area_tax( $clauses, $query ) {
+function my_event_order_by_area_tax($clauses, $query) {
   global $wpdb, $event_area_order_for_archive;
-  if ( empty($event_area_order_for_archive) ) {
+  if (empty($event_area_order_for_archive)) {
     return $clauses;
   }
-  if ( $query->get('post_type') !== 'event' ) {
+  if ($query->get('post_type') !== 'event') {
     return $clauses;
   }
   $ids_for_field = implode(',', array_map('intval', $event_area_order_for_archive));
@@ -105,24 +105,30 @@ function add_suggest_from_text($text, $keyword, $kwLen, $remove_marks_pattern, &
 }
 
 // ---- 検索で使うクエリパラメータを許可
-function my_event_add_query_vars( $vars ) {
+function my_event_add_query_vars($vars) {
   $vars[] = 'ev_cat';
   $vars[] = 'area';
   $vars[] = 'from';
   $vars[] = 'to';
   return $vars;
 }
-add_filter( 'query_vars', 'my_event_add_query_vars' );
+add_filter('query_vars', 'my_event_add_query_vars');
+
+// ---- ページネーション
 function my_event_stop_canonical_on_event_archive() {
-  if ( is_post_type_archive( 'event' ) ) {
+  if (is_post_type_archive('event')) {
     // GETで ?page=2 が付いてるパターン
-    if ( isset($_GET['page']) && (int) $_GET['page'] > 1 ) {
-      remove_action( 'template_redirect', 'redirect_canonical' );
+    if (isset($_GET['page']) && (int) $_GET['page'] > 1) {
+      remove_action('template_redirect', 'redirect_canonical');
       return;
     }
     $paged = get_query_var('page');
-    if ( $paged && (int) $paged > 1 ) {
-      remove_action( 'template_redirect', 'redirect_canonical' );
+    if ($paged && (int) $paged > 1) {
+      remove_action('template_redirect', 'redirect_canonical');
+      return;
+    }
+    if ($paged && (int) $paged > 1) {
+      remove_action('template_redirect', 'redirect_canonical');
       return;
     }
     if (
@@ -132,9 +138,30 @@ function my_event_stop_canonical_on_event_archive() {
       get_query_var('to')     ||
       isset($_GET['keyword'])
     ) {
-      remove_action( 'template_redirect', 'redirect_canonical' );
+      remove_action('template_redirect', 'redirect_canonical');
       return;
     }
   }
 }
-add_action( 'template_redirect', 'my_event_stop_canonical_on_event_archive', 9 );
+add_action('template_redirect', 'my_event_stop_canonical_on_event_archive', 9);
+
+// ---- イベントカレンダーでのcanonical無効化
+function my_event_calendar_redirect_canonical($redirect_url, $requested_url) {
+  // 固定ページ&スラッグがevent-calendarの時だけ対象
+  if (is_page()) {
+    $page_obj = get_queried_object();
+    if ($page_obj && ! empty($page_obj->post_name) && $page_obj->post_name === 'event-calendar') {
+      if (
+        (isset($_GET['paged']) && (int) $_GET['paged'] > 1) ||
+        isset($_GET['y']) ||
+        isset($_GET['mo']) ||
+        isset($_GET['area']) ||
+        isset($_GET['area_order'])
+      ) {
+        return false;
+      }
+    }
+  }
+  return $redirect_url;
+}
+add_filter('redirect_canonical', 'my_event_calendar_redirect_canonical', 10, 2);

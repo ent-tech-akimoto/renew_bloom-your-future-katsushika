@@ -4,6 +4,12 @@ Template Name: Event Calendar
 */
 $slug = 'calendar';
 get_header();
+
+$paged = 1;
+if ( isset($_GET['paged']) && (int) $_GET['paged'] > 1 ) {
+  $paged = (int) $_GET['paged'];
+}
+
 // パラメータを拾う ?y=2025&mo=12&area=14,15
 $year  = isset($_GET['y'])  ? (int) $_GET['y']  : (int) current_time('Y');
 $month = isset($_GET['mo']) ? (int) $_GET['mo'] : (int) current_time('m');
@@ -38,14 +44,12 @@ $meta_query = [
     'type'    => 'NUMERIC',
   ],
 ];
-// ページ番号
-$paged = max(1, get_query_var('page'), get_query_var('paged'));
 
 // WP_Query
 $args = [
   'post_type'      => 'event',
   'post_status'    => 'publish',
-  'posts_per_page' => 12,
+  'posts_per_page' => 9,
   'paged'          => $paged,
   'orderby'        => 'meta_value_num',
   'meta_key'       => 'event_start_date',
@@ -260,48 +264,59 @@ $areas = get_terms([
     <?php
     // ページネーション
     if ($total_pages > 1) :
-      $current = $paged;
-      $base_args = [
-        'y'  => $year,
-        'mo' => $month,
-      ];
-      if ($area_param !== '') {
-        $base_args['area'] = $area_param;
-      }
-      if ($area_order === 'nearby') {
-        $base_args['area_order'] = 'nearby';
-      }
-      $show_max = 3;
-      $start = max(1, $current - 1);
-      $end   = min($total_pages, $start + $show_max - 1);
-      if (($end - $start + 1) < $show_max) {
-        $start = max(1, $end - $show_max + 1);
-      }
+      $current = (int) $paged;
+    // ベースURL（/event-calendar/）
+    $base_url = get_permalink();
+    // 今のクエリ文字列を丸ごとベースにする（area, area_order など全部含める）
+    $base_args = $_GET;
+    // page / paged はこれから上書きするので削除
+    unset($base_args['paged'], $base_args['paged']);
+    $base_args['y']  = $year;
+    $base_args['mo'] = $month;
+    if ($area_param !== '') {
+      $base_args['area'] = $area_param;
+    }
+    if ($area_order === 'nearby') {
+      $base_args['area_order'] = 'nearby';
+    }
+    // 表示数（3つ）
+    $show_max = 3;
+    $start = max(1, $current - 1);
+    $end   = min($total_pages, $start + $show_max - 1);
+    if (($end - $start + 1) < $show_max) {
+      $start = max(1, $end - $show_max + 1);
+    }
     ?>
     <div class="event__pagination">
       <?php
-        // ←prev
-        if ($current > 1) {
-          $prev_page_url = add_query_arg(array_merge($base_args, [ 'page' => $current - 1 ]), $base_url);
-          echo '<button class="arrow-prev" type="button" onclick="location.href=\'' . esc_url($prev_page_url) . '\'"></button>';
-        }
-        // numbers
-        for ($i = $start; $i <= $end; $i++) {
-          $page_url = add_query_arg(array_merge($base_args, [ 'page' => $i ]), $base_url);
-          $active   = ($i === $current) ? 'active' : '';
-          echo '<button class="' . esc_attr($active) . '" type="button" onclick="location.href=\'' . esc_url($page_url) . '\'">' . esc_html($i) . '</button>';
-        }
-        if ($end < $total_pages) {
-          echo '<button class="small" type="button"></button>';
-          echo '<button class="small" type="button"></button>';
-          echo '<button class="small" type="button"></button>';
-        }
-        // →next
-        if ($current < $total_pages) {
-          $next_page_url = add_query_arg(array_merge($base_args, [ 'page' => $current + 1 ]), $base_url);
-          echo '<button class="arrow-next" type="button" onclick="location.href=\'' . esc_url($next_page_url) . '\'"></button>';
-        }
-        ?>
+      // ← prev
+      if ($current > 1) {
+        $prev_args = $base_args;
+        $prev_args['paged'] = $current - 1;
+        $prev_page_url = add_query_arg($prev_args, $base_url);
+        echo '<button class="arrow-before" type="button" onclick="location.href=\'' . esc_url($prev_page_url) . '\'"></button>';
+      }
+      // 中央の数字
+      for ($i = $start; $i <= $end; $i++) {
+        $page_args = $base_args;
+        $page_args['paged'] = $i;
+        $page_url  = add_query_arg($page_args, $base_url);
+        $active    = ($i === $current) ? 'active' : '';
+        echo '<button class="' . esc_attr($active) . '" type="button" onclick="location.href=\'' . esc_url($page_url) . '\'">' . esc_html($i) . '</button>';
+      }
+      if ($end < $total_pages) {
+        echo '<button class="small" type="button"></button>';
+        echo '<button class="small" type="button"></button>';
+        echo '<button class="small" type="button"></button>';
+      }
+      // → next
+      if ($current < $total_pages) {
+        $next_args = $base_args;
+        $next_args['paged'] = $current + 1;
+        $next_page_url = add_query_arg($next_args, $base_url);
+        echo '<button class="arrow-next" type="button" onclick="location.href=\'' . esc_url($next_page_url) . '\'"></button>';
+      }
+      ?>
     </div>
     <?php endif; ?>
   </section>

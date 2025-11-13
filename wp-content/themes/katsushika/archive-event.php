@@ -5,6 +5,13 @@
 $slug = 'event';
 get_header();
 
+$paged = 1;
+if ( get_query_var('paged') ) {
+  $paged = (int) get_query_var('paged');
+} elseif ( isset($_GET['page']) ) {
+  $paged = max(1, (int) $_GET['page']);
+}
+
 // --- GET値を受け取る ------------------------------------------
 $area_param = isset($_GET['area']) ? sanitize_text_field($_GET['area']) : '';
 $area_ids   = [];
@@ -462,45 +469,47 @@ $found = $event_query->found_posts;
     if ($total_pages > 1): ?>
     <div class="event__pagination">
       <?php
-    $base_args = [];
-    if (!empty($area_param)) $base_args['area']    = $area_param;
-    if (!empty($from_d))     $base_args['from']    = $from_d;
-    if (!empty($to_d))       $base_args['to']      = $to_d;
-    if (!empty($cat_param))  $base_args['ev_cat']  = $cat_param;
-    if (!empty($keyword))    $base_args['keyword'] = $keyword;
-    $base_url = get_post_type_archive_link('event');
-    // 表示数（3つ）
-    $show_max = 3;
-    $start = max(1, $current - 1);
-    $end   = min($total_pages, $start + $show_max - 1);
-    if (($end - $start + 1) < $show_max) {
-      $start = max(1, $end - $show_max + 1);
-    }
-    // ← prev
-    if ($current > 1) {
-      $prev_args = array_merge($base_args, ['page' => $current - 1]);
-      $prev_url  = add_query_arg($prev_args, $base_url);
-      echo '<button class="arrow-before" type="button" onclick="location.href=\'' . esc_url($prev_url) . '\'"></button>';
-    }
-    // 中央の数字
-    for ($i = $start; $i <= $end; $i++) {
-      $page_args = array_merge($base_args, ['page' => $i]);
-      $page_url  = add_query_arg($page_args, $base_url);
-      $active    = ($i === $current) ? 'active' : '';
-      echo '<button class="' . esc_attr($active) . '" type="button" onclick="location.href=\'' . esc_url($page_url) . '\'">' . esc_html($i) . '</button>';
-    }
-    if ($end < $total_pages) {
-      echo '<button class="small" type="button"></button>';
-      echo '<button class="small" type="button"></button>';
-      echo '<button class="small" type="button"></button>';
-    }
-    // → next
-    if ($current < $total_pages) {
-      $next_args = array_merge($base_args, ['page' => $current + 1]);
-      $next_url  = add_query_arg($next_args, $base_url);
-      echo '<button class="arrow-next" type="button" onclick="location.href=\'' . esc_url($next_url) . '\'"></button>';
-    }
-    ?>
+      // ベースURL（クエリなしの /event/）
+      $base_url = get_post_type_archive_link('event');
+      // 今のクエリパラメータをベースにする（area, area_order など全部）
+      $base_args = $_GET;
+      // ページ番号用だけはこちらで上書きするので一旦消す
+      unset($base_args['page'], $base_args['paged']);
+      // 表示数（3つ）
+      $show_max = 3;
+      $start = max(1, $current - 1);
+      $end   = min($total_pages, $start + $show_max - 1);
+      if (($end - $start + 1) < $show_max) {
+        $start = max(1, $end - $show_max + 1);
+      }
+      // ← prev
+      if ($current > 1) {
+        $prev_args = $base_args;
+        $prev_args['page'] = $current - 1; // ?page=2 の部分だけ差し替え
+        $prev_url  = add_query_arg($prev_args, $base_url);
+        echo '<button class="arrow-before" type="button" onclick="location.href=\'' . esc_url($prev_url) . '\'"></button>';
+      }
+      // 中央の数字
+      for ($i = $start; $i <= $end; $i++) {
+        $page_args = $base_args;
+        $page_args['page'] = $i;
+        $page_url  = add_query_arg($page_args, $base_url);
+        $active    = ($i === $current) ? 'active' : '';
+        echo '<button class="' . esc_attr($active) . '" type="button" onclick="location.href=\'' . esc_url($page_url) . '\'">' . esc_html($i) . '</button>';
+      }
+      if ($end < $total_pages) {
+        echo '<button class="small" type="button"></button>';
+        echo '<button class="small" type="button"></button>';
+        echo '<button class="small" type="button"></button>';
+      }
+      // → next
+      if ($current < $total_pages) {
+        $next_args = $base_args;
+        $next_args['page'] = $current + 1;
+        $next_url  = add_query_arg($next_args, $base_url);
+        echo '<button class="arrow-next" type="button" onclick="location.href=\'' . esc_url($next_url) . '\'"></button>';
+      }
+      ?>
     </div>
     <?php endif; ?>
     <?php else: ?>
