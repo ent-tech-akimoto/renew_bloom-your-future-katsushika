@@ -216,6 +216,7 @@ export function initMapButtons() {
   mapButtons.forEach(button => {
     button.addEventListener('click', () => {
       const id = button.dataset.id;
+      
 
       if (button.classList.contains('js-active')) {
         button.classList.remove('js-active');
@@ -224,6 +225,11 @@ export function initMapButtons() {
         button.classList.add('js-active');
         selectedAreas.push(id);
       }
+
+      locateBtn.classList.remove('js--active');
+      document.querySelector(`.event__modal-map--loading`).classList.remove('js--active');
+      const areaOrderInput = document.getElementById('areaOrderInput');
+      if (areaOrderInput) areaOrderInput.removeAttribute('value');
 
       updateFormBoxes();
     });
@@ -258,51 +264,66 @@ export function initMapButtons() {
         return;
       }
 
-      navigator.geolocation.getCurrentPosition(
-        pos => {
-          const { latitude, longitude } = pos.coords;
+      if (locateBtn.classList.contains('js--active')) {
+        locateBtn.classList.remove('js--active');
+        document.querySelector(`.event__modal-map--loading`).classList.remove('js--active');
+        const areaOrderInput = document.getElementById('areaOrderInput');
+        if (areaOrderInput) areaOrderInput.removeAttribute('value');
+      }
+      else {
+        locateBtn.classList.add('js--active');
+        document.querySelector(`.event__modal-map--loading`).classList.add('js--active');
+        navigator.geolocation.getCurrentPosition(
+          pos => {
+            const { latitude, longitude } = pos.coords;
 
-          const calcDistance = (lat1, lng1, lat2, lng2) => {
-            const R = 6371;
-            const dLat = ((lat2 - lat1) * Math.PI) / 180;
-            const dLng = ((lng2 - lng1) * Math.PI) / 180;
-            const a =
-              Math.sin(dLat / 2) ** 2 +
-              Math.cos((lat1 * Math.PI) / 180) *
-              Math.cos((lat2 * Math.PI) / 180) *
-              Math.sin(dLng / 2) ** 2;
-            const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-            return R * c;
-          };
+            const calcDistance = (lat1, lng1, lat2, lng2) => {
+              const R = 6371;
+              const dLat = ((lat2 - lat1) * Math.PI) / 180;
+              const dLng = ((lng2 - lng1) * Math.PI) / 180;
+              const a =
+                Math.sin(dLat / 2) ** 2 +
+                Math.cos((lat1 * Math.PI) / 180) *
+                Math.cos((lat2 * Math.PI) / 180) *
+                Math.sin(dLng / 2) ** 2;
+              const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+              return R * c;
+            };
 
-          const sorted = Array.from(mapButtons)
-            .map(btn => {
-              const id = btn.dataset.id;
-              const area = btn.dataset.area;
-              const loc = areaCoordinates[area];
-              if (!loc) {
-                return { id, area, distance: 999999 };
-              }
-              const distance = calcDistance(latitude, longitude, loc.lat, loc.lng);
-              return { id, area, distance };
-            })
-            .sort((a, b) => a.distance - b.distance);
+            const sorted = Array.from(mapButtons)
+              .map(btn => {
+                const id = btn.dataset.id;
+                const area = btn.dataset.area;
+                const loc = areaCoordinates[area];
+                if (!loc) {
+                  return { id, area, distance: 999999 };
+                }
+                const distance = calcDistance(latitude, longitude, loc.lat, loc.lng);
+                return { id, area, distance };
+              })
+              .sort((a, b) => a.distance - b.distance);
 
-          const sortedIds = sorted.map(item => item.id);
-          mapButtons.forEach(btn => btn.classList.add('js-active'));
-          selectedAreas = sortedIds;
-          
-          // areaOrderInputが存在する場合のみ設定
-          const areaOrderInput = document.getElementById('areaOrderInput');
-          if (areaOrderInput) areaOrderInput.value = 'nearby';
-          
-          updateFormBoxes();
-        },
-        err => {
-          alert('位置情報の取得に失敗しました。');
-          console.error(err);
-        }
-      );
+            const sortedIds = sorted.map(item => item.id);
+            mapButtons.forEach(btn => btn.classList.add('js-active'));
+            selectedAreas = sortedIds;
+            
+            // areaOrderInputが存在する場合のみ設定
+            const areaOrderInput = document.getElementById('areaOrderInput');
+            if (areaOrderInput) areaOrderInput.value = 'nearby';
+            
+            updateFormBoxes();
+
+            setTimeout(() => {
+              document.querySelector(`.event__modal-map--loading`).classList.remove('js--active');
+            }, 1000);
+          },
+          err => {
+            alert('位置情報の取得に失敗しました。端末の設定から位置情報の取得を許可してください');
+            document.querySelector(`.event__modal-map--loading`).classList.remove('js--active');
+            console.error(err);
+          }
+        );
+      }
     });
   }
 }

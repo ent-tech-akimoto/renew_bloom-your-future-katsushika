@@ -1,6 +1,14 @@
 @use '../setting/setting' as *;
 @use '../setting/mixin' as *;
 
+@keyframes loading-fade-in-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
 .event{
   &__wrapper{
     position: relative;
@@ -853,6 +861,16 @@
         -webkit-animation: blinkSlow 3s ease-in-out infinite;
         will-change: opacity;
       }
+
+      &.js--active {
+        opacity: 1;
+        pointer-events: auto;
+
+        span {
+          animation: loading-fade-in-out 0.8s ease-in-out infinite;
+          animation-direction: alternate;
+        }
+      }
     }
   }
 
@@ -901,7 +919,6 @@
 
     &.js--active {
       background-color: $c_ivory;
-      pointer-events: none;
     }
   }
 
