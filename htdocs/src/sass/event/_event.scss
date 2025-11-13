@@ -9,6 +9,11 @@
     opacity: 0.6;
   }
 }
+@keyframes blinkSlow {
+  0%   { opacity: 1; }
+  50%  { opacity: 0.5; }
+  100% { opacity: 1; }
+}
 .event{
   &__wrapper{
     position: relative;
@@ -857,8 +862,8 @@
         font-weight: $w_medium;
         @include pc-fluid-size(font-size, (24));
         display: inline-block;       /* 要素の種類により調整 */
-        animation: blinkSlow 3s ease-in-out infinite;
-        -webkit-animation: blinkSlow 3s ease-in-out infinite;
+        animation: blinkSlow 2s ease-in-out infinite;
+        -webkit-animation: blinkSlow 2s ease-in-out infinite;
         will-change: opacity;
       }
 
