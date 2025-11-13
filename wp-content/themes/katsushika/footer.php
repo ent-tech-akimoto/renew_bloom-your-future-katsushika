@@ -182,6 +182,8 @@
 <?php
   if (is_front_page()) {
     $page_id = 'top';
+  } elseif (is_archive() && !is_post_type_archive('event')) {
+    $page_id = 'news';
   } elseif (is_post_type_archive('event')) {
     $page_id = 'event';
   } elseif (is_page('event-calendar')) {

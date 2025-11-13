@@ -22,8 +22,8 @@ get_header();
         $is_new = $is_published && (($now_local - $published_local) < ($new_days * DAY_IN_SECONDS));
         $display_date = get_the_date('Y年n月j日');
         ?>
-        <div class="detail__header-top" <?php echo $is_new ? ' data-update="new"' : ''; ?>>
-          <div class="detail__header-datetime"><?php echo esc_html($display_date); ?></div>
+        <div class="detail__header-top news" <?php echo $is_new ? ' data-update="new"' : ''; ?>>
+          <div class="detail__header-datetime"><span><?php echo esc_html($display_date); ?></span></div>
         </div>
         <?php
         // 投稿に紐づくカテゴリを取得
@@ -31,7 +31,7 @@ get_header();
         if ($categories && !is_wp_error($categories)) : ?>
         <div class="detail__header-category">
           <?php foreach ($categories as $cat) : ?>
-          <p>#<?php echo esc_html($cat->name); ?></p>
+          <p class="<?php echo esc_attr($cat->slug); ?>">#<?php echo esc_html($cat->name); ?></p>
           <?php endforeach; ?>
         </div>
         <?php endif; ?>

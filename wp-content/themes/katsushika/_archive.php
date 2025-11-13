@@ -33,19 +33,15 @@ $news_query = new WP_Query($args);
   </p>
   <h1 class="news__h1">お知らせ</h1>
   <section class="news__form">
-    <div id="search"></div>
     <?php
-    $current_cat_param = isset($_GET['cat']) ? sanitize_text_field($_GET['cat']) : '';
+// GETから現在のカテゴリ slug を取得
+$current_cat_slug = isset($_GET['cat']) ? sanitize_text_field($_GET['cat']) : '';
+
 // 表示用のカテゴリ名
 $current_cat_name = '';
-if ($current_cat_param !== '') {
-  // 数字だけなら「ID」とみなす／それ以外は「slug」とみなす
-  if (ctype_digit($current_cat_param)) {
-    $current_term = get_term((int) $current_cat_param, 'category');
-  } else {
-    $current_term = get_term_by('slug', $current_cat_param, 'category');
-  }
-
+if ($current_cat_slug !== '') {
+  // slug から term を取得
+  $current_term = get_term_by('slug', $current_cat_slug, 'category');
   if ($current_term && !is_wp_error($current_term)) {
     $current_cat_name = $current_term->name;
   }
@@ -59,10 +55,11 @@ $news_cats = get_terms([
   'order'      => 'ASC',
 ]);
 ?>
+    <div id="search"></div>
     <form class="news__form-wrapper" method="get" action="">
       <div class="news__form-flex cate">
-        <!-- GET ?cat=slug or ?cat=20 どちらでもOK -->
-        <input type="hidden" name="cat" id="cateInput" value="<?php echo esc_attr($current_cat_param); ?>">
+        <!-- GET ?cat=slug -->
+        <input type="hidden" name="cat" id="cateInput" value="<?php echo esc_attr($current_cat_slug); ?>">
 
         <div class="news__form-label cate"></div>
 
@@ -87,15 +84,7 @@ $news_cats = get_terms([
           <ul class="news__modal-cate">
             <?php if (!is_wp_error($news_cats) && !empty($news_cats)) : ?>
             <?php foreach ($news_cats as $term) : ?>
-            <?php
-              $is_active = false;
-              // 選択中判定も ID/slug 両対応にしておくとより安全
-              if (ctype_digit($current_cat_param)) {
-                $is_active = ((int) $current_cat_param === (int) $term->term_id);
-              } else {
-                $is_active = ($current_cat_param === $term->slug);
-              }
-            ?>
+            <?php $is_active = ($current_cat_slug === $term->slug); ?>
             <li class="cat-btn<?php echo $is_active ? ' js-active' : ''; ?>"
               data-cat="<?php echo esc_attr($term->slug); ?>" data-id="<?php echo esc_attr($term->term_id); ?>">
               <?php echo esc_html($term->name); ?>
