@@ -158,12 +158,12 @@ export function initCalendarMapButtons() {
     if (!mainFormBox || !modalFormBox || !areaInput) return;
 
     const areaCoordinates = {
-      main:   { lat: 35.7101, lng: 139.8107 },
-      tora:   { lat: 35.7572, lng: 139.8701 },
-      kochi:  { lat: 35.7175, lng: 139.8260 },
-      iris:   { lat: 35.7443, lng: 139.8308 },
-      wing:   { lat: 35.7055, lng: 139.8358 },
-      monchi: { lat: 35.7258, lng: 139.8322 },
+      main: { lat: 35.770909792881874, lng: 139.8624680874483 },
+      tora: { lat: 35.75753015921082, lng: 139.88038875772045 },
+      kochi: { lat: 35.75972343115677, lng: 139.8452226324852 },
+      iris: { lat: 35.742737257711084, lng: 139.82608050469457 },
+      wing: { lat: 35.73565864018385, lng: 139.84274709611046 },
+      monchi: { lat: 35.71712051458683, lng: 139.85809638146586 },
     };
 
     let selectedAreas = [];
@@ -213,6 +213,11 @@ export function initCalendarMapButtons() {
           button.classList.add('js-active');
           selectedAreas.push(id);
         }
+
+        locateBtn.classList.remove('js--active');
+        document.querySelector(`.event__modal-map--loading`).classList.remove('js--active');
+        const areaOrderInput = document.getElementById('areaOrderInput');
+        if (areaOrderInput) areaOrderInput.removeAttribute('value');
         updateFormBoxes();
       });
     });
@@ -246,46 +251,60 @@ export function initCalendarMapButtons() {
           return;
         }
 
-        navigator.geolocation.getCurrentPosition(
-          pos => {
-            const { latitude, longitude } = pos.coords;
+        if (locateBtn.classList.contains('js--active')) {
+          locateBtn.classList.remove('js--active');
+          document.querySelector(`.event__modal-map--loading`).classList.remove('js--active');
+          const areaOrderInput = document.getElementById('areaOrderInput');
+          if (areaOrderInput) areaOrderInput.removeAttribute('value');
+        }
+        else {
+          locateBtn.classList.add('js--active');
+          document.querySelector(`.event__modal-map--loading`).classList.add('js--active');
+          navigator.geolocation.getCurrentPosition(
+            pos => {
+              const { latitude, longitude } = pos.coords;
 
-            const calcDistance = (lat1, lng1, lat2, lng2) => {
-              const R = 6371;
-              const dLat = ((lat2 - lat1) * Math.PI) / 180;
-              const dLng = ((lng2 - lng1) * Math.PI) / 180;
-              const a =
-                Math.sin(dLat / 2) ** 2 +
-                Math.cos((lat1 * Math.PI) / 180) *
-                Math.cos((lat2 * Math.PI) / 180) *
-                Math.sin(dLng / 2) ** 2;
-              const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-              return R * c;
-            };
+              const calcDistance = (lat1, lng1, lat2, lng2) => {
+                const R = 6371;
+                const dLat = ((lat2 - lat1) * Math.PI) / 180;
+                const dLng = ((lng2 - lng1) * Math.PI) / 180;
+                const a =
+                  Math.sin(dLat / 2) ** 2 +
+                  Math.cos((lat1 * Math.PI) / 180) *
+                  Math.cos((lat2 * Math.PI) / 180) *
+                  Math.sin(dLng / 2) ** 2;
+                const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+                return R * c;
+              };
 
-            const sorted = Array.from(mapButtons)
-              .map(btn => {
-                const id = btn.dataset.id;
-                const area = btn.dataset.area;
-                const loc = areaCoordinates[area];
-                if (!loc) return { id, distance: 999999 };
-                const distance = calcDistance(latitude, longitude, loc.lat, loc.lng);
-                return { id, distance };
-              })
-              .sort((a, b) => a.distance - b.distance)
-              .map(item => item.id);
+              const sorted = Array.from(mapButtons)
+                .map(btn => {
+                  const id = btn.dataset.id;
+                  const area = btn.dataset.area;
+                  const loc = areaCoordinates[area];
+                  if (!loc) return { id, distance: 999999 };
+                  const distance = calcDistance(latitude, longitude, loc.lat, loc.lng);
+                  return { id, distance };
+                })
+                .sort((a, b) => a.distance - b.distance)
+                .map(item => item.id);
 
-            mapButtons.forEach(btn => btn.classList.add('js-active'));
-            selectedAreas = sorted;
+              mapButtons.forEach(btn => btn.classList.add('js-active'));
+              selectedAreas = sorted;
 
-            if (areaOrderInput) areaOrderInput.value = 'nearby';
-            updateFormBoxes();
-          },
-          err => {
-            alert('位置情報の取得に失敗しました。');
-            console.error(err);
-          }
-        );
+              if (areaOrderInput) areaOrderInput.value = 'nearby';
+              updateFormBoxes();
+
+              setTimeout(() => {
+                document.querySelector(`.event__modal-map--loading`).classList.remove('js--active');
+              }, 1000);
+            },
+            err => {
+              alert('位置情報の取得に失敗しました。');
+              console.error(err);
+            }
+          );
+        }
       });
     }
   }
