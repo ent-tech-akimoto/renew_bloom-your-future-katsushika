@@ -36,13 +36,10 @@ if ($cat_param !== '') {
     return $v > 0;
   }));
 }
-
 // フリーワード
 $keyword  = isset($_GET['keyword']) ? sanitize_text_field($_GET['keyword']) : '';
-
 // ページング
 $paged = max(1, get_query_var('paged'), get_query_var('page'));
-
 // tax_query（エリア・カテゴリが送られてきたときだけ）
 $tax_query = ['relation' => 'AND'];
 
@@ -148,7 +145,9 @@ $found = $event_query->found_posts;
   </section>
   <section id="anchor-form" class="event__form">
     <h2 class="event__h2">詳細から探す</h2>
-    <form class="event__form-wrapper" method="get" action="<?php echo esc_url(get_post_type_archive_link('event')); ?>">
+    <div id="search"></div>
+    <form class="event__form-wrapper" method="get"
+      action="<?php echo esc_url(get_post_type_archive_link('event')); ?>#search">
       <div class="event__form-flex area">
         <input type="hidden" name="area" id="areaInput" value="<?php echo esc_attr($area_param); ?>">
         <input type="hidden" name="area_order" id="areaOrderInput" value="">

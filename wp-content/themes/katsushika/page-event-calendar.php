@@ -122,7 +122,7 @@ $areas = get_terms([
     <span><a href="<?php echo esc_url(home_url('/')); ?>">TOP</a></span><span>イベントカレンダー</span>
   </p>
   <h1 class="common__h1 event__h1">イベントカレンダー</h1>
-  <form class="event__calendar-search" action="<?php echo esc_url($base_url); ?>" method="get">
+  <form class="event__calendar-search" action="<?php echo esc_url($base_url); ?>#search" method="get">
     <div class="event__calendar-flex top">
       <input type="hidden" name="y" value="<?php echo esc_attr($year); ?>">
       <input type="hidden" name="mo" value="<?php echo esc_attr($month); ?>">
@@ -136,6 +136,7 @@ $areas = get_terms([
           <?php echo esc_html(date('n',$next_ts)); ?>月/<?php echo esc_html(date('Y',$next_ts)); ?>＞</a>
       </p>
     </div>
+    <div id="search"></div>
     <div class="event__calendar-flex area bot pc-none">
       <input type="hidden" name="area" id="areaInput" value="<?php echo esc_attr($area_param); ?>">
       <input type="hidden" name="area_order" id="areaOrderInput"
