@@ -173,7 +173,7 @@
           </a>
         </div>
       </div>
-      <p class="footer__copyright"> Copyright &copy; 2020. All rights reserved. </p>
+      <p class="footer__copyright">Copyright &copy; Katsushika City, All Rights Reserved.</p>
     </div>
   </div>
 </footer>
