@@ -608,7 +608,7 @@
     opacity: 0;
     transition: all 0.4s ease;
     pointer-events: none;
-    z-index: 999;
+    z-index: 1001;
     @include pc-fluid-size(width, (781));
     @include pc-fluid-size(padding, (30 34 42 34));
     @include pc-fluid-size(border-radius, (15));
