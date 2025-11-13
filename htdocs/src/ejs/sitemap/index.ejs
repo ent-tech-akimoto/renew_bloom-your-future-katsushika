@@ -1,0 +1,62 @@
+<%
+var pageID = "sitemap";
+var lang = "ja";
+var relative_path = "../";
+var myMeta = meta[lang][pageID];
+%>
+<!DOCTYPE html>
+<html lang="<%= lang %>">
+  <%-include(`${relative_path}_partial/_head`,{lang:lang,pageID:pageID,relative_path:relative_path})%>
+
+  <body>
+    <div class="page">
+      <%-include(`${relative_path}_partial/_header`,{lang:lang,pageID:pageID,relative_path:relative_path})%>
+      <article class="sitemap__wrapper">
+        <div class="sitemap__bg"></div>
+        <p class="common__bread">
+          <span
+            ><a href="https://test-bloom-your-future-katsushika.entacl.net/"
+              >TOP</a
+            ></span
+          ><span>サイトマップ</span>
+        </p>
+        <h1 class="common__h1 sitemap__h1">サイトマップ</h1>
+        <section class="sitemap__section">
+          <div class="sitemap__column">
+            <div class="sitemap__box">
+              <a href="" class="main">開催概要</a>
+              <a href=""> 「全国みどりと花のフェアかつしか」について </a>
+              <a href=""> 基本計画 </a>
+              <a href=""> 実施計画 </a>
+              <a href=""> アンバサダー </a>
+              <a href=""> ロゴマーク </a>
+            </div>
+            <div class="sitemap__box">
+              <a href="" class="main">開催エリア</a>
+            </div>
+            <div class="sitemap__box">
+              <a href="" class="main">イベント情報</a>
+              <a href=""> イベントカレンダー </a>
+            </div>
+            <div class="sitemap__box">
+              <a href="" class="main">募集情報</a>
+              <a href=""> 個人向け</a>
+              <a href=""> 企業・団体向け</a>
+            </div>
+            <div class="sitemap__box">
+              <a href="" class="main">協賛募集</a>
+            </div>
+          </div>
+          <div class="sitemap__box sitemap__column">
+            <a href="" class="main">アクセス情報</a>
+            <a href="" class="main">お知らせ</a>
+            <a href="" class="main">関連サイト</a>
+            <a href="" class="main">お問い合わせ</a>
+          </div>
+        </section>
+      </article>
+      <%-include(`${relative_path}_partial/_footer`,{lang:lang,pageID:pageID,relative_path:relative_path})%>
+    </div>
+    <%- include( `${relative_path}_partial/_foot`,{lang:lang,pageID:pageID,relative_path:relative_path}) %>
+  </body>
+</html>
