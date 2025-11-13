@@ -115,19 +115,19 @@ export function initSwipers() {
   const topicminSlides = 10;
   const originalCount = topicoriginalSlidesCount;
   // Only duplicate if total slides < minSlides
-if (originalCount < topicminSlides) {
-  const topicslidesArray = Array.from(topicslides); // convert NodeList to array
-  // Calculate how many times we need to duplicate
-  const timesToDuplicate = Math.ceil((topicminSlides - originalCount) / originalCount);
+  if (originalCount < topicminSlides) {
+    const topicslidesArray = Array.from(topicslides); // convert NodeList to array
+    // Calculate how many times we need to duplicate
+    const timesToDuplicate = Math.ceil((topicminSlides - originalCount) / originalCount);
 
-  for (let i = 0; i < timesToDuplicate; i++) {
-    topicslidesArray.forEach(slide => {
-      const clone = slide.cloneNode(true);
-      clone.classList.add('swiper-slide-duplicate');
-      topicwrapper.appendChild(clone);
-    });
+    for (let i = 0; i < timesToDuplicate; i++) {
+      topicslidesArray.forEach(slide => {
+        const clone = slide.cloneNode(true);
+        clone.classList.add('swiper-slide-duplicate');
+        topicwrapper.appendChild(clone);
+      });
+    }
   }
-}
 
   // Topic Swiper
   if (topicoriginalSlidesCount > 1) {
@@ -234,57 +234,6 @@ if (originalCount < topicminSlides) {
     },
     thumbs: {
       swiper: galleryswiper2Thumb
-    },
-  });
-
-  // Area Gallery Swiper 
-  // Resident swiper
-  const areagalleryswiper1Thumb = new Swiper(".area__gallery-resident-thumb", {
-    modules: [Navigation, Pagination, Thumbs],
-    // spaceBetween: 5,
-    // slidesPerView: 4,
-    slidesPerView: 'auto',
-    freeMode: true,
-    watchSlidesProgress: true,
-  });
-
-  // 
-  const areagalleryswiper1 = new Swiper(".area__gallery-resident", {
-    modules: [Navigation, Pagination, Thumbs, Autoplay],
-    spaceBetween: 10,
-    slidesPerView: 1,
-    speed: 800,
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false,
-    },
-    thumbs: {
-      swiper: areagalleryswiper1Thumb
-    },
-  });
-
-  // Famous Swiper  
-  const areagalleryswiper2Thumb = new Swiper(".area__gallery-famous-thumb", {
-    modules: [Navigation, Pagination, Thumbs],
-    // spaceBetween: 5,
-    // slidesPerView: 4,
-    slidesPerView: 'auto',
-    freeMode: true,
-    watchSlidesProgress: true,
-  });
-
-  // 
-  const areagalleryswiper2 = new Swiper(".area__gallery-famous", {
-    modules: [Navigation, Pagination, Thumbs, Autoplay],
-    spaceBetween: 10,
-    slidesPerView: 1,
-    speed: 800,
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false,
-    },
-    thumbs: {
-      swiper: areagalleryswiper2Thumb
     },
   });
 };

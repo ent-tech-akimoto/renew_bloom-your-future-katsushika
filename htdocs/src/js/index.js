@@ -49,7 +49,7 @@ if (window.pageID === 'calendar') {
 if (window.pageID === 'area') {
   const {
     initSwipers
-  } = require('./top/swiper.js');
+  } = require('./area/area_swiper.js');
   initSwipers();
   require('./top/map_button.js');
 }
