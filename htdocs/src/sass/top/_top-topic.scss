@@ -91,9 +91,10 @@
       @include pc-fluid-size(border-width, (4));
       @include pc-fluid-size(border-radius, (60));
       @include min-screen{
-      &:hover{
-          border-color: $c_white;
-        }
+        border-color: $c_white;
+      }
+      @include after{
+        @include pc-fluid-size(right, (4));
       }
     }
   }

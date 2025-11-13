@@ -129,12 +129,10 @@
     @include pc-fluid-size(margin-top, (38));
     @include pc-fluid-size(width, (260));
     @include min-screen{
-      &:hover{
-        border-color: $c_white;
-        @include after{
-          background-color: $c_ivory;
-        }
-      }
+      border-color: $c_white;
+    }
+    @include after{
+      @include pc-fluid-size(right, (4));
     }
   }
 }

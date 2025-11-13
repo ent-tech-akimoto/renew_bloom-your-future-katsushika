@@ -411,6 +411,7 @@
     font-size: get_vw(14);
     font-weight: 500;
     line-height: calc(24/14);
+    border-width: get_vw(2);
     border-radius: get_vw(100);
     @include pc-fluid-size(width, (600));
     @include pc-fluid-size(margin-top, (20));
@@ -738,6 +739,7 @@
       font-size: get_vw(14);
       font-weight: 500;
       line-height: calc(24/14);
+      border-width: get_vw(2);
       border-radius: get_vw(100);
     }
     @include pc-fluid-size(width, (600));
