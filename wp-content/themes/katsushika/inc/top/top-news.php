@@ -14,13 +14,18 @@ $news_query = new WP_Query(array(
     <?php if ($news_query->have_posts()) : ?>
     <?php while ($news_query->have_posts()) : $news_query->the_post(); ?>
     <?php
+      $new_days = 7;
+      $now_local = current_time('timestamp');
+      $published_local = get_post_time('U');
+      $is_published = (get_post_status() === 'publish');
+      $is_new = $is_published && (($now_local - $published_local) < ($new_days * DAY_IN_SECONDS));
       $categories = get_the_category();
       $year  = get_the_date('Y年');
       $month_day = get_the_date('n月j日');
       $excerpt = get_the_excerpt() ?: get_the_title();
       $permalink = get_permalink();
       ?>
-    <div class="top-news__box">
+    <div class="top-news__box <?php echo $is_new ? ' new' : ''; ?>">
       <a href="<?php echo esc_url($permalink); ?>" class="top-news__link">
         <div class="top-news__cate">
           <?php if ($categories) : ?>
