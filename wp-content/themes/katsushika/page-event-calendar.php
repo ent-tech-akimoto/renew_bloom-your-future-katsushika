@@ -122,6 +122,7 @@ $areas = get_terms([
     <span><a href="<?php echo esc_url(home_url('/')); ?>">TOP</a></span><span>イベントカレンダー</span>
   </p>
   <h1 class="common__h1 event__h1">イベントカレンダー</h1>
+  <div id="search"></div>
   <form class="event__calendar-search" action="<?php echo esc_url($base_url); ?>#search" method="get">
     <div class="event__calendar-flex top">
       <input type="hidden" name="y" value="<?php echo esc_attr($year); ?>">
@@ -190,6 +191,9 @@ $areas = get_terms([
             <?php endforeach; ?>
             <?php endif; ?>
           </ul>
+          <div class="event__modal-map--loading">
+            <span>現在位置を取得しています</span>
+          </div>
         </div>
         <button class="event__modal-map-btn" type="button">現在地付近</button>
         <button class="common__btn-i event__modal-btn" type="submit">検索する</button>
@@ -201,6 +205,7 @@ $areas = get_terms([
       </div>
     </div>
   </form>
+  <a class="event__form-btn" href="/event-calendar#search">条件を初期化</a>
   <section class="event__box">
     <h3 class="event__h3">検索結果<span><?php echo esc_html($found_posts); ?></span>件</h3>
     <ul class="event__box-list">

@@ -218,6 +218,9 @@ $found = $event_query->found_posts;
               <?php endforeach; ?>
               <?php endif; ?>
             </ul>
+            <div class="event__modal-map--loading">
+              <span>現在位置を取得しています</span>
+            </div>
           </div>
           <button class="common__btn-w event__modal-map-btn" type="button"> 現在地付近 </button>
           <button class="common__btn-i event__modal-btn" type="submit"> 検索する </button>
@@ -416,7 +419,7 @@ $found = $event_query->found_posts;
         </div>
       </div>
     </form>
-    <a class="event__form-btn" href="/event/">条件を初期化</a>
+    <a class="event__form-btn" href="/event#search">条件を初期化</a>
   </section>
   <section class="event__box">
     <h3 class="event__h3">検索結果<span><?php echo esc_html($found); ?></span>件</h3>

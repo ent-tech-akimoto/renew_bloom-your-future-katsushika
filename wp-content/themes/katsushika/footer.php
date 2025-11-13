@@ -173,7 +173,7 @@
           </a>
         </div>
       </div>
-      <p class="footer__copyright"> Copyright &copy; 2020. All rights reserved. </p>
+      <p class="footer__copyright">Copyright &copy; Katsushika City, All Rights Reserved.</p>
     </div>
   </div>
 </footer>
@@ -182,6 +182,8 @@
 <?php
   if (is_front_page()) {
     $page_id = 'top';
+  } elseif (is_archive() && !is_post_type_archive('event')) {
+    $page_id = 'news';
   } elseif (is_post_type_archive('event')) {
     $page_id = 'event';
   } elseif (is_page('event-calendar')) {
