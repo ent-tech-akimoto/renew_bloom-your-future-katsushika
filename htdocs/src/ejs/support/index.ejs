@@ -12,6 +12,15 @@ var myMeta = meta[lang][pageID];
     <div class="page">
       <%-include(`${relative_path}_partial/_header`,{lang:lang,pageID:pageID,relative_path:relative_path})%>
       <article class="support__wrapper">
+        <div id="modal-map" class="support__modal">
+          <div class="support__modal-bg"></div>
+          <div class="support__modal-wrapper">
+            <div class="support__modal-container">
+              <span class="support__modal-close"></span>
+              <img src="<%= relative_path %>assets/img/support/map.png" alt="">
+            </div>
+          </div>
+        </div>
         <div class="support__bg"></div>
         <p class="common__bread l-page">
           <span
@@ -75,7 +84,7 @@ var myMeta = meta[lang][pageID];
                 【連携会場】<br>
                 堀切菖蒲園、都立水元公園
               </p>
-              <div class="support__overview-img">
+              <div id="openMap" class="support__overview-img">
                 <img
                   src="<%= relative_path %>assets/img/support/map.png"
                   alt=""

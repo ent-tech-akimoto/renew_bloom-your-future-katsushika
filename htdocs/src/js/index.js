@@ -70,3 +70,7 @@ if (window.pageID === 'news') {
   initCategoryButtons();
   const commonForm = require('./common/form.js');
 }
+
+if (window.pageID === 'support') {
+  const modalMap = require('./support/modal_map.js');
+}
