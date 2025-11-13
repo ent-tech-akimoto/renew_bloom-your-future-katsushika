@@ -183,8 +183,8 @@
       @include pc-fluid-size(font-size, (10));
       @include pc-fluid-size(padding, (0 12));
 
-      &.news{
-        background-color: $news_news;
+      &.announce{
+        background-color: rgba(136, 103, 170, 0.2);
       }
       &.events{
         background-color: $news_event;
