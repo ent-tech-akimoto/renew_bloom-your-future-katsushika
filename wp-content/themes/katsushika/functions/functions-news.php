@@ -2,7 +2,7 @@
 // 一覧：/news/
 add_action('init', function () {
   add_rewrite_tag('%is_news_archive%', '1');
-  add_rewrite_rule('^news/?$', 'index.php?is_news_archive=1&paged=1', 'top');
+  add_rewrite_rule('^news/?$', 'index.php?is_news_archive=1', 'top');
   add_rewrite_rule('^news/page/([0-9]+)/?$', 'index.php?is_news_archive=1&paged=$matches[1]', 'top');
 });
 
@@ -17,8 +17,8 @@ add_action('pre_get_posts', function ($q) {
 });
 
 add_filter('request', function ($vars) {
-  if (isset($vars['is_news_archive']) && isset($vars['page']) && !isset($vars['paged'])) {
-    $vars['paged'] = (int) $vars['page'];
+  if (isset($vars['is_news_archive']) && isset($vars['page'])) {
+    $vars['paged'] = max(1, (int) $vars['page']);
   }
   return $vars;
 });
@@ -58,3 +58,14 @@ add_action('template_redirect', function () {
   wp_redirect($target, 301);
   exit;
 });
+
+// /news/ アーカイブで ?page=2 を使うときに canonical を止める
+function my_news_stop_canonical_on_news_archive() {
+  if ( (int) get_query_var('is_news_archive') !== 1 ) {
+    return;
+  }
+  if ( isset($_GET['page']) && (int) $_GET['page'] > 1 ) {
+    remove_action('template_redirect', 'redirect_canonical');
+  }
+}
+add_action('template_redirect', 'my_news_stop_canonical_on_news_archive', 9);
