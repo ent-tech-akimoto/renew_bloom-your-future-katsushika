@@ -188,6 +188,7 @@ export function initCalendarMapButtons() {
       areaInput.value = selectedAreas.join(',');
     };
 
+    // Delegate click for removing selected area
     [mainFormBox, modalFormBox].forEach(box => {
       box.addEventListener('click', e => {
         if (!e.target.classList.contains('btn-close')) return;
@@ -201,6 +202,7 @@ export function initCalendarMapButtons() {
       });
     });
 
+    // Map button toggle
     mapButtons.forEach(button => {
       button.addEventListener('click', () => {
         const id = button.dataset.id;
@@ -215,12 +217,28 @@ export function initCalendarMapButtons() {
       });
     });
 
-    selectedAreas = Array.from(mapButtons)
-      .filter(btn => btn.classList.contains('js-active'))
-      .map(btn => btn.dataset.id);
+    // --- Initialize from URL parameter or default ---
+    const urlParams = new URLSearchParams(window.location.search);
+    const areaParam = urlParams.get('area');
 
+    if (areaParam) {
+      // Use the URL parameter
+      selectedAreas = areaParam.split(',').filter(Boolean);
+    } else {
+      // Default: all button IDs in DOM order
+      selectedAreas = Array.from(mapButtons).map(btn => btn.dataset.id);
+    }
+
+    // Add js-active to buttons based on selectedAreas
+    selectedAreas.forEach(id => {
+      const btn = document.querySelector(`.map-btn[data-id="${id}"]`);
+      if (btn) btn.classList.add('js-active');
+    });
+
+    // Reflect initial state in the form boxes and hidden input
     updateFormBoxes();
 
+    // --- Locate button logic ---
     if (locateBtn) {
       locateBtn.addEventListener('click', () => {
         if (!navigator.geolocation) {
@@ -262,11 +280,6 @@ export function initCalendarMapButtons() {
 
             if (areaOrderInput) areaOrderInput.value = 'nearby';
             updateFormBoxes();
-
-            // ✅ Trigger the submit button after geolocation
-            const submitBtn = modal.querySelector('.event__modal-btn');
-            if (submitBtn) submitBtn.click();
-
           },
           err => {
             alert('位置情報の取得に失敗しました。');
@@ -277,4 +290,3 @@ export function initCalendarMapButtons() {
     }
   }
 }
-

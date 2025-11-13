@@ -148,7 +148,6 @@ export function initMapButtons() {
   const locateBtn = document.querySelector('.common__btn-w.event__modal-map-btn');
   const modal = document.querySelector('.event__form-modal.area');
 
-  // Coordinates mapped by data-area
   const areaCoordinates = {
     main:   { lat: 35.7101, lng: 139.8107 },
     tora:   { lat: 35.7572, lng: 139.8701 },
@@ -175,27 +174,27 @@ export function initMapButtons() {
       modalFormBox.insertAdjacentHTML('beforeend', spanHTML);
     });
 
+    // Update hidden input to reflect current selection
     areaInput.value = selectedAreas.join(',');
   };
 
   // Delegate click for removing selected area
-[mainFormBox, modalFormBox].forEach(box => {
-  box.addEventListener('click', (e) => {
-    // Only trigger if clicking the close button, not the entire span
-    if (!e.target.classList.contains('btn-close')) return;
+  [mainFormBox, modalFormBox].forEach(box => {
+    box.addEventListener('click', (e) => {
+      if (!e.target.classList.contains('btn-close')) return;
 
-    const parentSpan = e.target.closest('.event__form-select--area');
-    if (!parentSpan) return;
+      const parentSpan = e.target.closest('.event__form-select--area');
+      if (!parentSpan) return;
 
-    const id = parentSpan.dataset.id;
-    selectedAreas = selectedAreas.filter(x => x !== id);
+      const id = parentSpan.dataset.id;
+      selectedAreas = selectedAreas.filter(x => x !== id);
 
-    const btn = document.querySelector(`.map-btn[data-id="${id}"]`);
-    if (btn) btn.classList.remove('js-active');
+      const btn = document.querySelector(`.map-btn[data-id="${id}"]`);
+      if (btn) btn.classList.remove('js-active');
 
-    updateFormBoxes();
+      updateFormBoxes();
+    });
   });
-});
 
   // Map button toggle
   mapButtons.forEach(button => {
@@ -214,13 +213,28 @@ export function initMapButtons() {
     });
   });
 
-  // Initialize selectedAreas in click/DOM order
-  selectedAreas = Array.from(mapButtons)
-    .filter(btn => btn.classList.contains('js-active'))
-    .map(btn => btn.dataset.id);
+  // --- Initialize from URL parameter or default ---
+  const urlParams = new URLSearchParams(window.location.search);
+  const areaParam = urlParams.get('area');
 
+  if (areaParam) {
+    // Use the URL parameter
+    selectedAreas = areaParam.split(',').filter(Boolean);
+  } else {
+    // Default: all button IDs in DOM order
+    selectedAreas = Array.from(mapButtons).map(btn => btn.dataset.id);
+  }
+
+  // Add js-active to buttons based on selectedAreas
+  selectedAreas.forEach(id => {
+    const btn = document.querySelector(`.map-btn[data-id="${id}"]`);
+    if (btn) btn.classList.add('js-active');
+  });
+
+  // Reflect initial state in the form boxes and hidden input
   updateFormBoxes();
 
+  // --- Locate button logic remains the same ---
   if (locateBtn) {
     locateBtn.addEventListener('click', () => {
       if (!navigator.geolocation) {
@@ -261,15 +275,8 @@ export function initMapButtons() {
           mapButtons.forEach(btn => btn.classList.add('js-active'));
           selectedAreas = sorted;
 
-          // Mark "nearby" mode
           if (areaOrderInput) areaOrderInput.value = 'nearby';
-
           updateFormBoxes();
-
-          // ✅ Trigger submit button
-          const submitBtn = modal.querySelector('.event__modal-btn');
-          if (submitBtn) submitBtn.click();
-
         },
         err => {
           alert('位置情報の取得に失敗しました。');
@@ -278,5 +285,4 @@ export function initMapButtons() {
       );
     });
   }
-  
 }
