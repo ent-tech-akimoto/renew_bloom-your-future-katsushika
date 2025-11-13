@@ -1,0 +1,679 @@
+@use '../setting/setting' as *;
+@use '../setting/mixin' as *;
+
+.news {
+  &__wrapper{
+    position: relative;
+    margin-top: get_vw(-46);
+    padding-top: get_vw(126);
+    padding-bottom: get_vw(104);
+    @include pc-fluid-size(margin-top, (-0));
+    @include pc-fluid-size(padding-top, (190));
+    @include pc-fluid-size(padding-bottom, (100));
+  }
+  &__bg{
+    background-image: url('../img/common/beige_bg.png');
+    background-size: 100% 100%;
+    width: 100%;
+    height: get_vw(232);
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 0;
+    pointer-events: none;
+    @include pc-fluid-size(height, (378));
+    @include min-screen{
+      background-image: url('../img/common/beige_bg_pc.png');
+    }
+  }
+  &__h1{
+    margin-top: get_vw(32);
+    position: relative;
+    font-size: get_vw(24);
+    color: $c_black;
+    text-align: center;
+    @include pc-fluid-size(margin-top, (40));
+    @include pc-fluid-size(font-size, (56));
+  }
+  &__form{
+    margin-top: get_vw(80);
+    padding: get_vw(0) get_vw(20);
+    @include pc-fluid-size(margin-top, (100));
+    @include pc-fluid-size(padding, (0));
+    @include min-screen{
+      margin-inline: auto;
+    }
+  }
+  &__form-wrapper{
+    margin-top: get_vw(70);
+    padding: get_vw(10) get_vw(10);
+    width: get_vw(350);
+    margin: 0 auto;
+    background-color: $c_lightgray;
+    border-radius: get_vw(20);
+    @include pc-fluid-size(margin-top, (95));
+    @include pc-fluid-size(padding, (15 20));
+    @include pc-fluid-size(width, (640));
+    @include pc-fluid-size(border-radius, (20));
+    @include pc-fluid-size(column-gap, (35));
+    @include pc-fluid-size(row-gap, (10));
+    @include min-screen{
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+  }
+
+  &__form-flex{
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+      @include pc-fluid-size(column-gap, (12));
+    &:not(:first-child){
+      margin-top: get_vw(10);
+      @include pc-fluid-size(margin-top, (0));
+    }
+    &:last-child{
+      flex: 3;
+    }
+  }
+  &__form-label{
+    width: get_vw(20);
+    height: get_vw(20);
+    position: relative;
+    @include pc-fluid-size(width, (20));
+    @include pc-fluid-size(height, (20));
+    &.cate{
+      @include before{
+        background-image: url('../img/event/form_cat.png');
+        background-size: 100% 100%;
+        width: get_vw(23);
+        height: get_vw(23);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+        @include pc-fluid-size(width, (23));
+        @include pc-fluid-size(height, (23));
+      }
+    }
+  }
+
+  &__form-box{
+    width: get_vw(298);
+    padding: get_vw(20) get_vw(12);
+    background-color: $c_white;
+    border: solid $c_gray get_vw(2);
+    border-radius: get_vw(15);
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: get_vw(10);
+    column-gap: get_vw(8);
+    @include pc-fluid-size(width, (568));
+    @include pc-fluid-size(height, (70));
+    @include pc-fluid-size(padding, (10 15));
+    @include pc-fluid-size(border-width, (2));
+    @include pc-fluid-size(border-radius, (15));
+    @include pc-fluid-size(row-gap, (8));
+    @include pc-fluid-size(column-gap, (5));
+    @include min-screen{
+      cursor: pointer;
+    }
+    &> span{
+      position: relative;
+      width: get_vw(130);
+      height: get_vw(30);
+      padding: 0 get_vw(9);
+      font-size: get_vw(12);
+      font-weight: 300;
+      color: $c_black;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: $c_lightgray;
+      border-radius: get_vw(30);
+      @include pc-fluid-size(width, (102));
+      @include pc-fluid-size(height, (22));
+      @include pc-fluid-size(padding, (0 9 1));
+      @include pc-fluid-size(font-size, (10));
+      @include pc-fluid-size(border-radius, (30));
+
+    }
+    &.area{
+      @include pc-fluid-size(padding, (8 15));
+      &>span{
+        color: $c_white;
+        justify-content: flex-start;
+        &[data-area="main"]{
+          background-color: $c_green;
+        }
+        &[data-area="tora"]{
+          background-color: $c_red;
+        }
+        &[data-area="kochi"]{
+          background-color: $c_blue;
+        }
+        &[data-area="wing"]{
+          background-color: $c_orange;
+        }
+        &[data-area="monchi"]{
+          background-color: $c_pink;
+        }
+        &[data-area="iris"]{
+          background-color: $c_purple;
+        }
+        @include min-screen{
+          cursor: pointer;
+        }
+        & .btn-close{
+          width: get_vw(45);
+          height: 100%;
+          position: absolute;
+          top: 50%;
+          right: 0;
+          transform: translateY(-50%);
+          @include pc-fluid-size(width, (45));
+          @include after{
+            background-image: url('../img/event/form_close.png');
+            background-size: 100%;
+            width: get_vw(8);
+            height: get_vw(8);
+            position: absolute;
+            top: 50%;
+            right: get_vw(12);
+            transform: translateY(-50%);
+            @include pc-fluid-size(width, (6));
+            @include pc-fluid-size(height, (6));
+            @include pc-fluid-size(right, (5));
+          }
+        }
+      }
+    }
+    &.date{
+      flex-direction: column;
+      @include min-screen{      
+        @include center;
+      }
+      & strong{
+        display: block;
+        font-size: get_vw(14);
+        font-weight: 500;
+        @include pc-fluid-size(font-size, (14));
+      }
+      & p{
+        margin-top: get_vw(4);
+        font-size: get_vw(14);
+        font-weight: 300;
+        @include pc-fluid-size(margin-top, (8));
+        @include pc-fluid-size(font-size, (14));
+      }
+    }
+    &.word{
+      font-size: get_vw(14);
+      font-weight: 500;
+      resize: none;
+      @include pc-fluid-size(padding, (25 18));
+      @include pc-fluid-size(font-size, (14));
+      @include min-screen{      
+        width: 100%;
+      }
+      &::placeholder{
+        color: $c_gray;
+      }
+    }
+  }
+
+  &__form-modal{
+    width: 100%;
+    height: 100%;
+    overflow-y: scroll;
+    padding: get_vw(50) get_vw(10);
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: $c_white;
+    opacity: 0;
+    transition: all 0.4s ease;
+    pointer-events: none;
+    z-index: 999;
+    @include pc-fluid-size(width, (781));
+    @include pc-fluid-size(padding, (30 34 42 34));
+    @include pc-fluid-size(border-radius, (15));
+    @include pc-fluid-size(top, (80));
+    @include pc-fluid-size(left, (30));
+    @include pc-fluid-size(border-width, (2));
+    & h5{
+      font-size: get_vw(20);
+      font-weight: 400;
+      color: $c_black;
+      text-align: center;
+      @include min-screen{
+        display: none
+      }
+    }
+    &.date{
+      @include pc-fluid-size(width, (820));
+      @include pc-fluid-size(padding, (38 30 42 30));
+      @include pc-fluid-size(top, (80));
+      @include pc-fluid-size(border-width, (2));
+      @include min-screen{
+        left: 50%;
+        transform: translateX(-50%);
+      }
+    }
+    &.cate{
+      @include pc-fluid-size(width, (357));
+      @include pc-fluid-size(padding, (40 48 36 48));
+      @include pc-fluid-size(top, (80));
+      @include pc-fluid-size(left, (34));
+      @include pc-fluid-size(border-width, (2));
+      & .event__modal-next{
+        @include pc-fluid-size(margin-top, (28));
+      }
+    }
+    &.word{
+      @include pc-fluid-size(width, (1200));
+      @include pc-fluid-size(padding, (25 30 36 45));
+      @include pc-fluid-size(top, (80));
+      @include pc-fluid-size(left, (34));
+      @include pc-fluid-size(border-width, (2));
+      & .event__modal-next{
+        @include pc-fluid-size(margin-top, (-28));
+      }
+    }
+    @include min-screen{
+      position: absolute;
+      height: auto;
+      margin-inline: auto;
+      border: solid;
+      border-color: $c_gray;
+      overflow: hidden;
+    }
+    &.js-show{
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    // &.date{
+    //   &:not([hidden]){
+    //     display: block;
+    //     opacity: 1;
+    //     pointer-events: all;
+    //   }
+    // }
+  }
+
+  &__modal-flex{
+    position: relative;
+    margin-top: get_vw(60);
+    padding: get_vw(10) get_vw(18);
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    background-color: $c_lightgray;
+    border-radius: get_vw(20);
+
+    @include min-screen{
+      display: none;
+    }
+  }
+
+  &__modal-cate{
+    margin-top: get_vw(80);
+    @include pc-fluid-size(margin-top, (0));
+    & li{
+      width: 100%;
+      height: get_vw(60);
+      font-size: get_vw(18);
+      font-weight: 400;
+      border-radius: get_vw(50);
+      background-color: $c_lightgray;
+      transition: all 0.4s ease;
+      @include center;
+      @include pc-fluid-size(height, (50));
+      @include pc-fluid-size(font-size, (18));
+      @include pc-fluid-size(border-radius, (50));
+      @include min-screen{
+        cursor: pointer;
+        &:hover{
+          background-color: $c_ivory;
+        }
+      }
+      &:not(:first-child){
+        margin-top: get_vw(20);
+        @include pc-fluid-size(margin-top, (10));
+      }
+      &.js-active{
+        background-color: $c_ivory;
+      }
+    }
+  }
+
+  &__modal-btn{
+    position: relative;
+    display: block;
+    margin-top: get_vw(38);
+    margin-inline: auto;
+    padding: get_vw(14);
+    width: get_vw(350);
+    height: get_vw(60);
+    font-size: get_vw(18);
+    font-weight: 500;
+    background-color: $c_ivory;
+    border-radius: get_vw(60);
+    @include center;
+    @include pc-fluid-size(margin-top, (38));
+    @include pc-fluid-size(padding, (14));
+    @include pc-fluid-size(width, (260));
+    @include pc-fluid-size(height, (50));
+    @include pc-fluid-size(font-size, (14));
+    @include pc-fluid-size(border-radius, (60));
+    @include after{
+      background-image: url("../img/event/btn_search.png");
+      background-size: 100%;
+      width: get_vw(40);
+      height: get_vw(40);
+      position: absolute;
+      top: 50%;
+      right: get_vw(10);
+      transform: translateY(-50%);
+      @include pc-fluid-size(width, (40));
+      @include pc-fluid-size(height, (40));
+      @include pc-fluid-size(right, (6));
+    }
+  }
+
+  &__modal-next{
+    display: block;
+    width: fit-content;
+    margin: get_vw(30) auto 0;
+    font-size: get_vw(14);
+    font-weight: 400;
+    text-decoration: underline;
+    text-underline-offset: get_vw(4);
+    @include pc-fluid-size(margin-top, (-40));
+    @include pc-fluid-size(font-size, (14));
+    @include pc-fluid-size(text-underline-offset, (4));
+    @include min-screen{
+      margin-inline: auto 0;
+        cursor: pointer;
+        &:hover{
+          color: $c_orange;
+        }
+    }
+  }
+
+  &__modal-close{
+    display: block;
+    position: relative;
+    margin-top: get_vw(72);
+    margin-inline: auto;
+    width: get_vw(20);
+    height: get_vw(20);
+    @include pc-fluid-size(width, (20));
+    @include pc-fluid-size(height, (20));
+    & span{
+      display: block;
+      width: get_vw(28);
+      height: get_vw(2);
+      background-color: $c_black;
+      transform: translate(-50%,-50%) rotate(45deg);
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      @include pc-fluid-size(width, (18));
+      @include pc-fluid-size(height, (2));
+      &:last-child{
+        transform: translate(-50%,-50%) rotate(-45deg);
+        top: 50%;
+        left: 50%;
+      }
+    }
+    @include min-screen{
+      display: none;
+    }
+  }
+
+  &__zero-txt{
+    display: none;
+    width: get_vw(220);
+    margin-top: get_vw(80);
+    margin-inline: auto;
+    font-size: get_vw(24);
+    font-weight: 500;
+    line-height: calc(32/24);
+    text-align: center;
+    color: $c_black;
+    @include pc-fluid-size(font-size, (32));
+    @include pc-fluid-size(margin-top, (100));
+    @include min-screen{
+      width: 100%;
+    }
+  }
+
+  &__list {
+    padding: 0 get_vw(20);
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: get_vw(80);
+    @include pc-fluid-size(width, (1280));
+    @include pc-fluid-size(padding, (0));
+    @include pc-fluid-size(margin-top, (100));
+  }
+  &__box{
+    position: relative;
+    padding-bottom: get_vw(18);
+    border-bottom: solid get_vw(2) $c_ivory;
+    @include pc-fluid-size(padding-bottom, (46));
+    @include pc-fluid-size(border-bottom-width, (2));
+    &:not(:first-child){
+      margin-top: get_vw(20);
+      @include pc-fluid-size(margin-top, (40));
+    }
+    @include min-screen{
+      cursor: pointer;
+      &:hover{
+        .news__txt{
+          color: $c_red;
+        }
+        @include after{
+          opacity: 1;
+        }
+      }
+    }
+    @include after{
+      background-image: url('../img/top/news_arrow.png');
+      background-size: 100% 100%;
+      @include pc-fluid-size(width, (18));
+      @include pc-fluid-size(height, (15));
+      position: absolute;
+      top: 25%;
+      right: get_vw(0);
+      transform: translateY(-50%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+    &.new{
+      .news__cate{
+        @include before{
+          content: "NEW";
+          display: block;
+          width: get_vw(74);
+          font-size: get_vw(10);
+          font-weight: 300;
+          color: $c_white;
+          background-color: $c_red;
+          border-radius: get_vw(30);
+          align-items: center;
+          padding-top: get_vw(5);
+          @include pc-fluid-size(width, (74));
+          @include pc-fluid-size(padding-top, (5));
+          @include pc-fluid-size(font-size, (10));
+          @include pc-fluid-size(border-radius, (30));
+        }
+      }
+    }
+  }
+  &__cate{
+    display: flex;
+    flex-direction: row;
+    column-gap: get_vw(5);
+    font-size: get_vw(10);
+    color: $news_txt;
+    font-weight: 300;
+    text-align: center;
+      @include pc-fluid-size(padding-left, (112));
+      @include pc-fluid-size(column-gap, (10));
+      @include pc-fluid-size(font-size, (10));
+    &>p{
+      padding: get_vw(5) get_vw(10);
+      background-color: $news_purple;
+      border-radius: get_vw(30);
+      @include pc-fluid-size(padding, (5 10));
+      @include pc-fluid-size(border-radius, (30));
+      &.news{
+        background-color: $news_news;
+      }
+      &.events{
+        background-color: $news_event;
+      }
+      &.recruit{
+        background-color: $news_recruit;
+      }
+    }
+  }
+  &__txt{
+    margin-top: get_vw(5);
+    font-size: get_vw(18);
+    line-height: calc(28/18);
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    column-gap: get_vw(16);
+    -webkit-line-clamp: 2; /* number of lines to show */
+    line-clamp: 2; 
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+      @include pc-fluid-size(margin-top, (-22));
+      @include pc-fluid-size(font-size, (18));
+      @include pc-fluid-size(line-height, (28));
+      @include pc-fluid-size(column-gap, (11));
+      @include min-screen{
+        -webkit-line-clamp: 1; /* number of lines to show */
+        line-clamp: 1; 
+        -webkit-box-orient: vertical;
+        text-overflow: ellipsis;
+      }
+      & span{
+        text-wrap-mode: nowrap;
+        font-weight: 500;
+      }
+      &> p{
+      overflow: hidden;
+      display: -webkit-box;
+      width: 100%;
+      -webkit-line-clamp: 2; /* number of lines to show */
+      line-clamp: 2; 
+      -webkit-box-orient: vertical;
+      text-overflow: ellipsis;
+      font-weight: 500;
+      line-height: calc(28/20);
+      @include pc-fluid-size(width, (1000));
+        @include min-screen{
+          -webkit-line-clamp: 1; /* number of lines to show */
+          line-clamp: 1; 
+          line-height: unset;
+        }
+      }
+  }
+  &__date{
+    width: get_vw(78);
+    font-size: get_vw(18);
+    color: $common_font;
+    line-height: calc(28/20);
+    @include pc-fluid-size(width, (110));
+    @include pc-fluid-size(font-size, (24));
+    display: flex;
+    flex-direction: column;
+    @include min-screen{
+      line-height: unset;
+    }
+  }
+
+  &__pagination{
+    margin-top: get_vw(40);
+    margin-inline: auto;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    column-gap: get_vw(10);
+    @include pc-fluid-size(margin-top, (80));
+    @include pc-fluid-size(column-gap, (10));
+    & button{
+      position: relative;
+      width: get_vw(40);
+      height: get_vw(40);
+      background-color: $c_ivory;
+      font-size: get_vw(14);
+      color: $c_black;
+      border-radius: 50%;
+      transition: all 0.4s ease;
+      @include center;
+      @include pc-fluid-size(width, (40));
+      @include pc-fluid-size(height, (40));
+      @include pc-fluid-size(font-size, (14));
+      @include min-screen{
+        &:hover{
+          background-color: $c_orange;
+          color: $c_white;
+        }
+      }
+      &.active{
+        background-color: $c_orange;
+        color: $c_white;
+      }
+      &.arrow-next{
+        @include after{
+          background-image: url('../img/event/btn_arrow.png');
+          background-size: 100% 100%;
+          width: get_vw(15);
+          height: get_vw(15);
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%,-50%);
+          @include pc-fluid-size(width, (15));
+          @include pc-fluid-size(height, (15));
+        }
+      }
+      &.arrow-before{
+        @include after{
+          background-image: url('../img/event/btn_arrow.png');
+          background-size: 100% 100%;
+          width: get_vw(15);
+          height: get_vw(15);
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%,-50%) scale(-1);
+          @include pc-fluid-size(width, (15));
+          @include pc-fluid-size(height, (15));
+        }
+      }
+      &.small{
+        width: get_vw(7);
+        height: get_vw(7);
+        @include pc-fluid-size(width, (7));
+        @include pc-fluid-size(height, (7));
+        @include min-screen{
+          pointer-events: none;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,182 @@
+<%
+var pageID = "news";
+var lang = "ja";
+var relative_path = "../";
+var myMeta = meta[lang][pageID];
+%>
+<!DOCTYPE html>
+<html lang="<%= lang %>">
+  <%-include(`${relative_path}_partial/_head`,{lang:lang,pageID:pageID,relative_path:relative_path})%>
+
+  <body>
+    <div class="page">
+      <%-include(`${relative_path}_partial/_header`,{lang:lang,pageID:pageID,relative_path:relative_path})%>
+      <article class="news__wrapper">
+        <div class="news__bg"></div>
+        <p class="common__bread">
+          <span
+            ><a href="https://test-bloom-your-future-katsushika.entacl.net/"
+              >TOP</a
+            ></span
+          ><span>お知らせ</span>
+        </p>
+        <h1 class="news__h1">お知らせ</h1>
+        <section class="news__form">
+          <form class="news__form-wrapper" method="get" action="">
+            <div class="news__form-flex cate">
+              <input type="hidden" name="cat" id="cateInput" value="">
+              <div class="news__form-label cate"></div>
+              <div class="news__form-box cate">
+                <span class="news__form-select">カテゴリー</span>
+              </div>
+              <div class="news__form-modal cate" data-modal="modal3">
+                <h5>カテゴリー</h5>
+                <div class="news__modal-flex cate">
+                  <div class="news__form-label cate"></div>
+                  <div class="news__form-box cate in-modal">
+                    <span class="news__form-select">見る</span>
+                  </div>
+                </div>
+                <ul class="news__modal-cate">
+                  <li class="cat-btn" data-cat="info" data-id="0">お知らせ</li>
+                  <li class="cat-btn" data-cat="event" data-id="1">イベント</li>
+                  <li class="cat-btn" data-cat="boshuu" data-id="2">募集</li>
+                  <li class="cat-btn" data-cat="cat-sample1" data-id="3">カテゴリー</li>
+                  <li class="cat-btn" data-cat="cat-sample1" data-id="4">カテゴリー</li>
+                </ul>
+                <button class="common__btn-i news__modal-btn" type="submit">
+                  検索する
+                </button>
+                <button class="news__modal-close" type="button">
+                  <span></span>
+                  <span></span>
+                </button>
+              </div>
+            </div>
+          </form>
+        </section>
+        <section class="news__section">
+          <p class="news__zero-txt">該当するお知らせはありませんでした。</p>
+          <div class="news__list">
+            <div class="news__box new">
+              <a href="" class="news__link">
+                <div class="news__cate">
+                  <p class="recruit">#募集</p>
+                </div>
+                <div class="news__txt">
+                  <div class="news__date">
+                    <span>2025年</span>
+                    <span>11月12日</span>
+                  </div>
+                  <p>タイトルが入ります。タイトルが入ります。タイトルが入ります。タイトルが入ります。タイトルが入ります。タイトルが入ります。タイトルが入ります。タイトルが入ります。タイトルが入ります。</p>
+                </div>
+              </a>
+            </div>
+            <div class="news__box">
+              <a href="" class="news__link">
+                <div class="news__cate">
+                  <p class="news">#お知らせ</p>
+                  <p class="events">#イベント</p>
+                </div>
+                <div class="news__txt">
+                  <div class="news__date">
+                    <span>2025年</span>
+                    <span>11月12日</span>
+                  </div>
+                  <p>タイトルが入ります。タイトルが入ります。タイトルが入ります。タイトルが入ります。タイトルが入ります。タイトルが入ります。タイトルが入ります。タイトルが入ります。タイトルが入ります。</p>
+                </div>
+              </a>
+            </div>
+            <div class="news__box">
+              <a href="" class="news__link">
+                <div class="news__cate">
+                  <p class="recruit">#募集</p>
+                  <p class="news">#お知らせ</p>
+                  <p class="events">#イベント</p>
+                </div>
+                <div class="news__txt">
+                  <div class="news__date">
+                    <span>2025年</span>
+                    <span>11月12日</span>
+                  </div>
+                  <p>タイトルが入ります。タイトルが入ります。タイトルが入ります。タイトルが入ります。タイトルが入ります。タイトルが入ります。タイトルが入ります。タイトルが入ります。タイトルが入ります。</p>
+                </div>
+              </a>
+            </div>
+            <div class="news__box">
+              <a href="" class="news__link">
+                <div class="news__cate">
+                  <p class="events">#イベント</p>
+                </div>
+                <div class="news__txt">
+                  <div class="news__date">
+                    <span>2025年</span>
+                    <span>11月12日</span>
+                  </div>
+                  <p>タイトルが入ります。タイトルが入ります。タイトルが入ります。タイトルが入ります。タイトルが入ります。タイトルが入ります。タイトルが入ります。タイトルが入ります。タイトルが入ります。</p>
+                </div>
+              </a>
+            </div>
+            <div class="news__box">
+              <a href="" class="news__link">
+                <div class="news__cate">
+                  <p class="recruit">#募集</p>
+                  <p class="news">#お知らせ</p>
+                </div>
+                <div class="news__txt">
+                  <div class="news__date">
+                    <span>2025年</span>
+                    <span>11月12日</span>
+                  </div>
+                  <p>タイトルが入ります。タイトルが入ります。タイトルが入ります。タイトルが入ります。タイトルが入ります。タイトルが入ります。タイトルが入ります。タイトルが入ります。タイトルが入ります。</p>
+                </div>
+              </a>
+            </div>
+            <div class="news__box">
+              <a href="" class="news__link">
+                <div class="news__cate">
+                  <p class="recruit">#募集</p>
+                </div>
+                <div class="news__txt">
+                  <div class="news__date">
+                    <span>2025年</span>
+                    <span>11月12日</span>
+                  </div>
+                  <p>タイトルが入ります。タイトルが入ります。タイトルが入ります。タイトルが入ります。タイトルが入ります。タイトルが入ります。タイトルが入ります。タイトルが入ります。タイトルが入ります。</p>
+                </div>
+              </a>
+            </div>
+            <div class="news__box">
+              <a href="" class="news__link">
+                <div class="news__cate">
+                  <p class="recruit">#募集</p>
+                  <p class="news">#お知らせ</p>
+                  <p class="events">#イベント</p>
+                </div>
+                <div class="news__txt">
+                  <div class="news__date">
+                    <span>2025年</span>
+                    <span>11月12日</span>
+                  </div>
+                  <p>タイトルが入ります。タイトルが入ります。タイトルが入ります。タイトルが入ります。タイトルが入ります。タイトルが入ります。タイトルが入ります。タイトルが入ります。タイトルが入ります。</p>
+                </div>
+              </a>
+            </div>
+          </div>
+          <div class="news__pagination">
+            <button class="arrow-before" type="button"></button>
+            <button class="active" type="button">1</button>
+            <button type="button">2</button>
+            <button type="button">3</button>
+            <button class="small" type="button"></button>
+            <button class="small" type="button"></button>
+            <button class="small" type="button"></button>
+            <button class="arrow-next" type="button"></button>
+          </div>
+        </section>
+      </article>
+      <%-include(`${relative_path}_partial/_footer`,{lang:lang,pageID:pageID,relative_path:relative_path})%>
+    </div>
+    <%- include( `${relative_path}_partial/_foot`,{lang:lang,pageID:pageID,relative_path:relative_path}) %>
+  </body>
+</html>

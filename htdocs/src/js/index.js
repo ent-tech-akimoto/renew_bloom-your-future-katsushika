@@ -58,3 +58,15 @@ if( window.pageID === 'overview' || window.pageID === 'purpose' ) {
   const { initSwipersNav } = require('./common/nav_swiper.js');
   initSwipersNav();
 }
+
+if (window.pageID === 'news') {
+  const {
+    initNewsModals
+  } = require('./news/modal.js');
+  initNewsModals();
+  const {
+    initCategoryButtons
+  } = require('./news/cat.js');
+  initCategoryButtons();
+  const commonForm = require('./common/form.js');
+}
