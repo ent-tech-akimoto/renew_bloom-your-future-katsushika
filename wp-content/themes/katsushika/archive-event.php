@@ -218,6 +218,9 @@ $found = $event_query->found_posts;
               <?php endforeach; ?>
               <?php endif; ?>
             </ul>
+            <div class="event__modal-map--loading">
+              <span>現在位置を取得しています</span>
+            </div>
           </div>
           <button class="common__btn-w event__modal-map-btn" type="button"> 現在地付近 </button>
           <button class="common__btn-i event__modal-btn" type="submit"> 検索する </button>

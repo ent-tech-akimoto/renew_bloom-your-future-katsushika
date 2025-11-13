@@ -831,6 +831,29 @@
     @include min-screen{
       margin-inline: auto;
     }
+
+    &--loading {
+      background-color: rgba($color: #fff, $alpha: .8);
+      width: 100%;
+      height: 100%;
+      @include center;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      pointer-events: none;
+  
+      span {
+        font-size: get_vw(20);
+        color: $c_black;
+        font-weight: $w_medium;
+        @include pc-fluid-size(font-size, (24));
+        display: inline-block;       /* 要素の種類により調整 */
+        animation: blinkSlow 3s ease-in-out infinite;
+        -webkit-animation: blinkSlow 3s ease-in-out infinite;
+        will-change: opacity;
+      }
+    }
   }
 
   &__modal-map-btn{
@@ -874,6 +897,11 @@
     }
     @include after{
       display: none;
+    }
+
+    &.js--active {
+      background-color: $c_ivory;
+      pointer-events: none;
     }
   }
 
