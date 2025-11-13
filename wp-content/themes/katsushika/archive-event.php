@@ -417,6 +417,7 @@ $found = $event_query->found_posts;
         </div>
       </div>
     </form>
+    <a class="event__form-btn" href="/event/">条件を初期化</a>
   </section>
   <section class="event__box">
     <h3 class="event__h3">検索結果<span><?php echo esc_html($found); ?></span>件</h3>
