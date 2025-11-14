@@ -133,17 +133,12 @@ export function initSwipers() {
   if (topicoriginalSlidesCount > 1) {
     const topicSwiper = new Swiper('.top-topic__swiper', {
       // Optional parameters
-      modules: [Navigation, Pagination, Autoplay],
+      modules: [Navigation, Pagination],
       loop: true,
       loopedSlides: 1,
       loopAdditionalSlides: 2,
       slidesPerView: 'auto',
       centeredSlides: true,
-      speed: 3000,
-      autoplay: {
-        delay: 2500,
-        disableOnInteraction: false,
-      },
       
       // pagination
       pagination: {
