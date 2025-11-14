@@ -113,7 +113,6 @@
     aspect-ratio: 17 / 12;
     @include pc-fluid-size(border-radius, (20));
     @include min-screen{
-      cursor: pointer;
     }
     & img{
       width: 100%;

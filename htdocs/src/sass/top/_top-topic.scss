@@ -40,6 +40,7 @@
   &__swiper-wrapper{
   }
   &__swiper-slide{
+    display: block;
     width: get_vw(270);
     height: get_vw(388);
     margin: 0 calc(get_vw(20)/2);
@@ -59,6 +60,9 @@
       cursor: pointer;
       &:hover{
         border-color: $c_pink;
+        & .top-topic__btn{
+            background-color: $c_ivory;
+        }
       }
     }
     & p{
@@ -75,7 +79,7 @@
       @include pc-fluid-size(font-size, (18));
       @include pc-fluid-size(line-height, (24));
     }
-    & a{
+    & div.top-topic__btn{
       @include btn-w;
       display: block;
       width: get_vw(230);
