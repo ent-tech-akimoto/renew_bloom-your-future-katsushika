@@ -128,7 +128,7 @@
             <a href="">開催概要</a>
             <a href="">開催エリア</a>
             <a href="/event/">イベント情報</a>
-            <a href="">募集情報</a>
+            <a href="/sponsors/">募集情報</a>
             <a href="">協賛募集</a>
             <a href="">アクセス情報</a>
             <a href="/news/">お知らせ</a>
@@ -188,9 +188,9 @@
     $page_id = 'event';
   } elseif (is_page('event-calendar')) {
     $page_id = 'calendar';
-  } elseif (is_post_type_archive('sponsor')) {
-    $page_id = 'sponsor';
-  } elseif (is_singular('event') || is_singular('sponsor')) {
+  } elseif (is_post_type_archive('sponsors')) {
+    $page_id = 'sponsors';
+  } elseif (is_singular('event') || is_singular('sponsors')) {
     $page_id = 'detail';
   } else {
     $page_id = '';
