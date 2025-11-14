@@ -5,10 +5,12 @@
     $page_id = 'news';
   } elseif (is_post_type_archive('event')) {
     $page_id = 'event';
-  } elseif (is_page('event-calendar')) {
-    $page_id = 'calendar';
   } elseif (is_post_type_archive('sponsors')) {
     $page_id = 'sponsors';
+  } elseif (is_page('event-calendar')) {
+    $page_id = 'calendar';
+  } elseif (is_page('sponsors-list')) {
+    $page_id = 'sponsors-list';
   } elseif (is_singular('event')) {
     $page_id = 'event-detail';
   } elseif (is_singular('sponsors')) {
@@ -148,7 +150,7 @@
             <a href="">開催エリア</a>
             <a href="/event/">イベント情報</a>
             <a href="/sponsors/">募集情報</a>
-            <a href="">協賛募集</a>
+            <a href="/sponsors/list/">協賛募集</a>
             <a href="">アクセス情報</a>
             <a href="/news/">お知らせ</a>
             <a href="">関連サイト</a>
@@ -211,7 +213,7 @@ document.getElementById('js-header-btn').addEventListener('click', function() {
 function googleTranslateElementInit() {
   new google.translate.TranslateElement({
     pageLanguage: 'ja',
-    includedLanguages: 'en,ko,zh-CN,zh-TW',
+    includedLanguages: 'en,ko,zh-CN,zh-TW,th',
     layout: google.translate.TranslateElement.InlineLayout.SIMPLE
   }, 'google_translate_element');
 }

@@ -1,0 +1,444 @@
+<?php
+/*
+Template Name: Sponsors List
+*/
+$slug = 'sponsors-list';
+get_header();
+?>
+<article class="sponsors__wrapper">
+  <div class="sponsors__bg"></div>
+  <p class="common__bread l-page">
+    <span><?php echo esc_url(home_url('/')); ?>">TOP</a></span><span>協力企業・団体一覧</span>
+  </p>
+  <h1 class="sponsors__h1">協力企業・団体一覧</h1>
+  <section class="sponsors__section list">
+    <h2 class="sponsors__h2">
+      <span>全国みどりと花のフェアかつしか<br>協賛企業・団体</span>
+    </h2>
+    <h3 class="sponsors__h3">
+      <span>特別協賛</span>
+    </h3>
+    <div class="sponsors__special">
+      <ul class="sponsors__special--list">
+        <li class="sponsors__special--item">
+          <a class="sponsors__special--link" href="">
+            <img class="sponsors__special--logo" src="/assets/img/sponsors/list/logo_ajinomoto.png" alt="">
+            <p class="sponsors__special--text"> 味の素株式会社 </p>
+          </a>
+        </li>
+        <li class="sponsors__special--item">
+          <a class="sponsors__special--link" href="">
+            <img class="sponsors__special--logo" src="/assets/img/sponsors/list/logo_seibu-zouen.png" alt="">
+            <p class="sponsors__special--text"> 西武造園株式会社西武造園株式会社西武造園株式会社西武会社西武造園株式会社西武 </p>
+          </a>
+        </li>
+        <li class="sponsors__special--item">
+          <a class="sponsors__special--link" href="">
+            <img class="sponsors__special--logo" src="/assets/img/sponsors/list/logo_tokyu.png" alt="">
+            <p class="sponsors__special--text"> 東急株式会社 </p>
+          </a>
+        </li>
+        <li class="sponsors__special--item">
+          <a class="sponsors__special--link" href="">
+            <img class="sponsors__special--logo" src="/assets/img/sponsors/list/logo_alsok.png" alt="">
+            <p class="sponsors__special--text"> ALSOK株式会社 </p>
+          </a>
+        </li>
+        <li class="sponsors__special--item">
+          <a class="sponsors__special--link" href="">
+            <img class="sponsors__special--logo" src="/assets/img/sponsors/list/logo_ajinomoto.png" alt="">
+            <p class="sponsors__special--text"> 味の素株式会社 </p>
+          </a>
+        </li>
+        <li class="sponsors__special--item">
+          <a class="sponsors__special--link" href="">
+            <img class="sponsors__special--logo" src="/assets/img/sponsors/list/logo_seibu-zouen.png" alt="">
+            <p class="sponsors__special--text"> 西武造園株式会社西武造園株式会社西武造園株式会社西武会社西武造園株式会社西武 </p>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <h3 class="sponsors__h3">
+      <span>資金協賛</span>
+    </h3>
+    <div class="sponsors__list">
+      <h4 class="sponsors__list--type platinum">
+        <span>PLATINUM</span>
+      </h4>
+      <h5 class="sponsors__list--name">
+        <span>プラチナパートナー</span>
+      </h5>
+      <ul class="sponsors__list--list lv1">
+        <li class="sponsors__list--item">
+          <a class="sponsors__list--link" href="">
+            <img class="sponsors__list--logo" src="/assets/img/sponsors/list/logo_tokyu.png" alt="">
+            <p class="sponsors__list--text"> 東急株式会社 </p>
+          </a>
+        </li>
+        <li class="sponsors__list--item">
+          <a class="sponsors__list--link" href="">
+            <img class="sponsors__list--logo" src="/assets/img/sponsors/list/logo_alsok.png" alt="">
+            <p class="sponsors__list--text"> ALSOK株式会社 </p>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="sponsors__list">
+      <h4 class="sponsors__list--type gold">
+        <span>GOLD</span>
+      </h4>
+      <h5 class="sponsors__list--name">
+        <span>ゴールドパートナー</span>
+      </h5>
+      <ul class="sponsors__list--list lv2">
+        <li class="sponsors__list--item">
+          <a class="sponsors__list--link" href="">
+            <img class="sponsors__list--logo" src="/assets/img/sponsors/list/logo_tokyu.png" alt="">
+            <p class="sponsors__list--text"> 東急株式会社 </p>
+          </a>
+        </li>
+        <li class="sponsors__list--item">
+          <a class="sponsors__list--link" href="">
+            <img class="sponsors__list--logo" src="/assets/img/sponsors/list/logo_dena.png" alt="">
+            <p class="sponsors__list--text"> 株式会社ディー・エヌ・エー </p>
+          </a>
+        </li>
+        <li class="sponsors__list--item">
+          <a class="sponsors__list--link" href="">
+            <img class="sponsors__list--logo" src="/assets/img/sponsors/list/logo_seibu-zouen.png" alt="">
+            <p class="sponsors__list--text"> 西武造園株式会社西武造園株式会社西武造園株式会社西武会社西武造園株式会社西武 </p>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="sponsors__list">
+      <h4 class="sponsors__list--type silver">
+        <span>SILVER</span>
+      </h4>
+      <h5 class="sponsors__list--name">
+        <span>シルバーパートナー</span>
+      </h5>
+      <ul class="sponsors__list--list lv3">
+        <li class="sponsors__list--item">
+          <a class="sponsors__list--link" href="">
+            <img class="sponsors__list--logo" src="/assets/img/sponsors/list/logo_ajinomoto.png" alt="">
+            <p class="sponsors__list--text"> 味の素株式会社 </p>
+          </a>
+        </li>
+        <li class="sponsors__list--item">
+          <a class="sponsors__list--link" href="">
+            <img class="sponsors__list--logo" src="/assets/img/sponsors/list/logo_yomiuri.png" alt="">
+            <p class="sponsors__list--text"> 株式会社よみうりランド株式会社よみうりランド株式会社よみうりランド株式会社よ </p>
+          </a>
+        </li>
+        <li class="sponsors__list--item">
+          <a class="sponsors__list--link" href="">
+            <img class="sponsors__list--logo" src="/assets/img/sponsors/list/logo_dena.png" alt="">
+            <p class="sponsors__list--text"> 株式会社ディー・エヌ・エー </p>
+          </a>
+        </li>
+        <li class="sponsors__list--item">
+          <a class="sponsors__list--link" href="">
+            <img class="sponsors__list--logo" src="/assets/img/sponsors/list/logo_alsok.png" alt="">
+            <p class="sponsors__list--text"> ALSOK株式会社 </p>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="sponsors__list">
+      <h4 class="sponsors__list--type bronze">
+        <span>BRONZE</span>
+      </h4>
+      <h5 class="sponsors__list--name">
+        <span>ブロンズパートナー</span>
+      </h5>
+      <ul class="sponsors__list--list lv4">
+        <li class="sponsors__list--item">
+          <a class="sponsors__list--link" href="">
+            <p class="sponsors__list--text"> 協賛企業団体名協賛企業団体名協賛企業団体名 </p>
+          </a>
+        </li>
+        <li class="sponsors__list--item">
+          <a class="sponsors__list--link" href="">
+            <p class="sponsors__list--text"> 協賛企業団体名協賛企業団体 名協賛企業団体名協賛企業団 体名協賛企業団体名協賛企 </p>
+          </a>
+        </li>
+        <li class="sponsors__list--item">
+          <a class="sponsors__list--link" href="">
+            <p class="sponsors__list--text"> 協賛企業団体名協賛企業団体 名協賛企業団体名協賛企業団 体名協賛企業団体名協賛企 </p>
+          </a>
+        </li>
+        <li class="sponsors__list--item">
+          <a class="sponsors__list--link" href="">
+            <p class="sponsors__list--text"> 協賛企業団体名協賛企業団 </p>
+          </a>
+        </li>
+        <li class="sponsors__list--item">
+          <a class="sponsors__list--link" href="">
+            <p class="sponsors__list--text"> 協賛企業団体名 </p>
+          </a>
+        </li>
+        <li class="sponsors__list--item">
+          <a class="sponsors__list--link" href="">
+            <p class="sponsors__list--text"> 協賛企業団体名協賛企業団体 名協賛企業団体名協賛企業団 体名協賛企業団体名協賛企 </p>
+          </a>
+        </li>
+        <li class="sponsors__list--item">
+          <a class="sponsors__list--link" href="">
+            <p class="sponsors__list--text"> 協賛企業団体名協賛企業団 </p>
+          </a>
+        </li>
+        <li class="sponsors__list--item">
+          <a class="sponsors__list--link" href="">
+            <p class="sponsors__list--text"> 協賛企業団体名協賛企業団体 名協賛企業団体名協賛企業団 体名協賛企業団体名協賛企 </p>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="sponsors__list">
+      <h4 class="sponsors__list--type blue">
+        <span>SUPPORTER</span>
+      </h4>
+      <h5 class="sponsors__list--name">
+        <span>サポーター</span>
+      </h5>
+      <ul class="sponsors__list--list lv5">
+        <li class="sponsors__list--item">
+          <p class="sponsors__list--text"> 個人名個人名 </p>
+        </li>
+        <li class="sponsors__list--item">
+          <p class="sponsors__list--text"> 個人名個人名 </p>
+        </li>
+        <li class="sponsors__list--item">
+          <p class="sponsors__list--text"> 個人名個人名 </p>
+        </li>
+        <li class="sponsors__list--item">
+          <p class="sponsors__list--text"> 個人名個人名 </p>
+        </li>
+        <li class="sponsors__list--item">
+          <p class="sponsors__list--text"> 個人名個人名 </p>
+        </li>
+        <li class="sponsors__list--item">
+          <p class="sponsors__list--text"> 個人名個人名 </p>
+        </li>
+        <li class="sponsors__list--item">
+          <p class="sponsors__list--text"> 個人名個人名 </p>
+        </li>
+        <li class="sponsors__list--item">
+          <p class="sponsors__list--text"> 個人名個人名 </p>
+        </li>
+        <li class="sponsors__list--item">
+          <p class="sponsors__list--text"> 個人名個人名 </p>
+        </li>
+        <li class="sponsors__list--item">
+          <p class="sponsors__list--text"> 個人名個人名 </p>
+        </li>
+        <li class="sponsors__list--item">
+          <p class="sponsors__list--text"> 個人名個人名 </p>
+        </li>
+        <li class="sponsors__list--item">
+          <p class="sponsors__list--text"> 個人名個人名 </p>
+        </li>
+        <li class="sponsors__list--item">
+          <p class="sponsors__list--text"> 個人名個人名 </p>
+        </li>
+        <li class="sponsors__list--item">
+          <p class="sponsors__list--text"> 個人名個人名 </p>
+        </li>
+        <li class="sponsors__list--item">
+          <p class="sponsors__list--text"> 個人名個人名 </p>
+        </li>
+        <li class="sponsors__list--item">
+          <p class="sponsors__list--text"> 個人名個人名 </p>
+        </li>
+        <li class="sponsors__list--item">
+          <p class="sponsors__list--text"> 個人名個人名 </p>
+        </li>
+        <li class="sponsors__list--item">
+          <p class="sponsors__list--text"> 個人名個人名 </p>
+        </li>
+        <li class="sponsors__list--item">
+          <p class="sponsors__list--text"> 個人名個人名 </p>
+        </li>
+        <li class="sponsors__list--item">
+          <p class="sponsors__list--text"> 個人名個人名 </p>
+        </li>
+        <li class="sponsors__list--item">
+          <p class="sponsors__list--text"> 個人名個人名 </p>
+        </li>
+        <li class="sponsors__list--item">
+          <p class="sponsors__list--text"> 個人名個人名 </p>
+        </li>
+        <li class="sponsors__list--item">
+          <p class="sponsors__list--text"> 個人名個人名 </p>
+        </li>
+        <li class="sponsors__list--item">
+          <p class="sponsors__list--text"> 個人名個人名 </p>
+        </li>
+      </ul>
+    </div>
+    <h3 class="sponsors__h3">
+      <span>物品等協賛</span>
+    </h3>
+    <div class="sponsors__list">
+      <h4 class="sponsors__list--type gold">
+        <span>SPECIAL</span>
+      </h4>
+      <h5 class="sponsors__list--name">
+        <span>スペシャルパートナー</span>
+      </h5>
+      <ul class="sponsors__list--list lv2">
+        <li class="sponsors__list--item">
+          <a class="sponsors__list--link" href="">
+            <img class="sponsors__list--logo" src="/assets/img/sponsors/list/logo_tokyu.png" alt="">
+            <p class="sponsors__list--text"> 東急株式会社 </p>
+          </a>
+        </li>
+        <li class="sponsors__list--item">
+          <a class="sponsors__list--link" href="">
+            <img class="sponsors__list--logo" src="/assets/img/sponsors/list/logo_dena.png" alt="">
+            <p class="sponsors__list--text"> 株式会社ディー・エヌ・エー </p>
+          </a>
+        </li>
+        <li class="sponsors__list--item">
+          <a class="sponsors__list--link" href="">
+            <img class="sponsors__list--logo" src="/assets/img/sponsors/list/logo_seibu-zouen.png" alt="">
+            <p class="sponsors__list--text"> 西武造園株式会社西武造園株式会社西武造園株式会社西武会社西武造園株式会社西武 </p>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="sponsors__list">
+      <h4 class="sponsors__list--type bronze">
+        <span>MEDIA</span>
+      </h4>
+      <h5 class="sponsors__list--name">
+        <span>メディアパートナー</span>
+      </h5>
+      <ul class="sponsors__list--list lv4">
+        <li class="sponsors__list--item">
+          <a class="sponsors__list--link" href="">
+            <p class="sponsors__list--text"> 協賛企業団体名協賛企業団体名協賛企業団体名 </p>
+          </a>
+        </li>
+        <li class="sponsors__list--item">
+          <a class="sponsors__list--link" href="">
+            <p class="sponsors__list--text"> 協賛企業団体名協賛企業団体 名協賛企業団体名協賛企業団 体名協賛企業団体名協賛企 </p>
+          </a>
+        </li>
+        <li class="sponsors__list--item">
+          <a class="sponsors__list--link" href="">
+            <p class="sponsors__list--text"> 協賛企業団体名協賛企業団体 名協賛企業団体名協賛企業団 体名協賛企業団体名協賛企 </p>
+          </a>
+        </li>
+        <li class="sponsors__list--item">
+          <a class="sponsors__list--link" href="">
+            <p class="sponsors__list--text"> 協賛企業団体名協賛企業団 </p>
+          </a>
+        </li>
+        <li class="sponsors__list--item">
+          <a class="sponsors__list--link" href="">
+            <p class="sponsors__list--text"> 協賛企業団体名 </p>
+          </a>
+        </li>
+        <li class="sponsors__list--item">
+          <a class="sponsors__list--link" href="">
+            <p class="sponsors__list--text"> 協賛企業団体名協賛企業団体 名協賛企業団体名協賛企業団 体名協賛企業団体名協賛企 </p>
+          </a>
+        </li>
+        <li class="sponsors__list--item">
+          <a class="sponsors__list--link" href="">
+            <p class="sponsors__list--text"> 協賛企業団体名協賛企業団 </p>
+          </a>
+        </li>
+        <li class="sponsors__list--item">
+          <a class="sponsors__list--link" href="">
+            <p class="sponsors__list--text"> 協賛企業団体名協賛企業団体 名協賛企業団体名協賛企業団 体名協賛企業団体名協賛企 </p>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <h3 class="sponsors__h3">
+      <span>広告協賛</span>
+    </h3>
+    <div class="sponsors__list">
+      <h4 class="sponsors__list--type gold">
+        <span>SPECIAL</span>
+      </h4>
+      <h5 class="sponsors__list--name">
+        <span>スペシャルパートナー</span>
+      </h5>
+      <ul class="sponsors__list--list lv2">
+        <li class="sponsors__list--item">
+          <a class="sponsors__list--link" href="">
+            <img class="sponsors__list--logo" src="/assets/img/sponsors/list/logo_tokyu.png" alt="">
+            <p class="sponsors__list--text"> 東急株式会社 </p>
+          </a>
+        </li>
+        <li class="sponsors__list--item">
+          <a class="sponsors__list--link" href="">
+            <img class="sponsors__list--logo" src="/assets/img/sponsors/list/logo_dena.png" alt="">
+            <p class="sponsors__list--text"> 株式会社ディー・エヌ・エー </p>
+          </a>
+        </li>
+        <li class="sponsors__list--item">
+          <a class="sponsors__list--link" href="">
+            <img class="sponsors__list--logo" src="/assets/img/sponsors/list/logo_seibu-zouen.png" alt="">
+            <p class="sponsors__list--text"> 西武造園株式会社西武造園株式会社西武造園株式会社西武会社西武造園株式会社西武 </p>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="sponsors__list">
+      <h4 class="sponsors__list--type bronze">
+        <span>MEDIA</span>
+      </h4>
+      <h5 class="sponsors__list--name">
+        <span>メディアパートナー</span>
+      </h5>
+      <ul class="sponsors__list--list lv4">
+        <li class="sponsors__list--item">
+          <a class="sponsors__list--link" href="">
+            <p class="sponsors__list--text"> 協賛企業団体名協賛企業団体名協賛企業団体名 </p>
+          </a>
+        </li>
+        <li class="sponsors__list--item">
+          <a class="sponsors__list--link" href="">
+            <p class="sponsors__list--text"> 協賛企業団体名協賛企業団体 名協賛企業団体名協賛企業団 体名協賛企業団体名協賛企 </p>
+          </a>
+        </li>
+        <li class="sponsors__list--item">
+          <a class="sponsors__list--link" href="">
+            <p class="sponsors__list--text"> 協賛企業団体名協賛企業団体 名協賛企業団体名協賛企業団 体名協賛企業団体名協賛企 </p>
+          </a>
+        </li>
+        <li class="sponsors__list--item">
+          <a class="sponsors__list--link" href="">
+            <p class="sponsors__list--text"> 協賛企業団体名協賛企業団 </p>
+          </a>
+        </li>
+        <li class="sponsors__list--item">
+          <a class="sponsors__list--link" href="">
+            <p class="sponsors__list--text"> 協賛企業団体名 </p>
+          </a>
+        </li>
+        <li class="sponsors__list--item">
+          <a class="sponsors__list--link" href="">
+            <p class="sponsors__list--text"> 協賛企業団体名協賛企業団体 名協賛企業団体名協賛企業団 体名協賛企業団体名協賛企 </p>
+          </a>
+        </li>
+        <li class="sponsors__list--item">
+          <a class="sponsors__list--link" href="">
+            <p class="sponsors__list--text"> 協賛企業団体名協賛企業団 </p>
+          </a>
+        </li>
+        <li class="sponsors__list--item">
+          <a class="sponsors__list--link" href="">
+            <p class="sponsors__list--text"> 協賛企業団体名協賛企業団体 名協賛企業団体名協賛企業団 体名協賛企業団体名協賛企 </p>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </section>
+</article>
+<?php get_footer(); ?>
