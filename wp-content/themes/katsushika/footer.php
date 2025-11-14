@@ -192,7 +192,7 @@
           </a>
         </div>
       </div>
-      <p class="footer__copyright">Copyright &copy; Katsushika City, All Rights Reserved.</p>
+      <p class="footer__copyright">&copy; 全国みどりと花のフェアかつしか実行委員会</p>
     </div>
   </div>
 </footer>
