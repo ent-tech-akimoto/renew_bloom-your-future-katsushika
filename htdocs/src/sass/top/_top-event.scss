@@ -84,6 +84,7 @@
     }
   }
   &__box{
+    display: block;
     width: get_vw(310);
     margin-inline: auto;
     padding-bottom: get_vw(39);
@@ -100,6 +101,9 @@
       overflow: hidden;
       &:hover{
         border-color: $c_pink;
+        & .top-event__btn{
+            background-color: $c_ivory;
+        }
       }
     }
     &:not(:first-child){
@@ -237,7 +241,7 @@
         }
       }
     }
-    &> a{
+    &> div.top-event__btn{
       display: block;
       @include btn-w;
       margin-top: get_vw(38);
