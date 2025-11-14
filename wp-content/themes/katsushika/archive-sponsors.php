@@ -63,10 +63,7 @@ get_header();
       <?php
       // ACF: サムネイル
       $thumb = function_exists('get_field') ? get_field('sponsors_thumbnail') : '';
-      $thumb_url = '';
-      if (is_array($thumb) && ! empty($thumb['url'])) {
-        $thumb_url = $thumb['url'];
-      }
+      $thumb_url = (is_array($thumb) && !empty($thumb['url'])) ? $thumb['url'] : '';
       // ACF: 募集期間
       $period = function_exists('get_field') ? get_field('sponsors_period') : '';
       // NEW判定
@@ -76,18 +73,20 @@ get_header();
       $is_new     = ($now_local - $published) < ($new_days * DAY_IN_SECONDS);
       // ピックアップ判定
       $is_pickup = function_exists('get_field') ? get_field('sponsors_pickup') : false;
-      // クラス組み立て
-      $classes = 'sponsors__box-item';
+      // aタグにpickup
+      $a_classes = 'sponsors__box-item';
       if ($is_pickup) {
-        $classes .= ' pickup';
+        $a_classes .= ' pickup';
       }
+      // 画像ラッパーにnew
+      $img_classes = 'sponsors__box-img';
       if ($is_new) {
-        $classes .= ' new';
+        $img_classes .= ' new';
       }
       ?>
       <li>
-        <a class="<?php echo esc_attr($classes); ?>" href="<?php the_permalink(); ?>">
-          <div class="sponsors__box-img">
+        <a class="<?php echo esc_attr($a_classes); ?>" href="<?php the_permalink(); ?>">
+          <div class="<?php echo esc_attr($img_classes); ?>">
             <?php if ($thumb_url) : ?>
             <img src="<?php echo esc_url($thumb_url); ?>" alt="">
             <?php else : ?>
@@ -144,10 +143,7 @@ get_header();
       <?php
       // ACF: サムネイル
       $thumb = function_exists('get_field') ? get_field('sponsors_thumbnail') : '';
-      $thumb_url = '';
-      if (is_array($thumb) && ! empty($thumb['url'])) {
-        $thumb_url = $thumb['url'];
-      }
+      $thumb_url = (is_array($thumb) && !empty($thumb['url'])) ? $thumb['url'] : '';
       // ACF: 募集期間
       $period = function_exists('get_field') ? get_field('sponsors_period') : '';
       // NEW判定
@@ -157,18 +153,20 @@ get_header();
       $is_new     = ($now_local - $published) < ($new_days * DAY_IN_SECONDS);
       // ピックアップ判定
       $is_pickup = function_exists('get_field') ? get_field('sponsors_pickup') : false;
-      // クラス組み立て
-      $classes = 'sponsors__box-item';
+      // aタグにpickup
+      $a_classes = 'sponsors__box-item';
       if ($is_pickup) {
-        $classes .= ' pickup';
+        $a_classes .= ' pickup';
       }
+      // 画像ラッパーにnew
+      $img_classes = 'sponsors__box-img';
       if ($is_new) {
-        $classes .= ' new';
+        $img_classes .= ' new';
       }
       ?>
       <li>
-        <a class="<?php echo esc_attr($classes); ?>" href="<?php the_permalink(); ?>">
-          <div class="sponsors__box-img">
+        <a class="<?php echo esc_attr($a_classes); ?>" href="<?php the_permalink(); ?>">
+          <div class="<?php echo esc_attr($img_classes); ?>">
             <?php if ($thumb_url) : ?>
             <img src="<?php echo esc_url($thumb_url); ?>" alt="">
             <?php else : ?>
