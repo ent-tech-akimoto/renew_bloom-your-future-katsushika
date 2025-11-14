@@ -13,7 +13,9 @@ get_header();
     </p>
     <div class="detail__header">
       <div class="detail__inner">
-        <h1 class="detail__header-title"><?php the_title(); ?></h1>
+        <div class="detail__header-top sponsors">
+          <h1 class="detail__header-title"><?php the_title(); ?></h1>
+        </div>
       </div>
     </div>
     <div class="detail__content">
