@@ -351,6 +351,6 @@
     text-align: center;
     position: relative;
     @include pc-fluid-size(margin-top, (100));
-    @include pc-fluid-size(font-size, (19));
+    @include pc-fluid-size(font-size, (24));
   }
 }
