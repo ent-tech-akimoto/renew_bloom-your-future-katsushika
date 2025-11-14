@@ -1,4 +1,23 @@
-<footer class="footer top">
+<?php
+  if (is_front_page()) {
+    $page_id = 'top';
+  } elseif (is_archive() && !is_post_type_archive('event') && !is_post_type_archive('sponsors')) {
+    $page_id = 'news';
+  } elseif (is_post_type_archive('event')) {
+    $page_id = 'event';
+  } elseif (is_page('event-calendar')) {
+    $page_id = 'calendar';
+  } elseif (is_post_type_archive('sponsors')) {
+    $page_id = 'sponsors';
+  } elseif (is_singular('event')) {
+    $page_id = 'event-detail';
+  } elseif (is_singular('sponsors')) {
+    $page_id = 'sponsors-detail';
+  } else {
+    $page_id = '';
+  }
+?>
+<footer class="footer <?php echo esc_js($page_id); ?>">
   <div class="footer___sponsors">
     <h2 class="footer___sponsors--title">
       <span>スポンサー</span>
@@ -179,23 +198,6 @@
 </footer>
 </div>
 <script>
-<?php
-  if (is_front_page()) {
-    $page_id = 'top';
-  } elseif (is_archive() && !is_post_type_archive('event')) {
-    $page_id = 'news';
-  } elseif (is_post_type_archive('event')) {
-    $page_id = 'event';
-  } elseif (is_page('event-calendar')) {
-    $page_id = 'calendar';
-  } elseif (is_post_type_archive('sponsors')) {
-    $page_id = 'sponsors';
-  } elseif (is_singular('event') || is_singular('sponsors')) {
-    $page_id = 'detail';
-  } else {
-    $page_id = '';
-  }
-?>
 window.pageID = '<?php echo esc_js($page_id); ?>';
 </script>
 <script src="/assets/js/project.js?v=<?php echo filemtime($_SERVER['DOCUMENT_ROOT'] . '/assets/js/project.js'); ?>">
