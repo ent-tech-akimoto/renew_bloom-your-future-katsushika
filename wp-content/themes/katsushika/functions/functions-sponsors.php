@@ -96,3 +96,33 @@ function byf_sponsors_mce_plugin( $plugins ) {
   return $plugins;
 }
 add_filter( 'mce_external_plugins', 'byf_sponsors_mce_plugin' );
+
+// 協力企業・団体一覧を/sponsors/list/で表示する
+add_action('init', function () {
+  add_rewrite_rule(
+    '^sponsors/list/?$',
+    'index.php?pagename=sponsors-list',
+    'top'
+  );
+});
+
+// /sponsors-list/でアクセスされたら/sponsors/list/に301リダイレクト
+add_action('template_redirect', function () {
+  if ( ! is_page() ) {
+    return;
+  }
+  $page = get_queried_object();
+  if ( ! $page || empty( $page->post_name ) ) {
+    return;
+  }
+  if ( $page->post_name !== 'sponsors-list' ) {
+    return;
+  }
+  $target = home_url('/sponsors/list/');
+  $current = home_url( add_query_arg( [], $GLOBALS['wp']->request ) );
+  if ( trailingslashit( $current ) === trailingslashit( $target ) ) {
+    return;
+  }
+  wp_redirect( $target, 301 );
+  exit;
+});
