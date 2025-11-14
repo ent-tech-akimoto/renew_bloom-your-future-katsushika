@@ -240,16 +240,18 @@
           background-color: $c_red;
           font-size: get_vw(14);
           color: $c_white;
-          width: get_vw(88);
+          width: get_vw(92);
           height: get_vw(40);
+          padding-left: get_vw(5);
           @include center;
           position: absolute;
           top: 0;
           left: 0;
           @include pc-fluid-size(border-radius, (0 0 10 0));
           @include pc-fluid-size(font-size, (14));
-          @include pc-fluid-size(width, (88));
+          @include pc-fluid-size(width, (92));
           @include pc-fluid-size(height, (40));
+          @include pc-fluid-size(padding-left, (5));
         }
       }
     }
@@ -261,16 +263,18 @@
           background-color: $c_purple;
           font-size: get_vw(14);
           color: $c_white;
-          width: get_vw(88);
+          width: get_vw(92);
           height: get_vw(40);
+          padding-left: get_vw(10);
           @include center;
           position: absolute;
           top: 0;
           left: 0;
           @include pc-fluid-size(border-radius, (0 0 10 0));
           @include pc-fluid-size(font-size, (14));
-          @include pc-fluid-size(width, (88));
+          @include pc-fluid-size(width, (92));
           @include pc-fluid-size(height, (40));
+          @include pc-fluid-size(padding-left, (10));
         }
       }
     }
