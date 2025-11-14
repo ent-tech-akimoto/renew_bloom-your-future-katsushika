@@ -9,7 +9,7 @@ get_header();
   <div class="detail__wrap">
     <p class="common__bread detail">
       <span><a href="<?php echo esc_url( home_url('/') ); ?>">TOP</a></span><span><a
-          href="<?php echo esc_url( home_url('/news/') ); ?>">お知らせ詳細</a></span><span><?php the_title(); ?></span>
+          href="<?php echo esc_url( home_url('/news/') ); ?>">お知らせ</a></span><span><?php the_title(); ?></span>
     </p>
     <div class="detail__header">
       <div class="detail__inner">
