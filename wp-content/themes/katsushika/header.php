@@ -163,7 +163,7 @@ $url         = 'https://bloom-your-future-katsushika.jp/';
               <a href="/sponsors/">募集情報</a>
               <ul class="gnavi__submenu">
                 <li class="gnavi__submenu--item">
-                  <a href="">&gt; 協力企業・団体一覧</a>
+                  <a href="/sponsors/list/">&gt; 協力企業・団体一覧</a>
                 </li>
               </ul>
             </li>
@@ -202,7 +202,7 @@ $url         = 'https://bloom-your-future-katsushika.jp/';
               <a href="/sponsors/">募集情報</a>
               <ul class="header__submenu">
                 <li class="header__submenu--item">
-                  <a href="">&gt; 協力企業・団体一覧</a>
+                  <a href="/sponsors/list/">&gt; 協力企業・団体一覧</a>
                 </li>
               </ul>
             </li>
