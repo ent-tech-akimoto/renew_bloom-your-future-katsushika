@@ -1,0 +1,97 @@
+<%
+var pageID = "privacy";
+var lang = "ja";
+var relative_path = "../";
+var myMeta = meta[lang][pageID];
+%>
+<!DOCTYPE html>
+<html lang="<%= lang %>">
+  <%-include(`${relative_path}_partial/_head`,{lang:lang,pageID:pageID,relative_path:relative_path})%>
+
+  <body>
+    <div class="page">
+      <%-include(`${relative_path}_partial/_header`,{lang:lang,pageID:pageID,relative_path:relative_path})%>
+      <article class="privacy__wrapper">
+        <div class="privacy__bg"></div>
+        <p class="common__bread">
+          <span
+            ><a href="https://test-bloom-your-future-katsushika.entacl.net/"
+              >TOP</a
+            ></span
+          ><span>プライバシーポリシー</span>
+        </p>
+        <h1 class="common__h1 privacy__h1">プライバシーポリシー</h1>
+        <section class="privacy__section">
+          <div class="privacy__box">
+            <p class="no-indent medium">
+              本プライバシーポリシーは、全国みどりと花のフェアかつしか（以下「本イベント」）の公式サイト（以下「当サイト」）
+              において取得する利用者の個人情報の取扱いについて定めるものです。
+            </p>
+          </div>
+          <div class="privacy__box">
+            <h2>取得する情報</h2>
+            <p>
+              1.氏名、メールアドレス、電話番号（お問い合わせフォーム、チケット申込時ど）
+            </p>
+            <p>2.アクセス情報（Cookie、IPアドレス、ブラウザ情報）</p>
+            <p>3.アンケートへの回答内容</p>
+          </div>
+          <div class="privacy__box">
+            <h2>利用目的</h2>
+            <p class="no-indent">取得した情報は、以下の目的で利用します。</p>
+            <p>1.イベントに関する連絡、案内、申込受付、問い合わせ対応</p>
+            <p>2.イベント運営上必要な統計データの作成、分析</p>
+            <p>3.サイトの利便性向上、利用状況の分析</p>
+          </div>
+          <div class="privacy__box">
+            <h2>情報の管理</h2>
+            <p class="no-indent">
+              取得した個人情報は、漏えい、滅失、毀損が起きないよう安全管理措置を講じ、適切に管理します。
+            </p>
+          </div>
+          <div class="privacy__box">
+            <h2>第三者提供</h2>
+            <p class="no-indent">
+              法令で認められる場合を除き、本人の同意なく個人情報を第三者に提供しません。
+            </p>
+          </div>
+          <div class="privacy__box">
+            <h2>委託先の管理</h2>
+            <p class="no-indent">
+              イベント運営やシステム管理を外部事業者に委託する場合は、個人情報を適切に扱う事業者を選定し、必要な契約を締結した上で委託します。
+            </p>
+          </div>
+          <div class="privacy__box">
+            <h2>アクセス解析ツール</h2>
+            <p class="no-indent">
+              当サイトでは、Google
+              Analyticsなどのアクセス解析ツールを利用する場合があります。これらのツールはCookieを使用し、利用者の匿名のトラフィックデータを収集します。詳細はGoogle社のプライバシーポリシーをご確認ください。
+            </p>
+          </div>
+          <div class="privacy__box">
+            <h2>個人情報の開示・訂正・削除</h2>
+            <p class="no-indent">
+              利用者から自己の個人情報の開示・訂正・削除等の請求があった場合、法令に基づき速やかに対応します。
+            </p>
+          </div>
+          <div class="privacy__box">
+            <h2>お問い合わせ窓口</h2>
+            <p class="no-indent">
+              個人情報の取扱いに関するお問い合わせは、以下までご連絡ください。<br>
+              【お問い合わせ先】葛飾区環境部環境課<br>
+              みどりと花のフェア担当【電話番号】03-5654-6774
+            </p>
+          </div>
+          <div class="privacy__box">
+            <h2>プライバシーポリシーの変更</h2>
+            <p class="no-indent">
+              本プライバシーポリシーは、必要に応じて内容を変更することがあります。変更後のポリシーは、当サイトに掲載した時点で効力を生じます。
+            </p>
+          </div>
+        </section>
+      </article>
+      <%-include(`${relative_path}_partial/_footer`,{lang:lang,pageID:pageID,relative_path:relative_path})%>
+    </div>
+    <%- include( `${relative_path}_partial/_foot`,{lang:lang,pageID:pageID,relative_path:relative_path}) %>
+  </body>
+</html>

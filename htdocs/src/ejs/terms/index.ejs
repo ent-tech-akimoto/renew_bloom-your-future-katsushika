@@ -1,0 +1,79 @@
+<%
+var pageID = "terms";
+var lang = "ja";
+var relative_path = "../";
+var myMeta = meta[lang][pageID];
+%>
+<!DOCTYPE html>
+<html lang="<%= lang %>">
+  <%-include(`${relative_path}_partial/_head`,{lang:lang,pageID:pageID,relative_path:relative_path})%>
+
+  <body>
+    <div class="page">
+      <%-include(`${relative_path}_partial/_header`,{lang:lang,pageID:pageID,relative_path:relative_path})%>
+      <article class="terms__wrapper">
+        <div class="terms__bg"></div>
+        <p class="common__bread">
+          <span
+            ><a href="https://test-bloom-your-future-katsushika.entacl.net/"
+              >TOP</a
+            ></span
+          ><span>利用規約</span>
+        </p>
+        <h1 class="common__h1 terms__h1">利用規約</h1>
+        <section class="terms__section">
+          <div class="terms__box">
+            <h2>第1条（適用）</h2>
+            <p>
+              1.本規約は、当方が配信・公開するすべてのコンテンツ（動画、画像、音声、イラスト、SNS投稿を含みます）に適用されます。
+            </p>
+            <p>
+              2.利用者は本規約に同意した上で、当方のコンテンツを利用するものとします。
+            </p>
+          </div>
+          <div class="terms__box">
+            <h2>第2条（ファンアート・二次創作）</h2>
+            <p>
+              1.利用者は、当方を題材としたファンアート・二次創作を行うことができます。
+            </p>
+            <p>
+              2.営利目的での利用を希望する場合は、事前に当方の許可を得てください。
+            </p>
+            <p>
+              3.公序良俗に反する内容や、当方のイメージを著しく損なう表現は禁止します。
+            </p>
+          </div>
+          <div class="terms__box">
+            <h2>第3条（禁止事項）</h2>
+            <p class="no-indent">利用者は以下の行為を行ってはなりません。</p>
+            <p>
+              1.営利目的での利用を希望する場合は、事前に当方の許可を得てください。
+            </p>
+            <p>2.当方の活動や他の利用者を誹謗中傷する行為</p>
+            <p>3.法律・規制に違反する行為。</p>
+            <p>4.その他、当方が不適切と判断する行為。</p>
+          </div>
+          <div class="terms__box">
+            <h2>第4条（免責事項）</h2>
+            <p>
+              1.当方は、利用者間または第三者とのトラブルについて一切の責任を負いません。
+            </p>
+            <p>
+              2.当方は、予告なくコンテンツの内容を変更・削除する場合があります
+            </p>
+          </div>
+          <div class="terms__box">
+            <h2>第5条（規約の変更）</h2>
+            <p class="no-indent">
+              当方は、必要に応じて本規約を変更することができます。変更後の規約は、当方が指定する方法で告知した時点から効力を生じるものとします。<br>
+              付則<br>
+              本規約は、[制定日]より施行します。<br>
+            </p>
+          </div>
+        </section>
+      </article>
+      <%-include(`${relative_path}_partial/_footer`,{lang:lang,pageID:pageID,relative_path:relative_path})%>
+    </div>
+    <%- include( `${relative_path}_partial/_foot`,{lang:lang,pageID:pageID,relative_path:relative_path}) %>
+  </body>
+</html>

@@ -1,0 +1,102 @@
+@use '../setting/setting' as *;
+@use '../setting/mixin' as *;
+
+.privacy{
+  &__wrapper{
+    position: relative;
+    margin-top: get_vw(-46);
+    padding-top: get_vw(126);
+    padding-bottom: get_vw(82);
+    @include pc-fluid-size(margin-top, (-0));
+    @include pc-fluid-size(padding-top, (190));
+    @include pc-fluid-size(padding-bottom, (100));
+
+  }
+  &__bg{
+    background-image: url('../img/common/beige_bg.png');
+    background-size: 100% 100%;
+    width: 100%;
+    height: get_vw(232);
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 0;
+    pointer-events: none;
+    @include pc-fluid-size(height, (378));
+    @include min-screen{
+      background-image: url('../img/common/beige_bg_pc.png');
+    }
+  }
+  &__bread{
+    width: 100%;
+    position: relative;
+    margin-inline: auto;
+    font-size: get_vw(14);
+    color: $c_black;
+    padding-left: get_vw(20);
+    @include pc-fluid-size(width, (1440));
+    @include pc-fluid-size(font-size, (14));
+    @include pc-fluid-size(padding-left, (80));
+    & span{
+      &::after{
+        content: '>';
+        margin: 0 get_vw(8);
+        @include pc-fluid-size(margin, (0 8));
+      }
+      &:last-of-type::after{
+        content: '';
+        margin: 0;
+      }
+    }
+  }
+  &__h1{
+    margin-top: get_vw(32);
+    position: relative;
+    font-size: get_vw(24);
+    color: $c_black;
+    text-align: center;
+    @include pc-fluid-size(margin-top, (40));
+    @include pc-fluid-size(font-size, (56));
+  }
+  &__section{
+    margin-top: get_vw(104);
+    padding-inline: get_vw(20);
+    @include pc-fluid-size(margin-top, (185));
+    @include pc-fluid-size(padding-inline, (220));
+  }
+  &__box{
+    &:not(:first-child){
+      margin-top: get_vw(40);
+      @include pc-fluid-size(margin-top, (40));
+    }
+    & h2{
+      font-size: get_vw(24);
+      font-weight: 500;
+      line-height: calc(40/24);
+      @include pc-fluid-size(font-size, (24));
+    }
+    & p{
+      font-size: get_vw(18);
+      font-weight: 300;
+      line-height: calc(28/18);
+      text-indent: -1em;
+      padding-left: 1em;
+      @include pc-fluid-size(font-size, (18));
+      @include min-screen{
+        line-height: calc(40/18);
+      }
+      &:first-of-type{
+        margin-top: get_vw(10);
+        @include pc-fluid-size(margin-top, (10));
+      }
+      &.no-indent{
+        text-indent: 0;
+        padding-left: 0;
+      }
+      &.medium{
+        font-weight: 500;
+      }
+    }
+  }
+}

@@ -93,10 +93,27 @@
           cursor: pointer;
         }
         &:hover{
-          background-color: $c_green;
           & a{
             color: $c_white;
           }
+        }
+        &.main:hover{
+          background-color: $c_green;
+        }
+        &.tora:hover{
+          background-color: $c_red;
+        }
+        &.kochi:hover{
+          background-color: $c_blue;
+        }
+        &.wing:hover{
+          background-color: $c_orange;
+        }
+        &.monchi:hover{
+          background-color: $c_pink;
+        }
+        &.iris:hover{
+          background-color: $c_purple;
         }
         &:first-child{
           margin-left: get_vw(20);
@@ -177,7 +194,6 @@
     margin-top: get_vw(40);
     font-size: get_vw(24);
     font-weight: 500;
-    color: $c_green;
     line-height: calc(32/24);
     @include pc-fluid-size(margin-top, (40));
     @include pc-fluid-size(font-size, (24));
@@ -329,12 +345,12 @@
   &__txt-last{
     margin-top: get_vw(80);
     flex-shrink: 0;
-    font-size: get_vw(18);
+    font-size: get_vw(19);
     font-weight: 500;
     line-height: calc(28/18);
     text-align: center;
     position: relative;
     @include pc-fluid-size(margin-top, (100));
-    @include pc-fluid-size(font-size, (18));
+    @include pc-fluid-size(font-size, (19));
   }
 }

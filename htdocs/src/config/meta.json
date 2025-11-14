@@ -46,6 +46,15 @@
     },
     "news-detail": {
       "title": "お知らせ詳細"
+    },
+    "terms": {
+      "title": "利用規約"
+    },
+    "privacy": {
+      "title": "プライバシーポリシー"
+    },
+    "sitemap": {
+      "title": "サイトマップ"
     }
   }
 }
