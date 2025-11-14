@@ -391,11 +391,14 @@
       @include pc-fluid-size(width, (18));
       @include pc-fluid-size(height, (15));
       position: absolute;
-      top: 25%;
+      top: calc(50% - #{get_vw(23, $vp_pc)});
       right: get_vw(0);
       transform: translateY(-50%);
       opacity: 0;
       transition: opacity 0.4s ease;
+      @include min-screen(1440px) {
+        top: calc(50% - 23px);
+      }
     }
     &.new{
       .news__cate{

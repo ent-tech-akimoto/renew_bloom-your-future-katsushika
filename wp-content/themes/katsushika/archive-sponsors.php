@@ -28,8 +28,7 @@ get_header();
   </a>
 
   <?php
-  // ===== 個人向け =====
-  // ACFラジオ「sponsors_category」の値は 'individual' / 'group' を想定（必要なら値を合わせてください）
+  // 個人向け
   $individual_args = [
     'post_type'      => 'sponsors',
     'post_status'    => 'publish',
@@ -41,14 +40,13 @@ get_header();
         'compare' => '=',
       ],
     ],
-    // ピックアップ優先（チェックが入ったものを先頭に）
     'meta_key'       => 'sponsors_pickup',
     'orderby'        => [
-      'meta_value' => 'DESC', // チェックあり(1など) が先頭
-      'date'       => 'DESC', // 同じなら新しい順
+      'meta_value' => 'DESC',
+      'date'       => 'DESC',
     ],
   ];
-  $individual_query = new WP_Query( $individual_args );
+  $individual_query = new WP_Query($individual_args);
   ?>
   <section id="anchor-individual" class="sponsors__section">
     <h2 class="sponsors__h2">
@@ -58,32 +56,37 @@ get_header();
       個人向けの説明入ります個人向けの説明入ります個人向けの説明入ります個人向けの説明入ります個人向けの説明入ります個人向けの説明入ります個人向けの説明入ります個人向けの説明入ります個人向けの説明入ります個人向けの説明入ります個人向けの説明入ります個人向けの説明入ります個人向けの説明入ります
       個人向けの説明入ります個人向けの説明入ります個人向けの説明入ります個人向けの説明入ります個人向けの説明入ります
     </p>
-
-    <?php if ( $individual_query->have_posts() ) : ?>
+    <?php if ($individual_query->have_posts()) : ?>
     <p class="sponsors__zero-txt" style="display:none;">該当する募集はありませんでした。</p>
     <ul class="sponsors__box-list">
-      <?php while ( $individual_query->have_posts() ) : $individual_query->the_post(); ?>
+      <?php while ($individual_query->have_posts()) : $individual_query->the_post(); ?>
       <?php
           // ACF: サムネイル
           $thumb = function_exists('get_field') ? get_field('sponsors_thumbnail') : '';
           $thumb_url = '';
-          if ( is_array( $thumb ) && ! empty( $thumb['url'] ) ) {
+          if (is_array($thumb) && ! empty($thumb['url'])) {
             $thumb_url = $thumb['url'];
           }
-          // ACF: 募集期間（テキストエリア）
+          // ACF: 募集期間
           $period = function_exists('get_field') ? get_field('sponsors_period') : '';
           ?>
       <li>
-        <a class="sponsors__box-item" href="<?php the_permalink(); ?>">
+        <?php
+        $new_days   = 7;
+        $now_local  = current_time('timestamp');
+        $published  = get_post_time('U');
+        $is_new     = ($now_local - $published) < ($new_days * DAY_IN_SECONDS);
+        ?>
+        <a class="sponsors__box-item <?php echo $is_new ? ' new' : ''; ?>" href="<?php the_permalink(); ?>">
           <div class="sponsors__box-img">
-            <?php if ( $thumb_url ) : ?>
-            <img src="<?php echo esc_url( $thumb_url ); ?>" alt="">
+            <?php if ($thumb_url) : ?>
+            <img src="<?php echo esc_url($thumb_url); ?>" alt="">
             <?php else : ?>
             <img src="/assets/img/common/thumbnail.png" alt="">
             <?php endif; ?>
           </div>
           <p class="sponsors__box-date">
-            <?php echo $period ? esc_html( $period ) : esc_html( get_the_date( 'Y年 n月j日' ) ); ?>
+            <?php echo $period ? esc_html($period) : esc_html(get_the_date('Y年 n月j日')); ?>
           </p>
           <h4 class="sponsors__box-ttl">
             <?php the_title(); ?>
@@ -115,7 +118,7 @@ get_header();
       'date'       => 'DESC',
     ],
   ];
-  $group_query = new WP_Query( $group_args );
+  $group_query = new WP_Query($group_args);
   ?>
   <section id="anchor-group" class="sponsors__section">
     <h2 class="sponsors__h2">
@@ -127,30 +130,36 @@ get_header();
       これらの協賛展示により、新たなコミュニティを形成し、本フェア終了後も活動や購入等の継続を目指します。
     </p>
 
-    <?php if ( $group_query->have_posts() ) : ?>
+    <?php if ($group_query->have_posts()) : ?>
     <p class="sponsors__zero-txt" style="display:none;">該当する募集はありませんでした。</p>
     <ul class="sponsors__box-list">
-      <?php while ( $group_query->have_posts() ) : $group_query->the_post(); ?>
+      <?php while ($group_query->have_posts()) : $group_query->the_post(); ?>
       <?php
           $thumb = function_exists('get_field') ? get_field('sponsors_thumbnail') : '';
           $thumb_url = '';
-          if ( is_array( $thumb ) && ! empty( $thumb['url'] ) ) {
+          if (is_array($thumb) && ! empty($thumb['url'])) {
             $thumb_url = $thumb['url'];
           }
 
           $period = function_exists('get_field') ? get_field('sponsors_period') : '';
           ?>
       <li>
-        <a class="sponsors__box-item" href="<?php the_permalink(); ?>">
+        <?php
+        $new_days   = 7;
+        $now_local  = current_time('timestamp');
+        $published  = get_post_time('U');
+        $is_new     = ($now_local - $published) < ($new_days * DAY_IN_SECONDS);
+        ?>
+        <a class="sponsors__box-item <?php echo $is_new ? ' new' : ''; ?>" href="<?php the_permalink(); ?>">
           <div class="sponsors__box-img">
-            <?php if ( $thumb_url ) : ?>
-            <img src="<?php echo esc_url( $thumb_url ); ?>" alt="">
+            <?php if ($thumb_url) : ?>
+            <img src="<?php echo esc_url($thumb_url); ?>" alt="">
             <?php else : ?>
             <img src="/assets/img/common/thumbnail.png" alt="">
             <?php endif; ?>
           </div>
           <p class="sponsors__box-date">
-            <?php echo $period ? esc_html( $period ) : esc_html( get_the_date( 'Y年 n月j日' ) ); ?>
+            <?php echo $period ? esc_html($period) : esc_html(get_the_date('Y年 n月j日')); ?>
           </p>
           <h4 class="sponsors__box-ttl">
             <?php the_title(); ?>

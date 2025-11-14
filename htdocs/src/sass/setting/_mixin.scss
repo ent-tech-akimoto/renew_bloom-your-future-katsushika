@@ -475,6 +475,7 @@
   font-size: get_vw(10);
   font-weight: $w_medium;
   color: $c_gray;
+  line-height: 1.5;
   padding-left: get_vw(20);
   position: relative;
   @include pc-fluid-size(font-size, (14));
@@ -482,6 +483,10 @@
   
   @include max-screen {
     padding: 0 get_vw(20);
+  }
+
+  @include min-screen() {
+    line-height: 1.35;
   }
 
   & span {
