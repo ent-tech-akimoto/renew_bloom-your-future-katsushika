@@ -61,23 +61,32 @@ get_header();
     <ul class="sponsors__box-list">
       <?php while ($individual_query->have_posts()) : $individual_query->the_post(); ?>
       <?php
-          // ACF: サムネイル
-          $thumb = function_exists('get_field') ? get_field('sponsors_thumbnail') : '';
-          $thumb_url = '';
-          if (is_array($thumb) && ! empty($thumb['url'])) {
-            $thumb_url = $thumb['url'];
-          }
-          // ACF: 募集期間
-          $period = function_exists('get_field') ? get_field('sponsors_period') : '';
-          ?>
+      // ACF: サムネイル
+      $thumb = function_exists('get_field') ? get_field('sponsors_thumbnail') : '';
+      $thumb_url = '';
+      if (is_array($thumb) && ! empty($thumb['url'])) {
+        $thumb_url = $thumb['url'];
+      }
+      // ACF: 募集期間
+      $period = function_exists('get_field') ? get_field('sponsors_period') : '';
+      // NEW判定
+      $new_days   = 7;
+      $now_local  = current_time('timestamp');
+      $published  = get_post_time('U');
+      $is_new     = ($now_local - $published) < ($new_days * DAY_IN_SECONDS);
+      // ピックアップ判定
+      $is_pickup = function_exists('get_field') ? get_field('sponsors_pickup') : false;
+      // クラス組み立て
+      $classes = 'sponsors__box-item';
+      if ($is_pickup) {
+        $classes .= ' pickup';
+      }
+      if ($is_new) {
+        $classes .= ' new';
+      }
+      ?>
       <li>
-        <?php
-        $new_days   = 7;
-        $now_local  = current_time('timestamp');
-        $published  = get_post_time('U');
-        $is_new     = ($now_local - $published) < ($new_days * DAY_IN_SECONDS);
-        ?>
-        <a class="sponsors__box-item <?php echo $is_new ? ' new' : ''; ?>" href="<?php the_permalink(); ?>">
+        <a class="<?php echo esc_attr($classes); ?>" href="<?php the_permalink(); ?>">
           <div class="sponsors__box-img">
             <?php if ($thumb_url) : ?>
             <img src="<?php echo esc_url($thumb_url); ?>" alt="">
@@ -88,9 +97,7 @@ get_header();
           <p class="sponsors__box-date">
             <?php echo $period ? esc_html($period) : esc_html(get_the_date('Y年 n月j日')); ?>
           </p>
-          <h4 class="sponsors__box-ttl">
-            <?php the_title(); ?>
-          </h4>
+          <h4 class="sponsors__box-ttl"><?php the_title(); ?></h4>
         </a>
       </li>
       <?php endwhile; wp_reset_postdata(); ?>
@@ -135,22 +142,32 @@ get_header();
     <ul class="sponsors__box-list">
       <?php while ($group_query->have_posts()) : $group_query->the_post(); ?>
       <?php
-          $thumb = function_exists('get_field') ? get_field('sponsors_thumbnail') : '';
-          $thumb_url = '';
-          if (is_array($thumb) && ! empty($thumb['url'])) {
-            $thumb_url = $thumb['url'];
-          }
-
-          $period = function_exists('get_field') ? get_field('sponsors_period') : '';
-          ?>
+      // ACF: サムネイル
+      $thumb = function_exists('get_field') ? get_field('sponsors_thumbnail') : '';
+      $thumb_url = '';
+      if (is_array($thumb) && ! empty($thumb['url'])) {
+        $thumb_url = $thumb['url'];
+      }
+      // ACF: 募集期間
+      $period = function_exists('get_field') ? get_field('sponsors_period') : '';
+      // NEW判定
+      $new_days   = 7;
+      $now_local  = current_time('timestamp');
+      $published  = get_post_time('U');
+      $is_new     = ($now_local - $published) < ($new_days * DAY_IN_SECONDS);
+      // ピックアップ判定
+      $is_pickup = function_exists('get_field') ? get_field('sponsors_pickup') : false;
+      // クラス組み立て
+      $classes = 'sponsors__box-item';
+      if ($is_pickup) {
+        $classes .= ' pickup';
+      }
+      if ($is_new) {
+        $classes .= ' new';
+      }
+      ?>
       <li>
-        <?php
-        $new_days   = 7;
-        $now_local  = current_time('timestamp');
-        $published  = get_post_time('U');
-        $is_new     = ($now_local - $published) < ($new_days * DAY_IN_SECONDS);
-        ?>
-        <a class="sponsors__box-item <?php echo $is_new ? ' new' : ''; ?>" href="<?php the_permalink(); ?>">
+        <a class="<?php echo esc_attr($classes); ?>" href="<?php the_permalink(); ?>">
           <div class="sponsors__box-img">
             <?php if ($thumb_url) : ?>
             <img src="<?php echo esc_url($thumb_url); ?>" alt="">
@@ -161,9 +178,7 @@ get_header();
           <p class="sponsors__box-date">
             <?php echo $period ? esc_html($period) : esc_html(get_the_date('Y年 n月j日')); ?>
           </p>
-          <h4 class="sponsors__box-ttl">
-            <?php the_title(); ?>
-          </h4>
+          <h4 class="sponsors__box-ttl"><?php the_title(); ?></h4>
         </a>
       </li>
       <?php endwhile; wp_reset_postdata(); ?>
