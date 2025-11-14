@@ -76,9 +76,14 @@ $total_pages = (int) $news_query->max_num_pages;
         <input type="hidden" name="cat" id="cateInput" value="<?php echo esc_attr($current_cat_param); ?>">
         <div class="news__form-label cate"></div>
         <div class="news__form-box cate">
-          <span class="news__form-select">
-            <?php echo esc_html($current_cat_name); ?>
+          <?php if (!is_wp_error($news_cats) && !empty($news_cats)) : ?>
+          <?php foreach ($news_cats as $term) : ?>
+          <span class="news__form-select" data-cat="<?php echo esc_attr($term->slug); ?>"
+            data-id="<?php echo esc_attr($term->term_id); ?>">
+            <?php echo esc_html($term->name); ?>
           </span>
+          <?php endforeach; ?>
+          <?php endif; ?>
         </div>
         <div class="news__form-modal cate" data-modal="modal3">
           <div class="news__modal-flex cate">
