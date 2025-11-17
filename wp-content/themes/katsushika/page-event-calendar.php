@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: Event Calendar
+Template Name: イベントカレンダー
 */
 $slug = 'calendar';
 get_header();

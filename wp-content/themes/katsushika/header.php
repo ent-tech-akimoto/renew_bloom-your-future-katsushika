@@ -146,10 +146,10 @@ $url         = 'https://bloom-your-future-katsushika.jp/';
           </div>
           <ul class="gnavi__menu">
             <li class="gnavi__menu--item menu-about">
-              <a href="#">開催概要</a>
+              <a href="/overview/">開催概要</a>
             </li>
             <li class="gnavi__menu--item menu-area">
-              <a href="#">開催エリア</a>
+              <a href="/area/">開催エリア</a>
             </li>
             <li class="gnavi__menu--item menu-event">
               <a href="/event/">イベント情報</a>
@@ -168,10 +168,10 @@ $url         = 'https://bloom-your-future-katsushika.jp/';
               </ul>
             </li>
             <li class="gnavi__menu--item menu-sponsorinfo">
-              <a href="#">協賛募集</a>
+              <a href="/support/">協賛募集</a>
             </li>
             <li class="gnavi__menu--item menu-access">
-              <a href="#">アクセス情報</a>
+              <a href="/access/">アクセス情報</a>
             </li>
           </ul>
         </div>
@@ -185,10 +185,10 @@ $url         = 'https://bloom-your-future-katsushika.jp/';
         <nav id="js-header-nav" class="header__nav">
           <ul class="header__menu -main">
             <li class="header__menu--item menu-about">
-              <a href="#">開催概要</a>
+              <a href="/overview/">開催概要</a>
             </li>
             <li class="header__menu--item menu-area">
-              <a href="#">開催エリア</a>
+              <a href="/area/">開催エリア</a>
             </li>
             <li class="header__menu--item menu-event">
               <a href="/event/">イベント情報</a>
@@ -207,10 +207,10 @@ $url         = 'https://bloom-your-future-katsushika.jp/';
               </ul>
             </li>
             <li class="header__menu--item menu-sponsorinfo">
-              <a href="#">協賛募集</a>
+              <a href="/support/">協賛募集</a>
             </li>
             <li class="header__menu--item menu-access">
-              <a href="#">アクセス情報</a>
+              <a href="/access/">アクセス情報</a>
             </li>
           </ul>
           <div class="header__utility">
@@ -219,7 +219,7 @@ $url         = 'https://bloom-your-future-katsushika.jp/';
                 <a href="/news/">お知らせ</a>
               </li>
               <li class="header__menu--item menu-sub">
-                <a href="#">関連サイト</a>
+                <a href="/related/">関連サイト</a>
               </li>
             </ul>
             <div id="google_translate_element"></div>
