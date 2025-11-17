@@ -19,7 +19,7 @@
   &__swiper-slide{
     position: relative;
     width: get_vw(370);
-    margin: 0 get_vw(5);
+    margin: 0 get_vw(10);
     border-radius: get_vw(0) get_vw(0) get_vw(20) get_vw(20);
     @include pc-fluid-size(width, (1280));
     @include pc-fluid-size(margin, (0 41));
