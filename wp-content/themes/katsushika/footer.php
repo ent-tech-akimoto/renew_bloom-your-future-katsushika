@@ -144,20 +144,20 @@
         <div class="footer__block">
           <p class="footer__block--tit">Contents</p>
           <nav class="footer__nav">
-            <a href="">開催概要</a>
-            <a href="">開催エリア</a>
+            <a href="/overview/">開催概要</a>
+            <a href="/area/">開催エリア</a>
             <a href="/event/">イベント情報</a>
             <a href="/sponsors/">募集情報</a>
-            <a href="/sponsors/list/">協賛募集</a>
-            <a href="">アクセス情報</a>
+            <a href="/support/">協賛募集</a>
+            <a href="/access/">アクセス情報</a>
             <a href="/news/">お知らせ</a>
-            <a href="">関連サイト</a>
+            <a href="/related/">関連サイト</a>
             <a href="">お問い合わせ</a>
           </nav>
           <nav class="footer__subnav">
-            <a href="">利用規約</a>
-            <a href="">プライバシーポリシー</a>
-            <a href="">運用ポリシーサイトマップ</a>
+            <a href="/terms/">利用規約</a>
+            <a href="/privacy/">プライバシーポリシー</a>
+            <a href="/sitemap/">運用ポリシーサイトマップ</a>
           </nav>
           <p class="footer__block--tit">Follow us</p>
           <div class="footer__sns">

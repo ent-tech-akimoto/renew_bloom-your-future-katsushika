@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: Sponsors List
+Template Name: 協力企業・団体一覧
 */
 $slug = 'sponsors-list';
 get_header();
