@@ -800,10 +800,12 @@
       position: relative;
       letter-spacing: 0.1em;
       @include pc-fluid-size(margin-top, (0));
+      @include pc-fluid-size(padding-left, (48));
       @include pc-fluid-size(width, (244));
       @include pc-fluid-size(font-size, (18));
       @include min-screen{
-        @include center;
+        display: flex;
+        align-items: center;
       }
       @include after{
         background-color: $c_white;
