@@ -45,7 +45,15 @@ get_header();
         </div>
       </div>
     </div>
-    <a href="/news/" class="detail__back"><span>もどる</span></a>
+    <?php
+    $back_url = wp_get_referer();
+    if (!$back_url || strpos($back_url, home_url('/news/')) === false) {
+      $back_url = home_url('/news/#search');
+    } else {
+      $back_url = strtok($back_url, '#') . '#search';
+    }
+    ?>
+    <a href="<?php echo esc_url($back_url); ?>" class="detail__back js-history-back"><span>もどる</span></a>
   </div>
 </article>
 <?php endwhile; endif; ?>
