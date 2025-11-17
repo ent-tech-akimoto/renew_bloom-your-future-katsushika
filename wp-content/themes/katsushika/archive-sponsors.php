@@ -24,7 +24,7 @@ get_header();
     </ul>
   </nav>
   <a href="/sponsors-list/" class="sponsors__btn">
-    <span>協力企業・団体一覧はこちら</span>
+    <span>協賛企業・団体一覧はこちら</span>
   </a>
 
   <?php

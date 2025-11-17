@@ -14,7 +14,7 @@ get_header();
   <section class="related__section link">
     <h2 class="event__h2">協賛企業・団体</h2>
     <a href="/sponsors/list/" class="related__btn">
-      <span>協力企業・団体一覧はこちら</span>
+      <span>協賛企業・団体一覧はこちら</span>
     </a>
   </section>
   <section class="related__section">

@@ -27,10 +27,8 @@ if (is_home()) {
     // カスタム投稿タイプのスラッグを取得（例: event → 'event'）
     $slug = $post_type;
   } elseif (is_page()) {
-    // 固定ページの場合
     $slug = get_post_field('post_name', get_the_ID());
   } else {
-    // 通常の投稿の場合
     $slug = get_post_field('post_name', get_the_ID());
   }
 } elseif (is_post_type_archive()) {
@@ -123,7 +121,7 @@ $url         = 'https://bloom-your-future-katsushika.jp/';
               <span class="header__date--period">5/16<img src="/assets/data/webp/common/icon_polygon.webp"
                   alt="">6/14</span>
             </p>
-            <p class="header__countdown"> 開催まで <span class="header__countdown--num">360<small>日</small></span>
+            <p class="header__countdown">開催まで<span class="header__countdown--num">360<small>日</small></span>
             </p>
           </div>
         </div>
@@ -163,7 +161,7 @@ $url         = 'https://bloom-your-future-katsushika.jp/';
               <a href="/sponsors/">募集情報</a>
               <ul class="gnavi__submenu">
                 <li class="gnavi__submenu--item">
-                  <a href="/sponsors/list/">&gt; 協力企業・団体一覧</a>
+                  <a href="/sponsors/list/">&gt; 協賛企業・団体一覧</a>
                 </li>
               </ul>
             </li>
@@ -202,7 +200,7 @@ $url         = 'https://bloom-your-future-katsushika.jp/';
               <a href="/sponsors/">募集情報</a>
               <ul class="header__submenu">
                 <li class="header__submenu--item">
-                  <a href="/sponsors/list/">&gt; 協力企業・団体一覧</a>
+                  <a href="/sponsors/list/">&gt; 協賛企業・団体一覧</a>
                 </li>
               </ul>
             </li>
