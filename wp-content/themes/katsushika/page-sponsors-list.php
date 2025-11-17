@@ -201,13 +201,13 @@ get_header();
         'type_class' => 'gold',
         'list_class' => 'lv2',
         'en'         => 'SPECIAL',
-        'ja'         => 'スペシャルパートナー',
+        'ja'         => 'スペシャルサプライヤー',
       ),
-      'media' => array(
+      'supplier' => array(
         'type_class' => 'bronze',
         'list_class' => 'lv4',
-        'en'         => 'MEDIA',
-        'ja'         => 'メディアパートナー',
+        'en'         => 'SUPPLIER',
+        'ja'         => 'サプライヤー',
       ),
     );
     $grouped_goods = array();
@@ -239,10 +239,10 @@ get_header();
         if ($label === '') {
           continue;
         }
-        if ($label === 'スペシャルパートナー') {
+        if ($label === 'スペシャルサプライヤー') {
           $label = 'special';
-        } elseif ($label === 'メディアパートナー') {
-          $label = 'media';
+        } elseif ($label === 'サプライヤー') {
+          $label = 'supplier';
         }
         if (!isset($grouped_goods[$label])) {
           $grouped_goods[$label] = array();
@@ -309,12 +309,12 @@ get_header();
         'type_class' => 'gold',
         'list_class' => 'lv2',
         'en'         => 'SPECIAL',
-        'ja'         => 'スペシャルパートナー',
+        'ja'         => 'スペシャルメディアパートナー',
       ),
       'media' => array(
         'type_class' => 'bronze',
         'list_class' => 'lv4',
-        'en'         => 'MEDIA',
+        'en'         => 'MEDIA PARTNER',
         'ja'         => 'メディアパートナー',
       ),
     );
@@ -347,7 +347,7 @@ get_header();
         if ($label === '') {
           continue;
         }
-        if ($label === 'スペシャルパートナー') {
+        if ($label === 'スペシャルメディアパートナー') {
           $label = 'special';
         } elseif ($label === 'メディアパートナー') {
           $label = 'media';
