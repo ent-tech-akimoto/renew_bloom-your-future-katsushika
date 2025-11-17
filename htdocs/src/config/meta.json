@@ -47,6 +47,9 @@
     "news-detail": {
       "title": "お知らせ詳細"
     },
+    "related": {
+      "title": "関連サイト"
+    },
     "terms": {
       "title": "利用規約"
     },
