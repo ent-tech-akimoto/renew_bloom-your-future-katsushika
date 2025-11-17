@@ -1,0 +1,70 @@
+<%
+var pageID = "related";
+var lang = "ja";
+var relative_path = "../";
+var myMeta = meta[lang][pageID];
+%>
+<!DOCTYPE html>
+<html lang="<%= lang %>">
+  <%-include(`${relative_path}_partial/_head`,{lang:lang,pageID:pageID,relative_path:relative_path})%>
+
+  <body>
+    <div class="page">
+      <%-include(`${relative_path}_partial/_header`,{lang:lang,pageID:pageID,relative_path:relative_path})%>
+      <article class="related__wrapper">
+        <div class="related__bg"></div>
+        <p class="common__bread">
+          <span
+            ><a href="https://test-bloom-your-future-katsushika.entacl.net/"
+              >TOP</a
+            ></span
+          ><span>関連サイト</span>
+        </p>
+        <h1 class="related__h1">関連サイト</h1>
+        <section class="related__section link">
+          <h2 class="event__h2">協賛企業・団体</h2>
+          <a href="/sponsors/list/index.html" class="related__btn">
+            <span>協力企業・団体一覧はこちら</span>
+          </a>
+        </section>
+        <section class="related__section">
+          <p class="related__zero-txt">該当するイベントはありませんでした。</p>
+          <ul class="related__list">
+              <li class="related__list--item">
+                  <a class="related__list--link" href="">
+                    <img class="related__list--logo" src="<%= relative_path %>assets/img/related/list/logo_ajinomoto.png" alt="">
+                  </a>
+              </li>
+              <li class="related__list--item">
+                  <a class="related__list--link" href="">
+                      <img class="related__list--logo" src="<%= relative_path %>assets/img/related/list/logo_seibu-zouen.png" alt="">
+                  </a>
+              </li>
+              <li class="related__list--item">
+                  <a class="related__list--link" href="">
+                      <img class="related__list--logo" src="<%= relative_path %>assets/img/related/list/logo_tokyu.png" alt="">
+                  </a>
+              </li>
+              <li class="related__list--item">
+                  <a class="related__list--link" href="">
+                      <img class="related__list--logo" src="<%= relative_path %>assets/img/related/list/logo_alsok.png" alt="">
+                  </a>
+              </li>
+              <li class="related__list--item">
+                <a class="related__list--link" href="">
+                    <img class="related__list--logo" src="<%= relative_path %>assets/img/related/list/logo_ajinomoto.png" alt="">
+                </a>
+            </li>
+            <li class="related__list--item">
+                <a class="related__list--link" href="">
+                    <img class="related__list--logo" src="<%= relative_path %>assets/img/related/list/logo_seibu-zouen.png" alt="">
+                </a>
+            </li>
+          </ul>
+        </section>
+      </article>
+      <%-include(`${relative_path}_partial/_footer`,{lang:lang,pageID:pageID,relative_path:relative_path})%>
+    </div>
+    <%- include( `${relative_path}_partial/_foot`,{lang:lang,pageID:pageID,relative_path:relative_path}) %>
+  </body>
+</html>
