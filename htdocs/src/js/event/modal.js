@@ -13,6 +13,9 @@ export function initEventModals() {
     // Add click event to each box
     boxes.forEach(box => {
         box.addEventListener('click', (e) => {
+            // Ignore clicks on close buttons
+            if (e.target.closest('.btn-close')) return;
+            
             e.preventDefault();
             e.stopPropagation(); // Stop event from bubbling up
             // Get the modal type from parent's class (area, date, cate, or word)

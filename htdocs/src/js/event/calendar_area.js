@@ -191,7 +191,11 @@ export function initCalendarMapButtons() {
     // Delegate click for removing selected area
     [mainFormBox, modalFormBox].forEach(box => {
       box.addEventListener('click', e => {
-        if (!e.target.classList.contains('btn-close')) return;
+        const closeBtn = e.target.closest('.btn-close');
+        if (!closeBtn) return; // Not a close button → ignore
+
+        e.preventDefault();
+        e.stopPropagation(); // <--- prevent modal toggle
         const parent = e.target.closest('.event__calendar-select--area');
         if (!parent) return;
         const id = parent.dataset.id;
