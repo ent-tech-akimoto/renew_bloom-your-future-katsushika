@@ -49,5 +49,11 @@ export function initCategoryButtons() {
     .filter(btn => btn.classList.contains('js-active'))
     .map(btn => btn.dataset.id);
 
+  // --- Add this: default select all if nothing is active ---
+  if (!selected.length) {
+    selected = [...catButtons].map(btn => btn.dataset.id);
+    catButtons.forEach(btn => btn.classList.add('js-active'));
+  }
+
   updateFormBoxes();
 }

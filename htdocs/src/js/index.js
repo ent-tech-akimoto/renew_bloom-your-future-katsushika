@@ -71,10 +71,6 @@ if (window.pageID === 'news') {
   const commonForm = require('./common/form.js');
 }
 
-if (window.pageID === 'news-detail') {
-  const backButton = require('./news/back.js');
-}
-
 if (window.pageID === 'support') {
   const modalMap = require('./support/modal_map.js');
 }
