@@ -12,17 +12,21 @@ window.addEventListener('scroll', function () {
   });
 });
 
-document.getElementById('pageTop').addEventListener('click', () => {
-  window.scrollTo({
-    top: 0,
-    behavior: 'smooth'
+const pageTop = document.getElementById('pageTop');
+if (pageTop) {
+  pageTop.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
   });
-});
+}
 
 document.addEventListener("DOMContentLoaded", () => {
   const header = document.querySelector("header");
   const headerHeight = header ? header.offsetHeight : 0;
 
+  // --- 1) Same-page smooth scroll for anchors like href="#anchor-about" ---
   document.querySelectorAll('a[href^="#anchor-"]').forEach(anchor => {
     anchor.addEventListener("click", e => {
       const targetId = anchor.getAttribute("href");
@@ -38,4 +42,23 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   });
+
+  // --- 2) Cross-page smooth scroll when arriving with hash (e.g. overview.html#anchor-about) ---
+  if (location.hash && location.hash.startsWith("#anchor-")) {
+    const target = document.querySelector(location.hash);
+    if (target) {
+      // small delay to ensure layout is ready
+      setTimeout(() => {
+        const currentHeader = document.querySelector("header");
+        const currentHeaderHeight = currentHeader ? currentHeader.offsetHeight : 0;
+
+        const position = target.getBoundingClientRect().top + window.scrollY - currentHeaderHeight;
+
+        window.scrollTo({
+          top: position,
+          behavior: "smooth"
+        });
+      }, 50);
+    }
+  }
 });
