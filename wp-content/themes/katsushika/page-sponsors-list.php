@@ -1,6 +1,6 @@
 <?php
 /*
-Template Name: 協力企業・団体一覧
+Template Name: 協賛企業・団体一覧
 */
 $slug = 'sponsors-list';
 get_header();
@@ -8,9 +8,9 @@ get_header();
 <article class="sponsors__wrapper">
   <div class="sponsors__bg"></div>
   <p class="common__bread l-page">
-    <span><a href="<?php echo esc_url(home_url('/')); ?>">TOP</a></span><span>協力企業・団体一覧</span>
+    <span><a href="<?php echo esc_url(home_url('/')); ?>">TOP</a></span><span>協賛企業・団体一覧</span>
   </p>
-  <h1 class="sponsors__h1">協力企業・団体一覧</h1>
+  <h1 class="sponsors__h1">協賛企業・団体一覧</h1>
   <section class="sponsors__section list">
     <h2 class="sponsors__h2">
       <span>全国みどりと花のフェアかつしか<br>協賛企業・団体</span>

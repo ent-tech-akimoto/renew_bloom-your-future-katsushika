@@ -97,7 +97,7 @@ function byf_sponsors_mce_plugin( $plugins ) {
 }
 add_filter( 'mce_external_plugins', 'byf_sponsors_mce_plugin' );
 
-// 協力企業・団体一覧を/sponsors/list/で表示する
+// 協賛企業・団体一覧を/sponsors/list/で表示する
 add_action('init', function () {
   add_rewrite_rule(
     '^sponsors/list/?$',
