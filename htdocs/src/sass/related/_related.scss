@@ -106,7 +106,6 @@
       flex-wrap: wrap;
       justify-content: center;
     }
-    @include pc-fluid-size(padding, (100 0 0));
     @include pc-fluid-size(gap, (80, 50));
     
     &--item {
