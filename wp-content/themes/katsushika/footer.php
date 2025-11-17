@@ -23,6 +23,8 @@
     $page_id = 'access';
   } elseif (is_archive() && !is_post_type_archive('event') && !is_post_type_archive('sponsors')) {
     $page_id = 'news';
+  } elseif (is_singular() && !is_singular('event') && !is_singular('sponsors')) {
+    $page_id = 'news-detail';
   } elseif (is_page('related')) {
     $page_id = 'related';
   } elseif (is_page('terms')) {
