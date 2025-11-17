@@ -1,26 +1,36 @@
 <?php
   if (is_front_page()) {
     $page_id = 'top';
-  } elseif (is_archive() && !is_post_type_archive('event') && !is_post_type_archive('sponsors')) {
-    $page_id = 'news';
-  } elseif (is_post_type_archive('event')) {
-    $page_id = 'event';
-  } elseif (is_post_type_archive('sponsors')) {
-    $page_id = 'sponsors';
-  } elseif (is_page('event-calendar')) {
-    $page_id = 'calendar';
-  } elseif (is_page('sponsors-list')) {
-    $page_id = 'sponsors-list';
-  } elseif (is_singular('event')) {
-    $page_id = 'event-detail';
-  } elseif (is_singular('sponsors')) {
-    $page_id = 'sponsors-detail';
-  } elseif (is_page('related')) {
-    $page_id = 'related';
   } elseif (is_page('overview')) {
     $page_id = 'overview';
   } elseif (is_page('area')) {
     $page_id = 'area';
+  } elseif (is_post_type_archive('event')) {
+    $page_id = 'event';
+  } elseif (is_singular('event')) {
+    $page_id = 'event-detail';
+  } elseif (is_page('event-calendar')) {
+    $page_id = 'calendar';
+  } elseif (is_post_type_archive('sponsors')) {
+    $page_id = 'sponsors';
+  } elseif (is_page('sponsors-list')) {
+    $page_id = 'sponsors-list';
+  } elseif (is_singular('sponsors')) {
+    $page_id = 'sponsors-detail';
+  } elseif (is_page('support')) {
+    $page_id = 'support';
+  } elseif (is_page('access')) {
+    $page_id = 'access';
+  } elseif (is_archive() && !is_post_type_archive('event') && !is_post_type_archive('sponsors')) {
+    $page_id = 'news';
+  } elseif (is_page('related')) {
+    $page_id = 'related';
+  } elseif (is_page('terms')) {
+    $page_id = 'terms';
+  } elseif (is_page('privacy')) {
+    $page_id = 'privacy';
+  } elseif (is_page('sitemap')) {
+    $page_id = 'sitemap';
   } else {
     $page_id = '';
   }
