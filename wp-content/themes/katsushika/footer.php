@@ -129,9 +129,7 @@
           </a>
         </li>
       </ul>
-      <a class="footer___sponsors--btn" href="">
-        <span>協賛企業・団体一覧はこちら</span>
-      </a>
+      <a class="footer___sponsors--btn" href="/sponsors/list/"><span>協賛企業・団体一覧はこちら</span></a>
     </div>
   </div>
   <div class="footer__main">
