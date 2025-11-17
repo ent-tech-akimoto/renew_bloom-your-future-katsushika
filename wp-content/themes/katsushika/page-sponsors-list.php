@@ -309,7 +309,7 @@ get_header();
         'type_class' => 'gold',
         'list_class' => 'lv2',
         'en'         => 'SPECIAL',
-        'ja'         => 'スペシャルメディアパートナー',
+        'ja'         => 'スペシャル<br class="pc-none">メディアパートナー',
       ),
       'media' => array(
         'type_class' => 'bronze',
@@ -368,7 +368,7 @@ get_header();
         <span><?php echo esc_html($conf['en']); ?></span>
       </h4>
       <h5 class="sponsors__list--name">
-        <span><?php echo esc_html($conf['ja']); ?></span>
+        <span><?php echo wp_kses_post($conf['ja']); ?></span>
       </h5>
       <ul class="sponsors__list--list <?php echo esc_attr($conf['list_class']); ?>">
         <?php foreach ($grouped_ads[$label_key] as $post_id) : ?>
