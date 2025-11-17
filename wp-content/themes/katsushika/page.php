@@ -9,7 +9,11 @@ if ($page_obj instanceof WP_Post) {
 ?>
 <article class="<?php echo $slug ? esc_attr($slug) . '__wrapper' : ''; ?>">
   <div class="<?php echo $slug ? esc_attr($slug) . '__bg' : ''; ?>"></div>
-  <p class="common__bread l-page">
+  <?php
+  $base_class = ['terms', 'privacy', 'sitemap'];
+  $bread_class = (is_page($base_class)) ? 'common__bread' : 'common__bread l-page';
+  ?>
+  <p class="<?php echo $bread_class; ?>">
     <span><a href="<?php echo esc_url(home_url('/')); ?>">TOP</a></span><span><?php the_title(); ?></span>
   </p>
   <h1 class="common__h1 <?php echo $slug ? esc_attr($slug) . '__h1' : ''; ?>"><?php the_title(); ?></h1>
