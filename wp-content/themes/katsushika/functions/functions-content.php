@@ -1,4 +1,12 @@
 <?php
+// 固定ページだけ wpautop（自動<p>）を無効化
+add_action('wp', function () {
+  if (is_page()) {
+    remove_filter('the_content', 'wpautop');
+    remove_filter('the_content', 'wptexturize');
+  }
+});
+
 // the_content() に自動挿入される <p> を、<a> 単体のときだけ除去
 function my_remove_p_on_single_link( $content ) {
   // <p><a ...></a></p> のようなケースを検出して除去
