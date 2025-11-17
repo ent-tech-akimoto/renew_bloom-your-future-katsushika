@@ -15,6 +15,12 @@
     $page_id = 'event-detail';
   } elseif (is_singular('sponsors')) {
     $page_id = 'sponsors-detail';
+  } elseif (is_page('related')) {
+    $page_id = 'related';
+  } elseif (is_page('overview')) {
+    $page_id = 'overview';
+  } elseif (is_page('area')) {
+    $page_id = 'area';
   } else {
     $page_id = '';
   }
