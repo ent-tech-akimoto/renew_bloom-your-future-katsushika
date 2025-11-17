@@ -47,7 +47,7 @@
     flex-direction: column;
     gap: get_vw(20);
     @include pc-fluid-size(gap, (10));
-    
+
     @include min-screen {
       flex-direction: row;
       align-items: center;
@@ -179,14 +179,20 @@
       @include pc-fluid-size(font-size, (10));
       @include pc-fluid-size(padding, (0 12));
 
-      &.announce{
+      &.announce {
         background-color: rgba(136, 103, 170, 0.2);
       }
-      &.events{
+
+      &.events {
         background-color: $news_event;
       }
-      &.recruit{
+
+      &.recruit {
         background-color: $news_recruit;
+      }
+
+      &.news {
+        background-color: $news_news;
       }
     }
   }
@@ -346,7 +352,7 @@
       }
     }
 
-    > a {
+    >a {
       color: $c_orange;
       border-bottom: solid 1px $c_orange;
       font-weight: $w_light;
@@ -390,7 +396,7 @@
       @include pc-fluid-size(width, (60));
       @include pc-fluid-size(height, (60));
       @include pc-fluid-size(left, (5));
-  
+
       @include min-screen() {
         transition: $transition;
       }
