@@ -35,7 +35,7 @@ $featured_events = new WP_Query([
       }
       $desc = wp_trim_words(strip_tags(get_the_content()), 60, '…');
     ?>
-    <div class="top-event__box">
+    <a href="<?php the_permalink(); ?>" class="top-event__box">
       <div class="top-event__img">
         <?php echo $thumb_html; ?>
       </div>
@@ -43,18 +43,15 @@ $featured_events = new WP_Query([
         <h3><span><?php the_title(); ?></span></h3>
         <p><?php echo esc_html($desc); ?></p>
         <?php if ($area_name) : ?>
-        <span class="<?php echo esc_attr($area_slug); ?>">
-          <?php echo esc_html($area_name); ?>
-        </span>
+        <span class="<?php echo esc_attr($area_slug); ?>"><?php echo esc_html($area_name); ?></span>
         <?php endif; ?>
-        <a class="common__btn-w top-event__btn" href="<?php the_permalink(); ?>">
+        <div class="top-event__btn">
           <span>詳細はこちら</span>
-        </a>
+        </div>
       </div>
-    </div>
+    </a>
     <?php endwhile; wp_reset_postdata(); ?>
     <?php else : ?>
-    <!-- 注目イベントがなかったときに何か出したければここ -->
     <p>現在、注目イベントはありません。</p>
     <?php endif; ?>
   </div>

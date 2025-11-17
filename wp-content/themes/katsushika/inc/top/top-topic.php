@@ -19,7 +19,6 @@ $topic_query = new WP_Query(array(
         $img = get_field('top_topic_img');
         $int = get_field('top_topic_internal_link');
         $ext = get_field('top_topic_external_link');
-
         if (empty($img)) continue;
         $img_url = is_array($img) && !empty($img['url']) ? esc_url($img['url']) : '';
         $img_alt = is_array($img) && isset($img['alt']) && $img['alt'] !== '' ? esc_attr($img['alt']) : esc_attr(get_the_title());
@@ -50,22 +49,18 @@ $topic_query = new WP_Query(array(
         $slide_classes = array('top-topic__swiper-slide', 'swiper-slide');
         if (!$link_url) $slide_classes[] = 'no-link';
       ?>
-      <div class="<?php echo esc_attr(implode(' ', $slide_classes)); ?>">
+      <?php if ($link_url): ?>
+      <a href="<?php echo $link_url; ?>" <?php echo $is_external ? ' target="_blank"' : ''; ?>
+        class="<?php echo esc_attr(implode(' ', $slide_classes)); ?>">
         <img src="<?php echo $img_url; ?>" alt="<?php echo $img_alt; ?>">
         <div class="top-topic__slide-box">
           <p class="title"><?php echo esc_html(get_the_title()); ?></p>
-          <?php if ($link_url): ?>
-          <a class="common__btn-w" href="<?php echo $link_url; ?>"
-            <?php echo $is_external ? ' target="_blank"' : ''; ?>>
+          <div class="top-topic__btn">
             <span>詳細はこちら</span>
-          </a>
-          <?php else: ?>
-          <span class="common__btn-w is-disabled" aria-disabled="true">
-            <span>詳細はこちら</span>
-          </span>
-          <?php endif; ?>
+          </div>
         </div>
-      </div>
+      </a>
+      <?php endif; ?>
       <?php endwhile; wp_reset_postdata(); ?>
     </div>
   </div>
