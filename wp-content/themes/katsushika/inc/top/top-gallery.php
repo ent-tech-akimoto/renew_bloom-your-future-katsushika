@@ -35,10 +35,8 @@
           </div>
         </div>
       </div>
-      <a class="common__btn-w top-gallery__btn" href="https://www.hanaichi-katsushika.jp/flower/map/index.php"
-        target="_blank">
-        <span>詳細はこちら</span>
-      </a>
+      <a class="common__btn-w top-gallery__btn"
+        href="/event/?area=14%2C15%2C16%2C17%2C18%2C19&keyword=区民の花壇#search"><span>詳細はこちら</span></a>
     </div>
     <div class="top-gallery__box">
       <p class="top-gallery__box-ttl">区内の花の名所</p>
@@ -74,9 +72,8 @@
           </div>
         </div>
       </div>
-      <a class="common__btn-w top-gallery__btn" href="">
-        <span>詳細はこちら</span>
-      </a>
+      <a class="common__btn-w top-gallery__btn"
+        href="/event/?area=14%2C15%2C16%2C17%2C18%2C19&keyword=区内の花の名所#search"><span>詳細はこちら</span></a>
     </div>
   </div>
 </section>
