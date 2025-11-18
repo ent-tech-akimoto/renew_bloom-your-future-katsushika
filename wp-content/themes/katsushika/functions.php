@@ -12,3 +12,7 @@ require_once get_template_directory() . '/functions/functions-redirect.php';
 
 // 管理バーOFF
 add_filter('show_admin_bar', '__return_false');
+
+// shortlink を出力しない
+add_filter('pre_get_shortlink', '__return_empty_string');
+remove_action('wp_head', 'wp_shortlink_wp_head', 10, 0);

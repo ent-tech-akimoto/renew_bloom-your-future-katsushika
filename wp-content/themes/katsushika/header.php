@@ -12,8 +12,6 @@ function get_top_ancestor_slug($post_id) {
   $top_id = !empty($anc) ? end($anc) : $post_id;
   return get_post_field('post_name', $top_id);
 }
-
-// 明示: event アーカイブでは確実に 'event'
 if (is_post_type_archive('event')) {
   $slug = 'event';
 }
@@ -24,7 +22,6 @@ if (is_home()) {
   // カスタム投稿タイプまたは通常の投稿の場合
   $post_type = get_post_type();
   if ($post_type && $post_type !== 'post' && $post_type !== 'page') {
-    // カスタム投稿タイプのスラッグを取得（例: event → 'event'）
     $slug = $post_type;
   } elseif (is_page()) {
     $slug = get_post_field('post_name', get_the_ID());
@@ -48,28 +45,59 @@ if (is_home()) {
   $slug = 'event';
 }
 
-// 追加フォールバック: URLの第1セグメントから推測（例: /event/... → event）
 if (empty($slug) && !empty($segments) && !empty($segments[0])) {
   $slug = $segments[0];
 }
-
-// $slugが未定義の場合はデフォルト値を使用
 if (!isset($slug) || empty($slug)) {
   $slug = 'top';
 }
 
-
-if (is_home() || is_front_page()) {
-  $page_title = '';
-} elseif (is_single() || is_page()) {
-  $page_title = get_the_title();
-} elseif (is_post_type_archive('post') || is_category()) {
-  $page_title = 'お知らせ';
-}
 $base_title  = "全国みどりと花のフェアかつしか";
-$description = "全国みどりと花のフェアかつしかの公式サイトです";
-$page_title  = (empty($page_title)) ? $base_title : $page_title . ' | ' . $base_title;
-$url         = 'https://bloom-your-future-katsushika.jp/';
+$description = "葛飾区でみどりと花をテーマにした「全国みどりと花のフェアかつしか」を開催。その時の花を楽しむだけでなく、葛飾に暮らす人と葛飾を訪れる人、老若男女も問わず、すべての人の未来に花を咲かせる、そんなフェアです。";
+$section_title = '';
+
+if (is_front_page()) {
+  $section_title = '';
+} elseif (is_page('overview')) {
+  $section_title = '開催概要';
+} elseif (is_page('area')) {
+  $section_title = '開催エリア';
+} elseif (is_post_type_archive('event') || is_singular('event')) {
+  $section_title = 'イベント情報';
+} elseif (is_post_type_archive('sponsors') || is_singular('sponsors') || is_page('sponsors-list')) {
+  $section_title = '募集情報';
+} elseif (is_page('access')) {
+  $section_title = 'アクセス情報';
+} elseif (is_archive() || is_singular()) {
+  $section_title = 'お知らせ';
+}
+
+if (is_front_page()) {
+  $page_title_main = $base_title;
+} elseif (is_post_type_archive('event')) {
+  $page_title_main = $section_title . ' | ' . $base_title;
+} elseif (is_page('event-calendar')) {
+  $page_title_main = get_the_title() . ' | ' . $base_title;
+} elseif (is_singular('event')) {
+  $page_title_main = get_the_title() . ' | ' . $section_title . ' | ' . $base_title;
+} elseif (is_post_type_archive('sponsors')) {
+  $page_title_main = $section_title . ' | ' . $base_title;
+} elseif (is_page('sponsors-list')) {
+  $page_title_main = get_the_title() . ' | ' . $section_title . ' | ' . $base_title;
+} elseif (is_singular('sponsors')) {
+  $page_title_main = get_the_title() . ' | ' . $section_title . ' | ' . $base_title;
+} elseif (is_singular()) {
+  $page_title_main = get_the_title() . ' | ' . $section_title . ' | ' . $base_title;
+} elseif (!empty($section_title)) {
+  $page_title_main = $section_title . ' | ' . $base_title;
+} elseif (is_page()) {
+  $page_title_main = get_the_title() . ' | ' . $base_title;
+} else {
+  $page_title_main = $base_title;
+}
+
+$url = home_url($_SERVER['REQUEST_URI']);
+$og_image = home_url('/assets/img/ogp.png');
 ?>
 
 <!DOCTYPE html>
@@ -78,22 +106,20 @@ $url         = 'https://bloom-your-future-katsushika.jp/';
 <head>
   <meta charset="utf-8">
   <!-- title -->
-  <title><?php echo $page_title; ?> ｜ Bloom Your Future Katsushika</title>
+  <title><?php echo $page_title_main; ?></title>
   <meta name="viewport" content="width=device-width">
-  <meta name="description" content="初期値です">
-  <meta name="keywords" content="初期値です">
+  <meta name="description" content="<?php echo $description; ?>">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="全国みどりと花のフェアかつしか ｜ Bloom Your Future Katsushika">
-  <meta name="twitter:description" content="初期値です">
-  <meta name="twitter:url" content="初期値です">
-  <meta name="twitter:image" content="初期値です">
-  <meta name="twitter:site" content="初期値です">
-  <meta property="og:site_name" content="全国みどりと花のフェアかつしか ｜ Bloom Your Future Katsushika">
-  <meta property="og:title" content="全国みどりと花のフェアかつしか ｜ Bloom Your Future Katsushika">
-  <meta property="og:description" content="初期値です">
-  <meta property="og:url" content="初期値です">
+  <meta name="twitter:title" content="<?php echo $page_title_main; ?>">
+  <meta name="twitter:description" content="<?php echo $description; ?>">
+  <meta name="twitter:url" content="<?php echo esc_url($url); ?>">
+  <meta name="twitter:image" content="<?php echo esc_url($og_image); ?>">
+  <meta property="og:site_name" content="<?php echo $page_title_main; ?>">
+  <meta property="og:title" content="<?php echo $page_title_main; ?>">
+  <meta property="og:description" content="<?php echo $description; ?>">
+  <meta property="og:url" content="<?php echo esc_url($url); ?>">
   <meta property="og:type" content="website">
-  <meta property="og:image" content="初期値です">
+  <meta property="og:image" content="<?php echo esc_url($og_image); ?>">
   <!-- font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
