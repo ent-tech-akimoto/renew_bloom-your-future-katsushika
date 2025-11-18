@@ -7,6 +7,8 @@ require_once get_template_directory() . '/functions/functions-content.php';
 require_once get_template_directory() . '/functions/functions-news.php';
 // ---- 募集情報：本文内のブロック
 require_once get_template_directory() . '/functions/functions-sponsors.php';
+// ---- リダイレクト
+require_once get_template_directory() . '/functions/functions-redirect.php';
 
 // 管理バーOFF
 add_filter('show_admin_bar', '__return_false');
