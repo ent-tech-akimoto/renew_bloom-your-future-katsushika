@@ -141,7 +141,16 @@ $og_image = home_url('/assets/img/ogp.png');
               <span class="header__date--period">5/16<img src="/assets/data/webp/common/icon_polygon.webp"
                   alt="">6/14</span>
             </p>
-            <p class="header__countdown">開催まで<span class="header__countdown--num">360<small>日</small></span>
+            <?php
+            $event_date = new DateTime('2026-05-16');
+            $today = new DateTime(current_time('Y-m-d'));
+            // 差分日数を計算
+            $diff = (int) $today->diff($event_date)->format('%r%a');
+            // 開催日を過ぎたら「0」に
+            $countdown_days = max($diff, 0);
+            ?>
+            <p class="header__countdown">開催まで<span
+                class="header__countdown--num"><?php echo esc_html($countdown_days); ?><small>日</small></span>
             </p>
           </div>
         </div>
