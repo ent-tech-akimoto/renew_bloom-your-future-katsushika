@@ -58,16 +58,10 @@ $section_title = '';
 
 if (is_front_page()) {
   $section_title = '';
-} elseif (is_page('overview')) {
-  $section_title = '開催概要';
-} elseif (is_page('area')) {
-  $section_title = '開催エリア';
 } elseif (is_post_type_archive('event') || is_singular('event')) {
   $section_title = 'イベント情報';
 } elseif (is_post_type_archive('sponsors') || is_singular('sponsors') || is_page('sponsors-list')) {
   $section_title = '募集情報';
-} elseif (is_page('access')) {
-  $section_title = 'アクセス情報';
 } elseif (is_archive() || is_singular()) {
   $section_title = 'お知らせ';
 }
@@ -76,7 +70,7 @@ if (is_front_page()) {
   $page_title_main = $base_title;
 } elseif (is_post_type_archive('event')) {
   $page_title_main = $section_title . ' | ' . $base_title;
-} elseif (is_page('event-calendar')) {
+} elseif (is_page() && !is_page('sponsors-list')) {
   $page_title_main = get_the_title() . ' | ' . $base_title;
 } elseif (is_singular('event')) {
   $page_title_main = get_the_title() . ' | ' . $section_title . ' | ' . $base_title;
@@ -86,12 +80,12 @@ if (is_front_page()) {
   $page_title_main = get_the_title() . ' | ' . $section_title . ' | ' . $base_title;
 } elseif (is_singular('sponsors')) {
   $page_title_main = get_the_title() . ' | ' . $section_title . ' | ' . $base_title;
-} elseif (is_singular()) {
+} elseif (is_archive() && !is_post_type_archive('event') && !is_post_type_archive('sponsors')) {
+  $page_title_main = $section_title . ' | ' . $base_title;
+} elseif (is_singular() && !is_singular('event') && !is_singular('sponsors')) {
   $page_title_main = get_the_title() . ' | ' . $section_title . ' | ' . $base_title;
 } elseif (!empty($section_title)) {
   $page_title_main = $section_title . ' | ' . $base_title;
-} elseif (is_page()) {
-  $page_title_main = get_the_title() . ' | ' . $base_title;
 } else {
   $page_title_main = $base_title;
 }
