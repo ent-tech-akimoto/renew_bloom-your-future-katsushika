@@ -313,8 +313,10 @@
       }
 
       > a {
+        border-bottom: transparent solid get_vw(2);
         font-size: get_vw(24);
         font-weight: $w_medium;
+        padding: 0 0 get_vw(3);
         margin-left: get_vw(26);
         display: inline-block;
 
@@ -334,7 +336,7 @@
         } 
       }
 
-      &.menu-about {
+      &.menu-overview {
         > a {
           &:hover {
             border-color: $c_red;
@@ -367,7 +369,7 @@
         }
       }
 
-      &.menu-sponsorship {
+      &.menu-sponsors {
         > a {
           &:hover {
             border-color: $c_purple; 
@@ -378,7 +380,7 @@
         }
       }
 
-      &.menu-sponsorinfo {
+      &.menu-support {
         > a {
           &:hover {
             border-color: $c_blue;
@@ -449,11 +451,13 @@
   }
 
   &__submenu {
+    margin-left: get_vw(26);
 
     @include min-screen {
       border-radius: 10px;
       background-color: $c_white;
       padding: 15px;
+      margin-left: 0;
       opacity: 0;
       pointer-events: none;
       transition: $transition;

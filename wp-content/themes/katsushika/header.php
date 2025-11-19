@@ -260,13 +260,13 @@ $og_image = home_url('/assets/img/ogp.png');
               </form>
             </div>
             <script>
-            document.getElementById("siteSearchForm").addEventListener("submit", function(e) {
-              e.preventDefault();
-              const q = document.getElementById("siteSearchInput").value.trim();
-              if (q) {
-                location.href = `/search/?q=${encodeURIComponent(q)}`;
-              }
-            });
+              document.getElementById("siteSearchForm").addEventListener("submit", function(e) {
+                e.preventDefault();
+                const q = document.getElementById("siteSearchInput").value.trim();
+                if (q) {
+                  location.href = `/search/?q=${encodeURIComponent(q)}`;
+                }
+              });
             </script>
             <a class="header__contact" href="#">お問い合わせ</a>
             <div class="header__sns">
