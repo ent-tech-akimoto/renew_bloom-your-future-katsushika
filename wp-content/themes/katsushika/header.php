@@ -108,6 +108,7 @@ $og_image = home_url('/assets/img/ogp.png');
   <meta name="twitter:description" content="<?php echo $description; ?>">
   <meta name="twitter:url" content="<?php echo esc_url($url); ?>">
   <meta name="twitter:image" content="<?php echo esc_url($og_image); ?>">
+  <meta name="twitter:site" content="@katsu_midohana">
   <meta property="og:site_name" content="<?php echo $page_title_main; ?>">
   <meta property="og:title" content="<?php echo $page_title_main; ?>">
   <meta property="og:description" content="<?php echo $description; ?>">
