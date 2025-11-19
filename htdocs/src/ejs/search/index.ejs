@@ -1,0 +1,34 @@
+<%
+var pageID = "search";
+var lang = "ja";
+var relative_path = "../";
+var myMeta = meta[lang][pageID];
+%>
+<!DOCTYPE html>
+<html lang="<%= lang %>">
+  <%-include(`${relative_path}_partial/_head`,{lang:lang,pageID:pageID,relative_path:relative_path})%>
+
+  <body>
+    <div class="page">
+      <%-include(`${relative_path}_partial/_header`,{lang:lang,pageID:pageID,relative_path:relative_path})%>
+      <article class="search__wrapper">
+        <div class="search__bg"></div>
+        <p class="common__bread">
+          <span
+            ><a href="https://test-bloom-your-future-katsushika.entacl.net/"
+              >TOP</a
+            ></span
+          ><span>サイト内検索</span>
+        </p>
+        <h1 class="common__h1 search__h1">サイト内検索</h1>
+        <section class="search__section">
+          <script async src="https://cse.google.com/cse.js?cx=139caabb562274b2f">
+          </script>
+          <div class="gcse-search"></div>
+        </section>
+      </article>
+      <%-include(`${relative_path}_partial/_footer`,{lang:lang,pageID:pageID,relative_path:relative_path})%>
+    </div>
+    <%- include( `${relative_path}_partial/_foot`,{lang:lang,pageID:pageID,relative_path:relative_path}) %>
+  </body>
+</html>
