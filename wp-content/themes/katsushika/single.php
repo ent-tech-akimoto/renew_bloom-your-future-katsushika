@@ -53,7 +53,7 @@ get_header();
       $back_url = strtok($back_url, '#') . '#search';
     }
     ?>
-    <a href="<?php echo esc_url($back_url); ?>" class="detail__back js-history-back"><span>もどる</span></a>
+    <a href="<?php echo esc_url($back_url); ?>" class="detail__back js-history-back"><span>お知らせ一覧にもどる</span></a>
   </div>
 </article>
 <?php endwhile; endif; ?>

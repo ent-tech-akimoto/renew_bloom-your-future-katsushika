@@ -655,6 +655,54 @@
       }
     }
   }
+
+  &.overview {
+    .header__menu--item.menu-overview {
+      > a {
+        border-color: $c_red;
+      }
+    }
+  }
+
+  &.area {
+    .header__menu--item.menu-area {
+      > a {
+        border-color: $c_pink;
+      }
+    }
+  }
+
+  &.event {
+    .header__menu--item.menu-event {
+      > a {
+        border-color: $c_orange;
+      }
+    }
+  }
+
+  &.sponsors {
+    .header__menu--item.menu-sponsors {
+      > a {
+        border-color: $c_purple; 
+      }
+    }
+  }
+
+  &.support {
+    .header__menu--item.menu-support {
+      > a {
+        border-color: $c_blue;
+      }
+    }  
+  }
+
+  &.access {
+    .header__menu--item.menu-access {
+      > a {
+        border-color: $c_green;
+      }
+    }
+  }
 }
 
 /* Google翻訳 ウィジェット */

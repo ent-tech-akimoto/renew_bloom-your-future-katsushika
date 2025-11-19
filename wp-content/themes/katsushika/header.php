@@ -154,7 +154,7 @@ $og_image = home_url('/assets/img/ogp.png');
             </p>
           </div>
         </div>
-        <div class="gnavi">
+        <div class="gnavi <?php echo $slug; ?>">
           <div class="gnavi__contents">
             <a class="gnavi__contact" href="#">お問い合わせ</a>
             <div class="gnavi__sns">
@@ -172,7 +172,7 @@ $og_image = home_url('/assets/img/ogp.png');
             </div>
           </div>
           <ul class="gnavi__menu">
-            <li class="gnavi__menu--item menu-about">
+            <li class="gnavi__menu--item menu-overview">
               <a href="/overview/">開催概要</a>
             </li>
             <li class="gnavi__menu--item menu-area">
@@ -186,7 +186,7 @@ $og_image = home_url('/assets/img/ogp.png');
                 </li>
               </ul>
             </li>
-            <li class="gnavi__menu--item menu-sponsorship">
+            <li class="gnavi__menu--item menu-sponsors">
               <a href="/sponsors/">募集情報</a>
               <ul class="gnavi__submenu">
                 <li class="gnavi__submenu--item">
@@ -194,7 +194,7 @@ $og_image = home_url('/assets/img/ogp.png');
                 </li>
               </ul>
             </li>
-            <li class="gnavi__menu--item menu-sponsorinfo">
+            <li class="gnavi__menu--item menu-support">
               <a href="/support/">協賛募集</a>
             </li>
             <li class="gnavi__menu--item menu-access">
@@ -211,7 +211,7 @@ $og_image = home_url('/assets/img/ogp.png');
         </button>
         <nav id="js-header-nav" class="header__nav">
           <ul class="header__menu -main">
-            <li class="header__menu--item menu-about">
+            <li class="header__menu--item menu-overview">
               <a href="/overview/">開催概要</a>
             </li>
             <li class="header__menu--item menu-area">
@@ -225,7 +225,7 @@ $og_image = home_url('/assets/img/ogp.png');
                 </li>
               </ul>
             </li>
-            <li class="header__menu--item menu-sponsorship">
+            <li class="header__menu--item menu-sponsors">
               <a href="/sponsors/">募集情報</a>
               <ul class="header__submenu">
                 <li class="header__submenu--item">
@@ -233,7 +233,7 @@ $og_image = home_url('/assets/img/ogp.png');
                 </li>
               </ul>
             </li>
-            <li class="header__menu--item menu-sponsorinfo">
+            <li class="header__menu--item menu-support">
               <a href="/support/">協賛募集</a>
             </li>
             <li class="header__menu--item menu-access">

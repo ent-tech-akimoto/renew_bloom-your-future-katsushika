@@ -53,7 +53,7 @@ get_header();
         </div>
       </div>
     </div>
-    <a href="/event/" class="detail__back"><span>もどる</span></a>
+    <a href="/event/" class="detail__back"><span>イベント一覧にもどる</span></a>
   </div>
 </article>
 <?php endwhile; endif; ?>

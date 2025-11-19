@@ -26,7 +26,7 @@ get_header();
         </div>
       </div>
     </div>
-    <a href="/sponsors/" class="detail__back"><span>もどる</span></a>
+    <a href="/sponsors/" class="detail__back"><span>募集情報一覧にもどる</span></a>
   </div>
 </article>
 <?php endwhile; endif; ?>
