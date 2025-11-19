@@ -175,7 +175,7 @@
           <nav class="footer__subnav">
             <a href="/terms/">利用規約</a>
             <a href="/privacy/">プライバシーポリシー</a>
-            <a href="/sitemap/">運用ポリシーサイトマップ</a>
+            <a href="/sitemap/">サイトマップ</a>
           </nav>
           <p class="footer__block--tit">Follow us</p>
           <div class="footer__sns">
