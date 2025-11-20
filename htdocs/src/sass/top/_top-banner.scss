@@ -21,11 +21,12 @@
     width: get_vw(370);
     margin: 0 get_vw(10);
     border-radius: get_vw(0) get_vw(0) get_vw(20) get_vw(20);
+    z-index: 0;
     @include pc-fluid-size(width, (1280));
     @include pc-fluid-size(margin, (0 41));
     @include pc-fluid-size(border-radius, (40));
     overflow: hidden;
-    @include before{
+    @include after{
       width: get_vw(381);
       height: get_vw(243);
       background: linear-gradient(to top, rgba(1, 16, 0, 1) 0%, rgba(8, 151, 0, 0) 100%);
@@ -34,6 +35,7 @@
       left: 0;
       opacity: 0.6;
       border-radius: 0 0 get_vw(20) get_vw(20);
+      z-index: 2;
       @include min-screen{
         display: none;
       }
@@ -42,6 +44,8 @@
       display: block;
       width: 100%;
       height: 100%;
+      position: relative;
+      z-index: 1;
     }
     & .top-banner__progress:after{
       animation-play-state: paused;
@@ -66,6 +70,7 @@
     position: absolute;
     top: 0;
     left: 0;
+    z-index: 2;
     border-radius: 0 0 get_vw(20) 0;
     @include center;
     flex-direction: column;
@@ -180,6 +185,7 @@
     position: absolute;
     bottom: get_vw(36);
     left: get_vw(20);
+    z-index: 2;
     @include pc-fluid-size(width, (500));
     @include pc-fluid-size(bottom, (50));
     @include pc-fluid-size(left, (40));

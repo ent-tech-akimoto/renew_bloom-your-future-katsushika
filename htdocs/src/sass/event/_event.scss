@@ -503,7 +503,7 @@
     column-gap: get_vw(8);
     @include pc-fluid-size(width, (357));
     @include pc-fluid-size(height, (70));
-    @include pc-fluid-size(padding, (10 15));
+    @include pc-fluid-size(padding, (7 15));
     @include pc-fluid-size(border-width, (2));
     @include pc-fluid-size(border-radius, (15));
     @include pc-fluid-size(row-gap, (8));
