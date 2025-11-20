@@ -494,6 +494,7 @@
           padding-left: 0;
           white-space: nowrap;
           display: inline-block;
+          @include hov-opacity;
         }
       }
     }
@@ -621,6 +622,7 @@
       border-radius: get_vw(10, $vp_pc);
       width: get_vw(220, $vp_pc);
       height: get_vw(40, $vp_pc);
+      padding-bottom: get_vw(2, $vp_pc);
       font-size: get_vw(17, $vp_pc);
     }
 
@@ -628,8 +630,22 @@
       border-radius: 8px;
       width: 140px;
       height: 30px;
+      padding-bottom: 2px;
       font-size: 14px;
       margin: 0 0 0 17px;
+    }
+
+    span {
+      line-height: 0;
+      color: $c_white;
+      font-size: get_vw(14);
+      @media screen and (min-width: 768px) and (max-width: 1439px) { 
+        font-size: get_vw(17, $vp_pc);
+      }
+      @media screen and (min-width: 1440px) {
+        font-size: 14px;
+        margin: 0 0 0 17px;
+      }
     }
   }
 
