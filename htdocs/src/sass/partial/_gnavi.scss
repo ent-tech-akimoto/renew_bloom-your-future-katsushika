@@ -129,7 +129,7 @@
       pointer-events: none;
       transition: $transition;
       position: absolute;
-      top: get_vw(30, $vp_pc);
+      top: get_vw(27, $vp_pc);
       left: get_vw(15, $vp_pc);
     }
 
@@ -145,7 +145,8 @@
     }
   }
 
-  .gnavi__menu--item a:hover + .gnavi__submenu {
+  .gnavi__menu--item a:hover + .gnavi__submenu,
+  .gnavi__submenu:hover {
     @media screen and (min-width: 768px) and (max-width: 1439px) {
       opacity: 1;
       pointer-events: auto;
@@ -168,7 +169,8 @@
     }
   }
 
-  &.event {
+  &.event,
+  &.event-calendar {
     .gnavi__menu--item.menu-event {
       > a {
         border-color: $c_orange;
@@ -176,7 +178,8 @@
     }
   }
 
-  &.sponsors {
+  &.sponsors,
+  &.sponsors-list {
     .gnavi__menu--item.menu-sponsors {
       > a {
         border-color: $c_purple; 

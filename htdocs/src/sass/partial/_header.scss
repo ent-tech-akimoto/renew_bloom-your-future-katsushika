@@ -323,8 +323,8 @@
         @media screen and (min-width: 768px) and (max-width: 1439px) {
           border-bottom: transparent solid get_vw(2, $vp_pc);
           font-size: get_vw(16, $vp_pc);
-          padding: 0 0 get_vw(3, $vp_pc) get_vw(25, $vp_pc);
-          margin-left: 0;
+          padding: 0 0 get_vw(3, $vp_pc);
+          margin-left:  get_vw(25, $vp_pc);
           transition: $transition;
         }
 
@@ -453,7 +453,11 @@
   &__submenu {
     margin-left: get_vw(26);
 
-    @include min-screen {
+    @media screen and (min-width: 768px) and (max-width: 1439px) { 
+      margin-left: 0;
+    }
+
+    @include min-screen(1440px) {
       border-radius: 10px;
       background-color: $c_white;
       padding: 15px;
@@ -462,7 +466,7 @@
       pointer-events: none;
       transition: $transition;
       position: absolute;
-      top: 30px;
+      top: 25px;
       left: 15px;
     } 
 
@@ -470,7 +474,7 @@
       margin: get_vw(5) 0 0;
 
       @media screen and (min-width: 768px) and (max-width: 1439px) { 
-        margin: get_vw(7, $vp_pc) 0 0 get_vw(25, $vp_pc);
+        margin: get_vw(3, $vp_pc) 0 0 get_vw(25, $vp_pc);
       }
 
       @media screen and (min-width: 1440px) {
@@ -495,8 +499,9 @@
     }
   }
 
-  .header__menu--item a:hover + .header__submenu {
-    @include min-screen {
+  .header__menu--item a:hover + .header__submenu,
+  .header__submenu:hover {
+    @include min-screen(1440px) {
       opacity: 1;
       pointer-events: auto;
     }
@@ -676,7 +681,8 @@
     }
   }
 
-  &.event {
+  &.event,
+  &.event-calendar {
     .header__menu--item.menu-event {
       > a {
         border-color: $c_orange;
@@ -684,7 +690,8 @@
     }
   }
 
-  &.sponsors {
+  &.sponsors,
+  &.sponsors-list {
     .header__menu--item.menu-sponsors {
       > a {
         border-color: $c_purple; 
