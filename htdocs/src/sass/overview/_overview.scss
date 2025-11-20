@@ -143,7 +143,7 @@
     }
   }
   &__h2{
-    font-size: get_vw(20);
+    font-size: get_vw(24);
     color: $c_black;
     text-align: center;
     position: relative;
@@ -161,6 +161,15 @@
       @include pc-fluid-size(width, (25));
       @include pc-fluid-size(height, (2));
       @include pc-fluid-size(bottom, (-0));
+    }
+    &:first-of-type{
+      width: get_vw(390);
+      margin-left: get_vw(-20);
+      letter-spacing: -0.06em;
+      @include min-screen{
+        width: auto;
+        margin: unset;
+      }
     }
   }
   &__container{

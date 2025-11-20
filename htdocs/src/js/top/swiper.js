@@ -11,6 +11,14 @@ export function initSwipers() {
   const wrapper = swiperEl.querySelector('.top-banner__swiper-wrapper');
   const slides = wrapper.querySelectorAll('.top-banner__swiper-slide');
   const originalSlidesCount = document.querySelectorAll('.top-banner__swiper-wrapper .top-banner__swiper-slide:not(.swiper-slide-duplicate)').length;
+
+  // If there's only one original slide, mark it so CSS can target it
+  const realSlides = wrapper.querySelectorAll('.top-banner__swiper-slide:not(.swiper-slide-duplicate)');
+  if (realSlides.length === 1) {
+    realSlides.forEach(s => s.classList.add('only-child'));
+  } else {
+    realSlides.forEach(s => s.classList.remove('only-child'));
+  }
   
   const minSlides = 3;
   if (slides.length < minSlides) {
@@ -69,6 +77,7 @@ export function initSwipers() {
     if (nextBtn) nextBtn.style.display = 'none';
     if (prevBtn) prevBtn.style.display = 'none';
     if (progressBar) progressBar.style.display = 'none';
+    if (slides) slides.classList.add(".only-child");
 
     const paginationEl = document.querySelector('.top-banner__swiper-pagination');
     if (paginationEl) paginationEl.style.display = 'none';
