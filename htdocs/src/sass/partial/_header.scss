@@ -323,8 +323,8 @@
         @media screen and (min-width: 768px) and (max-width: 1439px) {
           border-bottom: transparent solid get_vw(2, $vp_pc);
           font-size: get_vw(16, $vp_pc);
-          padding: 0 0 get_vw(3, $vp_pc) get_vw(25, $vp_pc);
-          margin-left: 0;
+          padding: 0 0 get_vw(3, $vp_pc);
+          margin-left:  get_vw(25, $vp_pc);
           transition: $transition;
         }
 
@@ -453,7 +453,11 @@
   &__submenu {
     margin-left: get_vw(26);
 
-    @include min-screen {
+    @media screen and (min-width: 768px) and (max-width: 1439px) { 
+      margin-left: 0;
+    }
+
+    @include min-screen(1440px) {
       border-radius: 10px;
       background-color: $c_white;
       padding: 15px;
@@ -462,7 +466,7 @@
       pointer-events: none;
       transition: $transition;
       position: absolute;
-      top: 30px;
+      top: 25px;
       left: 15px;
     } 
 
@@ -470,7 +474,7 @@
       margin: get_vw(5) 0 0;
 
       @media screen and (min-width: 768px) and (max-width: 1439px) { 
-        margin: get_vw(7, $vp_pc) 0 0 get_vw(25, $vp_pc);
+        margin: get_vw(3, $vp_pc) 0 0 get_vw(25, $vp_pc);
       }
 
       @media screen and (min-width: 1440px) {
@@ -490,13 +494,15 @@
           padding-left: 0;
           white-space: nowrap;
           display: inline-block;
+          @include hov-opacity;
         }
       }
     }
   }
 
-  .header__menu--item a:hover + .header__submenu {
-    @include min-screen {
+  .header__menu--item a:hover + .header__submenu,
+  .header__submenu:hover {
+    @include min-screen(1440px) {
       opacity: 1;
       pointer-events: auto;
     }
@@ -525,7 +531,7 @@
   &__search {
 
     @media screen and (min-width: 1440px) {
-      margin: 0 0 0 17px;
+      margin: 0 0 0 15px;
     }
 
     &--form {
@@ -542,7 +548,7 @@
       flex-basis: get_vw(250);
       height: get_vw(50);
       font-size: get_vw(16);
-      padding: get_vw(5) get_vw(15);
+      padding: get_vw(5) get_vw(10);
 
       @media screen and (min-width: 768px) and (max-width: 1439px) { 
         border-radius: get_vw(8, $vp_pc);
@@ -551,7 +557,7 @@
         flex-basis: get_vw(180, $vp_pc);
         height: get_vw(30, $vp_pc);
         font-size: get_vw(16, $vp_pc);
-        padding: get_vw(5, $vp_pc) get_vw(8, $vp_pc);
+        padding: get_vw(5, $vp_pc) get_vw(10, $vp_pc);
       }
 
       @media screen and (min-width: 1440px) {
@@ -561,7 +567,7 @@
         flex-basis: 140px;
         height: 30px;
         font-size: 14px;
-        padding: 5px 15px;
+        padding: 5px 10px;
       }
     }
 
@@ -587,7 +593,7 @@
         width: 30px;
         flex-basis: 30px;
         height: 30px;
-        margin: 0 0 0 10px;
+        margin: 0 0 0 7px;
       }
 
       img {
@@ -616,6 +622,7 @@
       border-radius: get_vw(10, $vp_pc);
       width: get_vw(220, $vp_pc);
       height: get_vw(40, $vp_pc);
+      padding-bottom: get_vw(2, $vp_pc);
       font-size: get_vw(17, $vp_pc);
     }
 
@@ -623,8 +630,21 @@
       border-radius: 8px;
       width: 140px;
       height: 30px;
+      padding-bottom: 2px;
       font-size: 14px;
-      margin: 0 0 0 17px;
+      margin: 0 0 0 15px;
+    }
+
+    span {
+      line-height: 0;
+      color: $c_white;
+      font-size: get_vw(14);
+      @media screen and (min-width: 768px) and (max-width: 1439px) { 
+        font-size: get_vw(17, $vp_pc);
+      }
+      @media screen and (min-width: 1440px) {
+        font-size: 14px;
+      }
     }
   }
 
@@ -676,7 +696,8 @@
     }
   }
 
-  &.event {
+  &.event,
+  &.event-calendar {
     .header__menu--item.menu-event {
       > a {
         border-color: $c_orange;
@@ -684,7 +705,8 @@
     }
   }
 
-  &.sponsors {
+  &.sponsors,
+  &.sponsors-list {
     .header__menu--item.menu-sponsors {
       > a {
         border-color: $c_purple; 

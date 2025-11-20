@@ -170,7 +170,7 @@
             <a href="/access/">アクセス情報</a>
             <a href="/news/">お知らせ</a>
             <a href="/related/">関連サイト</a>
-            <a href="">お問い合わせ</a>
+            <a href="" target="_blank">お問い合わせ</a>
           </nav>
           <nav class="footer__subnav">
             <a href="/terms/">利用規約</a>

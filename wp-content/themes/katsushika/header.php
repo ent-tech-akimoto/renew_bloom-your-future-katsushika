@@ -157,7 +157,7 @@ $og_image = home_url('/assets/img/ogp.png');
         </div>
         <div class="gnavi <?php echo $slug; ?>">
           <div class="gnavi__contents">
-            <a class="gnavi__contact" href="#">お問い合わせ</a>
+            <a class="gnavi__contact" href="#" target="_blank"><span>お問い合わせ</span></a>
             <div class="gnavi__sns">
               <a class="gnavi__sns--item -x" href="https://x.com/katsu_midohana" target="_blank">
                 <img src="/assets/data/webp/common/sns_x.webp" alt="X">
@@ -268,7 +268,7 @@ $og_image = home_url('/assets/img/ogp.png');
                 }
               });
             </script>
-            <a class="header__contact" href="#">お問い合わせ</a>
+            <a class="header__contact" href="#" target="_blank"><span>お問い合わせ</span></a>
             <div class="header__sns">
               <a class="header__sns--item -x" href="https://x.com/katsu_midohana" target="_blank">
                 <img src="/assets/data/webp/common/sns_x.webp" alt="X">
