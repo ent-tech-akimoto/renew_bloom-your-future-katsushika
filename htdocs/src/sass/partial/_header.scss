@@ -12,6 +12,7 @@
   z-index: 1000;
 
   &__inner {
+    width: 100%;
     display: flex;
     align-items: center;
     height: get_vw(60);
@@ -250,21 +251,21 @@
     }
 
     @media screen and (min-width: 1440px) {
+      width: 100%;
       display: flex;
-      flex-wrap: wrap;
-      justify-content: end;
+      align-items: flex-end;
+      flex-direction: column;
+      justify-content: center;
     }
   }
 
   &__menu {
-    display: flex;
-    flex-wrap: wrap;
 
     @media screen and (min-width: 1440px) {
-      justify-content: end;
+      display: flex;
 
       &.-main {
-        margin: 30px 0 0;
+        margin: 30px 0 0 auto;
         order: 2;
       }
     }
@@ -523,7 +524,6 @@
     }
 
     @media screen and (min-width: 1440px) {
-      justify-content: end;
       order: 1;
     }
   }
