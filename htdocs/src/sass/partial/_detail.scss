@@ -76,6 +76,8 @@
     font-size: get_vw(24);
     font-weight: $w_medium;
     line-height: calc(32/24);
+    word-break: break-all;
+    overflow-wrap: break-word;
     @include pc-fluid-size(font-size, (24));
 
     @include min-screen {
