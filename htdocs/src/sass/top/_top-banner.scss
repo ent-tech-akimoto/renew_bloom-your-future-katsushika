@@ -35,7 +35,7 @@
       left: 0;
       opacity: 0.6;
       border-radius: 0 0 get_vw(20) get_vw(20);
-      z-index: 2;
+      z-index: 1;
       @include min-screen{
         display: none;
       }
@@ -185,7 +185,7 @@
     position: absolute;
     bottom: get_vw(36);
     left: get_vw(20);
-    z-index: 2;
+    z-index: 3;
     @include pc-fluid-size(width, (500));
     @include pc-fluid-size(bottom, (50));
     @include pc-fluid-size(left, (40));

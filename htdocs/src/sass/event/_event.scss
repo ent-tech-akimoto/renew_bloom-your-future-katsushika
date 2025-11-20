@@ -532,7 +532,7 @@
 
     }
     &.area{
-      @include pc-fluid-size(padding, (8 15));
+      @include pc-fluid-size(padding, (7 15));
       &>span{
         color: $c_white;
         justify-content: flex-start;
