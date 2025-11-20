@@ -157,20 +157,20 @@ $og_image = home_url('/assets/img/ogp.png');
         </div>
         <div class="gnavi <?php echo $slug; ?>">
           <div class="gnavi__contents">
-            <a class="gnavi__contact" href="#" target="_blank"><span>お問い合わせ</span></a>
-            <div class="gnavi__sns">
-              <a class="gnavi__sns--item -x" href="https://x.com/katsu_midohana" target="_blank">
-                <img src="/assets/data/webp/common/sns_x.webp" alt="X">
-              </a>
-              <a class="gnavi__sns--item -insta" href="https://www.instagram.com/katsushika_midorihanafair/"
-                target="_blank">
-                <img src="/assets/data/webp/common/sns_insta.webp" alt="Instagram">
-              </a>
-              <a class="gnavi__sns--item -fb" href="https://www.facebook.com/profile.php?id=61576628410141"
-                target="_blank">
-                <img src="/assets/data/webp/common/sns_fb.webp" alt="facebook">
-              </a>
-            </div>
+            <a class="gnavi__contact" href="#" target="_blank">
+              <span>お問い合わせ</span>
+            </a>
+            <a class="gnavi__sns -x" href="https://x.com/katsu_midohana" target="_blank">
+              <img src="/assets/data/webp/common/sns_x.webp" alt="X">
+            </a>
+            <a class="gnavi__sns -insta" href="https://www.instagram.com/katsushika_midorihanafair/"
+              target="_blank">
+              <img src="/assets/data/webp/common/sns_insta.webp" alt="Instagram">
+            </a>
+            <a class="gnavi__sns -fb" href="https://www.facebook.com/profile.php?id=61576628410141"
+              target="_blank">
+              <img src="/assets/data/webp/common/sns_fb.webp" alt="facebook">
+            </a>
           </div>
           <ul class="gnavi__menu">
             <li class="gnavi__menu--item menu-overview">
@@ -268,7 +268,9 @@ $og_image = home_url('/assets/img/ogp.png');
                 }
               });
             </script>
-            <a class="header__contact" href="#" target="_blank"><span>お問い合わせ</span></a>
+            <a class="header__contact" href="#" target="_blank">
+              <span>お問い合わせ</span>
+            </a>
             <div class="header__sns">
               <a class="header__sns--item -x" href="https://x.com/katsu_midohana" target="_blank">
                 <img src="/assets/data/webp/common/sns_x.webp" alt="X">
