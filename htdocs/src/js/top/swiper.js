@@ -77,7 +77,6 @@ export function initSwipers() {
     if (nextBtn) nextBtn.style.display = 'none';
     if (prevBtn) prevBtn.style.display = 'none';
     if (progressBar) progressBar.style.display = 'none';
-    if (slides) slides.classList.add(".only-child");
 
     const paginationEl = document.querySelector('.top-banner__swiper-pagination');
     if (paginationEl) paginationEl.style.display = 'none';
