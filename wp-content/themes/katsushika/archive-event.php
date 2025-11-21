@@ -238,12 +238,12 @@ $found = $event_query->found_posts;
         <div class="event__form-box date">
           <div class="event__date-start">
             <strong>開始日</strong>
-            <p><?php echo $from_d ? esc_html($from_d) : '-'; ?></p>
+            <p><?php echo $from_d ? esc_html($from_d) : 'を選択'; ?></p>
           </div>
           <div class="event__date-wave">～</div>
           <div class="event__date-end">
             <strong>終了日</strong>
-            <p><?php echo $to_d ? esc_html($to_d) : '-'; ?></p>
+            <p><?php echo $to_d ? esc_html($to_d) : 'を選択'; ?></p>
           </div>
         </div>
         <div class="event__form-modal date" data-modal="modal2">
