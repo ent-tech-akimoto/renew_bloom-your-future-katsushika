@@ -47,7 +47,7 @@ var myMeta = meta[lang][pageID];
           <h2 class="access__h2 main">メインエリア</h2>
           <div class="access__map">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d25897.169891538833!2d139.863431!3d35.771784!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6018857ad443098d%3A0xf79b3de52fef127b!2z5p2x5Lqs55CG56eR5aSn5a2mIOiRm-mjvuOCreODo-ODs-ODkeOCuQ!5e0!3m2!1sja!2smy!4v1763087989652!5m2!1sja!2smy"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3237.1870111296193!2d139.8624741!3d35.7707823!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x601885656680ef8f%3A0xc2a63802952b3e8f!2sKatsushika%20Niijuku%20Mirai%20Park!5e0!3m2!1sja!2smy!4v1763952431246!5m2!1sja!2smy"
               width="100%"
               height="100%"
               style="border: 0"
@@ -62,7 +62,7 @@ var myMeta = meta[lang][pageID];
           <ul class="access__list">
             <li>
               <p class="access__label walk">徒歩</p>
-              <p class="access__detail">約20分</p>
+              <p class="access__detail">約10分</p>
             </li>
             <li>
               <p class="access__label cycle">自転車</p>
@@ -70,16 +70,22 @@ var myMeta = meta[lang][pageID];
             </li>
             <li>
               <p class="access__label taxi">タクシー</p>
-              <p class="access__detail">約10分</p>
+              <p class="access__detail">約5分</p>
             </li>
             <li>
               <p class="access__label bus">バス</p>
               <p class="access__detail">
-                バスターミナル乗車約15分「金町」停留所下車
+                京成バス金町駅北口（乗車）から東金町二丁目（降車）約5分
               </p>
             </li>
           </ul>
-          <a class="access__link" href=""> バスの時刻表はこちら </a>
+          <a
+            class="access__link"
+            href="https://transfer.navitime.biz/keiseibus/pc/diagram/BusDiagram?orvCode=00180958&course=0003900421&stopNo=1"
+            target="_blank"
+          >
+            バスの時刻表はこちら
+          </a>
           <a class="access__btn" href="<%= relative_path %>event/?area=0">
             イベント一覧をチェック
           </a>
@@ -88,7 +94,7 @@ var myMeta = meta[lang][pageID];
           <h2 class="access__h2 tora">寅さんエリア</h2>
           <div class="access__map">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d25897.169891538833!2d139.863431!3d35.771784!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6018857ad443098d%3A0xf79b3de52fef127b!2z5p2x5Lqs55CG56eR5aSn5a2mIOiRm-mjvuOCreODo-ODs-ODkeOCuQ!5e0!3m2!1sja!2smy!4v1763087989652!5m2!1sja!2smy"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3237.7269198253834!2d139.87781437525408!3d35.7575162257806!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x601885bbb6bf3a5d%3A0x30228173e9d0243f!2sShibamata%20Park!5e0!3m2!1sja!2smy!4v1763952749049!5m2!1sja!2smy"
               width="100%"
               height="100%"
               style="border: 0"
@@ -97,19 +103,17 @@ var myMeta = meta[lang][pageID];
               referrerpolicy="no-referrer-when-downgrade"
             ></iframe>
           </div>
-          <p class="access__txt">
-            JR金町駅・京成金町駅から葛飾にいじゅくみらい公園へのアクセス
-          </p>
+          <p class="access__txt">京成柴又駅から柴又公園へのアクセス</p>
           <ul class="access__list">
             <li>
               <p class="access__label walk">徒歩</p>
-              <p class="access__detail">約20分</p>
+              <p class="access__detail">約10分</p>
             </li>
             <li>
               <p class="access__label cycle">自転車</p>
               <p class="access__detail">約5分</p>
             </li>
-            <li>
+            <!-- <li>
               <p class="access__label taxi">タクシー</p>
               <p class="access__detail">約10分</p>
             </li>
@@ -118,9 +122,9 @@ var myMeta = meta[lang][pageID];
               <p class="access__detail">
                 バスターミナル乗車約15分「金町」停留所下車
               </p>
-            </li>
+            </li> -->
           </ul>
-          <a class="access__link" href=""> バスの時刻表はこちら </a>
+          <!-- <a class="access__link" href=""> バスの時刻表はこちら </a> -->
           <a class="access__btn" href="<%= relative_path %>event/?area=1">
             イベント一覧をチェック
           </a>
@@ -129,7 +133,7 @@ var myMeta = meta[lang][pageID];
           <h2 class="access__h2 kochi">こち亀エリア</h2>
           <div class="access__map">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d25897.169891538833!2d139.863431!3d35.771784!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6018857ad443098d%3A0xf79b3de52fef127b!2z5p2x5Lqs55CG56eR5aSn5a2mIOiRm-mjvuOCreODo-ODs-ODkeOCuQ!5e0!3m2!1sja!2smy!4v1763087989652!5m2!1sja!2smy"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3237.3787766638343!2d139.84459217525443!3d35.76607092530971!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188f8fa7f46537%3A0x6fc5f08d6732f173!2sKameari%20Ririo%20Park!5e0!3m2!1sja!2smy!4v1763952938057!5m2!1sja!2smy"
               width="100%"
               height="100%"
               style="border: 0"
@@ -138,15 +142,13 @@ var myMeta = meta[lang][pageID];
               referrerpolicy="no-referrer-when-downgrade"
             ></iframe>
           </div>
-          <p class="access__txt">
-            JR金町駅・京成金町駅から葛飾にいじゅくみらい公園へのアクセス
-          </p>
+          <p class="access__txt">JR亀有駅から亀有リリオパークへのアクセス</p>
           <ul class="access__list">
             <li>
               <p class="access__label walk">徒歩</p>
-              <p class="access__detail">約20分</p>
+              <p class="access__detail">約約1分</p>
             </li>
-            <li>
+            <!-- <li>
               <p class="access__label cycle">自転車</p>
               <p class="access__detail">約5分</p>
             </li>
@@ -159,9 +161,9 @@ var myMeta = meta[lang][pageID];
               <p class="access__detail">
                 バスターミナル乗車約15分「金町」停留所下車
               </p>
-            </li>
+            </li> -->
           </ul>
-          <a class="access__link" href=""> バスの時刻表はこちら </a>
+          <!-- <a class="access__link" href=""> バスの時刻表はこちら </a> -->
           <a class="access__btn" href="<%= relative_path %>event/?area=2">
             イベント一覧をチェック
           </a>
@@ -170,7 +172,7 @@ var myMeta = meta[lang][pageID];
           <h2 class="access__h2 wing">翼エリア</h2>
           <div class="access__map">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d25897.169891538833!2d139.863431!3d35.771784!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6018857ad443098d%3A0xf79b3de52fef127b!2z5p2x5Lqs55CG56eR5aSn5a2mIOiRm-mjvuOCreODo-ODs-ODkeOCuQ!5e0!3m2!1sja!2smy!4v1763087989652!5m2!1sja!2smy"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3238.622663657174!2d139.84017217525297!3d35.73549752699196!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188f6824fec0d1%3A0xd79bb7bd9672ee83!2sShibue%20Park!5e0!3m2!1sja!2smy!4v1763953050225!5m2!1sja!2smy"
               width="100%"
               height="100%"
               style="border: 0"
@@ -179,19 +181,17 @@ var myMeta = meta[lang][pageID];
               referrerpolicy="no-referrer-when-downgrade"
             ></iframe>
           </div>
-          <p class="access__txt">
-            JR金町駅・京成金町駅から葛飾にいじゅくみらい公園へのアクセス
-          </p>
+          <p class="access__txt">京成立石駅から渋江公園へのアクセス</p>
           <ul class="access__list">
             <li>
               <p class="access__label walk">徒歩</p>
-              <p class="access__detail">約20分</p>
+              <p class="access__detail">約10分</p>
             </li>
             <li>
               <p class="access__label cycle">自転車</p>
               <p class="access__detail">約5分</p>
             </li>
-            <li>
+            <!-- <li>
               <p class="access__label taxi">タクシー</p>
               <p class="access__detail">約10分</p>
             </li>
@@ -200,9 +200,9 @@ var myMeta = meta[lang][pageID];
               <p class="access__detail">
                 バスターミナル乗車約15分「金町」停留所下車
               </p>
-            </li>
+            </li> -->
           </ul>
-          <a class="access__link" href=""> バスの時刻表はこちら </a>
+          <!-- <a class="access__link" href=""> バスの時刻表はこちら </a> -->
           <a class="access__btn" href="<%= relative_path %>event/?area=4">
             イベント一覧をチェック
           </a>
@@ -211,7 +211,7 @@ var myMeta = meta[lang][pageID];
           <h2 class="access__h2 monchi">モンチッチエリア</h2>
           <div class="access__map">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d25897.169891538833!2d139.863431!3d35.771784!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6018857ad443098d%3A0xf79b3de52fef127b!2z5p2x5Lqs55CG56eR5aSn5a2mIOiRm-mjvuOCreODo-ODs-ODkeOCuQ!5e0!3m2!1sja!2smy!4v1763087989652!5m2!1sja!2smy"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3239.3964875003926!2d139.85616117525208!3d35.71646632803854!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6018878e1fa22c83%3A0x5318d8505382e6a5!2sShin-Koiwa%20Station%20South%20Front%20Square!5e0!3m2!1sja!2smy!4v1763953194365!5m2!1sja!2smy"
               width="100%"
               height="100%"
               style="border: 0"
@@ -221,14 +221,14 @@ var myMeta = meta[lang][pageID];
             ></iframe>
           </div>
           <p class="access__txt">
-            JR金町駅・京成金町駅から葛飾にいじゅくみらい公園へのアクセス
+            JR新小岩駅から新小岩駅南口駅前広場へのアクセス
           </p>
           <ul class="access__list">
             <li>
               <p class="access__label walk">徒歩</p>
-              <p class="access__detail">約20分</p>
+              <p class="access__detail">約1分</p>
             </li>
-            <li>
+            <!-- <li>
               <p class="access__label cycle">自転車</p>
               <p class="access__detail">約5分</p>
             </li>
@@ -241,9 +241,9 @@ var myMeta = meta[lang][pageID];
               <p class="access__detail">
                 バスターミナル乗車約15分「金町」停留所下車
               </p>
-            </li>
+            </li> -->
           </ul>
-          <a class="access__link" href=""> バスの時刻表はこちら </a>
+          <!-- <a class="access__link" href=""> バスの時刻表はこちら </a> -->
           <a class="access__btn" href="<%= relative_path %>event/?area=5">
             イベント一覧をチェック
           </a>
@@ -252,7 +252,7 @@ var myMeta = meta[lang][pageID];
           <h2 class="access__h2 iris">堀切菖蒲園</h2>
           <div class="access__map">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d25897.169891538833!2d139.863431!3d35.771784!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6018857ad443098d%3A0xf79b3de52fef127b!2z5p2x5Lqs55CG56eR5aSn5a2mIOiRm-mjvuOCreODo-ODs-ODkeOCuQ!5e0!3m2!1sja!2smy!4v1763087989652!5m2!1sja!2smy"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3238.3304594901188!2d139.82350867525338!3d35.74268162659686!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188f08cf7d6789%3A0x9b8666dd66096726!2sHorikiri%20Iris%20Garden!5e0!3m2!1sja!2smy!4v1763953285579!5m2!1sja!2smy"
               width="100%"
               height="100%"
               style="border: 0"
@@ -261,19 +261,17 @@ var myMeta = meta[lang][pageID];
               referrerpolicy="no-referrer-when-downgrade"
             ></iframe>
           </div>
-          <p class="access__txt">
-            JR金町駅・京成金町駅から葛飾にいじゅくみらい公園へのアクセス
-          </p>
+          <p class="access__txt">京成堀切菖蒲園駅から堀切菖蒲園へのアクセス</p>
           <ul class="access__list">
             <li>
               <p class="access__label walk">徒歩</p>
-              <p class="access__detail">約20分</p>
+              <p class="access__detail">約10分</p>
             </li>
             <li>
               <p class="access__label cycle">自転車</p>
               <p class="access__detail">約5分</p>
             </li>
-            <li>
+            <!-- <li>
               <p class="access__label taxi">タクシー</p>
               <p class="access__detail">約10分</p>
             </li>
@@ -282,9 +280,9 @@ var myMeta = meta[lang][pageID];
               <p class="access__detail">
                 バスターミナル乗車約15分「金町」停留所下車
               </p>
-            </li>
+            </li> -->
           </ul>
-          <a class="access__link" href=""> バスの時刻表はこちら </a>
+          <!-- <a class="access__link" href=""> バスの時刻表はこちら </a> -->
           <a class="access__btn" href="<%= relative_path %>event/?area=3">
             イベント一覧をチェック
           </a>

@@ -44,6 +44,7 @@
       margin: get_vw(52) auto 0;
       @include pc-fluid-size(width, (428));
       @include pc-fluid-size(margin-top, (108));
+      @include pc-fluid-size(column-gap, (3));
     }
 
     &--item {
@@ -375,9 +376,14 @@
       font-weight: 500;
       border-radius: get_vw(100);
       justify-content: center;
-      @include pc-fluid-size(width, (260));
-      @include pc-fluid-size(height, (50));
-      @include pc-fluid-size(font-size, (14));
+      @include pc-fluid-size(width, (600));
+      @include pc-fluid-size(height, (80));
+      @include pc-fluid-size(font-size, (18));
+      @include after{
+      @include pc-fluid-size(width, (60));
+      @include pc-fluid-size(height, (60));
+      @include pc-fluid-size(right, (10));
+      }
       @include min-screen{
         margin: 0;
         &:hover{

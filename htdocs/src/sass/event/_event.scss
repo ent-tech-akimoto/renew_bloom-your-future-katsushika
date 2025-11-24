@@ -56,10 +56,14 @@
       margin: get_vw(52) auto 0;
       @include pc-fluid-size(width, (428));
       @include pc-fluid-size(margin-top, (108));
+      @include pc-fluid-size(column-gap, (3));
     }
 
     &--item {
+      width: get_vw(174);
       padding-inline: get_vw(11);
+      @include pc-fluid-size(margin-inline, (1));
+      @include pc-fluid-size(width, (213));
     }
   }
   &__switch-btn{

@@ -127,6 +127,7 @@
       border-radius: get_vw(10, $vp_pc);
       background-color: $c_white;
       padding: get_vw(15, $vp_pc);
+      visibility: hidden;
       opacity: 0;
       pointer-events: none;
       transition: $transition;
@@ -153,6 +154,7 @@
     @media screen and (min-width: 768px) and (max-width: 1439px) {
       opacity: 1;
       pointer-events: auto;
+      visibility: visible;
     }
   }
 

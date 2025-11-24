@@ -93,13 +93,13 @@
           background-color: $c_ivory;
         }
         &:first-child{
-          margin-left: get_vw(20);
+          margin-left: get_vw(10);
           border-radius: get_vw(10) 0 0 get_vw(10);
           @include pc-fluid-size(margin-left, (0));
           @include pc-fluid-size(border-radius, (10 0 0 10));
         }
         &:last-child{
-          margin-right: get_vw(20);
+          margin-right: get_vw(10);
           border-radius: 0 get_vw(10) get_vw(10) 0;
           @include pc-fluid-size(margin-right, (0));
           @include pc-fluid-size(border-radius, (0 10 10 0));

@@ -44,6 +44,7 @@
       margin: get_vw(52) auto 0;
       @include pc-fluid-size(width, (428));
       @include pc-fluid-size(margin-top, (108));
+      @include pc-fluid-size(column-gap, (3));
     }
 
     &--item {
