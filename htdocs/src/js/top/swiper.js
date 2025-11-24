@@ -74,9 +74,11 @@ export function initSwipers() {
     const nextBtn = document.querySelector('.top-banner__swiper-btn--next');
     const prevBtn = document.querySelector('.top-banner__swiper-btn--prev');
     const progressBar = document.querySelector('.top-banner__progress');
+    const topNews = document.querySelector('.common__section.top-news');
     if (nextBtn) nextBtn.style.display = 'none';
     if (prevBtn) prevBtn.style.display = 'none';
     if (progressBar) progressBar.style.display = 'none';
+    if (topNews) topNews.classList.add('mt');
 
     const paginationEl = document.querySelector('.top-banner__swiper-pagination');
     if (paginationEl) paginationEl.style.display = 'none';
