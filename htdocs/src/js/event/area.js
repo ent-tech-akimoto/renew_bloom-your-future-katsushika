@@ -151,18 +151,18 @@ export function initMapButtons() {
   /*
   main：葛飾にいじゅくみらい公園
   tora：柴又公園
-  kochi：曳舟川親水公園
+  kochi：亀有リリオパーク
   iris: 堀切菖蒲園
   wing：渋江公園
-  monchi：新小岩駅
+  monchi：新小岩駅南口・駅前広場
   */
   const areaCoordinates = {
     main: { lat: 35.770909792881874, lng: 139.8624680874483 },
     tora: { lat: 35.75753015921082, lng: 139.88038875772045 },
-    kochi: { lat: 35.75972343115677, lng: 139.8452226324852 },
+    kochi: { lat: 35.76621456568354, lng: 139.8479288435444 },
     iris: { lat: 35.742737257711084, lng: 139.82608050469457 },
     wing: { lat: 35.73565864018385, lng: 139.84274709611046 },
-    monchi: { lat: 35.71712051458683, lng: 139.85809638146586 },
+    monchi: { lat: 35.71661005793716, lng: 139.85897213058539 },
   };
 
   // This array maintains click order
@@ -185,7 +185,7 @@ export function initMapButtons() {
       }
       const area = button.dataset.area;
       const text = button.textContent.trim();
-      const spanHTML = `<span class="event__form-select--area ${area}" data-area="${area}" data-id="${id}">${text}<span class="btn-close"></span></span>`;
+      const spanHTML = `<span class="event__form-select--area ${area}" data-area="${area}" data-id="${id}">${text}</span>`;
       mainFormBox.insertAdjacentHTML('beforeend', spanHTML);
       modalFormBox.insertAdjacentHTML('beforeend', spanHTML);
     });
@@ -193,28 +193,6 @@ export function initMapButtons() {
     // Update hidden input to reflect current selection
     areaInput.value = selectedAreas.join(',');
   };
-
-  // Delegate click for removing selected area
-  [mainFormBox, modalFormBox].forEach(box => {
-    box.addEventListener('click', (e) => {
-      const closeBtn = e.target.closest('.btn-close');
-      if (!closeBtn) return; // Not a close button → ignore
-
-      e.preventDefault();
-      e.stopPropagation(); // <--- prevent modal toggle
-
-      const parentSpan = e.target.closest('.event__form-select--area');
-      if (!parentSpan) return;
-
-      const id = parentSpan.dataset.id;
-      selectedAreas = selectedAreas.filter(x => x !== id);
-
-      const btn = document.querySelector(`.map-btn[data-id="${id}"]`);
-      if (btn) btn.classList.remove('js-active');
-
-      updateFormBoxes();
-    });
-  });
 
   // Map button toggle
   mapButtons.forEach(button => {
