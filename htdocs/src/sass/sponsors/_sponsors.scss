@@ -352,6 +352,10 @@
       }
       @include pc-fluid-size(padding, (100 0 0));
       @include pc-fluid-size(gap, (80, 50));
+
+      &:has(.sponsors__special--link) {
+        @include hov-opacity;
+      }
     }
     
     &--item {
@@ -615,6 +619,10 @@
       text-align: center;
       margin: get_vw(60) auto 0;
       @include pc-fluid-size(margin, (0));
+
+      &:has(.sponsors__list--link) {
+        @include hov-opacity;
+      }
     }
 
     &--logo {

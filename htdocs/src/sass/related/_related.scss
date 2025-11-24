@@ -115,6 +115,7 @@
       @include pc-fluid-size(flex-basis, (320));
       @include pc-fluid-size(padding, (0));
       @include pc-fluid-size(margin, (0));
+      @include hov-opacity;
     }
 
     &--logo {

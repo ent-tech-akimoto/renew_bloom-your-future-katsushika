@@ -524,6 +524,7 @@
     }
 
     @media screen and (min-width: 1440px) {
+      justify-content: flex-end;
       order: 1;
     }
   }
@@ -650,16 +651,17 @@
 
   &__sns {
     display: flex;
+    justify-content: center;
     align-items: center;
     margin: get_vw(20) 0 0;
 
     @media screen and (min-width: 768px) and (max-width: 1439px) { 
-      justify-content: center;
       margin: get_vw(20, $vp_pc) 0 0;
     }
 
     @media screen and (min-width: 1440px) {
-      justify-content: end;
+      flex-basis: 135px;
+      justify-content: flex-start;
       margin: 0;
     }
 
