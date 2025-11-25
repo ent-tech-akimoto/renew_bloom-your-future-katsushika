@@ -70,7 +70,7 @@
       @include pc-fluid-size(padding, (0));
       @include pc-fluid-size(column-gap, (2));
       @include min-screen{
-        margin-inline: center;
+        margin-inline: auto;
       }
       & li{
         width: get_vw(155);

@@ -547,7 +547,7 @@
     @include pc-fluid-size(padding, (0));
     @include pc-fluid-size(column-gap, (2));
     @include min-screen{
-      margin-inline: center;
+      margin-inline: auto;
     }
   }
 
@@ -561,6 +561,7 @@
     color: $c_black;
     background-color: $c_lightgray;
     @include pc-fluid-size(font-size, (14));
+    @include pc-fluid-size(margin-inline, (1));
     @include pc-fluid-size(padding, (0));
     @include min-screen{
       cursor: pointer;
