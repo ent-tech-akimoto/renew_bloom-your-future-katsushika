@@ -26,6 +26,14 @@ export function initCategoryButtons() {
     });
 
     cateInput.value = selected.join(',');
+    
+    // ➜ Add this
+    if (mainFormBox && selected.length === 0) {
+      mainFormBox.innerHTML = '<span class="event__form-box-select default">カテゴリーを絞り込む</span>';
+    }
+    if (modalFormBox && selected.length === 0) {
+      modalFormBox.innerHTML = '<span class="event__form-box-select default">カテゴリーを絞り込む</span>';
+    }
   };
 
   catButtons.forEach(btn => {

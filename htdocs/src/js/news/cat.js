@@ -26,6 +26,14 @@ export function initCategoryButtons() {
     });
 
     cateInput.value = selected.join(',');
+    
+    // ➜ Add this
+    if (mainFormBox && selected.length === 0) {
+      mainFormBox.innerHTML = '<span class="news__form-box-select default">カテゴリーを絞り込む</span>';
+    }
+    if (modalFormBox && selected.length === 0) {
+      modalFormBox.innerHTML = '<span class="news__form-box-select default">カテゴリーを絞り込む</span>';
+    }
   };
 
   catButtons.forEach(btn => {
@@ -50,10 +58,10 @@ export function initCategoryButtons() {
     .map(btn => btn.dataset.id);
 
   // --- Add this: default select all if nothing is active ---
-  if (!selected.length) {
-    selected = [...catButtons].map(btn => btn.dataset.id);
-    catButtons.forEach(btn => btn.classList.add('js-active'));
-  }
+  // if (!selected.length) {
+  //   selected = [...catButtons].map(btn => btn.dataset.id);
+  //   catButtons.forEach(btn => btn.classList.add('js-active'));
+  // }
 
   updateFormBoxes();
 }
