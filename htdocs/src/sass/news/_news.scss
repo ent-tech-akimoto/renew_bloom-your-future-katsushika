@@ -101,6 +101,7 @@
     }
   }
   &__form-box{
+    position: relative;
     width: get_vw(298);
     padding: get_vw(20) get_vw(12);
     background-color: $c_white;
@@ -138,6 +139,19 @@
       @include pc-fluid-size(padding, (0 9 1));
       @include pc-fluid-size(font-size, (10));
       @include pc-fluid-size(border-radius, (30));
+      &.default{
+        width: fit-content;
+        background-color: transparent;
+        font-size: get_vw(14);
+        font-weight: 500;
+        color: $c_gray; 
+        position: absolute;
+        top: 50%;
+        left: get_vw(4);
+        transform: translateY(-50%);
+        @include pc-fluid-size(font-size, (14));
+        @include pc-fluid-size(left, (14));
+      }
     }
   }
 
