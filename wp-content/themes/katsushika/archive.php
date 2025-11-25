@@ -106,7 +106,7 @@ $total_pages = (int) $news_query->max_num_pages;
               ?>
             <li class="cat-btn<?php echo $is_active ? ' js-active' : ''; ?>"
               data-cat="<?php echo esc_attr($term->slug); ?>" data-id="<?php echo esc_attr($term->term_id); ?>">
-              <?php echo esc_html($term->name); ?>
+              <?php echo esc_html($term->name); ?><span class="btn-close"></span>
             </li>
             <?php endforeach; ?>
             <?php endif; ?>
