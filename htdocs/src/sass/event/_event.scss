@@ -980,41 +980,45 @@
   }
   &__date-btn{
     position: relative;
+    width: get_vw(40);
+    height: get_vw(23);
     @include pc-fluid-size(width, (20));
     @include pc-fluid-size(height, (24));
     &.before{
-      // margin-left: get_vw(20);
+      // margin-left: get_vw(15);
+    @include pc-fluid-size(margin-left, (22));
       @include before{
         width: get_vw(6);
         height: get_vw(12);
         position: absolute;
-        left: 50%;
+        left: get_vw(0);
         top: 50%;
-        transform: translate(-50%, -50%);
+        transform: translate(0%, -50%);
         background-image: url("../img/event/date_btn.png");
         background-size: 100% 100%;
-        @include pc-fluid-size(width, (6));
-        @include pc-fluid-size(height, (12));
-        @include pc-fluid-size(left, (20));
+        @include pc-fluid-size(width, (12));
+        @include pc-fluid-size(height, (20));
+        @include pc-fluid-size(left, (0));
         @include min-screen{
           cursor: pointer;
         }
       }
     }
     &.after{
-      // margin-right: get_vw(20);
+      // margin-right: get_vw(15);
+      @include pc-fluid-size(margin-right, (15));
       @include after{
         width: get_vw(6);
         height: get_vw(12);
         position: absolute;
-        left: 50%;
+        right: get_vw(0);
         top: 50%;
-        transform: translate(-50%,-50%) scale(-1);
+        transform: translate(0%,-50%) scale(-1);
         background-image: url("../img/event/date_btn.png");
         background-size: 100% 100%;
-        @include pc-fluid-size(width, (6));
-        @include pc-fluid-size(height, (12));
-        @include pc-fluid-size(right, (20));
+        @include pc-fluid-size(width, (12));
+        @include pc-fluid-size(height, (20));
+        @include pc-fluid-size(right, (0));
         @include min-screen{
           cursor: pointer;
         }
