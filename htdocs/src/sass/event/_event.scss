@@ -97,7 +97,7 @@
     margin-top: get_vw(106);
     padding: get_vw(0) get_vw(20);
     @include pc-fluid-size(margin-top, (186));
-    @include pc-fluid-size(width, (775));
+    @include pc-fluid-size(width, (850));
     @include pc-fluid-size(padding, (0));
     @include min-screen{
       margin-inline: auto;
@@ -195,9 +195,9 @@
     // justify-content: space-between;
     row-gap: get_vw(10);
     column-gap: get_vw(8);
-    @include pc-fluid-size(width, (696));
+    @include pc-fluid-size(width, (760));
     @include pc-fluid-size(height, (63));
-    @include pc-fluid-size(padding, ( 17 16));
+    @include pc-fluid-size(padding, ( 15 10));
     @include pc-fluid-size(border-width, (2));
     @include pc-fluid-size(border-radius, (15));
     @include pc-fluid-size(row-gap, (8));
@@ -215,13 +215,13 @@
       color: $c_white;
       display: flex;
       align-items: center;
-      justify-content: flex-start;
+      justify-content: center;
       background-color: $c_lightgray;
       border-radius: get_vw(30);
-      @include pc-fluid-size(width, (102));
-      @include pc-fluid-size(height, (22));
-      @include pc-fluid-size(padding, (0 9 1));
-      @include pc-fluid-size(font-size, (10));
+      @include pc-fluid-size(width, (118));
+      @include pc-fluid-size(height, (26));
+      @include pc-fluid-size(padding, (0 5 1));
+      @include pc-fluid-size(font-size, (13));
       @include pc-fluid-size(border-radius, (30));
       @include min-screen{
         cursor: pointer;
@@ -383,7 +383,7 @@
     @include pc-fluid-size(padding, (15 20));
     @include pc-fluid-size(width, (1280));
     @include pc-fluid-size(border-radius, (40));
-    @include pc-fluid-size(column-gap, (35));
+    @include pc-fluid-size(column-gap, (24));
     @include pc-fluid-size(row-gap, (10));
     @include min-screen{
       display: flex;
@@ -482,8 +482,8 @@
     flex-wrap: wrap;
     row-gap: get_vw(10);
     column-gap: get_vw(8);
-    @include pc-fluid-size(width, (357));
-    @include pc-fluid-size(height, (70));
+    @include pc-fluid-size(width, (365));
+    @include pc-fluid-size(height, (80));
     @include pc-fluid-size(padding, (7 15));
     @include pc-fluid-size(border-width, (2));
     @include pc-fluid-size(border-radius, (15));
@@ -505,9 +505,9 @@
       justify-content: center;
       background-color: $c_lightgray;
       border-radius: get_vw(30);
-      @include pc-fluid-size(width, (102));
-      @include pc-fluid-size(height, (22));
-      @include pc-fluid-size(padding, (0 9 1));
+      @include pc-fluid-size(width, (112));
+      @include pc-fluid-size(height, (26));
+      @include pc-fluid-size(padding, (0 5 1));
       @include pc-fluid-size(font-size, (10));
       @include pc-fluid-size(border-radius, (30));
       &.default{
@@ -525,10 +525,11 @@
       }
     }
     &.area{
-      @include pc-fluid-size(padding, (7 15));
+      @include pc-fluid-size(padding, (7 7));
+      
       &>span{
+        @include pc-fluid-size(font-size, (12));
         color: $c_white;
-        justify-content: flex-start;
         &[data-area="main"]{
           background-color: $c_green;
         }
@@ -554,6 +555,7 @@
     }
     &.date{
       flex-direction: column;
+      @include pc-fluid-size(padding, (10 15));
       @include min-screen{      
         @include center;
       }
@@ -569,6 +571,12 @@
         font-weight: 300;
         @include pc-fluid-size(margin-top, (8));
         @include pc-fluid-size(font-size, (14));
+      }
+    }
+    &.cate {
+      @include pc-fluid-size(padding, (7 7));
+      &>span{
+        @include pc-fluid-size(font-size, (12));
       }
     }
     &.word{
@@ -656,14 +664,6 @@
       opacity: 1;
       pointer-events: all;
     }
-
-    // &.date{
-    //   &:not([hidden]){
-    //     display: block;
-    //     opacity: 1;
-    //     pointer-events: all;
-    //   }
-    // }
   }
   
 
@@ -694,9 +694,6 @@
     @include min-screen{
       display: none;
     }
-  }
-
-  &__modal-box{
   }
 
   &__modal-map{
@@ -1446,7 +1443,7 @@
     display: block;
     margin-top: get_vw(44);
     @include pc-fluid-size(margin-top, (80));
-    @include pc-fluid-size(column-gap, (18));
+    @include pc-fluid-size(column-gap, (30));
     @include pc-fluid-size(row-gap, (40));
     @include min-screen{
       display: flex;
@@ -1459,7 +1456,7 @@
     margin-top: get_vw(50);
     width: 100%;
     @include pc-fluid-size(margin-top, (0));
-    @include pc-fluid-size(width, (413));
+    @include pc-fluid-size(width, (406));
     @include min-screen{
       cursor: pointer;
       &:hover{
@@ -1496,7 +1493,7 @@
       padding-left: get_vw(27);
       font-size: get_vw(18);
       position: relative;
-      @include pc-fluid-size(margin-top, (28));
+      @include pc-fluid-size(margin-top, (20));
       @include pc-fluid-size(padding-left, (27));
       @include pc-fluid-size(font-size, (18));
       @include before{
@@ -1552,12 +1549,11 @@
   &__box-img{
     border: get_vw(1) solid $c_gray;
     border-radius: get_vw(20) get_vw(20) 0 0;
-    width: get_vw(350);
+    width: 100%;
     height: get_vw(262);
     @include pc-fluid-size(border-width, (1));
     @include pc-fluid-size(border-radius, (40));
-    @include pc-fluid-size(width, (413));
-    @include pc-fluid-size(height, (310));
+    @include pc-fluid-size(height, (305));
     overflow: hidden;
   }
   &__box-cat{
@@ -1566,7 +1562,7 @@
     flex-wrap: wrap;
     column-gap: get_vw(10);
     row-gap: get_vw(10);
-    @include pc-fluid-size(margin-top, (30));
+    @include pc-fluid-size(margin-top, (20));
     @include pc-fluid-size(column-gap, (10));
     @include pc-fluid-size(row-gap, (10));
     & span{
@@ -1579,9 +1575,9 @@
       background-color: $c_lightgray;
       border-radius: get_vw(30);
       @include center;
-      @include pc-fluid-size(height, (22));
-      @include pc-fluid-size(padding, (8));
-      @include pc-fluid-size(font-size, (10));
+      @include pc-fluid-size(height, (26));
+      @include pc-fluid-size(padding, (13));
+      @include pc-fluid-size(font-size, (13));
       @include pc-fluid-size(border-radius, (30));
       @include min-screen{
       }
