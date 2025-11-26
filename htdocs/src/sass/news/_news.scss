@@ -136,8 +136,9 @@
       border-radius: get_vw(30);
       @include pc-fluid-size(width, (112));
       @include pc-fluid-size(height, (26));
-      @include pc-fluid-size(padding, (0 5 1));
+      @include pc-fluid-size(padding, (0 2 1));
       @include pc-fluid-size(font-size, (13));
+      font-weight: 500;
       @include pc-fluid-size(border-radius, (30));
       &.default{
         width: fit-content;
