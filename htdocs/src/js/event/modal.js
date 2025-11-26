@@ -34,9 +34,8 @@ export function initEventModals() {
             
             if (!targetModal) return;
 
-            // If the modal is already shown, close it
+            // If the modal is already shown, do nothing (don't close it)
             if (targetModal.classList.contains('js-show')) {
-                targetModal.classList.remove('js-show');
                 return;
             }
 
@@ -58,16 +57,16 @@ export function initEventModals() {
         });
     });
 
-    // Close modal when clicking outside
-    document.addEventListener('click', (e) => {
-        // If clicked inside a modal or a box, don't close
-        if (e.target.closest('.event__form-box:not(.in-modal)') || 
-            e.target.closest('.event__calendar-box') ||
-            e.target.closest('.event__form-modal')) {
-            return;
-        }
-        closeAllModals();
-    });
+    // // Close modal when clicking outside
+    // document.addEventListener('click', (e) => {
+    //     // If clicked inside a modal or a box, don't close
+    //     if (e.target.closest('.event__form-box:not(.in-modal)') || 
+    //         e.target.closest('.event__calendar-box') ||
+    //         e.target.closest('.event__form-modal')) {
+    //         return;
+    //     }
+    //     closeAllModals();
+    // });
 
     // Handle "Skip" button
     const nextButtons = document.querySelectorAll('.event__modal-next');

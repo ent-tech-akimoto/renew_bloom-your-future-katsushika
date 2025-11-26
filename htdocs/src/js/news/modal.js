@@ -52,17 +52,5 @@ export function initNewsModals() {
             }
         });
     });
-
-    // Close modal when clicking outside
-    document.addEventListener('click', (e) => {
-        // If clicked inside a modal or a box, don't close
-        if (e.target.closest('.news__form-box:not(.in-modal)') || 
-            e.target.closest('.news__calendar-box') ||
-            e.target.closest('.news__form-modal')) {
-            return;
-        }
-        closeAllModals();
-    });
-
 }
 
