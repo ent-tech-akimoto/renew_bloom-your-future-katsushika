@@ -10,7 +10,7 @@ if ($page_obj instanceof WP_Post) {
 <article class="<?php echo $slug ? esc_attr($slug) . '__wrapper' : ''; ?>">
   <div class="<?php echo $slug ? esc_attr($slug) . '__bg' : ''; ?>"></div>
   <?php
-  $base_class = ['terms', 'privacy', 'sitemap', 'search'];
+  $base_class = ['terms', 'privacy', 'sitemap', 'search', 'contact'];
   $bread_class = (is_page($base_class)) ? 'common__bread' : 'common__bread l-page';
   ?>
   <p class="<?php echo $bread_class; ?>">

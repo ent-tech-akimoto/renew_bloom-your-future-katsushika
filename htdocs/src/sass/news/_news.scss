@@ -134,10 +134,10 @@
       justify-content: center;
       background-color: $c_lightgray;
       border-radius: get_vw(30);
-      @include pc-fluid-size(width, (102));
-      @include pc-fluid-size(height, (22));
-      @include pc-fluid-size(padding, (0 9 1));
-      @include pc-fluid-size(font-size, (10));
+      @include pc-fluid-size(width, (112));
+      @include pc-fluid-size(height, (26));
+      @include pc-fluid-size(padding, (0 5 1));
+      @include pc-fluid-size(font-size, (13));
       @include pc-fluid-size(border-radius, (30));
       &.default{
         width: fit-content;
@@ -458,7 +458,7 @@
           padding-top: get_vw(5);
           @include pc-fluid-size(width, (74));
           @include pc-fluid-size(padding-top, (5));
-          @include pc-fluid-size(font-size, (10));
+          @include pc-fluid-size(font-size, (13));
           @include pc-fluid-size(border-radius, (30));
         }
       }

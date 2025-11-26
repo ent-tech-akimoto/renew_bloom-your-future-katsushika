@@ -170,7 +170,7 @@
             <a href="/access/">アクセス情報</a>
             <a href="/news/">お知らせ</a>
             <a href="/related/">関連サイト</a>
-            <a href="" target="_blank">お問い合わせ</a>
+            <a href="/contact/">お問い合わせ</a>
           </nav>
           <nav class="footer__subnav">
             <a href="/terms/">利用規約</a>
@@ -193,7 +193,9 @@
           </div>
           <p class="footer__block--tit"> Contact us </p>
           <div class="footer__contact">
-            <p class="footer__contact--tel"> TEL <a href="tel:03-5654-6774">03-5654-6774</a><br>
+            <p class="footer__contact--tel">
+            葛飾区環境部環境課 <br class="pc-none">みどりと花のフェア担当<br><br>
+            TEL <a href="tel:03-5654-6774">03-5654-6774</a><br>
               <span>＊午前8時30分から午後5時（土日祝、年末年始を除く）</span>
             </p>
             <a class="footer__contact--katsushika" href="https://www.city.katsushika.lg.jp/" target="_blank">

@@ -186,7 +186,7 @@ $areas = get_terms([
             <li class="map-btn<?php echo $is_active ? ' js-active' : ''; ?>"
               data-area="<?php echo esc_attr($area_term->slug); ?>"
               data-id="<?php echo esc_attr($area_term->term_id); ?>">
-              <?php echo esc_html($area_term->name); ?>
+              <?php echo esc_html($area_term->name); ?><span class="btn-close"></span>
             </li>
             <?php endforeach; ?>
             <?php endif; ?>

@@ -178,7 +178,7 @@
       line-height: calc(24/10);
       padding: get_vw(2) get_vw(14);
       @include pc-fluid-size(border-radius, (30));
-      @include pc-fluid-size(font-size, (10));
+      @include pc-fluid-size(font-size, (13));
       @include pc-fluid-size(padding, (0 12));
 
       &.announce {

@@ -132,7 +132,6 @@
     @include pc-fluid-size(gap, (40 18));
     @include min-screen{
       display: flex;
-      justify-content: center;
       flex-wrap: wrap;
       margin-inline: auto;
     }
@@ -305,9 +304,9 @@
       background-color: $c_lightgray;
       border-radius: get_vw(30);
       @include center;
-      @include pc-fluid-size(height, (22));
-      @include pc-fluid-size(padding, (8));
-      @include pc-fluid-size(font-size, (10));
+      @include pc-fluid-size(height, (26));
+      @include pc-fluid-size(padding, (13));
+      @include pc-fluid-size(font-size, (13));
       @include pc-fluid-size(border-radius, (30));
       @include min-screen{
       }

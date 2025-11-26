@@ -213,7 +213,7 @@ $found = $event_query->found_posts;
               <?php $is_active = empty($area_ids) || in_array($area->term_id, $area_ids, true); ?>
               <li class="map-btn<?php echo $is_active ? ' js-active' : ''; ?>"
                 data-area="<?php echo esc_attr($area->slug); ?>" data-id="<?php echo esc_attr($area->term_id); ?>">
-                <?php echo esc_html($area->name); ?>
+                <?php echo esc_html($area->name); ?><span class="btn-close"></span>
               </li>
               <?php endforeach; ?>
               <?php endif; ?>
@@ -388,7 +388,7 @@ $found = $event_query->found_posts;
                 ?>
             <li class="cat-btn<?php echo $is_active ? ' js-active' : ''; ?>"
               data-cat="<?php echo esc_attr($cat->slug); ?>" data-id="<?php echo esc_attr($cat->term_id); ?>">
-              <?php echo esc_html($cat->name); ?>
+              <?php echo esc_html($cat->name); ?><span class="btn-close"></span>
             </li>
             <?php
               endforeach;

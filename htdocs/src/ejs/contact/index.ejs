@@ -1,0 +1,42 @@
+<%
+var pageID = "contact";
+var lang = "ja";
+var relative_path = "../";
+var myMeta = meta[lang][pageID];
+%>
+<!DOCTYPE html>
+<html lang="<%= lang %>">
+  <%-include(`${relative_path}_partial/_head`,{lang:lang,pageID:pageID,relative_path:relative_path})%>
+
+  <body>
+    <div class="page">
+      <%-include(`${relative_path}_partial/_header`,{lang:lang,pageID:pageID,relative_path:relative_path})%>
+      <article class="contact__wrapper">
+        <div class="contact__bg"></div>
+        <p class="common__bread">
+          <span
+            ><a href="https://test-bloom-your-future-katsushika.entacl.net/"
+              >TOP</a
+            ></span
+          ><span>お問い合わせ</span>
+        </p>
+        <h1 class="common__h1 contact__h1">お問い合わせ</h1>
+        <section class="contact__section">
+          <div class="contact__box">
+            <h2>お電話の方はこちら</h2>
+            <p>
+              葛飾区環境部環境課 <br class="pc-none">みどりと花のフェア担当<br>
+              TEL <a href="tel:03-5654-6774">03-5654-6774</a>
+            </p>
+          </div>
+          <div class="contact__box">
+            <h2>メールフォームをご希望の方はこちら</h2>
+            <a class="contact__box--btn" href="">アクセス情報はこちら</a>
+          </div>
+        </section>
+      </article>
+      <%-include(`${relative_path}_partial/_footer`,{lang:lang,pageID:pageID,relative_path:relative_path})%>
+    </div>
+    <%- include( `${relative_path}_partial/_foot`,{lang:lang,pageID:pageID,relative_path:relative_path}) %>
+  </body>
+</html>
