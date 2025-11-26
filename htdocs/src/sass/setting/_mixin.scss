@@ -460,11 +460,12 @@
 
 @mixin hov-underline() {
   @include min-screen() {
+    border-bottom: get_vw(2) solid $c_black;
+    @include pc-fluid-size(border-bottom-width, (2));
     transition: $transition;
 
     &:hover {
-      border-bottom: get_vw(2) solid $c_black;
-      @include pc-fluid-size(border-bottom-width, (2));
+      border-bottom-width: 0;
     }
   }
 }
