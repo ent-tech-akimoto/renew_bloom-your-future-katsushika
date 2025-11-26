@@ -78,7 +78,6 @@
       @include pc-fluid-size(height, (80));
       @include pc-fluid-size(font-size, (18));
       @include pc-fluid-size(margin-top, (30));
-      @include pc-fluid-size(margin-left, (0));
       @include after{
         @include pc-fluid-size(width, (60));
         @include pc-fluid-size(height, (60));
