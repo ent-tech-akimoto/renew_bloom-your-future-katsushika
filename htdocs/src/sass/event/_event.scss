@@ -585,6 +585,7 @@
       font-size: get_vw(14);
       font-weight: 500;
       resize: none;
+      line-height: 1.7;
       @include pc-fluid-size(padding, (25 18));
       @include pc-fluid-size(font-size, (14));
       @include min-screen{      
